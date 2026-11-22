@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "formal_runtime_or_input_failures": 0,
+  "formal_retries": 0,
+  "postprocessing_comparator": {
+    "initial_log": "verification.stdout.log",
+    "location": "CM/Fixed round120 deepspeech2-34 rho",
+    "raw": 1.25002,
+    "independent_interpolation": 1.2500200000000001,
+    "difference": 2.220446049250313e-16,
+    "correction": "Offline certificate rho comparison uses original 1e-9 tolerance instead of exact equality; no runtime/input/algorithm change",
+    "passed_log": "verification_02.stdout.log"
+  },
+  "figure_review": {
+    "status": "PASS",
+    "viewed": [
+      "figures/mean_jct.png",
+      "figures/time_decomposition.png"
+    ],
+    "correction": "Initial time-decomposition top-row titles clipped with outside legend/constrained_layout; explicit margins fixed; original chart/report retained in report_revisions"
+  },
+  "remaining_issue": "Confirmed dynamic intermediate-RAM candidate omissions, deliberately unchanged in this frozen algorithm"
+}

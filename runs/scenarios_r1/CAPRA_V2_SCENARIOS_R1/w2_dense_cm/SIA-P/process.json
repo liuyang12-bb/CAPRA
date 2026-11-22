@@ -1,0 +1,41 @@
+{
+  "command": [
+    "D:\\科研启航\\CAPRA-scenarios-r1\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "-m",
+    "capra.runner_v2",
+    "--input",
+    "data/scenarios_r1/w2_dense.csv",
+    "--cluster",
+    "data/scenarios_r1/cluster_cpu3.json",
+    "--responses",
+    "data/scenarios_r1/responses_cm.json",
+    "--scenario-id",
+    "w2_dense_cm",
+    "--run-version",
+    "CAPRA_V2_SCENARIOS_R1",
+    "--method",
+    "SIA-P",
+    "--output",
+    "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\CAPRA_V2_SCENARIOS_R1\\w2_dense_cm\\SIA-P",
+    "--interval",
+    "60",
+    "--max-rounds",
+    "6000",
+    "--wall-limit",
+    "900"
+  ],
+  "exit_code": 0,
+  "process_wall_seconds": 206.58743799998774,
+  "external_wall_limit": 960,
+  "external_timeout": false,
+  "user_stop": false,
+  "stdout": "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\CAPRA_V2_SCENARIOS_R1\\w2_dense_cm\\SIA-P.stdout.log",
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "start_monotonic": 131146.4432321,
+  "deadline_monotonic": 138346.4432321,
+  "start_utc": "2026-11-22T15:15:25.397545+00:00",
+  "total_budget_seconds": 7200,
+  "entries": [
+    {
+      "kind": "all_tests",
+      "command": [
+        "D:\\科研启航\\CAPRA-scenarios-r1\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "process_wall_seconds": 19.749296900001355,
+      "external_wall_limit": 180,
+      "external_timeout": false,
+      "user_stop": false,
+      "stdout": "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\development\\tests_01.log",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "owned_tree_validation",
+      "wall_seconds": 0.22016249998705462,
+      "descendants_observed": 4,
+      "active_before_cleanup": 4,
+      "active_after_cleanup": 0,
+      "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 2,
+      "method": "SIA-P",
+      "wall_seconds": 1.5230852999957278,
+      "status": "PASS"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 2,
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 1.4825584000209346,
+      "status": "PASS"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 2,
+      "method": "CAPRA",
+      "wall_seconds": 1.9328838999790605,
+      "status": "PASS"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 6,
+      "method": "SIA-P",
+      "wall_seconds": 1.5251104999915697,
+      "status": "PASS"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 6,
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 1.529561899980763,
+      "status": "PASS"
+    },
+    {
+      "kind": "legacy_raw_replay",
+      "workload": 6,
+      "method": "CAPRA",
+      "wall_seconds": 1.8993842000199948,
+      "status": "PASS"
+    },
+    {
+      "kind": "preparatory_pilot",
+      "command": [
+        "D:\\科研启航\\CAPRA-scenarios-r1\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_v2",
+        "--input",
+        "data/scenarios_r1/w2_dense.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu2.json",
+        "--responses",
+        "data/scenarios_r1/responses_cm.json",
+        "--scenario-id",
+        "pilot_cpu2_cm",
+        "--run-version",
+        "CAPRA_V2_SCENARIOS_R1_PREP",
+        "--method",
+        "CAPRA",
+        "--output",
+        "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\development\\pilot_cpu2_cm",
+        "--max-jobs",
+        "20",
+        "--max-rounds",
+        "60",
+        "--wall-limit",
+        "150"
+      ],
+      "exit_code": 0,
+      "process_wall_seconds": 49.00437780001084,
+      "external_wall_limit": 210,
+      "external_timeout": false,
+      "user_stop": false,
+      "stdout": "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\development\\pilot_cpu2_cm.stdout.log",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "relocated_raw_replay",
+      "workload": "cpu2_cm",
+      "wall_seconds": 0,
+      "status": "PASS",
+      "note": "Time covered by monotonic total, not subtracted as zero cost"
+    },
+    {
+      "kind": "preparatory_pilot",
+      "command": [
+        "D:\\科研启航\\CAPRA-scenarios-r1\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_v2",
+        "--input",
+        "data/scenarios_r1/w2_dense.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu6.json",
+        "--responses",
+        "data/scenarios_r1/responses_cm.json",
+        "--scenario-id",
+        "pilot_cpu6_cm",
+        "--run-version",
+        "CAPRA_V2_SCENARIOS_R1_PREP",
+        "--method",
+        "CAPRA",
+        "--output",
+        "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\development\\pilot_cpu6_cm",
+        "--max-jobs",
+        "20",
+        "--max-rounds",
+        "60",
+        "--wall-limit",
+        "150"
+      ],
+      "exit_code": 0,
+      "process_wall_seconds": 48.703836100001354,
+      "external_wall_limit": 210,
+      "external_timeout": false,
+      "user_stop": false,
+      "stdout": "D:\\科研启航\\CAPRA-scenarios-r1\\runs\\scenarios_r1\\development\\pilot_cpu6_cm.stdout.log",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "relocated_raw_replay",
+      "workload": "cpu6_cm",
+      "wall_seconds": 0,
+      "status": "PASS",
+      "note": "Time covered by monotonic total, not subtracted as zero cost"
+    },
+    {
+      "kind": "formal",
+      "cell": 1,
+      "scenario": "w2_dense_original",
+      "method": "SIA-P",
+      "wall_seconds": 192.59125880000647,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_original/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 2,
+      "scenario": "w2_dense_original",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 182.36892229999648,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_original/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 3,
+      "scenario": "w2_dense_original",
+      "method": "CAPRA",
+      "wall_seconds": 298.15453369999886,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_original/CAPRA"
+    },
+    {
+      "kind": "formal",
+      "cell": 4,
+      "scenario": "w6_dense_original",
+      "method": "SIA-P",
+      "wall_seconds": 243.5200148000149,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w6_dense_original/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 5,
+      "scenario": "w6_dense_original",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 238.19134330001543,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w6_dense_original/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 6,
+      "scenario": "w6_dense_original",
+      "method": "CAPRA",
+      "wall_seconds": 313.686146299995,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w6_dense_original/CAPRA"
+    },
+    {
+      "kind": "formal",
+      "cell": 7,
+      "scenario": "w2_dense_cpu2",
+      "method": "SIA-P",
+      "wall_seconds": 213.0463965999952,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu2/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 8,
+      "scenario": "w2_dense_cpu2",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 202.93253690001438,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu2/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 9,
+      "scenario": "w2_dense_cpu2",
+      "method": "CAPRA",
+      "wall_seconds": 474.2610945000197,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu2/CAPRA"
+    },
+    {
+      "kind": "formal",
+      "cell": 10,
+      "scenario": "w2_dense_cpu6",
+      "method": "SIA-P",
+      "wall_seconds": 221.70047549999435,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu6/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 11,
+      "scenario": "w2_dense_cpu6",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 208.43472260001,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu6/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 12,
+      "scenario": "w2_dense_cpu6",
+      "method": "CAPRA",
+      "wall_seconds": 250.9888555999787,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cpu6/CAPRA"
+    },
+    {
+      "kind": "formal",
+      "cell": 13,
+      "scenario": "w2_dense_cn",
+      "method": "SIA-P",
+      "wall_seconds": 209.72267059999285,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cn/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 14,
+      "scenario": "w2_dense_cn",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 200.78767270001117,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cn/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 15,
+      "scenario": "w2_dense_cn",
+      "method": "CAPRA",
+      "wall_seconds": 313.57513630000176,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cn/CAPRA"
+    },
+    {
+      "kind": "formal",
+      "cell": 16,
+      "scenario": "w2_dense_cm",
+      "method": "SIA-P",
+      "wall_seconds": 208.34961780000594,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cm/SIA-P"
+    },
+    {
+      "kind": "formal",
+      "cell": 17,
+      "scenario": "w2_dense_cm",
+      "method": "CAPRA-Fixed",
+      "wall_seconds": 200.7095475999813,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cm/CAPRA-Fixed"
+    },
+    {
+      "kind": "formal",
+      "cell": 18,
+      "scenario": "w2_dense_cm",
+      "method": "CAPRA",
+      "wall_seconds": 324.89585659999284,
+      "status": "ALL_COMPLETE",
+      "output": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cm/CAPRA"
+    }
+  ],
+  "elapsed_seconds": 4716.485703100014,
+  "remaining_seconds": 2483.5142952000024
+}

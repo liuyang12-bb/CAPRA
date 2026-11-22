@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-scenarios-r1\scripts\verify_scenarios_r1.py", line 61, in <module>
+    if __name__=='__main__':verify()
+  File "D:\科研启航\CAPRA-scenarios-r1\scripts\verify_scenarios_r1.py", line 41, in verify
+    for field in ('node','gpus','cpu','ram','rho'):assert a[field]==c[field]
+AssertionError

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "original_six_rechecked": true,
+  "custom_inputs_replayed": true,
+  "relative_replay": true,
+  "owned_tree_proved": true,
+  "algorithms_unchanged": true
+}

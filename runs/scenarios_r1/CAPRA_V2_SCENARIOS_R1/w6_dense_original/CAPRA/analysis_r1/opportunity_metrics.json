@@ -1,0 +1,228 @@
+{
+  "scenario": "w6_dense_original",
+  "method": "CAPRA",
+  "raw_audit": "PASS",
+  "completed": 80,
+  "total": 80,
+  "active_rounds": 194,
+  "all_rounds": 195,
+  "training_metrics": {
+    "rho": 1.0973370657479187,
+    "relative": 1.0973370657479187,
+    "above_prop": 0.15859344024718702,
+    "cpu_difference": 0.09733706574791852,
+    "ram_difference": 0.0,
+    "cpu_positive": 0.15859344024718702,
+    "ram_positive": 0.0,
+    "slack_opportunity_training": 0.0,
+    "ram_gap_training": 0.0,
+    "cpu_donor_training": 0.06164636397194537,
+    "ram_donor_training": 0.06164636397194537,
+    "cpu_receiver_training": 0.5485282255308095,
+    "ram_receiver_training": 0.0,
+    "cpu_below_prop_no_loss_training": 0.06164636397194537,
+    "ram_below_prop_no_loss_training": 0.06164636397194537
+  },
+  "application_training_share": {
+    "cifar10": 0.557825082372886,
+    "deepspeech2": 0.38052855365516863,
+    "bert": 0.06164636397194537
+  },
+  "application_gpu_time_share": {
+    "cifar10": 0.37202242226986976,
+    "deepspeech2": 0.5952683011847486,
+    "bert": 0.03270927654538159
+  },
+  "sensitivity_training_share": {
+    "original:cifar10": 0.557825082372886,
+    "original:deepspeech2": 0.38052855365516863,
+    "original:bert": 0.06164636397194537
+  },
+  "sensitivity_gpu_time_share": {
+    "original:cifar10": 0.37202242226986976,
+    "original:deepspeech2": 0.5952683011847486,
+    "original:bert": 0.03270927654538159
+  },
+  "application_conditionals": {
+    "cifar10": {
+      "cpu_difference": 0.17449388495380025,
+      "ram_difference": 0.0,
+      "relative": 1.1744938849538014
+    },
+    "deepspeech2": {
+      "cpu_difference": 0.0,
+      "ram_difference": 0.0,
+      "relative": 1.0
+    },
+    "bert": {
+      "cpu_difference": 0.0,
+      "ram_difference": 0.0,
+      "relative": 1.0
+    }
+  },
+  "active_selected": {
+    "F": 132,
+    "R": 10,
+    "K": 52
+  },
+  "active_feasible": {
+    "F": 194,
+    "K": 180,
+    "R": 194
+  },
+  "candidate_failures": {
+    "K:K_PINNED_GPU_FRAGMENTATION": 14
+  },
+  "phi_minus_F": {
+    "F": {
+      "n": 194,
+      "mean": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p95": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "positive": 0,
+      "zero": 194,
+      "negative": 0
+    },
+    "K": {
+      "n": 180,
+      "mean": 0.24085339506172854,
+      "median": 0.0,
+      "p05": -0.9346666666666671,
+      "p95": 1.7576111111111086,
+      "min": -1.6677777777777774,
+      "max": 3.5833333333333357,
+      "positive": 52,
+      "zero": 112,
+      "negative": 16
+    },
+    "R": {
+      "n": 194,
+      "mean": 0.12446878579610542,
+      "median": 0.0,
+      "p05": -0.11466666666666596,
+      "p95": 0.8173611111111097,
+      "min": -0.5555555555555571,
+      "max": 2.2777777777777857,
+      "positive": 41,
+      "zero": 140,
+      "negative": 13
+    }
+  },
+  "sum_rho_minus_F": {
+    "F": {
+      "n": 194,
+      "mean": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p95": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "positive": 0,
+      "zero": 194,
+      "negative": 0
+    },
+    "K": {
+      "n": 180,
+      "mean": -0.09872222222222224,
+      "median": 0.0,
+      "p05": -1.2999999999999998,
+      "p95": 0.0,
+      "min": -2.789999999999999,
+      "max": 0.5300000000000011,
+      "positive": 2,
+      "zero": 157,
+      "negative": 21
+    },
+    "R": {
+      "n": 194,
+      "mean": 0.006907216494845337,
+      "median": 0.0,
+      "p05": 0.0,
+      "p95": 0.0,
+      "min": -0.11999999999999922,
+      "max": 0.5300000000000011,
+      "positive": 5,
+      "zero": 188,
+      "negative": 1
+    }
+  },
+  "R_raw_rho_above_F_rounds": 5,
+  "R_phi_above_F_without_raw_rho_advantage_rounds": 36,
+  "selected_raw_rho_below_F_rounds": 5,
+  "funnel_rounds": {
+    "different_sensitivity_selected": 174,
+    "pair_gpu_sum_fits": 95,
+    "same_gpu_type": 133,
+    "F_already_colocated": 86,
+    "all_compatible_pairs_already_F": 24,
+    "cpu_complement_selected": 75,
+    "cpu_complement_gpu_sum_fits": 69,
+    "cpu_complement_same_type": 71,
+    "cpu_complement_F_colocated": 63,
+    "cpu_complement_direct_move_blocked_gpu": 44,
+    "one_or_more_locked": 10,
+    "direct_move_blocked_by_peer_node_gpu": 55,
+    "cpu_complement_one_or_more_locked": 10
+  },
+  "funnel_training_fraction": {
+    "different_sensitivity_selected": 0.9831152673529935,
+    "pair_gpu_sum_fits": 0.6795045322177106,
+    "same_gpu_type": 0.8145687215454658,
+    "F_already_colocated": 0.6527350532518491,
+    "all_compatible_pairs_already_F": 0.06070300643944055,
+    "cpu_complement_selected": 0.5888191624625733,
+    "cpu_complement_gpu_sum_fits": 0.5689676387350806,
+    "cpu_complement_same_type": 0.5754891103728313,
+    "cpu_complement_F_colocated": 0.5536825123388431,
+    "cpu_complement_direct_move_blocked_gpu": 0.470106503698235,
+    "one_or_more_locked": 0.05609559356329382,
+    "direct_move_blocked_by_peer_node_gpu": 0.5678602190230098,
+    "cpu_complement_one_or_more_locked": 0.05609559356329382
+  },
+  "compatible_pair_round_occurrences": {
+    "original:cifar10|original:deepspeech2": 353,
+    "original:bert|original:cifar10": 656,
+    "original:bert|original:deepspeech2": 5
+  },
+  "opportunity_certificate_count": 0,
+  "unlocked_slack_opportunity_rounds": 0,
+  "ram_candidate_gap_rounds": 0,
+  "lock_training_fraction": 0.0,
+  "transitions": {
+    "start": 80,
+    "migration": 207,
+    "reconfigure": 80,
+    "aux_update": 55
+  },
+  "pure_node_migrations": 39,
+  "actual_recovery_seconds": 17910.0,
+  "decision_active": {
+    "n": 194,
+    "mean": 0.41099087010286556,
+    "median": 0.10398224998789374,
+    "p05": 0.028837209986522793,
+    "p95": 2.3472729799977965,
+    "min": 0.017339599988190457,
+    "max": 3.616179300006479,
+    "positive": 194,
+    "zero": 0,
+    "negative": 0
+  },
+  "decision_all_rounds": {
+    "n": 195,
+    "mean": 0.4088891138458469,
+    "median": 0.10324849997414276,
+    "p05": 0.02819621999224182,
+    "p95": 2.341553539998129,
+    "min": 0.0011483999842312187,
+    "max": 3.616179300006479,
+    "positive": 195,
+    "zero": 0,
+    "negative": 0
+  },
+  "semantic_sha256": "af8b472117d6a991c64138191e7bccc9d4ef33a3999a2fed8be8575f202e83d2",
+  "opportunity_scope": "Nested descriptive pair flags; training weighting uses all actual training in flagged rounds. Pair counts not unique jobs. Direct moves hold all third jobs fixed, no swap/global-optimality claim."
+}

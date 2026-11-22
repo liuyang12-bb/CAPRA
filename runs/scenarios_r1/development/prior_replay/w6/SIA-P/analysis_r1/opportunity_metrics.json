@@ -1,0 +1,172 @@
+{
+  "scenario": "original_saturn-6-supported80",
+  "method": "SIA-P",
+  "raw_audit": "PASS",
+  "completed": 80,
+  "total": 80,
+  "active_rounds": 353,
+  "all_rounds": 382,
+  "training_metrics": {
+    "rho": 1.0,
+    "relative": 1.0,
+    "above_prop": 0.0,
+    "cpu_difference": 0.0,
+    "ram_difference": 0.0,
+    "cpu_positive": 0.0,
+    "ram_positive": 0.0,
+    "slack_opportunity_training": 0.2255131917371682,
+    "ram_gap_training": 0.0,
+    "cpu_donor_training": 0.059981559067600575,
+    "ram_donor_training": 0.059981559067600575,
+    "cpu_receiver_training": 0.5267797926203918,
+    "ram_receiver_training": 0.0,
+    "cpu_below_prop_no_loss_training": 0.0,
+    "ram_below_prop_no_loss_training": 0.0
+  },
+  "application_training_share": {
+    "cifar10": 0.5889613225707306,
+    "deepspeech2": 0.35105711836166875,
+    "bert": 0.059981559067600575
+  },
+  "application_gpu_time_share": {
+    "cifar10": 0.4195667039895396,
+    "deepspeech2": 0.5497283445928175,
+    "bert": 0.03070495141764295
+  },
+  "sensitivity_training_share": {
+    "original:cifar10": 0.5889613225707306,
+    "original:deepspeech2": 0.35105711836166875,
+    "original:bert": 0.059981559067600575
+  },
+  "sensitivity_gpu_time_share": {
+    "original:cifar10": 0.4195667039895396,
+    "original:deepspeech2": 0.5497283445928175,
+    "original:bert": 0.03070495141764295
+  },
+  "application_conditionals": {
+    "cifar10": {
+      "cpu_difference": 0.0,
+      "ram_difference": 0.0,
+      "relative": 1.0
+    },
+    "deepspeech2": {
+      "cpu_difference": 0.0,
+      "ram_difference": 0.0,
+      "relative": 1.0
+    },
+    "bert": {
+      "cpu_difference": 0.0,
+      "ram_difference": 0.0,
+      "relative": 1.0
+    }
+  },
+  "active_selected": {
+    "P": 353
+  },
+  "active_feasible": {
+    "P": 353
+  },
+  "candidate_failures": {},
+  "phi_minus_F": {
+    "P": {
+      "n": 353,
+      "mean": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p95": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "positive": 0,
+      "zero": 353,
+      "negative": 0
+    }
+  },
+  "sum_rho_minus_F": {
+    "P": {
+      "n": 353,
+      "mean": 0.0,
+      "median": 0.0,
+      "p05": 0.0,
+      "p95": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "positive": 0,
+      "zero": 353,
+      "negative": 0
+    }
+  },
+  "R_raw_rho_above_F_rounds": 0,
+  "R_phi_above_F_without_raw_rho_advantage_rounds": 0,
+  "selected_raw_rho_below_F_rounds": 0,
+  "funnel_rounds": {
+    "different_sensitivity_selected": 229,
+    "F_already_colocated": 61,
+    "pair_gpu_sum_fits": 71,
+    "same_gpu_type": 182,
+    "direct_move_blocked_by_peer_node_gpu": 34,
+    "all_compatible_pairs_already_F": 16,
+    "cpu_complement_selected": 63,
+    "cpu_complement_gpu_sum_fits": 47,
+    "cpu_complement_same_type": 54,
+    "cpu_complement_F_colocated": 40,
+    "cpu_complement_direct_move_blocked_gpu": 26,
+    "one_or_more_locked": 7,
+    "cpu_complement_one_or_more_locked": 7
+  },
+  "funnel_training_fraction": {
+    "different_sensitivity_selected": 0.8579724680114528,
+    "F_already_colocated": 0.3890713211148676,
+    "pair_gpu_sum_fits": 0.40395347708633267,
+    "same_gpu_type": 0.7248742296057846,
+    "direct_move_blocked_by_peer_node_gpu": 0.2928549475080477,
+    "all_compatible_pairs_already_F": 0.06248887882366263,
+    "cpu_complement_selected": 0.36299519565182226,
+    "cpu_complement_gpu_sum_fits": 0.3200310584124622,
+    "cpu_complement_same_type": 0.33378087642957666,
+    "cpu_complement_F_colocated": 0.30587683398307963,
+    "cpu_complement_direct_move_blocked_gpu": 0.26588912793801256,
+    "one_or_more_locked": 0.03683333602937608,
+    "cpu_complement_one_or_more_locked": 0.03683333602937608
+  },
+  "compatible_pair_round_occurrences": {
+    "original:cifar10|original:deepspeech2": 88,
+    "original:bert|original:cifar10": 400
+  },
+  "opportunity_certificate_count": 362,
+  "unlocked_slack_opportunity_rounds": 231,
+  "ram_candidate_gap_rounds": 0,
+  "lock_training_fraction": 0.0,
+  "transitions": {
+    "start": 80,
+    "migration": 238,
+    "reconfigure": 92
+  },
+  "pure_node_migrations": 56,
+  "actual_recovery_seconds": 20330.0,
+  "decision_active": {
+    "n": 353,
+    "mean": 0.03894630028285309,
+    "median": 0.029142700004740618,
+    "p05": 0.016554580003139564,
+    "p95": 0.09626473999524023,
+    "min": 0.012778799995430745,
+    "max": 0.21939589999965392,
+    "positive": 353,
+    "zero": 0,
+    "negative": 0
+  },
+  "decision_all_rounds": {
+    "n": 382,
+    "mean": 0.036013526701012134,
+    "median": 0.02808145000017248,
+    "p05": 0.0003036249981960282,
+    "p95": 0.09510096000085469,
+    "min": 0.00024560000747442245,
+    "max": 0.21939589999965392,
+    "positive": 382,
+    "zero": 0,
+    "negative": 0
+  },
+  "semantic_sha256": "071920b9c56854b0913d711f2e7f8b56fc12becc1858391f2355f4fcf970ff49",
+  "opportunity_scope": "Nested descriptive pair flags; training weighting uses all actual training in flagged rounds. Pair counts not unique jobs. Direct moves hold all third jobs fixed, no swap/global-optimality claim."
+}

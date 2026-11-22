@@ -1,0 +1,64 @@
+{
+  "base_commit": "0b87934ae558960921889b01d14502155fb0c41c",
+  "scenarios": [
+    {
+      "id": "w2_dense_original",
+      "input": "data/scenarios_r1/w2_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "synthetic_response": false,
+      "changes": "Arrival intervals /2",
+      "hypothesis": "Higher concurrency may increase complementarity or competition"
+    },
+    {
+      "id": "w6_dense_original",
+      "input": "data/scenarios_r1/w6_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "synthetic_response": false,
+      "changes": "Arrival intervals /2",
+      "hypothesis": "Replicate density on W6"
+    },
+    {
+      "id": "w2_dense_cpu2",
+      "input": "data/scenarios_r1/w2_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu2.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "synthetic_response": false,
+      "changes": "Only CPU capacity versus w2_dense_original",
+      "hypothesis": "Scarcity may reduce reclaimable slack"
+    },
+    {
+      "id": "w2_dense_cpu6",
+      "input": "data/scenarios_r1/w2_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu6.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "synthetic_response": false,
+      "changes": "Only CPU capacity versus w2_dense_original",
+      "hypothesis": "Abundance also strengthens proportional baseline"
+    },
+    {
+      "id": "w2_dense_cn",
+      "input": "data/scenarios_r1/w2_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cn.json",
+      "synthetic_response": true,
+      "changes": "CIFAR=C; DeepSpeech2=N; BERT=N",
+      "hypothesis": "Longer-lived CPU donors"
+    },
+    {
+      "id": "w2_dense_cm",
+      "input": "data/scenarios_r1/w2_dense.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cm.json",
+      "synthetic_response": true,
+      "changes": "Only DeepSpeech2 N->M versus CN",
+      "hypothesis": "Incremental RAM-sensitive opportunity"
+    }
+  ],
+  "method_order": [
+    "SIA-P",
+    "CAPRA-Fixed",
+    "CAPRA"
+  ]
+}

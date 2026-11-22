@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "counts": {
+    "rounds": 197,
+    "lock_checks": 22,
+    "start": 80,
+    "migration": 410,
+    "reconfigure": 89
+  },
+  "selected": {
+    "P": 197
+  },
+  "feasible": {
+    "P": 197
+  },
+  "failures": {},
+  "raw_rounds": 197
+}

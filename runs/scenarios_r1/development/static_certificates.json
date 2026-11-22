@@ -1,0 +1,56 @@
+{
+  "three_job": {
+    "gpus": [
+      4,
+      2,
+      2
+    ],
+    "cpu": [
+      20,
+      2,
+      2
+    ],
+    "ram": [
+      83.32,
+      375,
+      41.66
+    ],
+    "rho": [
+      1.53,
+      2.4,
+      1
+    ],
+    "totals": [
+      8,
+      24,
+      499.98
+    ]
+  },
+  "two_job": {
+    "actual": {
+      "C": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 4,
+        "cpu": 20.0,
+        "ram": 83.32,
+        "rho": 1.53
+      },
+      "M": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 4,
+        "cpu": 4.0,
+        "ram": 250.0,
+        "rho": 1.0
+      }
+    },
+    "candidate_ram_M": [
+      250.0,
+      500.0
+    ],
+    "continuous_M_ram": 416.68,
+    "continuous_M_rho": 1.50004,
+    "note": "Static candidate omission; dynamic occurrence must be checked separately"
+  }
+}

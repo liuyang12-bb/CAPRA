@@ -12,6 +12,7 @@ from .execution import commit_v2
 from .costs import application_costs
 from .identity import reference
 from .placement import Placement
+from .inputs import describe
 
 VERSION='CAPRA_V2_R1'
 
@@ -24,21 +25,25 @@ def convert(x):
     raise TypeError(str(type(x)))
 
 
-def run(input_path,method,output,interval=60,max_rounds=6000,wall_limit=900,neutral=False,max_jobs=None):
+def run(input_path,method,output,interval=60,max_rounds=6000,wall_limit=900,neutral=False,max_jobs=None,cluster=None,responses=None,scenario_id=None,run_version=VERSION):
     began=time.perf_counter()
     assert Path(input_path).resolve().is_relative_to(ROOT.resolve()),'FOREIGN_INPUT_PATH'
     output=Path(output).resolve()
     assert output.is_relative_to(ROOT.resolve()) and not output.exists()
     output.mkdir(parents=True)
     random.seed(0);np.random.seed(0)
-    nodes=[Node(**n) for n in json.loads((ROOT/'configs/cluster.json').read_text())]
-    response=Responses(ROOT/'data/responses.json',neutral=neutral)
+    cluster=Path(cluster) if cluster is not None else ROOT/'configs/cluster.json'
+    responses=Path(responses) if responses is not None else ROOT/'data/responses.json'
+    inputs={k:describe(v) for k,v in dict(workload=input_path,cluster=cluster,responses=responses).items()}
+    assert run_version.startswith('CAPRA_V2')
+    nodes=[Node(**n) for n in json.loads(cluster.read_text())]
+    response=Responses(responses,neutral=neutral)
     rows=list(csv.DictReader(Path(input_path).open(encoding='utf8',newline='')))
     if max_jobs is not None:rows=rows[:max_jobs]
     jobs=[Job(r['name'],{t:APPLICATIONS[t][r['application']] for t in dict.fromkeys(n.gpu_type for n in nodes)},float(r['time']),target_num_replicas=int(r['num_replicas']),target_batch_size=int(r['batch_size'])) for r in rows]
     stage=GpuStage(nodes,interval,uniform_costs=True)
     costs=application_costs(jobs)
-    dump(output/'start.json',dict(version=VERSION,method=method,costs=costs,horizon=180,input=str(Path(input_path).resolve()),input_sha256=sha(input_path),cluster_sha256=sha(ROOT/'configs/cluster.json'),responses_sha256=sha(ROOT/'data/responses.json'),interval=interval,max_rounds=max_rounds,wall_limit=wall_limit,neutral=neutral,max_jobs=max_jobs,utc=datetime.now(timezone.utc).isoformat(),import_audit=import_audit()))
+    dump(output/'start.json',dict(version=run_version,scenario_id=scenario_id,inputs=inputs,method=method,costs=costs,horizon=180,input=str(Path(input_path).resolve()),input_sha256=sha(input_path),cluster_sha256=sha(cluster),responses_sha256=sha(responses),interval=interval,max_rounds=max_rounds,wall_limit=wall_limit,neutral=neutral,max_jobs=max_jobs,utc=datetime.now(timezone.utc).isoformat(),import_audit=import_audit()))
     current={};now=0.0;overheads=[];status='ROUND_LIMIT';stagnant=0;previous_progress=0
     try:
         with gzip.open(output/'events.jsonl.gz','wt',encoding='utf8') as log:
@@ -88,7 +93,7 @@ def run(input_path,method,output,interval=60,max_rounds=6000,wall_limit=900,neut
                         progress_before=before,progress_after=float(j.progress),training=train,recovery=restore,waiting=max(0.0,wait),completion_time=j.completion_time,
                         segments=j.capra_segments,batch_after=dict(atomic_bsz=int(j.atomic_bsz),accum_steps=int(j.accum_steps)),rescale_remaining=float(j.rescale_time)))
                 completed=sum(j.completion_time is not None for j in jobs)
-                record=dict(version=VERSION,round=round_id,time=now,interval=interval,method=method,plan=serialized(plan),gpu_stage=gpu_meta,
+                record=dict(version=run_version,round=round_id,time=now,interval=interval,method=method,plan=serialized(plan),gpu_stage=gpu_meta,
                     raw_sia_plan=gpu_meta.get('original_sia_plan',{}),lock_repaired_gpu_plan=repaired_plan,reference=ref_meta,
                     current=serialized(current),locks=serialized(locks),lock_remaining=remaining,started=sorted(started),
                     allocations=serialized(allocations),node_usage=usage,transitions=transitions,fallbacks=[],selection=selection,
@@ -122,5 +127,6 @@ def run(input_path,method,output,interval=60,max_rounds=6000,wall_limit=900,neut
 def main():
     p=argparse.ArgumentParser();p.add_argument('--input',required=True);p.add_argument('--method',choices=['SIA-P','CAPRA-Fixed','CAPRA'],required=True);p.add_argument('--output',required=True)
     p.add_argument('--interval',type=int,default=60);p.add_argument('--max-rounds',type=int,default=6000);p.add_argument('--wall-limit',type=float,default=900);p.add_argument('--neutral',action='store_true');p.add_argument('--max-jobs',type=int)
-    a=p.parse_args();run(a.input,a.method,a.output,a.interval,a.max_rounds,a.wall_limit,a.neutral,a.max_jobs)
+    p.add_argument('--cluster');p.add_argument('--responses');p.add_argument('--scenario-id');p.add_argument('--run-version',default=VERSION)
+    a=p.parse_args();run(a.input,a.method,a.output,a.interval,a.max_rounds,a.wall_limit,a.neutral,a.max_jobs,a.cluster,a.responses,a.scenario_id,a.run_version)
 if __name__=='__main__':main()

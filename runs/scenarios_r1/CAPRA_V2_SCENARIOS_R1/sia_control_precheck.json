@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "jobs": 80,
+  "rounds": 184,
+  "semantic_sha256": "ea3ab53a4f0b1aee8535e4229bf6e261b07839f1efc6ef3b8ee438a9f873f0f1",
+  "per_job_bytes_equal": true,
+  "input_cluster_and_costs_equal": true
+}

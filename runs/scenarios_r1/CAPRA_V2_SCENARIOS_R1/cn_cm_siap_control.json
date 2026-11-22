@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "jobs": 80,
+  "rounds": 184,
+  "input_sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+  "cluster_sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+  "semantic_sha256": "ea3ab53a4f0b1aee8535e4229bf6e261b07839f1efc6ef3b8ee438a9f873f0f1",
+  "costs_equal": true,
+  "per_job_equal": true,
+  "scope": "GPU plans, complete allocations, batches, recovery state, progress and execution segments; excludes wall/cache/path/scenario metadata"
+}

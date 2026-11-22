@@ -1,0 +1,10 @@
+{
+  "version": "CAPRA_V2_SCENARIOS_R1",
+  "base_commit": "0b87934ae558960921889b01d14502155fb0c41c",
+  "frozen_files": 1035,
+  "algorithm_files": 1002,
+  "protected_files": 1209,
+  "manifest_sha256": "e8a07f82b72fba11107bc488d99f479060246ca19df08397adde2174664666ea",
+  "source_zip_sha256": "6fd09d2549d3a92cd42825b01e38af11fa52749bbc45c7cd444fbf5313dea073",
+  "python": "3.10.10"
+}

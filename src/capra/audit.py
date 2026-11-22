@@ -6,6 +6,7 @@ import csv,gzip,json,hashlib
 import numpy as np
 from .contracts import Node,JobGpuPlan,Allocation,validate
 from .response import Responses
+from .inputs import resolve_inputs
 
 ROOT=Path(__file__).resolve().parents[2]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
@@ -16,12 +17,10 @@ def audit(directory):
     seals=json.loads((directory/'output_hashes.json').read_text())
     for name,digest in seals.items():assert sha(directory/name)==digest,('OUTPUT_HASH',name)
     start=json.loads((directory/'start.json').read_text(encoding='utf8'))
-    assert sha(Path(start['input']))==start['input_sha256']
-    assert sha(ROOT/'configs/cluster.json')==start['cluster_sha256']
-    assert sha(ROOT/'data/responses.json')==start['responses_sha256']
-    nodes=[Node(**r) for r in json.loads((ROOT/'configs/cluster.json').read_text())]
-    response=Responses(ROOT/'data/responses.json',start['neutral'])
-    rows=list(csv.DictReader(Path(start['input']).open(encoding='utf8',newline='')))
+    inputs=resolve_inputs(start)
+    nodes=[Node(**r) for r in json.loads(inputs['cluster'].read_text())]
+    response=Responses(inputs['responses'],start['neutral'])
+    rows=list(csv.DictReader(inputs['workload'].open(encoding='utf8',newline='')))
     if start['max_jobs'] is not None:rows=rows[:start['max_jobs']]
     stats={r['name']:dict(job=r['name'],application=r['application'],arrival=float(r['time']),completion=None,waiting=0.0,training=0.0,recovery=0.0,progress=0.0,segments=0) for r in rows}
     overhead=[];fallbacks=Counter();transitions=Counter();node_rows=[];gpu_repairs=0;rounds=0;segment_checks=0

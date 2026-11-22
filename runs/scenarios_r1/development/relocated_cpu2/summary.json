@@ -1,0 +1,145 @@
+{
+  "method": "CAPRA",
+  "input": "D:\\科研启航\\CAPRA-scenarios-r1\\data\\scenarios_r1\\w2_dense.csv",
+  "status": "ROUND_LIMIT",
+  "total": 20,
+  "completed": 14,
+  "censored": 6,
+  "mean_jct": null,
+  "p95_jct": null,
+  "p99_jct": null,
+  "makespan": null,
+  "decision_median": 0.041007199994055554,
+  "decision_p95": 0.07991074999008557,
+  "decision_max": 0.1215393999882508,
+  "wall_seconds": 49.00437780001084,
+  "wall_scope": "full subprocess including imports",
+  "runner_body_wall_seconds": 42.76854139997158,
+  "rounds": 60,
+  "decisions": 58,
+  "transitions": {
+    "start": 17,
+    "migration": 29,
+    "reconfigure": 20,
+    "aux_update": 14
+  },
+  "fallbacks": {},
+  "gpu_repairs": 2,
+  "audit": "PASS",
+  "segment_checks": 1540,
+  "scheduling_wall_charged_to_simulation": false,
+  "node_allocated_resource_seconds": {
+    "aws:0": [
+      660.0,
+      4020.0,
+      13747.799999999997
+    ],
+    "aws:1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dgx-ext:0": [
+      18252.0,
+      50064.0,
+      460190.76
+    ],
+    "dgx-ext:1": [
+      16700.0,
+      41200.0,
+      637879.3999999999
+    ],
+    "rtx:0": [
+      5880.0,
+      6840.0,
+      352498.2
+    ],
+    "rtx:1": [
+      5040.0,
+      5040.0,
+      390000.0
+    ]
+  },
+  "version": "CAPRA_V2_SCENARIOS_R1_PREP",
+  "p50_jct": null,
+  "mean_waiting": 18.825,
+  "mean_training": 410.3,
+  "mean_recovery": 163.0,
+  "average_node_allocations": {
+    "aws:0": {
+      "gpus": 0.1886253215204344,
+      "cpu": 1.1488996856244642,
+      "ram": 3.929065447270648
+    },
+    "aws:1": {
+      "gpus": 0.0,
+      "cpu": 0.0,
+      "ram": 0.0
+    },
+    "dgx-ext:0": {
+      "gpus": 5.216347527865104,
+      "cpu": 14.308088025150044,
+      "ram": 131.52065161474707
+    },
+    "dgx-ext:1": {
+      "gpus": 4.7727922263503855,
+      "cpu": 11.774792797942268,
+      "ram": 182.30334381251782
+    },
+    "rtx:0": {
+      "gpus": 1.680480137182052,
+      "cpu": 1.9548442412117748,
+      "ram": 100.74255501571878
+    },
+    "rtx:1": {
+      "gpus": 1.4404115461560445,
+      "cpu": 1.4404115461560445,
+      "ram": 111.46041726207488
+    }
+  },
+  "allocated_resource_fraction": {
+    "gpus": 0.3324664189768505,
+    "cpu": 0.38283795370105744,
+    "ram": 0.21198241326093167
+  },
+  "occupancy_scope": "Allocation time including recovery, not physical busy utilization",
+  "candidate_selected": {
+    "F": 57,
+    "K": 3
+  },
+  "candidate_feasible": {
+    "F": 60,
+    "K": 59,
+    "R": 60
+  },
+  "candidate_failures": {
+    "K:K_PINNED_GPU_FRAGMENTATION": 1
+  },
+  "relative_to_F": {
+    "median": 0.0,
+    "p95": 0.021458333333332136,
+    "max": 0.9500000000000002
+  },
+  "pure_node_migrations": 4,
+  "total_new_recovery_cost": 3260.0,
+  "total_actual_recovery": 3260.0,
+  "training_weighted_rho": 1.2062547729303787,
+  "boosted_training_fraction": 0.3760662929563734,
+  "application_training_share": {
+    "cifar10": 0.6451377041189373,
+    "bert": 0.06361199122593224,
+    "deepspeech2": 0.2912503046551304
+  },
+  "quota_generated_pairs": 16110,
+  "quota_upgrade_steps": 532,
+  "node_trial_cache_hits": 571,
+  "v2_raw_audit": "PASS",
+  "independent_checks": {
+    "rounds": 60,
+    "lock_checks": 3,
+    "start": 17,
+    "migration": 29,
+    "reconfigure": 20,
+    "aux_update": 14
+  }
+}

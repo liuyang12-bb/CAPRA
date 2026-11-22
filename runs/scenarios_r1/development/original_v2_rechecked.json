@@ -1,0 +1,102 @@
+[
+  {
+    "workload": 2,
+    "method": "SIA-P",
+    "mean_jct": 1056.1125,
+    "p95_jct": 3088.1499999999996,
+    "p99_jct": 3800.9799999999996,
+    "active_selected": {
+      "P": 331
+    },
+    "training_share": {
+      "cifar10": 0.559153037844671,
+      "bert": 0.02379710831950699,
+      "deepspeech2": 0.41704985383582205
+    },
+    "raw_audit": "PASS"
+  },
+  {
+    "workload": 2,
+    "method": "CAPRA-Fixed",
+    "mean_jct": 971.025,
+    "p95_jct": 2990.45,
+    "p99_jct": 3759.5599999999986,
+    "active_selected": {
+      "F": 317
+    },
+    "training_share": {
+      "cifar10": 0.523935480524869,
+      "bert": 0.02529260238922601,
+      "deepspeech2": 0.45077191708590497
+    },
+    "raw_audit": "PASS"
+  },
+  {
+    "workload": 2,
+    "method": "CAPRA",
+    "mean_jct": 949.4625,
+    "p95_jct": 3264.0499999999997,
+    "p99_jct": 4157.23,
+    "active_selected": {
+      "F": 270,
+      "R": 7,
+      "K": 39
+    },
+    "training_share": {
+      "cifar10": 0.49856134822223747,
+      "bert": 0.02539905460026033,
+      "deepspeech2": 0.4760395971775022
+    },
+    "raw_audit": "PASS"
+  },
+  {
+    "workload": 6,
+    "method": "SIA-P",
+    "mean_jct": 1056.55,
+    "p95_jct": 2794.1,
+    "p99_jct": 3298.289999999999,
+    "active_selected": {
+      "P": 353
+    },
+    "training_share": {
+      "cifar10": 0.5889613225707306,
+      "deepspeech2": 0.35105711836166875,
+      "bert": 0.059981559067600575
+    },
+    "raw_audit": "PASS"
+  },
+  {
+    "workload": 6,
+    "method": "CAPRA-Fixed",
+    "mean_jct": 973.725,
+    "p95_jct": 2777.5499999999997,
+    "p99_jct": 3652.5799999999995,
+    "active_selected": {
+      "F": 341
+    },
+    "training_share": {
+      "cifar10": 0.5277107552825913,
+      "deepspeech2": 0.4051144256781458,
+      "bert": 0.06717481903926299
+    },
+    "raw_audit": "PASS"
+  },
+  {
+    "workload": 6,
+    "method": "CAPRA",
+    "mean_jct": 911.475,
+    "p95_jct": 2804.15,
+    "p99_jct": 3296.77,
+    "active_selected": {
+      "F": 288,
+      "R": 7,
+      "K": 35
+    },
+    "training_share": {
+      "cifar10": 0.5338995678736403,
+      "deepspeech2": 0.40074132022053344,
+      "bert": 0.06535911190582626
+    },
+    "raw_audit": "PASS"
+  }
+]

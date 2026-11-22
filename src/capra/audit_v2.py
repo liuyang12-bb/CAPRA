@@ -8,6 +8,7 @@ import ast,csv,gzip,json,hashlib
 import numpy as np
 from .audit import audit as common_audit
 from .response import Responses
+from .inputs import resolve_inputs
 
 ROOT=Path(__file__).resolve().parents[2]
 EPS=1e-9
@@ -57,12 +58,13 @@ def audit(directory):
     d=Path(directory);start=json.loads((d/'start.json').read_text(encoding='utf8'))
     assert start['version'].startswith('CAPRA_V2') and start['horizon']==180
     summary=common_audit(d)
-    rows=list(csv.DictReader(Path(start['input']).open(encoding='utf8',newline='')))
+    inputs=resolve_inputs(start)
+    rows=list(csv.DictReader(inputs['workload'].open(encoding='utf8',newline='')))
     if start['max_jobs'] is not None:rows=rows[:start['max_jobs']]
     apps={r['name']:r['application'] for r in rows};arrivals={r['name']:float(r['time']) for r in rows}
-    costs=app_costs();nodes={n['id']:n for n in json.loads((ROOT/'configs/cluster.json').read_text())}
+    costs=app_costs();nodes={n['id']:n for n in json.loads(inputs['cluster'].read_text())}
     for app,values in start['costs'].items():assert all(v==costs[app] for v in values.values())
-    response=Responses(ROOT/'data/responses.json',start['neutral'])
+    response=Responses(inputs['responses'],start['neutral'])
     ca=response.data['cpu_axis'];ma=response.data['ram_axis']
     last={};rem={};seen=set();complete=set();last_end={};counts=Counter();selected=Counter();feasible=Counter();failed=Counter();gains=[]
     training=0.;weighted=0.;boosted=0.;app_train=Counter();new_cost_total=0.;node_only=0;pool_total=0;upgrade_total=0;node_cache=0

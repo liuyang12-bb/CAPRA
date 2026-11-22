@@ -1,0 +1,22 @@
+{
+  "base_commit": "0b87934ae558960921889b01d14502155fb0c41c",
+  "source_sha256": {
+    "data/saturn-2-supported80.csv": "25ed84bc64109a555f241eb8ad1bf38837787a85aee4f60b203143a5d5750aa1",
+    "data/saturn-6-supported80.csv": "40f7aa481f693525f0c7f828b71a52c858a590aa0dc157ac6e6fffb2b583778f",
+    "configs/cluster.json": "caebc9491f62b5877231a9327c63ee9f06ed5360452b0d781cbe737c8e2897b1",
+    "data/responses.json": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+  },
+  "derived_sha256": {
+    "data/scenarios_r1/w2_dense.csv": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+    "data/scenarios_r1/w6_dense.csv": "77bb39519f8dc2f0b6f93c58e7422a0f8de622b36e039b25fd1cee9c112041ea",
+    "data/scenarios_r1/cluster_cpu2.json": "101332d705c65b6a17a4de07b8693a5ad2ab189568d71207dd6546142d81bc2d",
+    "data/scenarios_r1/cluster_cpu3.json": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+    "data/scenarios_r1/cluster_cpu6.json": "2e47f20e1e77d1ae3fcc046dc1cc8f84f18cf6770b0a3c1241ef029e3e4be012",
+    "data/scenarios_r1/responses_original.json": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3",
+    "data/scenarios_r1/responses_cn.json": "bb5eebb3a2e66c6b22f0300d52f2502216fca6b4b32e99eb56a6a2e7d4e09c87",
+    "data/scenarios_r1/responses_cm.json": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782",
+    "configs/scenarios_r1.json": "a287b2fff049dd3e9f2a0cb9c355c5df8f09c1c2686786a483f5244af5107b84"
+  },
+  "arrival_formula": "t_min+(t-t_min)/2 exact Decimal, no rounding",
+  "synthetic": "CN/CM controlled sensitivity; ImageNet profile unchanged; minimum axes unchanged"
+}

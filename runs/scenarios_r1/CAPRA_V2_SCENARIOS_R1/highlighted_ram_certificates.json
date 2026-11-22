@@ -1,0 +1,60 @@
+[
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 90,
+    "time": 5400.0,
+    "job": "deepspeech2-40",
+    "application": "deepspeech2",
+    "node": "dgx-ext:1",
+    "gpus": 4,
+    "cpu": 4.0,
+    "ram": 250.0,
+    "rho": 1.0,
+    "free_cpu": 0.0,
+    "free_ram": 166.68,
+    "proposed_cpu": 4.0,
+    "proposed_ram": 416.68,
+    "rho_cpu_only": 1.0,
+    "rho_ram_only": 1.50004,
+    "rho_joint": 1.50004,
+    "training_seconds": 35.0,
+    "locked_at_decision": false,
+    "ram_candidate_gap": true,
+    "ram_pool": [
+      83.32,
+      250.0,
+      500
+    ],
+    "scope": "One target, all other tasks/positions fixed; certificates share slack, never sum gains"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 72,
+    "time": 4320.0,
+    "job": "deepspeech2-19",
+    "application": "deepspeech2",
+    "node": "dgx-ext:1",
+    "gpus": 4,
+    "cpu": 4.0,
+    "ram": 250.0,
+    "rho": 1.0,
+    "free_cpu": 0.0,
+    "free_ram": 166.68,
+    "proposed_cpu": 4.0,
+    "proposed_ram": 416.68,
+    "rho_cpu_only": 1.0,
+    "rho_ram_only": 1.50004,
+    "rho_joint": 1.50004,
+    "training_seconds": 35.0,
+    "locked_at_decision": false,
+    "ram_candidate_gap": true,
+    "ram_pool": [
+      83.32,
+      250.0,
+      500
+    ],
+    "scope": "One target, all other tasks/positions fixed; certificates share slack, never sum gains"
+  }
+]
