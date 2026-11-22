@@ -8,7 +8,8 @@ from .tune import proportional
 
 
 class GpuStage:
-    def __init__(self,nodes,interval):
+    def __init__(self,nodes,interval,uniform_costs=False):
+        self.uniform_costs=uniform_costs
         self.nodes=nodes
         self.types=list(dict.fromkeys(n.gpu_type for n in nodes))
         self.gpn={t:next(n.gpus for n in nodes if n.gpu_type==t) for t in self.types}
@@ -73,6 +74,13 @@ class GpuStage:
         active={j.name:j for j in jobs if j.submission_time<=now and j.completion_time is None}
         if not active:
             return {},dict(repairs=[],solver_status='NO_JOBS')
+        if self.uniform_costs:
+            from .costs import application_costs
+            table=application_costs(active.values())
+            # Frozen application execution costs are device-independent. Do not guess
+            # an aggregate Sia penalty if a future domain introduces device variation.
+            assert all(len(set(v.values()))==1 for v in table.values())
+            self.policy.restart_costs={k:next(iter(table[j.app_name].values())) for k,j in active.items()}
         info={k:self.info(j,now) for k,j in active.items()}
         ni={t:{i:NodeInfo({'nvidia.com/gpu':n.gpus},False) for i,n in enumerate(n for n in self.nodes if n.gpu_type==t)} for t in self.types}
         prev={k:(a.gpu_type,[int(a.node.rsplit(':',1)[1])]*a.gpus) for k,a in current.items() if k in active}

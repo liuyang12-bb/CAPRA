@@ -1,0 +1,56 @@
+test_actual_sia_stage_preserves_physical_restore_lock (test_contracts.Contracts) ... D:\科研启航\CAPRA\.venv\lib\site-packages\cvxpy\reductions\solvers\solving_chain_utils.py:30: UserWarning: The problem includes expressions that don't support CPP backend. Defaulting to the SCIPY backend for canonicalization.
+  warnings.warn(UserWarning(
+ok
+test_complementarity_actual_execution_and_migration (test_contracts.Contracts) ... ok
+test_exact_checkpoint_lock_and_complete_result (test_contracts.Contracts) ... ok
+test_independent_environment_and_imports (test_contracts.Contracts) ... ok
+test_neutral_aux_change_no_gain_same_deployment (test_contracts.Contracts) ... ok
+test_partial_return_never_mutates_live_job (test_contracts.Contracts) ... ok
+test_quota_only_update_does_not_migrate (test_contracts.Contracts) ... ok
+test_real_neutral_response_same_fixed_deployment (test_contracts.Contracts) ... ok
+test_rho_once_recovery_and_wait_unscaled (test_contracts.Contracts) ... ok
+test_bert_reclaims_and_current_vector_is_not_permanent (test_v2_allocator.AllocatorMechanisms) ... ok
+test_coupled_reclaim_is_one_legal_pair (test_v2_allocator.AllocatorMechanisms) ... ok
+test_intermediate_cpu_points_and_locked_peer (test_v2_allocator.AllocatorMechanisms) ... ok
+test_joint_upgrade_not_missed (test_v2_allocator.AllocatorMechanisms) ... ok
+test_query_matches_v1_and_no_lower_clamp_credit (test_v2_allocator.AllocatorMechanisms) ... ok
+test_actual_cifar_cost_and_window_formula (test_v2_costs.CostsAndIdentity) ... ok
+test_prediction_commit_all_transition_kinds (test_v2_costs.CostsAndIdentity) ... ok
+test_swap_cost_lock_and_idempotence (test_v2_costs.CostsAndIdentity) ... ok
+test_type_and_count_change_charge_once_and_lock_commit_retains_remaining (test_v2_costs.CostsAndIdentity) ... ERROR
+test_common_reference_fixed_stability_and_soft_positions (test_v2_placement.CandidateMechanisms) ... ok
+test_gpu_fragmentation_8_2_2 (test_v2_placement.CandidateMechanisms) ... ok
+test_k_r_failure_returns_existing_complete_f (test_v2_placement.CandidateMechanisms) ... ok
+test_resource_complementarity_and_f_contract (test_v2_placement.CandidateMechanisms) ... ok
+
+======================================================================
+ERROR: test_type_and_count_change_charge_once_and_lock_commit_retains_remaining (test_v2_costs.CostsAndIdentity)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA\tests\test_v2_costs.py", line 58, in test_type_and_count_change_charge_once_and_lock_commit_retains_remaining
+    e,_,pred=commit_v2([j],p,{'A':new},nodes,{'A':old},{},0,{}, {'A':'cifar10'},application_costs([j]),{'A'})
+  File "D:\科研启航\CAPRA\src\capra\execution.py", line 54, in commit_v2
+    if job.current_cluster!=a.gpu_type:job.migrate(a.gpu_type,(a.gpus,))
+  File "D:\科研启航\CAPRA\third_party\sia\sia-simulator\job.py", line 570, in migrate
+    self.update_local_bsz(self.placement)
+  File "D:\科研启航\CAPRA\third_party\sia\sia-simulator\job.py", line 339, in update_local_bsz
+    perf_params = self.perf_params if self.h_unaware else self.perf_params[
+KeyError: 'aws'
+
+----------------------------------------------------------------------
+Ran 22 tests in 1.864s
+
+FAILED (errors=1)
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Unique configs:
+Configs: {0: ('rtx', 1, 1), 1: ('rtx', 1, 2), 2: ('rtx', 1, 4), 3: ('rtx', 1, 8)}
+Cluster total gpus: {'rtx': 16}
+Realloc factor: bert-0 --> 0.0, age: 0, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 20.20ms = 3.01ms (setup) + 17.19ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Realloc factor: bert-0 --> 0.3333333333333333, age: 60, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': ['bert-0']}
+Solver took: 41.24ms = 2.70ms (setup) + 38.54ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0

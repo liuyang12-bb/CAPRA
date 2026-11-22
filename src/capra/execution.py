@@ -37,3 +37,32 @@ def commit(jobs, plan, allocations, nodes, current, locks, now):
         p=plan[job.name]
         assert job.atomic_bsz==p.atomic_bsz and job.accum_steps==p.accum_steps,'BATCH_SNAPSHOT_MISMATCH'
     return events,usage
+
+
+def commit_v2(jobs,plan,allocations,nodes,current,locks,now,remaining,apps,costs,started):
+    from .costs import transition
+    usage=validate(plan,allocations,nodes,locks)
+    predictions={j.name:transition(j.name,allocations.get(j.name),current,locks,remaining,apps,costs,started)
+        for j in jobs if j.submission_time<=now and j.completion_time is None}
+    events=[]
+    for job in jobs:
+        if job.name not in predictions:continue
+        t=predictions[job.name];a=allocations.get(job.name);old=current.get(job.name)
+        if a is None:
+            if t['kind']=='suspend':job.reallocate(())
+        elif t['gpu_change']:
+            if job.current_cluster!=a.gpu_type:job.migrate(a.gpu_type,(a.gpus,))
+            elif tuple(job.placement)!=(a.gpus,):job.reallocate((a.gpus,))
+            else:
+                job.rescale_time=t['new_cost'];job.num_restarts=(job.num_restarts or 0)+1
+            assert abs(job.rescale_time-t['new_cost'])<1e-9,'PREDICTION_COMMIT_COST_MISMATCH'
+        elif t['kind']=='locked':
+            assert abs(job.rescale_time-t['existing_remaining'])<1e-9
+        if a is not None:
+            job.capra_rho=a.rho
+            p=plan[job.name]
+            assert (job.atomic_bsz,job.accum_steps)==(p.atomic_bsz,p.accum_steps),'BATCH_SNAPSHOT_MISMATCH'
+        if t['kind'] not in ('unchanged','locked'):
+            events.append(dict(job=job.name,kind=t['kind'],old=asdict(old) if old else None,new=asdict(a) if a else None,
+                cost=t['new_cost'],prediction=t,remaining_after=float(job.rescale_time)))
+    return events,usage,predictions

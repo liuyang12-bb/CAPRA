@@ -11,11 +11,11 @@ def stop_owned(child):
         child.wait(timeout=15)
 
 
-def execute(input_path,method,output,extra=None,process_limit=960):
+def execute(input_path,method,output,extra=None,process_limit=960,runner_module='capra.runner',audit_module='capra.audit'):
     output=Path(output)
     assert output.resolve().is_relative_to(ROOT.resolve()) and not output.exists()
     env=dict(os.environ,OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',NUMEXPR_NUM_THREADS='1',PYTHONHASHSEED='0',PYTHONDONTWRITEBYTECODE='1',TMP=str(ROOT/'.cache/tmp'),TEMP=str(ROOT/'.cache/tmp'))
-    cmd=[sys.executable,'-X','utf8','-B','-m','capra.runner','--input',str(input_path),'--method',method,'--output',str(output),*(extra or [])]
+    cmd=[sys.executable,'-X','utf8','-B','-m',runner_module,'--input',str(input_path),'--method',method,'--output',str(output),*(extra or [])]
     # Parent creates the log outside the cell directory; child owns directory creation.
     output.parent.mkdir(parents=True,exist_ok=True)
     logpath=output.parent/(output.name+'.stdout.log')
@@ -42,8 +42,8 @@ def execute(input_path,method,output,extra=None,process_limit=960):
     if child.returncode or not (output/'summary.json').exists():
         print(json.dumps(dict(cell=output.name,status='FAILED_OR_EXTERNAL_STOP',**receipt)),flush=True)
         return None
-    from capra.audit import audit
-    summary=audit(output)
+    import importlib
+    summary=importlib.import_module(audit_module).audit(output)
     print(json.dumps(dict(cell=output.name,**summary),ensure_ascii=False),flush=True)
     return summary
 

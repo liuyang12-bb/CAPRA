@@ -1,0 +1,12 @@
+{
+  "limit_seconds": 7200,
+  "experiments": [
+    {
+      "kind": "pilot",
+      "output": "runs/capra_v2/development/pilot_01",
+      "wall_seconds": 37.68607559999509,
+      "success": true
+    }
+  ],
+  "used_seconds": 37.68607559999509
+}

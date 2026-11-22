@@ -1,0 +1,35 @@
+diff --git a/third_party/sia/sia-simulator/sia.py b/third_party/sia/sia-simulator/sia.py
+index baec2ba..c2b26bd 100644
+--- a/third_party/sia/sia-simulator/sia.py
++++ b/third_party/sia/sia-simulator/sia.py
+@@ -20,7 +20,11 @@ ZERO_ALLOC_GAIN = 0.0001
+ 
+ # restart penalties for each job measured on real physical cluster
+ # jobnames are typically of the form '<model>-<jobnumber>', so this is okay
+-def get_restart_penalty(jobname):
++def get_restart_penalty(jobname, cost_map=None):
++    # CAPRA v2 supplies the execution application's costs, never name heuristics.
++    if cost_map is not None:
++        return float(cost_map[jobname])
++    # Legacy v1 only: retained to read/reproduce the separately archived v1 scope.
+     if "deepspeech" in jobname:
+         return 25
+     elif "imagenet" in jobname:
+@@ -542,7 +546,7 @@ class SiaPolicy(object):
+ 
+         # compute rescale factor
+         # re-alloc/migrate factor
+-        job_restart_penalty = get_restart_penalty(rigid_jobname)
++        job_restart_penalty = get_restart_penalty(rigid_jobname, getattr(self, 'restart_costs', None))
+         job_lost_gpu_seconds = (
+             rigid_job.num_restarts * job_restart_penalty)
+         realloc_factor = max(
+@@ -719,7 +723,7 @@ class SiaPolicy(object):
+                 cluster_goodput_matrices[cluster][very_small_values] = ZERO_ALLOC_GAIN
+ 
+             # re-alloc/migrate factor
+-            job_restart_penalty = get_restart_penalty(jobname)
++            job_restart_penalty = get_restart_penalty(jobname, getattr(self, 'restart_costs', None))
+             if sim_config.sia_use_pollux_realloc_factor:
+                 # seconds lost in checkpoint+restore
+                 job_lost_seconds = (job.num_restarts * job_restart_penalty)
