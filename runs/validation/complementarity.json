@@ -1,0 +1,201 @@
+{
+  "fixed": {
+    "allocations": {
+      "A": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.75
+      },
+      "B": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.75
+      },
+      "C": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.625
+      },
+      "D": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.625
+      }
+    },
+    "events": [],
+    "fallbacks": [
+      {
+        "job": "B",
+        "reason": "peer_proportional",
+        "peers": [
+          "A"
+        ],
+        "node": "rtx:0"
+      },
+      {
+        "job": "D",
+        "reason": "peer_proportional",
+        "peers": [
+          "C"
+        ],
+        "node": "rtx:1"
+      }
+    ],
+    "completion_times": {
+      "A": 80,
+      "B": 80,
+      "C": 96,
+      "D": 96
+    },
+    "mean_jct": 88.0,
+    "raw_training_rate": 10,
+    "remaining_normalized_work": 600,
+    "global_batch": 128
+  },
+  "free": {
+    "allocations": {
+      "A": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 8,
+        "ram": 50,
+        "rho": 1.0
+      },
+      "B": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 8,
+        "ram": 50,
+        "rho": 1.0
+      },
+      "C": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 4,
+        "ram": 200,
+        "rho": 1.0
+      },
+      "D": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 4,
+        "ram": 200,
+        "rho": 1.0
+      }
+    },
+    "events": [
+      {
+        "job": "A",
+        "kind": "aux_update",
+        "old": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.75
+        },
+        "new": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 8,
+          "ram": 50,
+          "rho": 1.0
+        },
+        "cost": 0.0
+      },
+      {
+        "job": "B",
+        "kind": "migration",
+        "old": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.75
+        },
+        "new": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 8,
+          "ram": 50,
+          "rho": 1.0
+        },
+        "cost": 10.0
+      },
+      {
+        "job": "C",
+        "kind": "migration",
+        "old": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.625
+        },
+        "new": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 4,
+          "ram": 200,
+          "rho": 1.0
+        },
+        "cost": 10.0
+      },
+      {
+        "job": "D",
+        "kind": "aux_update",
+        "old": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.625
+        },
+        "new": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 4,
+          "ram": 200,
+          "rho": 1.0
+        },
+        "cost": 0.0
+      }
+    ],
+    "fallbacks": [],
+    "completion_times": {
+      "A": 60,
+      "B": 70,
+      "C": 70,
+      "D": 60
+    },
+    "mean_jct": 65.0,
+    "raw_training_rate": 10,
+    "remaining_normalized_work": 600,
+    "global_batch": 128
+  },
+  "scope": "Controlled second-stage fixture, not Sia-selected main input and not empirical hardware data."
+}

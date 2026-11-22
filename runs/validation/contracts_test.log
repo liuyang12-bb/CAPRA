@@ -1,0 +1,14 @@
+test_actual_sia_stage_preserves_physical_restore_lock (test_contracts.Contracts) ... ok
+test_complementarity_actual_execution_and_migration (test_contracts.Contracts) ... ok
+test_exact_checkpoint_lock_and_complete_result (test_contracts.Contracts) ... ok
+test_independent_environment_and_imports (test_contracts.Contracts) ... ok
+test_neutral_aux_change_no_gain_same_deployment (test_contracts.Contracts) ... ok
+test_partial_return_never_mutates_live_job (test_contracts.Contracts) ... ok
+test_quota_only_update_does_not_migrate (test_contracts.Contracts) ... ok
+test_real_neutral_response_same_fixed_deployment (test_contracts.Contracts) ... ok
+test_rho_once_recovery_and_wait_unscaled (test_contracts.Contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.574s
+
+OK
