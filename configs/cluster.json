@@ -1,0 +1,44 @@
+[
+  {
+    "id": "aws:0",
+    "gpu_type": "aws",
+    "gpus": 4,
+    "cpu": 12,
+    "ram": 250
+  },
+  {
+    "id": "aws:1",
+    "gpu_type": "aws",
+    "gpus": 4,
+    "cpu": 12,
+    "ram": 250
+  },
+  {
+    "id": "dgx-ext:0",
+    "gpu_type": "dgx-ext",
+    "gpus": 8,
+    "cpu": 24,
+    "ram": 500
+  },
+  {
+    "id": "dgx-ext:1",
+    "gpu_type": "dgx-ext",
+    "gpus": 8,
+    "cpu": 24,
+    "ram": 500
+  },
+  {
+    "id": "rtx:0",
+    "gpu_type": "rtx",
+    "gpus": 8,
+    "cpu": 24,
+    "ram": 500
+  },
+  {
+    "id": "rtx:1",
+    "gpu_type": "rtx",
+    "gpus": 8,
+    "cpu": 24,
+    "ram": 500
+  }
+]

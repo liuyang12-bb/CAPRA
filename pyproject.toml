@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "capra"
+version = "0.1.0"
+description = "Sia GPU configurations with Synergy-inspired placement and auxiliary allocation"
+requires-python = ">=3.10,<3.11"
+dependencies = ["numpy==1.26.4", "scipy==1.13.1", "pandas==2.2.3", "cvxpy==1.6.5", "autograd==1.8.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

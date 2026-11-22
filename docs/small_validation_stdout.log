@@ -1,0 +1,229 @@
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Unique configs:
+Configs: {0: ('rtx', 1, 1), 1: ('rtx', 1, 2), 2: ('rtx', 1, 4), 3: ('rtx', 1, 8)}
+Cluster total gpus: {'rtx': 16}
+Realloc factor: bert-0 --> 0.0, age: 0, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 20.17ms = 3.13ms (setup) + 17.03ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Realloc factor: bert-0 --> 0.3333333333333333, age: 60, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': ['bert-0']}
+Solver took: 33.83ms = 3.45ms (setup) + 30.38ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+test_actual_sia_stage_preserves_physical_restore_lock (test_contracts.Contracts) ... ok
+test_complementarity_actual_execution_and_migration (test_contracts.Contracts) ... ok
+test_exact_checkpoint_lock_and_complete_result (test_contracts.Contracts) ... ok
+test_independent_environment_and_imports (test_contracts.Contracts) ... ok
+test_neutral_aux_change_no_gain_same_deployment (test_contracts.Contracts) ... ok
+test_partial_return_never_mutates_live_job (test_contracts.Contracts) ... ok
+test_quota_only_update_does_not_migrate (test_contracts.Contracts) ... ok
+test_real_neutral_response_same_fixed_deployment (test_contracts.Contracts) ... ok
+test_rho_once_recovery_and_wait_unscaled (test_contracts.Contracts) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 1.574s
+
+OK
+
+{
+  "fixed": {
+    "allocations": {
+      "A": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.75
+      },
+      "B": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.75
+      },
+      "C": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.625
+      },
+      "D": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 6.0,
+        "ram": 125.0,
+        "rho": 0.625
+      }
+    },
+    "events": [],
+    "fallbacks": [
+      {
+        "job": "B",
+        "reason": "peer_proportional",
+        "peers": [
+          "A"
+        ],
+        "node": "rtx:0"
+      },
+      {
+        "job": "D",
+        "reason": "peer_proportional",
+        "peers": [
+          "C"
+        ],
+        "node": "rtx:1"
+      }
+    ],
+    "completion_times": {
+      "A": 80,
+      "B": 80,
+      "C": 96,
+      "D": 96
+    },
+    "mean_jct": 88.0,
+    "raw_training_rate": 10,
+    "remaining_normalized_work": 600,
+    "global_batch": 128
+  },
+  "free": {
+    "allocations": {
+      "A": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 8,
+        "ram": 50,
+        "rho": 1.0
+      },
+      "B": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 8,
+        "ram": 50,
+        "rho": 1.0
+      },
+      "C": {
+        "node": "rtx:0",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 4,
+        "ram": 200,
+        "rho": 1.0
+      },
+      "D": {
+        "node": "rtx:1",
+        "gpu_type": "rtx",
+        "gpus": 2,
+        "cpu": 4,
+        "ram": 200,
+        "rho": 1.0
+      }
+    },
+    "events": [
+      {
+        "job": "A",
+        "kind": "aux_update",
+        "old": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.75
+        },
+        "new": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 8,
+          "ram": 50,
+          "rho": 1.0
+        },
+        "cost": 0.0
+      },
+      {
+        "job": "B",
+        "kind": "migration",
+        "old": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.75
+        },
+        "new": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 8,
+          "ram": 50,
+          "rho": 1.0
+        },
+        "cost": 10.0
+      },
+      {
+        "job": "C",
+        "kind": "migration",
+        "old": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.625
+        },
+        "new": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 4,
+          "ram": 200,
+          "rho": 1.0
+        },
+        "cost": 10.0
+      },
+      {
+        "job": "D",
+        "kind": "aux_update",
+        "old": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6,
+          "ram": 125,
+          "rho": 0.625
+        },
+        "new": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 4,
+          "ram": 200,
+          "rho": 1.0
+        },
+        "cost": 0.0
+      }
+    ],
+    "fallbacks": [],
+    "completion_times": {
+      "A": 60,
+      "B": 70,
+      "C": 70,
+      "D": 60
+    },
+    "mean_jct": 65.0,
+    "raw_training_rate": 10,
+    "remaining_normalized_work": 600,
+    "global_batch": 128
+  },
+  "scope": "Controlled second-stage fixture, not Sia-selected main input and not empirical hardware data."
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "name": "sia",
+    "url": "https://github.com/siasosp23/artifacts",
+    "commit": "aaf7a0de7b6cb5eab06ea020467ede5d2fd18e70"
+  },
+  {
+    "name": "synergy",
+    "url": "https://github.com/msr-fiddle/synergy",
+    "commit": "1bb2bed6edc9c5f953d0b7f0a40e4fdad053489c"
+  }
+]

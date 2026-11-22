@@ -1,0 +1,75 @@
+diff --git a/sia-simulator/job.py b/sia-simulator/job.py
+index 0223ac3..209ac5e 100644
+--- a/sia-simulator/job.py
++++ b/sia-simulator/job.py
+@@ -54,6 +54,8 @@ class Job(object):
+         self.grad_params = None
+         self.best_metric = None
+         self.progress = 0.0
++        self.capra_rho = 1.0
++        self.capra_segments = []
+         self.epoch = 0
+         self.reference_app = self.applications[sim_config.calibrate_cluster]
+         
+@@ -483,11 +485,16 @@ class Job(object):
+             # goodput = self.multiplier * goodput
+             # slowdown for job
+             goodput = goodput * self.calibration_factor
++            capra_raw_rate = float(goodput)
++            goodput *= self.capra_rho  # apply auxiliary response exactly once to training
++            capra_start = float(self.current_time)
++            capra_before = float(self.progress)
+ 
+             # Update current epoch and progress.
+             next_progress = application.get_progress(self.epoch + 1)
+             if self.progress + goodput * seconds < next_progress:
+                 # Used up the entire time interval without finishing an epoch.
++                self.capra_segments.append(dict(start=capra_start,seconds=float(seconds),raw_rate=capra_raw_rate,rho=float(self.capra_rho),before=capra_before,after=float(self.progress+goodput*seconds),rounding=False,atomic_bsz=int(self.atomic_bsz),accum_steps=int(self.accum_steps)))
+                 self.progress += goodput * seconds
+                 self.current_time += seconds
+                 self.attained_service += seconds * sum(self.placement)
+@@ -510,6 +517,7 @@ class Job(object):
+                 self.completion_epoch = completion_epoch
+                 if self.epoch > completion_epoch:
+                     self.completion_time = self.current_time + delta
++                self.capra_segments.append(dict(start=capra_start,seconds=float(delta),raw_rate=capra_raw_rate,rho=float(self.capra_rho),before=capra_before,after=float(next_progress),rounding=True,atomic_bsz=int(self.atomic_bsz),accum_steps=int(self.accum_steps)))
+                 self.progress = next_progress
+                 self.best_metric = application.get_best_metric(
+                     batch_size, self.epoch)
+diff --git a/sia-simulator/sia.py b/sia-simulator/sia.py
+index e41b7fb..a05a501 100644
+--- a/sia-simulator/sia.py
++++ b/sia-simulator/sia.py
+@@ -109,7 +109,7 @@ class SiaPolicy(object):
+             nnodes, ngpus = cluster_num_nodes[cluster_name], cluster_num_gpus[cluster_name]
+             nnodes = min(nnodes, cluster_max_physical_nnodes[cluster_name])
+             alloc_configs = CONFIGS_4GPU if ngpus == 4 else CONFIGS_8GPU
+-            valid_config_idxs = alloc_configs[0] <= nnodes
++            valid_config_idxs = (alloc_configs[0] <= nnodes) & (alloc_configs[0] == 1)  # CAPRA single-node domain
+             num_valid_nodes = alloc_configs[0][valid_config_idxs]
+             num_valid_gpus = alloc_configs[1][valid_config_idxs]
+             alloc_configs = (num_valid_nodes, num_valid_gpus)
+@@ -1026,14 +1026,20 @@ class SiaPolicy(object):
+                     jobname, None)
+                 assert job_config_idx is not None, f"job not found in prev_allocs: {jobname}, prev_allocs: {self.prev_allocs_v2}"
+                 constraints.append(adaptive_X[job_idx, job_config_idx] == 1)
++        # CAPRA shared feasibility hook: same Sia objective, exact physical locks.
++        if getattr(self, 'capra_constraints', None):
++            constraints.extend(self.capra_constraints(adaptive_X, adaptive_jobnames))
+         # solve problem
+         problem = cp.Problem(obj, constraints=constraints)
+         st_time2 = time.time()
+         # problem.solve(solver=cp.GLPK_MI, glpk={'msg_lev': 'GLP_MSG_OFF'}, 
+         #               verbose=sim_config.sia_solver_verbose)
+-        problem.solve(solver=cp.CBC, verbose=sim_config.sia_solver_verbose, 
+-                      numberThreads=sim_config.sia_solver_num_threads, 
+-                      allowablePercentageGap=sim_config.sia_solver_thresh*100)
++        problem.solve(solver=cp.SCIPY, verbose=False,
++                      scipy_options={'time_limit': 10.0, 'mip_rel_gap': sim_config.sia_solver_thresh})
++        self.capra_solver_status = problem.status
++        self.capra_solver_objective = problem.value
++        if problem.status not in ('optimal', 'optimal_inaccurate'):
++            raise RuntimeError('SIA_SOLVER_NO_VERIFIED_OPTIMUM: '+str(problem.status))
+         ed_time = time.time()
+         # print(f"OPTIM: Problem: {problem}")
+         solver_setup_time = (st_time2 - st_time)*1000

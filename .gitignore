@@ -1,0 +1,8 @@
+.venv/
+.upstream-git/
+__pycache__/
+*.pyc
+*.egg-info/
+runs/**/events.jsonl.gz
+runs/**/stdout.log
+.cache/
