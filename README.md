@@ -56,3 +56,7 @@ JCT=完成时刻−原到达；未完成时整体平均/P95/P99/makespan留空�
 用户明确要求备份后，工程上传至私有仓库[liuyang12-bb/CAPRA](https://github.com/liuyang12-bb/CAPRA)。完整目录说明见[GitHub备份位置](docs/GITHUB_BACKUP.md)。不自动扩展实验或以旧结果作为CAPRA结果。
 
 交付时`runs/main_v1/frozen_execution_source.zip`保存冻结运行源码、输入和manifest的精确字节，内部逐文件哈希核对。`.gitattributes`关闭本工程的自动换行转换；本地最终提交保存实际运行字节。补充审计命令为`python -X utf8 -B scripts/deep_audit.py`，只读原始输出，不重新调度。
+
+## CAPRA v2 本地交付
+
+新版在`capra/v2-20261122`分支，尚未推送。方法见[CAPRA_V2_DESIGN](docs/CAPRA_V2_DESIGN.md)，结果见[CAPRA_V2_RESULTS](docs/CAPRA_V2_RESULTS.md)。运行入口为`python -X utf8 -B -m capra.runner_v2`；依赖锁为`requirements_v2.lock.txt`。六格原始输出位于`runs/capra_v2/CAPRA_V2_R1`，冻结清单为`configs/experiment_manifest_v2.json`。原v1命令/结果与旧manifest保留；不同版本结果不要拼表。

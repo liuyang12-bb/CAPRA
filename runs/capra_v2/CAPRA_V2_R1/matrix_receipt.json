@@ -1,0 +1,74 @@
+{
+  "status": "COMPLETE",
+  "cells": 6,
+  "manifest_sha256": "17fc87b61cd4231983aa22b0ff6c176c2211b3f8de9b82ed645283234450c7bb",
+  "budget": {
+    "limit_seconds": 7200,
+    "experiments": [
+      {
+        "kind": "pilot",
+        "output": "runs/capra_v2/development/pilot_01",
+        "wall_seconds": 37.68607559999509,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 1,
+        "workload": "saturn-2-supported80",
+        "method": "SIA-P",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-2-supported80/SIA-P",
+        "wall_seconds": 224.64642090001144,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 2,
+        "workload": "saturn-2-supported80",
+        "method": "CAPRA-Fixed",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-2-supported80/CAPRA-Fixed",
+        "wall_seconds": 220.76028250000672,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 3,
+        "workload": "saturn-2-supported80",
+        "method": "CAPRA",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-2-supported80/CAPRA",
+        "wall_seconds": 234.2083597000019,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 4,
+        "workload": "saturn-6-supported80",
+        "method": "SIA-P",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-6-supported80/SIA-P",
+        "wall_seconds": 228.27215309999883,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 5,
+        "workload": "saturn-6-supported80",
+        "method": "CAPRA-Fixed",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-6-supported80/CAPRA-Fixed",
+        "wall_seconds": 230.3194349999976,
+        "success": true
+      },
+      {
+        "kind": "formal",
+        "cell": 6,
+        "workload": "saturn-6-supported80",
+        "method": "CAPRA",
+        "output": "runs/capra_v2/CAPRA_V2_R1/saturn-6-supported80/CAPRA",
+        "wall_seconds": 237.93927579998854,
+        "success": true
+      }
+    ],
+    "used_seconds": 1413.8320026000001,
+    "mechanism_validation_reserve_seconds": 60,
+    "accounted_seconds": 1473.8320026000001
+  },
+  "automatic_expansion": false
+}
