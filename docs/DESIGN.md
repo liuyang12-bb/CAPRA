@@ -13,7 +13,7 @@ CAPRA-Fixed 与 CAPRA 仅 `placement mode=fixed/free` 不同，共用画像、�
 
 官方 `simulator/resources/cluster.py:575` 起的 `_tune` 先尝试demand，然后将当前作业改成fair share，再调整相关peer，最后重试。`_top_synergy_gpus_placement` 用剩余GPU最少堆减少碎片；`_make_fair_share` 将CPU、内存等同时重置比例值。
 
-CAPRA 是这些规则的清晰重实现，未导入整套部署/资源类。仅支持单节点、GPU/CPU/主机RAM，省略存储带宽；每个作业只接受一个节点；事务式候选拷贝替代原实现的即时deallocate/reallocate。peer只改辅助配额不交换节点；比例保护使用同一响应模型复核。节点排序、peer范围和上述限制均为适配，不声称逐语句等同官方系统。
+CAPRA 是这些规则的清晰重实现，未导入整套部署/资源类。仅支持单节点、GPU/CPU/主机RAM，省略存储带宽；每个作业只接受一个节点；事务式候选拷贝替代原实现的即时deallocate/reallocate。peer只改辅助配额不交换节点；比例保护使用同一响应模型复核。本版peer回退将候选节点上所有未锁peer统一改为比例配额，可能将原先低于比例者提高；这比官方按excess选择相关peer更保守，可能浪费部分辅助资源，不声称是相同的peer优选实现。节点排序、peer范围和上述限制均为适配，不声称逐语句等同官方系统。
 
 ## 共同可行性与锁
 

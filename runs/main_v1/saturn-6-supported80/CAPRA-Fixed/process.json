@@ -1,0 +1,27 @@
+{
+  "command": [
+    "D:\\\u79d1\u7814\u542f\u822a\\CAPRA\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "-m",
+    "capra.runner",
+    "--input",
+    "D:\\\u79d1\u7814\u542f\u822a\\CAPRA\\data\\saturn-6-supported80.csv",
+    "--method",
+    "CAPRA-Fixed",
+    "--output",
+    "D:\\\u79d1\u7814\u542f\u822a\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA-Fixed",
+    "--interval",
+    "60",
+    "--max-rounds",
+    "6000",
+    "--wall-limit",
+    "900"
+  ],
+  "exit_code": 0,
+  "process_wall_seconds": 214.9877572000114,
+  "external_wall_limit": 960,
+  "external_timeout": false,
+  "stdout": "D:\\\u79d1\u7814\u542f\u822a\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA-Fixed.stdout.log"
+}

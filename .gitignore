@@ -5,4 +5,5 @@ __pycache__/
 *.egg-info/
 runs/**/events.jsonl.gz
 runs/**/stdout.log
+runs/**/*.stdout.log
 .cache/

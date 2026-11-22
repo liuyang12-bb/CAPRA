@@ -1,0 +1,66 @@
+{
+  "method": "CAPRA-Fixed",
+  "input": "D:\\科研启航\\CAPRA\\data\\saturn-2-supported80.csv",
+  "status": "ALL_COMPLETE",
+  "total": 80,
+  "completed": 80,
+  "censored": 0,
+  "mean_jct": 1048.425,
+  "p95_jct": 3081.4999999999995,
+  "p99_jct": 4061.9399999999937,
+  "makespan": 20583.0,
+  "decision_median": 0.03549080000084359,
+  "decision_p95": 0.10640546000358872,
+  "decision_max": 0.1932290999975521,
+  "wall_seconds": 221.49716420000186,
+  "wall_scope": "full subprocess including imports",
+  "runner_body_wall_seconds": 215.84824140000273,
+  "rounds": 345,
+  "decisions": 323,
+  "transitions": {
+    "start": 80,
+    "migration": 267,
+    "reconfigure": 102,
+    "aux_update": 11
+  },
+  "fallbacks": {
+    "peer_proportional": 204,
+    "current_proportional": 198
+  },
+  "gpu_repairs": 1,
+  "audit": "PASS",
+  "segment_checks": 8720,
+  "scheduling_wall_charged_to_simulation": false,
+  "node_allocated_resource_seconds": {
+    "aws:0": [
+      21000.0,
+      72720.0,
+      1304999.4000000001
+    ],
+    "aws:1": [
+      10320.0,
+      32400.0,
+      637499.4000000001
+    ],
+    "dgx-ext:0": [
+      121160.0,
+      390264.0,
+      7477992.440000002
+    ],
+    "dgx-ext:1": [
+      77690.0,
+      251702.0,
+      4651275.320000001
+    ],
+    "rtx:0": [
+      73420.0,
+      221340.0,
+      4588750.0
+    ],
+    "rtx:1": [
+      39832.0,
+      122736.0,
+      2489500.0
+    ]
+  }
+}

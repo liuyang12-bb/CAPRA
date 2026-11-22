@@ -1,0 +1,323 @@
+{
+  "project": "D:\\科研启航\\CAPRA",
+  "utc": "2026-11-22T08:30:34.427317+00:00",
+  "frozen_code_commit": "2e8e4a068bb3db01c0192216e3c7ac540d56b17e",
+  "manifest_sha256": "a0033fdfe35885ac9c753af3da3ffbca10d597ad50c44a54607c90cc2cb24ae1",
+  "frozen_files": 1010,
+  "source_unchanged": true,
+  "deep_cross_round_audits": [
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\SIA-P",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 346,
+        "idle_rounds": 19,
+        "physical_lock_checks": 17,
+        "transition_checks": 503,
+        "execution_checks": 1592,
+        "same_type_migrations": 200,
+        "cross_type_migrations": 126,
+        "quota_only_updates": 0
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    },
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA-Fixed",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 345,
+        "idle_rounds": 22,
+        "physical_lock_checks": 13,
+        "transition_checks": 460,
+        "execution_checks": 1471,
+        "same_type_migrations": 157,
+        "cross_type_migrations": 110,
+        "quota_only_updates": 11
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    },
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 345,
+        "idle_rounds": 23,
+        "physical_lock_checks": 14,
+        "transition_checks": 506,
+        "execution_checks": 1578,
+        "same_type_migrations": 197,
+        "cross_type_migrations": 138,
+        "quota_only_updates": 5
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    },
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\SIA-P",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 380,
+        "idle_rounds": 24,
+        "physical_lock_checks": 33,
+        "transition_checks": 547,
+        "execution_checks": 1574,
+        "same_type_migrations": 206,
+        "cross_type_migrations": 159,
+        "quota_only_updates": 0
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    },
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA-Fixed",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 379,
+        "idle_rounds": 21,
+        "physical_lock_checks": 45,
+        "transition_checks": 600,
+        "execution_checks": 1608,
+        "same_type_migrations": 245,
+        "cross_type_migrations": 159,
+        "quota_only_updates": 13
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    },
+    {
+      "status": "PASS",
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA",
+      "completed": 80,
+      "total": 80,
+      "counts": {
+        "rounds": 379,
+        "idle_rounds": 27,
+        "physical_lock_checks": 35,
+        "transition_checks": 577,
+        "execution_checks": 1554,
+        "same_type_migrations": 218,
+        "cross_type_migrations": 169,
+        "quota_only_updates": 17
+      },
+      "recovery_costs_from_frozen_sia_application": {
+        "cifar10": 50.0,
+        "deepspeech2": 25.0,
+        "bert": 120.0,
+        "yolov3": 80.0,
+        "imagenet": 250.0,
+        "ncf": 15.0
+      },
+      "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+    }
+  ],
+  "cells": 6,
+  "complete": 6,
+  "raw_audited": 6,
+  "tests": {
+    "tests": 9,
+    "passed": true,
+    "failures": 0,
+    "errors": 0
+  },
+  "source_versions": [
+    {
+      "name": "sia",
+      "url": "https://github.com/siasosp23/artifacts",
+      "commit": "aaf7a0de7b6cb5eab06ea020467ede5d2fd18e70"
+    },
+    {
+      "name": "synergy",
+      "url": "https://github.com/msr-fiddle/synergy",
+      "commit": "1bb2bed6edc9c5f953d0b7f0a40e4fdad053489c"
+    }
+  ],
+  "independent_git": {
+    "root": "D:/科研启航/CAPRA",
+    "common_dir": ".git",
+    "remotes": ""
+  },
+  "imports": [
+    {
+      "workload": "saturn-2-supported80",
+      "method": "SIA-P",
+      "audit": "PASS",
+      "segment_checks": 8819,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\SIA-P"
+    },
+    {
+      "workload": "saturn-2-supported80",
+      "method": "CAPRA-Fixed",
+      "audit": "PASS",
+      "segment_checks": 8720,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA-Fixed"
+    },
+    {
+      "workload": "saturn-2-supported80",
+      "method": "CAPRA",
+      "audit": "PASS",
+      "segment_checks": 8781,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA"
+    },
+    {
+      "workload": "saturn-6-supported80",
+      "method": "SIA-P",
+      "audit": "PASS",
+      "segment_checks": 8624,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\SIA-P"
+    },
+    {
+      "workload": "saturn-6-supported80",
+      "method": "CAPRA-Fixed",
+      "audit": "PASS",
+      "segment_checks": 8587,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA-Fixed"
+    },
+    {
+      "workload": "saturn-6-supported80",
+      "method": "CAPRA",
+      "audit": "PASS",
+      "segment_checks": 8546,
+      "source_files_unchanged": true,
+      "critical_imports": {
+        "capra": "D:\\科研启航\\CAPRA\\src\\capra\\__init__.py",
+        "applications": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\applications.py",
+        "goodput": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\goodput.py",
+        "utils": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\utils.py",
+        "job": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\job.py",
+        "sia": "D:\\科研启航\\CAPRA\\third_party\\sia\\sia-simulator\\sia.py",
+        "capra.upstream": "D:\\科研启航\\CAPRA\\src\\capra\\upstream.py",
+        "capra.contracts": "D:\\科研启航\\CAPRA\\src\\capra\\contracts.py",
+        "capra.response": "D:\\科研启航\\CAPRA\\src\\capra\\response.py",
+        "capra.tune": "D:\\科研启航\\CAPRA\\src\\capra\\tune.py",
+        "capra.gpu_stage": "D:\\科研启航\\CAPRA\\src\\capra\\gpu_stage.py",
+        "capra.execution": "D:\\科研启航\\CAPRA\\src\\capra\\execution.py"
+      },
+      "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA"
+    }
+  ],
+  "old_project_access": "No old project dependency or writes. All running source/input/env/output paths rooted in CAPRA; general Python standard library is from system Python310.",
+  "no_remote_push": true,
+  "no_auto_expansion": true
+}

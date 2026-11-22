@@ -1,0 +1,152 @@
+[
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\SIA-P",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 346,
+      "idle_rounds": 19,
+      "physical_lock_checks": 17,
+      "transition_checks": 503,
+      "execution_checks": 1592,
+      "same_type_migrations": 200,
+      "cross_type_migrations": 126,
+      "quota_only_updates": 0
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  },
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA-Fixed",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 345,
+      "idle_rounds": 22,
+      "physical_lock_checks": 13,
+      "transition_checks": 460,
+      "execution_checks": 1471,
+      "same_type_migrations": 157,
+      "cross_type_migrations": 110,
+      "quota_only_updates": 11
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  },
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-2-supported80\\CAPRA",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 345,
+      "idle_rounds": 23,
+      "physical_lock_checks": 14,
+      "transition_checks": 506,
+      "execution_checks": 1578,
+      "same_type_migrations": 197,
+      "cross_type_migrations": 138,
+      "quota_only_updates": 5
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  },
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\SIA-P",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 380,
+      "idle_rounds": 24,
+      "physical_lock_checks": 33,
+      "transition_checks": 547,
+      "execution_checks": 1574,
+      "same_type_migrations": 206,
+      "cross_type_migrations": 159,
+      "quota_only_updates": 0
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  },
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA-Fixed",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 379,
+      "idle_rounds": 21,
+      "physical_lock_checks": 45,
+      "transition_checks": 600,
+      "execution_checks": 1608,
+      "same_type_migrations": 245,
+      "cross_type_migrations": 159,
+      "quota_only_updates": 13
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  },
+  {
+    "status": "PASS",
+    "output": "D:\\科研启航\\CAPRA\\runs\\main_v1\\saturn-6-supported80\\CAPRA",
+    "completed": 80,
+    "total": 80,
+    "counts": {
+      "rounds": 379,
+      "idle_rounds": 27,
+      "physical_lock_checks": 35,
+      "transition_checks": 577,
+      "execution_checks": 1554,
+      "same_type_migrations": 218,
+      "cross_type_migrations": 169,
+      "quota_only_updates": 17
+    },
+    "recovery_costs_from_frozen_sia_application": {
+      "cifar10": 50.0,
+      "deepspeech2": 25.0,
+      "bert": 120.0,
+      "yolov3": 80.0,
+      "imagenet": 250.0,
+      "ncf": 15.0
+    },
+    "scope": "Cross-round node identity, transition cost, exact locks, absolute job clocks and recovery-before-training; supplements raw capacity/progress/rho/JCT audit."
+  }
+]

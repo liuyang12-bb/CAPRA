@@ -54,3 +54,5 @@ python -m venv .venv
 JCT=完成时刻−原到达；未完成时整体平均/P95/P99/makespan留空。完整决策开销单独报告，不额外扣进模拟时间。迁移、恢复、checkpoint代价实际扣时；CPU/RAM倍率只作用训练一次。详细实验结论见`docs/STAGE_REPORT.md`（完成汇总后生成）。
 
 本工程没有远端仓库；不自动推送、扩展实验或以旧结果作为CAPRA结果。
+
+交付时`runs/main_v1/frozen_execution_source.zip`保存冻结运行源码、输入和manifest的精确字节，内部逐文件哈希核对。`.gitattributes`关闭本工程的自动换行转换；本地最终提交保存实际运行字节。补充审计命令为`python -X utf8 -B scripts/deep_audit.py`，只读原始输出，不重新调度。

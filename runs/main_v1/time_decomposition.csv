@@ -1,0 +1,7 @@
+workload,method,jobs,mean_jct,mean_waiting,mean_training,mean_recovery
+saturn-2-supported80,SIA-P,80,1141.6625,33.05,808.1125,300.5
+saturn-2-supported80,CAPRA-Fixed,80,1048.425,32.3,752.875,263.25
+saturn-2-supported80,CAPRA,80,1125.6125,34.55,800.6875,290.375
+saturn-6-supported80,SIA-P,80,1125.4625,30.4375,750.8375,344.1875
+saturn-6-supported80,CAPRA-Fixed,80,1144.8375,31.1875,733.3375,380.3125
+saturn-6-supported80,CAPRA,80,1109.7,28.1875,728.7,352.8125
