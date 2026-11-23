@@ -1,0 +1,35 @@
+{
+  "status": "COMPLETE_PASS",
+  "formal_complete": 9,
+  "formal_registered": 9,
+  "new_complete_jobs": 720,
+  "reused_R1_selected_cells": 9,
+  "reused_R1_selected_jobs": 720,
+  "old_R1_historical_jobs": 1440,
+  "new_samples_not_pooled": true,
+  "frozen_files": 1037,
+  "protected_base_files": 1713,
+  "original_R1_directory_unchanged": true,
+  "baseline_branches": {
+    "main": "1f1f07fd2238b395e108f91dbbc224d07c0c8139",
+    "capra/v2-20261122": "0b87934ae558960921889b01d14502155fb0c41c",
+    "capra/scenarios-r1": "81b1109ab1124feeac4e846003f4383b39143fc4"
+  },
+  "tests": {
+    "tests": 33,
+    "failures": 0,
+    "errors": 0,
+    "job_step_calls": 18,
+    "calls_file": "unit_simulation_calls_01.json"
+  },
+  "legacy_state_replays": 54,
+  "old_ram_certificates": 288,
+  "grouped_nodes": 151,
+  "smoke_calls": 2,
+  "formal_ram_traces_checked_in_independent_audits": 5572,
+  "formal_ram_steps_checked_in_independent_audits": 239,
+  "all_owned_process_trees_empty": true,
+  "formal_retries": 0,
+  "shared_experimental_seconds": 2775.8877900999996,
+  "no_remote_push": true
+}

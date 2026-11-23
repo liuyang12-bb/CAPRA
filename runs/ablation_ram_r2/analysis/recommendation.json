@@ -1,0 +1,22 @@
+{
+  "recommended": "FKR + ram_slack_v1，作为下一轮主研究版本；保留FK作轻量对照，不在本轮自动删R或改算法",
+  "main_candidate": "CAPRA",
+  "allocator_mode": "ram_slack_v1",
+  "candidate_labels": [
+    "F",
+    "K",
+    "R"
+  ],
+  "decision_scope": "Evidence-based recommendation only; validate frozen version on Saturn7/8 before general claims",
+  "rationale": [
+    "After RAM repair, FKR vs FK mean/P95/P99 improve9.2055/14.8870/11.4970 percent in CM, with higher decision overhead",
+    "Original-response R increments are small and legacy CM is negative; FK remains a strong low-overhead comparator",
+    "Resource optimization after aligned retention is -0.3302/6.0334/8.6309 percent across three legacy scenarios, hence context-dependent but not universally absent",
+    "RAM correction removes all fixed-CPU idle-RAM residual gains; Fixed mean worsens2.7646 percent, so local improvement is not a JCT guarantee"
+  ],
+  "repaired_full_vs_background_sia_mean_improvement": 31.396126996203087,
+  "repaired_full_vs_background_pk_mean_improvement": 19.006669882403827,
+  "original_R1_and_A_backgrounds_not_rerun_in_B": true,
+  "algorithm_changed_after_results": false,
+  "additional_experiments": false
+}

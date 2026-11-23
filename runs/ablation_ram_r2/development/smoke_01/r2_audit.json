@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "counts": {
+    "rounds": 30,
+    "lock_checks": 1,
+    "start": 9,
+    "migration": 11,
+    "reconfigure": 10
+  },
+  "selected": {
+    "F": 30
+  },
+  "feasible": {
+    "F": 30,
+    "K": 30
+  },
+  "failures": {},
+  "raw_rounds": 30
+}

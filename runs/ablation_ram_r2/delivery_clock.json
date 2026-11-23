@@ -1,0 +1,11 @@
+{
+  "worktree_created_utc": "2026-11-23T02:21:38.401825+00:00",
+  "budget_started_utc": "2026-11-23T02:30:56.935965+00:00",
+  "matrix_finished_utc": "2026-11-23T03:17:12.828912+00:00",
+  "sealed_utc": "2026-11-23T03:22:56.434014+00:00",
+  "initial_development_seconds": 558.5341398715973,
+  "shared_experiment_seconds": 2775.8877900999996,
+  "post_matrix_analysis_report_seconds": 343.60510206222534,
+  "total_worktree_to_delivery_seconds": 3678.0321884155273,
+  "scope": "End-to-end starts at worktree creation, excludes earlier prompt reading. Shared monotonic budget includes every preparation/validation failure and gap through final matrix cleanup. Post-matrix analysis/report separate."
+}

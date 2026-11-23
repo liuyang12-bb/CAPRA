@@ -1,0 +1,43 @@
+{
+  "command": [
+    "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "-m",
+    "capra.runner_r2",
+    "--input",
+    "data/scenarios_r1/w2_dense.csv",
+    "--cluster",
+    "data/scenarios_r1/cluster_cpu3.json",
+    "--responses",
+    "data/scenarios_r1/responses_cm.json",
+    "--scenario-id",
+    "w2_dense_cm",
+    "--run-version",
+    "CAPRA_V2_RAM_R2_PREP",
+    "--allocator-mode",
+    "ram_slack_v1",
+    "--method",
+    "CAPRA-FK",
+    "--output",
+    "D:\\科研启航\\CAPRA-ablation-ram-r2\\runs\\ablation_ram_r2\\development\\smoke_02",
+    "--max-jobs",
+    "12",
+    "--max-rounds",
+    "30",
+    "--wall-limit",
+    "90"
+  ],
+  "exit_code": 0,
+  "process_wall_seconds": 31.06613809999999,
+  "external_wall_limit": 120,
+  "external_timeout": false,
+  "user_stop": false,
+  "stdout": "D:\\科研启航\\CAPRA-ablation-ram-r2\\runs\\ablation_ram_r2\\development\\smoke_02.stdout.log",
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  }
+}

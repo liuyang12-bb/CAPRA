@@ -1,0 +1,488 @@
+[
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "round": 182,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "round": 183,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 183,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 184,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 10,
+    "reasons": [
+      "first_R_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 30,
+    "reasons": [
+      "first_K_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 72,
+    "reasons": [
+      "first_K_infeasible"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 175,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "round": 176,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "round": 1,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "round": 46,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "round": 195,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "round": 196,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 1,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 46,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 193,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "round": 194,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 1,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 11,
+    "reasons": [
+      "first_R_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 12,
+    "reasons": [
+      "first_K_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 46,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 74,
+    "reasons": [
+      "first_K_infeasible"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 193,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "round": 194,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "round": 182,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "round": 183,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 176,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "round": 177,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 2,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 3,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 10,
+    "reasons": [
+      "first_R_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 27,
+    "reasons": [
+      "first_lock"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 30,
+    "reasons": [
+      "first_K_selected"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 38,
+    "reasons": [
+      "first_K_infeasible"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 178,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "round": 179,
+    "reasons": [
+      "first2_or_last2_active"
+    ],
+    "status": "PASS"
+  }
+]

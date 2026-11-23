@@ -1,0 +1,11 @@
+{
+  "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+  "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+  "manifests_sha256": {
+    "configs/experiment_manifest_ablation_r2.json": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "configs/experiment_manifest_ram_r2.json": "37de8a104db322e77d89cf9b2537b607ff4533c11501594a7ae510f2cdcc27dc"
+  },
+  "frozen_files": 1037,
+  "protected_files": 1713,
+  "archive_verified": true
+}

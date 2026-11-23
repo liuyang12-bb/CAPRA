@@ -1,0 +1,803 @@
+[
+  {
+    "index": 1,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w2_dense_original",
+    "method": "SIA-P-K",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "proportional",
+    "allocator_mode": "none",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_original.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w2_dense_original/SIA-P-K",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_original.json",
+        "relative": "data/scenarios_r1/responses_original.json",
+        "sha256": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 2,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-FK",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "legacy",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_original.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w2_dense_original/CAPRA-FK",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_original.json",
+        "relative": "data/scenarios_r1/responses_original.json",
+        "sha256": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 3,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w6_dense_original",
+    "method": "SIA-P-K",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "proportional",
+    "allocator_mode": "none",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w6_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_original.json",
+    "input_hashes": {
+      "input": "77bb39519f8dc2f0b6f93c58e7422a0f8de622b36e039b25fd1cee9c112041ea",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w6_dense_original/SIA-P-K",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w6_dense.csv",
+        "relative": "data/scenarios_r1/w6_dense.csv",
+        "sha256": "77bb39519f8dc2f0b6f93c58e7422a0f8de622b36e039b25fd1cee9c112041ea"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_original.json",
+        "relative": "data/scenarios_r1/responses_original.json",
+        "sha256": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 4,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-FK",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "legacy",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w6_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_original.json",
+    "input_hashes": {
+      "input": "77bb39519f8dc2f0b6f93c58e7422a0f8de622b36e039b25fd1cee9c112041ea",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w6_dense_original/CAPRA-FK",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w6_dense.csv",
+        "relative": "data/scenarios_r1/w6_dense.csv",
+        "sha256": "77bb39519f8dc2f0b6f93c58e7422a0f8de622b36e039b25fd1cee9c112041ea"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_original.json",
+        "relative": "data/scenarios_r1/responses_original.json",
+        "sha256": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 5,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P-K",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "proportional",
+    "allocator_mode": "none",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_cm.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w2_dense_cm/SIA-P-K",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_cm.json",
+        "relative": "data/scenarios_r1/responses_cm.json",
+        "sha256": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 6,
+    "phase": "A",
+    "phase_version": "CAPRA_V2_ABLATION_R2",
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-FK",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "legacy",
+    "ram_repair_enabled": false,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_cm.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_ABLATION_R2/w2_dense_cm/CAPRA-FK",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "60919c3abf3709ab326f6ea4ccac1ae980ef8c409b9df811c94e229c4307eea6",
+    "manifest": "configs/experiment_manifest_ablation_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_cm.json",
+        "relative": "data/scenarios_r1/responses_cm.json",
+        "sha256": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 7,
+    "phase": "B",
+    "phase_version": "CAPRA_V2_RAM_R2",
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "candidate_labels": [
+      "F"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "ram_slack_v1",
+    "ram_repair_enabled": true,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_cm.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA-Fixed",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "37de8a104db322e77d89cf9b2537b607ff4533c11501594a7ae510f2cdcc27dc",
+    "manifest": "configs/experiment_manifest_ram_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_cm.json",
+        "relative": "data/scenarios_r1/responses_cm.json",
+        "sha256": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 8,
+    "phase": "B",
+    "phase_version": "CAPRA_V2_RAM_R2",
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-FK",
+    "candidate_labels": [
+      "F",
+      "K"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "ram_slack_v1",
+    "ram_repair_enabled": true,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_cm.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA-FK",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "37de8a104db322e77d89cf9b2537b607ff4533c11501594a7ae510f2cdcc27dc",
+    "manifest": "configs/experiment_manifest_ram_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_cm.json",
+        "relative": "data/scenarios_r1/responses_cm.json",
+        "sha256": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  },
+  {
+    "index": 9,
+    "phase": "B",
+    "phase_version": "CAPRA_V2_RAM_R2",
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "candidate_labels": [
+      "F",
+      "K",
+      "R"
+    ],
+    "quota_mode": "optimized",
+    "allocator_mode": "ram_slack_v1",
+    "ram_repair_enabled": true,
+    "input": "data/scenarios_r1/w2_dense.csv",
+    "cluster": "data/scenarios_r1/cluster_cpu3.json",
+    "responses": "data/scenarios_r1/responses_cm.json",
+    "input_hashes": {
+      "input": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac",
+      "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+      "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+    },
+    "output": "runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA",
+    "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "source_snapshot_sha256": "2dc99586fe53094fcb733b0f649eeabe4395563f5c59615f7123b172fe139e13",
+    "manifest_sha256": "37de8a104db322e77d89cf9b2537b607ff4533c11501594a7ae510f2cdcc27dc",
+    "manifest": "configs/experiment_manifest_ram_r2.json",
+    "inputs": {
+      "workload": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\w2_dense.csv",
+        "relative": "data/scenarios_r1/w2_dense.csv",
+        "sha256": "6ff161bd154aa13932def27380fc3323b67733f5473c7c0ad9b98019a92a06ac"
+      },
+      "cluster": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\cluster_cpu3.json",
+        "relative": "data/scenarios_r1/cluster_cpu3.json",
+        "sha256": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842"
+      },
+      "responses": {
+        "absolute": "D:\\科研启航\\CAPRA-ablation-ram-r2\\data\\scenarios_r1\\responses_cm.json",
+        "relative": "data/scenarios_r1/responses_cm.json",
+        "sha256": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      }
+    },
+    "seed": 0,
+    "interval": 60,
+    "horizon": 180,
+    "environment": {
+      "python": "3.10.10",
+      "versions": {
+        "numpy": "1.26.4",
+        "scipy": "1.13.1",
+        "cvxpy": "1.6.5"
+      },
+      "solver": "CVXPY SCIPY/HiGHS bundled in SciPy1.13.1; identical vendor binary hash",
+      "highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "baseline_highs_wrapper_sha256": "a8ab9dff47afdfb53af97be4905dbb9f1f085b391747bd9f5110cd1a62b14c7f",
+      "dependency_lock_sha256": "41a56d4fcc6b54b90f535cbbfc1789f28fb19892879e03e04281cfe826a8de78",
+      "numeric_environment": {
+        "OPENBLAS_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "PYTHONHASHSEED": "0"
+      },
+      "executable": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv\\Scripts\\python.exe",
+      "prefix": "D:\\科研启航\\CAPRA-ablation-ram-r2\\.venv",
+      "base_commit": "81b1109ab1124feeac4e846003f4383b39143fc4"
+    },
+    "costs": {
+      "cifar10": {
+        "aws": 50.0,
+        "dgx-ext": 50.0,
+        "rtx": 50.0
+      },
+      "bert": {
+        "aws": 120.0,
+        "dgx-ext": 120.0,
+        "rtx": 120.0
+      },
+      "deepspeech2": {
+        "aws": 25.0,
+        "dgx-ext": 25.0,
+        "rtx": 25.0
+      }
+    },
+    "runner_limit": 900,
+    "process_limit": 960,
+    "max_rounds": 6000
+  }
+]

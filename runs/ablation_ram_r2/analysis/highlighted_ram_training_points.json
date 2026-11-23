@@ -1,0 +1,47 @@
+[
+  {
+    "method": "CAPRA-Fixed",
+    "round": "90",
+    "job": "deepspeech2-40",
+    "application": "deepspeech2",
+    "node": "dgx-ext:1",
+    "gpus": "4",
+    "cpu": "4.0",
+    "ram": "416.68",
+    "rho": "1.50004",
+    "training_seconds": "35.0",
+    "extra_ram_this_supplement": "166.68",
+    "legacy_final_ram": "250.0",
+    "nonaxis_ram": "True"
+  },
+  {
+    "method": "CAPRA-FK",
+    "round": "84",
+    "job": "deepspeech2-40",
+    "application": "deepspeech2",
+    "node": "dgx-ext:0",
+    "gpus": "4",
+    "cpu": "4.0",
+    "ram": "416.68",
+    "rho": "1.50004",
+    "training_seconds": "35.0",
+    "extra_ram_this_supplement": "166.68",
+    "legacy_final_ram": "250.0",
+    "nonaxis_ram": "True"
+  },
+  {
+    "method": "CAPRA",
+    "round": "72",
+    "job": "deepspeech2-19",
+    "application": "deepspeech2",
+    "node": "dgx-ext:1",
+    "gpus": "4",
+    "cpu": "4.0",
+    "ram": "416.68",
+    "rho": "1.50004",
+    "training_seconds": "35.0",
+    "extra_ram_this_supplement": "166.68",
+    "legacy_final_ram": "250.0",
+    "nonaxis_ram": "True"
+  }
+]

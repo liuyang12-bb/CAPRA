@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "old_certificate_count": 288,
+  "group_count": 151,
+  "accepted_updates": 151,
+  "terminal_positive_opportunities": 0,
+  "sources": [
+    {
+      "method": "CAPRA-Fixed",
+      "path": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cm/CAPRA-Fixed/events.jsonl.gz",
+      "sha256": "dd87ab3e4eaa816d489accf904f1b1c6227807501b0ce20f17f2735bc283a973",
+      "certificate_count": 157
+    },
+    {
+      "method": "CAPRA",
+      "path": "runs/scenarios_r1/CAPRA_V2_SCENARIOS_R1/w2_dense_cm/CAPRA/events.jsonl.gz",
+      "sha256": "fc26ff7af6cd64778f5655d31f5a2f5f6dc229953c062825af61b9c5405f65f7",
+      "certificate_count": 131
+    }
+  ],
+  "warning": "Groups are complete actual node states; shared slack updated sequentially, independent maxima are not summed or converted to JCT"
+}

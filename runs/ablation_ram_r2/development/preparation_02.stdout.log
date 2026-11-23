@@ -1,0 +1,12 @@
+error: missing config value GIT_CONFIG_VALUE_0
+fatal: unable to parse command-line config
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-ablation-ram-r2\scripts\prepare_r2.py", line 62, in <module>
+    if __name__=='__main__':main()
+  File "D:\科研启航\CAPRA-ablation-ram-r2\scripts\prepare_r2.py", line 25, in main
+    raw=subprocess.check_output(['git','ls-tree','-rz',BASE]);paths={x.split(b'\t',1)[1].decode():x.split(b'\t',1)[0].split()[2].decode() for x in raw.split(b'\0') if x}
+  File "C:\Users\88534\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 421, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "C:\Users\88534\AppData\Local\Programs\Python\Python310\lib\subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'ls-tree', '-rz', '81b1109ab1124feeac4e846003f4383b39143fc4']' returned non-zero exit status 128.

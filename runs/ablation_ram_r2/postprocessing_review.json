@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "formal_data_modified": false,
+  "figures_viewed": [
+    "A_five_methods.png",
+    "CM_ram_before_after.png",
+    "R_increment_overhead.png"
+  ],
+  "report_revision": "Initial tables/figures retained in report_revisions; added final evidence-based interpretation, separated before/after RAM color from recovery color, added negative-bar label space; no raw-data changes",
+  "runtime_changes_after_freeze": false,
+  "algorithm_selection_changed_after_results": false,
+  "extra_experiments": false
+}

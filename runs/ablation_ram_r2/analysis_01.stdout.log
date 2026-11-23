@@ -1,0 +1,19 @@
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_original/SIA-P", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_original/CAPRA-Fixed", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_original/CAPRA", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w6_dense_original/SIA-P", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w6_dense_original/CAPRA-Fixed", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w6_dense_original/CAPRA", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_cm/SIA-P", "completed": 80, "ram_residual_rounds": 31}
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_cm/CAPRA-Fixed", "completed": 80, "ram_residual_rounds": 64}
+{"event": "RAW_ANALYZED", "id": "R1/w2_dense_cm/CAPRA", "completed": 80, "ram_residual_rounds": 56}
+{"event": "RAW_ANALYZED", "id": "A/w2_dense_original/SIA-P-K", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "A/w2_dense_original/CAPRA-FK", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "A/w6_dense_original/SIA-P-K", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "A/w6_dense_original/CAPRA-FK", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "A/w2_dense_cm/SIA-P-K", "completed": 80, "ram_residual_rounds": 23}
+{"event": "RAW_ANALYZED", "id": "A/w2_dense_cm/CAPRA-FK", "completed": 80, "ram_residual_rounds": 37}
+{"event": "RAW_ANALYZED", "id": "B/w2_dense_cm/CAPRA-Fixed", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "B/w2_dense_cm/CAPRA-FK", "completed": 80, "ram_residual_rounds": 0}
+{"event": "RAW_ANALYZED", "id": "B/w2_dense_cm/CAPRA", "completed": 80, "ram_residual_rounds": 0}
+R2_READ_ONLY_ANALYSIS_PASS

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "tests": {
+    "tests": 33,
+    "failures": 0,
+    "errors": 0,
+    "job_step_calls": 18,
+    "calls_file": "unit_simulation_calls_01.json"
+  },
+  "offline": {
+    "status": "PASS",
+    "legacy_states": 54,
+    "ram_certificates": 288,
+    "grouped_nodes": 151
+  },
+  "smoke_calls": 2,
+  "budget_elapsed_seconds": 242.92261039999994
+}

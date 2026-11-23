@@ -1,0 +1,53 @@
+test_actual_sia_stage_preserves_physical_restore_lock (test_contracts.Contracts) ... D:\科研启航\CAPRA-ablation-ram-r2\.venv\lib\site-packages\cvxpy\reductions\solvers\solving_chain_utils.py:30: UserWarning: The problem includes expressions that don't support CPP backend. Defaulting to the SCIPY backend for canonicalization.
+  warnings.warn(UserWarning(
+ok
+test_complementarity_actual_execution_and_migration (test_contracts.Contracts) ... ok
+test_exact_checkpoint_lock_and_complete_result (test_contracts.Contracts) ... ok
+test_independent_environment_and_imports (test_contracts.Contracts) ... ok
+test_neutral_aux_change_no_gain_same_deployment (test_contracts.Contracts) ... ok
+test_partial_return_never_mutates_live_job (test_contracts.Contracts) ... ok
+test_quota_only_update_does_not_migrate (test_contracts.Contracts) ... ok
+test_real_neutral_response_same_fixed_deployment (test_contracts.Contracts) ... ok
+test_rho_once_recovery_and_wait_unscaled (test_contracts.Contracts) ... ok
+test_FK_call_isolation_and_exact_proportion (test_r2.R2Contracts) ... ok
+test_competing_M_deterministic_capacity_and_bound (test_r2.R2Contracts) ... ok
+test_flat_full_saturated_locked_strict_noop (test_r2.R2Contracts) ... ok
+test_floating_capacity_and_cache_isolation (test_r2.R2Contracts) ... ok
+test_known_ram_gap_and_legacy_unchanged (test_r2.R2Contracts) ... ok
+test_three_job_certificate (test_r2.R2Contracts) ... ok
+test_arrival_exact_and_other_fields_unchanged (test_scenarios_r1.ScenarioChecks) ... ok
+test_capacity_only_cpu_and_supported_topology (test_scenarios_r1.ScenarioChecks) ... ok
+test_portable_input_and_hash_rejection (test_scenarios_r1.ScenarioChecks) ... ok
+test_response_control_monotonicity_and_cpu_capacity_reference (test_scenarios_r1.ScenarioChecks) ... ok
+test_static_feasible_certificate_and_ram_candidate_gap (test_scenarios_r1.ScenarioChecks) ... ok
+test_bert_reclaims_and_current_vector_is_not_permanent (test_v2_allocator.AllocatorMechanisms) ... ok
+test_coupled_reclaim_is_one_legal_pair (test_v2_allocator.AllocatorMechanisms) ... ok
+test_intermediate_cpu_points_and_locked_peer (test_v2_allocator.AllocatorMechanisms) ... ok
+test_joint_upgrade_not_missed (test_v2_allocator.AllocatorMechanisms) ... ok
+test_query_matches_v1_and_no_lower_clamp_credit (test_v2_allocator.AllocatorMechanisms) ... ok
+test_actual_cifar_cost_and_window_formula (test_v2_costs.CostsAndIdentity) ... ok
+test_prediction_commit_all_transition_kinds (test_v2_costs.CostsAndIdentity) ... ok
+test_swap_cost_lock_and_idempotence (test_v2_costs.CostsAndIdentity) ... ok
+test_type_and_count_change_charge_once_and_lock_commit_retains_remaining (test_v2_costs.CostsAndIdentity) ... ok
+test_common_reference_fixed_stability_and_soft_positions (test_v2_placement.CandidateMechanisms) ... ok
+test_gpu_fragmentation_8_2_2 (test_v2_placement.CandidateMechanisms) ... ok
+test_k_r_failure_returns_existing_complete_f (test_v2_placement.CandidateMechanisms) ... ok
+test_resource_complementarity_and_f_contract (test_v2_placement.CandidateMechanisms) ... ok
+
+----------------------------------------------------------------------
+Ran 33 tests in 2.574s
+
+OK
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Unique configs:
+Configs: {0: ('rtx', 1, 1), 1: ('rtx', 1, 2), 2: ('rtx', 1, 4), 3: ('rtx', 1, 8)}
+Cluster total gpus: {'rtx': 16}
+Realloc factor: bert-0 --> 0.0, age: 0, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 38.79ms = 3.51ms (setup) + 35.28ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Realloc factor: bert-0 --> 0.3333333333333333, age: 60, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': ['bert-0']}
+Solver took: 77.82ms = 4.04ms (setup) + 73.78ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0

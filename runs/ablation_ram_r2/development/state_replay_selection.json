@@ -1,0 +1,218 @@
+[
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "SIA-P",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "rule": "first_K_selected",
+    "round": 30
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "rule": "first_R_selected",
+    "round": 10
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_original",
+    "method": "CAPRA",
+    "rule": "first_K_infeasible",
+    "round": 72
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "rule": "first_lock",
+    "round": 46
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "SIA-P",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_lock",
+    "round": 46
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "rule": "first_K_selected",
+    "round": 12
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "rule": "first_R_selected",
+    "round": 11
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "rule": "first_lock",
+    "round": 46
+  },
+  {
+    "scenario": "w6_dense_original",
+    "method": "CAPRA",
+    "rule": "first_K_infeasible",
+    "round": 74
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "SIA-P",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "rule": "first_R_selected",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA-Fixed",
+    "rule": "first_K_infeasible",
+    "round": null
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "rule": "first_K_selected",
+    "round": 30
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "rule": "first_R_selected",
+    "round": 10
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "rule": "first_lock",
+    "round": 27
+  },
+  {
+    "scenario": "w2_dense_cm",
+    "method": "CAPRA",
+    "rule": "first_K_infeasible",
+    "round": 38
+  }
+]
