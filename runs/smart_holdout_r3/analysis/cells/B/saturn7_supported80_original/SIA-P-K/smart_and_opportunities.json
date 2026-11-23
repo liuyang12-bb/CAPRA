@@ -1,0 +1,44 @@
+{
+  "counts": {
+    "all_rounds": 391,
+    "active_rounds": 344
+  },
+  "smart_timing": null,
+  "repair_affected_jobs": {},
+  "repair_fraction_active": 0.0,
+  "opportunity_rounds": {
+    "different_application_selected": 190,
+    "same_gpu_type": 109,
+    "pair_gpu_sum_fits": 57,
+    "reference_already_colocated": 45,
+    "cpu_complement_same_type": 47,
+    "cpu_complement_selected": 57,
+    "cpu_complement_gpu_sum_fits": 41,
+    "cpu_complement_reference_colocated": 32,
+    "direct_move_blocked_by_peer_gpu": 7,
+    "one_or_more_locked": 4
+  },
+  "opportunity_training_share": {
+    "different_application_selected": 0.7520564789687924,
+    "same_gpu_type": 0.44216417910447764,
+    "pair_gpu_sum_fits": 0.21143571913161466,
+    "reference_already_colocated": 0.17348626187245592,
+    "cpu_complement_same_type": 0.17287143826322932,
+    "cpu_complement_selected": 0.19737957937584802,
+    "cpu_complement_gpu_sum_fits": 0.15495675033921302,
+    "cpu_complement_reference_colocated": 0.12315552917232021,
+    "direct_move_blocked_by_peer_gpu": 0.029596336499321575,
+    "one_or_more_locked": 0.007420284938941655
+  },
+  "application_training_share": {
+    "cifar10": 0.682645013568521,
+    "deepspeech2": 0.2732996947082768,
+    "bert": 0.04405529172320217
+  },
+  "application_training_gpu_seconds_share": {
+    "cifar10": 0.5403729064319721,
+    "deepspeech2": 0.4278560725327668,
+    "bert": 0.03177102103526109
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

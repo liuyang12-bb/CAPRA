@@ -1,0 +1,64 @@
+{
+  "counts": {
+    "all_rounds": 387,
+    "raw_retained_job_rounds": 872,
+    "raw_evicted_job_events": 7,
+    "raw_replaced_job_rounds": 354,
+    "active_rounds": 350,
+    "raw_smart_cluster_calls": 589
+  },
+  "smart_timing": {
+    "n": 350,
+    "median": 0.000753350001104991,
+    "p95": 0.0014739900001586649,
+    "max": 0.0024125000018102583,
+    "mean": 0.00079562085708728,
+    "gt5_count": 0,
+    "gt5_fraction": 0.0
+  },
+  "repair_affected_jobs": {},
+  "repair_fraction_active": 0.0,
+  "opportunity_rounds": {
+    "cpu_complement_selected": 194,
+    "ram_complement_selected": 42,
+    "different_application_selected": 225,
+    "cpu_complement_same_type": 103,
+    "same_gpu_type": 130,
+    "ram_complement_reference_colocated": 20,
+    "cpu_complement_gpu_sum_fits": 31,
+    "cpu_complement_reference_colocated": 31,
+    "ram_complement_same_type": 24,
+    "pair_gpu_sum_fits": 31,
+    "reference_already_colocated": 31,
+    "ram_complement_gpu_sum_fits": 20,
+    "direct_move_blocked_by_peer_gpu": 13,
+    "one_or_more_locked": 1
+  },
+  "opportunity_training_share": {
+    "cpu_complement_selected": 0.679931810682993,
+    "ram_complement_selected": 0.1601165817355281,
+    "different_application_selected": 0.7448583055321333,
+    "cpu_complement_same_type": 0.3794588847747186,
+    "same_gpu_type": 0.4592697144114089,
+    "ram_complement_reference_colocated": 0.08796788503134509,
+    "cpu_complement_gpu_sum_fits": 0.13339076877955786,
+    "cpu_complement_reference_colocated": 0.13339076877955786,
+    "ram_complement_same_type": 0.10101917366279282,
+    "pair_gpu_sum_fits": 0.13339076877955786,
+    "reference_already_colocated": 0.13339076877955786,
+    "ram_complement_gpu_sum_fits": 0.08796788503134509,
+    "direct_move_blocked_by_peer_gpu": 0.0777761484034168,
+    "one_or_more_locked": 0.0034827876965942
+  },
+  "application_training_share": {
+    "deepspeech2": 0.38849580232430253,
+    "cifar10": 0.6019356967408439,
+    "bert": 0.009568500934853539
+  },
+  "application_training_gpu_seconds_share": {
+    "deepspeech2": 0.5660487296257111,
+    "cifar10": 0.42755723201005874,
+    "bert": 0.006394038364230185
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

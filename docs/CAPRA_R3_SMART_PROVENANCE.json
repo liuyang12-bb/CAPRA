@@ -1,0 +1,19 @@
+{
+  "source_file": "third_party/sia/sia-simulator/sia.py",
+  "source_file_sha256": "7d987ca7a909a62bfe0634e1c4d3ee76a60b3fb4aa36cc41cb0e3d2313448baf",
+  "source_lines": [
+    210,
+    340
+  ],
+  "source_function_sha256": "f6ab7feb7761968c75240c48ea1aca3676284454e92b7d27d90e5bb24428f428",
+  "adapted_method_sha256": "5240183232fb0970a12e1fcd6975336a8f8ec4cbb836ea76cd144c06d66ccd08",
+  "adapter_file_sha256": "c41d3a9b68b86d51a2a5df6f29b36700f54a7349f4863031381bc25f495221a2",
+  "patch_sha256": "92e63114413924b3770a41a890286da294e90e35864f6f5fad57ba431ef1cbf8",
+  "semantic_patch": "Only job_allocs.get(x) in stable descending GPU-count sort",
+  "mechanical_guards": [
+    "signed independent copy with per-write bounds",
+    "empty/zero normalization",
+    "raw exact set/count/shape/capacity validation"
+  ],
+  "trace_only": "eviction append"
+}

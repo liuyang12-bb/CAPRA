@@ -1,0 +1,6 @@
+{
+  "reason": "Report-only NameError: freeze variable missing after figures; added explicit read-only receipt load",
+  "simulation_changes": false,
+  "raw_changes": false,
+  "formal_reruns": 0
+}

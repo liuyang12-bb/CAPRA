@@ -1,0 +1,882 @@
+[
+  {
+    "node": "aws:0",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:0",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "aws:1",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "cifar10",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "imagenet",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "bert",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:0",
+    "application": "deepspeech2",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "cifar10",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "imagenet",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "bert",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "dgx-ext:1",
+    "application": "deepspeech2",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "cifar10",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "imagenet",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "bert",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:0",
+    "application": "deepspeech2",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "cifar10",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "cifar10",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "cifar10",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "cifar10",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "imagenet",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "imagenet",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "imagenet",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "imagenet",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "bert",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "bert",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "bert",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "bert",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "deepspeech2",
+    "gpus": 1,
+    "cpu": 3.0,
+    "ram": 62.5,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "deepspeech2",
+    "gpus": 2,
+    "cpu": 6.0,
+    "ram": 125.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "deepspeech2",
+    "gpus": 4,
+    "cpu": 12.0,
+    "ram": 250.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  },
+  {
+    "node": "rtx:1",
+    "application": "deepspeech2",
+    "gpus": 8,
+    "cpu": 24.0,
+    "ram": 500.0,
+    "original_rho": 1.0,
+    "CM_rho": 1.0,
+    "strict_equal": true
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "strict": true,
+  "rounds": 180,
+  "semantic_sha256": "a10f71378d77dd090e0433d84f54ee305793161eb9e489e63c7eeeea96c4554c",
+  "source_a": "runs\\smart_holdout_r3\\CAPRA_V2_SMART_R3\\w2_dense_original\\SIA-SMART-P",
+  "source_b": "runs\\smart_holdout_r3\\CAPRA_V2_SMART_R3\\w2_dense_cm\\SIA-SMART-P",
+  "events_a_sha256": "0238fbd26708355213e6214335bf7e2492dcfd9a43bba3f5c9f980b29cad6312",
+  "events_b_sha256": "f82e123560d6965cb5fecc216f5d14b1d240f3f8d1dbb43f6864de63357f164e",
+  "excluded_exact_keys": [
+    "candidate_seconds",
+    "candidate_timings",
+    "commit_seconds",
+    "decision_seconds",
+    "generation_seconds",
+    "gpu_stage_seconds",
+    "mapping_scoring_seconds",
+    "method",
+    "ram_repair_seconds",
+    "reference_seconds",
+    "response_cache",
+    "scenario_id",
+    "smart_seconds",
+    "version"
+  ]
+}

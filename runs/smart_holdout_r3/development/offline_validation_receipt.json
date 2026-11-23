@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "replayed_states": 57,
+  "history_sources_verified": 18,
+  "proportional_points": 88,
+  "job_step_calls": 0,
+  "holdout_workloads": 2
+}

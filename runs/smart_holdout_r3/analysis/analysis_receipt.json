@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "wall_seconds": 33.647525000000314,
+  "physical_completed": 15,
+  "logical_reused": 4,
+  "historical_rows": 13,
+  "comparisons": 36,
+  "simulator_calls": 0
+}

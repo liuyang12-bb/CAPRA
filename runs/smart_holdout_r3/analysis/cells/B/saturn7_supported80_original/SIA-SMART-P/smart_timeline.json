@@ -1,0 +1,5964 @@
+[
+  {
+    "round": 0,
+    "time": 0.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 1,
+    "time": 60.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 2,
+    "time": 120.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 3,
+    "time": 180.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 4,
+    "time": 240.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-0"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 5,
+    "time": 300.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-0"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 6,
+    "time": 360.0,
+    "retained": [
+      "cifar10-0"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-1"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 7,
+    "time": 420.0,
+    "retained": [
+      "cifar10-0"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-1"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 8,
+    "time": 480.0,
+    "retained": [
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-0"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 9,
+    "time": 540.0,
+    "retained": [
+      "cifar10-0",
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 10,
+    "time": 600.0,
+    "retained": [
+      "cifar10-0"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-1"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 11,
+    "time": 660.0,
+    "retained": [
+      "cifar10-0",
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 12,
+    "time": 720.0,
+    "retained": [
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-0"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 13,
+    "time": 780.0,
+    "retained": [
+      "cifar10-0",
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 14,
+    "time": 840.0,
+    "retained": [
+      "cifar10-0"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-1",
+      "cifar10-3"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 15,
+    "time": 900.0,
+    "retained": [
+      "cifar10-1"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-3"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 16,
+    "time": 960.0,
+    "retained": [
+      "cifar10-1",
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 17,
+    "time": 1020.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 18,
+    "time": 1080.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 19,
+    "time": 1140.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-3"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 20,
+    "time": 1200.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 21,
+    "time": 1260.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 22,
+    "time": 1320.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 23,
+    "time": 1380.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-3"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 24,
+    "time": 1440.0,
+    "retained": [
+      "cifar10-3"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 25,
+    "time": 1500.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 26,
+    "time": 1560.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 27,
+    "time": 1620.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 28,
+    "time": 1680.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-6"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 29,
+    "time": 1740.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-6"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 30,
+    "time": 1800.0,
+    "retained": [
+      "cifar10-6"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 31,
+    "time": 1860.0,
+    "retained": [
+      "cifar10-6"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 32,
+    "time": 1920.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-6",
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 33,
+    "time": 1980.0,
+    "retained": [
+      "cifar10-6",
+      "deepspeech2-7"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 34,
+    "time": 2040.0,
+    "retained": [
+      "cifar10-6"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 2
+  },
+  {
+    "round": 35,
+    "time": 2100.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-6"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 36,
+    "time": 2160.0,
+    "retained": [
+      "deepspeech2-7"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-6",
+      "cifar10-8",
+      "deepspeech2-10"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 37,
+    "time": 2220.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-6"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-8",
+      "deepspeech2-10"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 38,
+    "time": 2280.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-6",
+      "cifar10-8"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-10"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 39,
+    "time": 2340.0,
+    "retained": [
+      "cifar10-8",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 40,
+    "time": 2400.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-8",
+      "cifar10-12"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 41,
+    "time": 2460.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-8",
+      "cifar10-12",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 42,
+    "time": 2520.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-8",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-12",
+      "cifar10-13"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 43,
+    "time": 2580.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-8",
+      "cifar10-12",
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 44,
+    "time": 2640.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-8",
+      "cifar10-12",
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 45,
+    "time": 2700.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-8",
+      "cifar10-12",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-13"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 46,
+    "time": 2760.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-12"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 47,
+    "time": 2820.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-12"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 48,
+    "time": 2880.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-12",
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 49,
+    "time": 2940.0,
+    "retained": [
+      "deepspeech2-7",
+      "cifar10-12",
+      "cifar10-13",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-15",
+      "bert-17",
+      "cifar10-16"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 7
+  },
+  {
+    "round": 50,
+    "time": 3000.0,
+    "retained": [
+      "bert-17",
+      "cifar10-12",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7",
+      "cifar10-13",
+      "cifar10-15",
+      "cifar10-16"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 7
+  },
+  {
+    "round": 51,
+    "time": 3060.0,
+    "retained": [
+      "bert-17",
+      "cifar10-13",
+      "cifar10-15",
+      "cifar10-16",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 52,
+    "time": 3120.0,
+    "retained": [
+      "cifar10-13",
+      "cifar10-15",
+      "cifar10-16",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-17",
+      "deepspeech2-7"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 53,
+    "time": 3180.0,
+    "retained": [
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-15",
+      "cifar10-16"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 54,
+    "time": 3240.0,
+    "retained": [
+      "cifar10-15",
+      "cifar10-16",
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 55,
+    "time": 3300.0,
+    "retained": [
+      "cifar10-15",
+      "cifar10-16",
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 56,
+    "time": 3360.0,
+    "retained": [
+      "cifar10-15",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-16",
+      "bert-17"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 57,
+    "time": 3420.0,
+    "retained": [
+      "cifar10-15",
+      "cifar10-16",
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-18"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 58,
+    "time": 3480.0,
+    "retained": [
+      "cifar10-15",
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-16",
+      "cifar10-18"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 59,
+    "time": 3540.0,
+    "retained": [
+      "cifar10-16",
+      "bert-17",
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 60,
+    "time": 3600.0,
+    "retained": [
+      "bert-17",
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 61,
+    "time": 3660.0,
+    "retained": [
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-18"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 62,
+    "time": 3720.0,
+    "retained": [
+      "bert-17",
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 63,
+    "time": 3780.0,
+    "retained": [
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-17"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 64,
+    "time": 3840.0,
+    "retained": [
+      "bert-17",
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 65,
+    "time": 3900.0,
+    "retained": [
+      "bert-17",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-18"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 66,
+    "time": 3960.0,
+    "retained": [
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 67,
+    "time": 4020.0,
+    "retained": [
+      "cifar10-18",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 68,
+    "time": 4080.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 69,
+    "time": 4140.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 70,
+    "time": 4200.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 71,
+    "time": 4260.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 72,
+    "time": 4320.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 73,
+    "time": 4380.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 74,
+    "time": 4440.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 75,
+    "time": 4500.0,
+    "retained": [
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-21"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 76,
+    "time": 4560.0,
+    "retained": [
+      "cifar10-21",
+      "deepspeech2-7",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 77,
+    "time": 4620.0,
+    "retained": [
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-22",
+      "cifar10-21"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 78,
+    "time": 4680.0,
+    "retained": [
+      "cifar10-21",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-22"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 79,
+    "time": 4740.0,
+    "retained": [
+      "cifar10-22",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-21"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 80,
+    "time": 4800.0,
+    "retained": [
+      "cifar10-21",
+      "cifar10-22",
+      "deepspeech2-10"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 81,
+    "time": 4860.0,
+    "retained": [
+      "cifar10-21"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-22"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 82,
+    "time": 4920.0,
+    "retained": [
+      "cifar10-22"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-24",
+      "cifar10-21"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 83,
+    "time": 4980.0,
+    "retained": [
+      "cifar10-21",
+      "cifar10-22"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-24"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 84,
+    "time": 5040.0,
+    "retained": [
+      "cifar10-21",
+      "cifar10-22",
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 85,
+    "time": 5100.0,
+    "retained": [
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-22"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 86,
+    "time": 5160.0,
+    "retained": [
+      "cifar10-22"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-24"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 87,
+    "time": 5220.0,
+    "retained": [
+      "cifar10-22",
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 88,
+    "time": 5280.0,
+    "retained": [
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 89,
+    "time": 5340.0,
+    "retained": [
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 90,
+    "time": 5400.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-24"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 91,
+    "time": 5460.0,
+    "retained": [
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 92,
+    "time": 5520.0,
+    "retained": [
+      "cifar10-24"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 93,
+    "time": 5580.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 94,
+    "time": 5640.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 95,
+    "time": 5700.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 96,
+    "time": 5760.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 97,
+    "time": 5820.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 98,
+    "time": 5880.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 99,
+    "time": 5940.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 100,
+    "time": 6000.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 101,
+    "time": 6060.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 102,
+    "time": 6120.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 103,
+    "time": 6180.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 104,
+    "time": 6240.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 105,
+    "time": 6300.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 106,
+    "time": 6360.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 107,
+    "time": 6420.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 108,
+    "time": 6480.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 109,
+    "time": 6540.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 110,
+    "time": 6600.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 111,
+    "time": 6660.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 112,
+    "time": 6720.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 113,
+    "time": 6780.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 114,
+    "time": 6840.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 115,
+    "time": 6900.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 116,
+    "time": 6960.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 117,
+    "time": 7020.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 118,
+    "time": 7080.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 119,
+    "time": 7140.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-32"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 120,
+    "time": 7200.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-32"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 121,
+    "time": 7260.0,
+    "retained": [
+      "cifar10-32"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 122,
+    "time": 7320.0,
+    "retained": [
+      "cifar10-32"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-35"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 123,
+    "time": 7380.0,
+    "retained": [
+      "bert-35"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-32"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 124,
+    "time": 7440.0,
+    "retained": [
+      "bert-35",
+      "cifar10-32"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 125,
+    "time": 7500.0,
+    "retained": [
+      "cifar10-32"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-35"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 126,
+    "time": 7560.0,
+    "retained": [
+      "cifar10-32",
+      "bert-35"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-37"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 127,
+    "time": 7620.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-32"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 128,
+    "time": 7680.0,
+    "retained": [
+      "cifar10-32",
+      "bert-35",
+      "cifar10-37"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 129,
+    "time": 7740.0,
+    "retained": [
+      "cifar10-32"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-35",
+      "cifar10-37"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 130,
+    "time": 7800.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-38"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 131,
+    "time": 7860.0,
+    "retained": [
+      "bert-35"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-37",
+      "cifar10-38"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 132,
+    "time": 7920.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37",
+      "cifar10-38"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 133,
+    "time": 7980.0,
+    "retained": [
+      "cifar10-37"
+    ],
+    "evicted": [
+      "cifar10-38"
+    ],
+    "replaced": [
+      "bert-35",
+      "cifar10-38"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 3
+  },
+  {
+    "round": 134,
+    "time": 8040.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-38"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 135,
+    "time": 8100.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37",
+      "cifar10-38"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-40"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 136,
+    "time": 8160.0,
+    "retained": [
+      "cifar10-37",
+      "cifar10-38"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-41",
+      "cifar10-42",
+      "bert-35",
+      "cifar10-40"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 137,
+    "time": 8220.0,
+    "retained": [
+      "bert-35",
+      "cifar10-37",
+      "cifar10-40"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-44",
+      "cifar10-41",
+      "cifar10-42",
+      "cifar10-38"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 7
+  },
+  {
+    "round": 138,
+    "time": 8280.0,
+    "retained": [
+      "bert-35",
+      "cifar10-40",
+      "cifar10-41",
+      "cifar10-42"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-45",
+      "cifar10-38",
+      "cifar10-44"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 7
+  },
+  {
+    "round": 139,
+    "time": 8340.0,
+    "retained": [
+      "bert-35",
+      "cifar10-38",
+      "cifar10-40",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-45",
+      "cifar10-41"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 7
+  },
+  {
+    "round": 140,
+    "time": 8400.0,
+    "retained": [
+      "cifar10-38",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-40",
+      "cifar10-41",
+      "deepspeech2-45"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 141,
+    "time": 8460.0,
+    "retained": [
+      "cifar10-38",
+      "cifar10-40",
+      "cifar10-41",
+      "cifar10-42",
+      "cifar10-44",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 142,
+    "time": 8520.0,
+    "retained": [
+      "cifar10-40",
+      "cifar10-41"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-45",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 5
+  },
+  {
+    "round": 143,
+    "time": 8580.0,
+    "retained": [
+      "deepspeech2-45",
+      "cifar10-40",
+      "cifar10-41",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 144,
+    "time": 8640.0,
+    "retained": [
+      "deepspeech2-45",
+      "cifar10-40",
+      "cifar10-41",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 145,
+    "time": 8700.0,
+    "retained": [
+      "deepspeech2-45",
+      "cifar10-40",
+      "cifar10-41",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 146,
+    "time": 8760.0,
+    "retained": [
+      "deepspeech2-45",
+      "cifar10-44"
+    ],
+    "evicted": [
+      "cifar10-41"
+    ],
+    "replaced": [
+      "cifar10-41",
+      "cifar10-42"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 147,
+    "time": 8820.0,
+    "retained": [
+      "deepspeech2-45",
+      "cifar10-42",
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 148,
+    "time": 8880.0,
+    "retained": [
+      "cifar10-44"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-47",
+      "deepspeech2-45"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 149,
+    "time": 8940.0,
+    "retained": [
+      "bert-47",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 150,
+    "time": 9000.0,
+    "retained": [
+      "bert-47",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 151,
+    "time": 9060.0,
+    "retained": [
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-47"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 152,
+    "time": 9120.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 153,
+    "time": 9180.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 154,
+    "time": 9240.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 155,
+    "time": 9300.0,
+    "retained": [
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-51",
+      "bert-47"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 156,
+    "time": 9360.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-51"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 157,
+    "time": 9420.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47",
+      "cifar10-51"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-53"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 158,
+    "time": 9480.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47",
+      "cifar10-51",
+      "cifar10-53"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-55"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 159,
+    "time": 9540.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47",
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-55"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 160,
+    "time": 9600.0,
+    "retained": [
+      "deepspeech2-45",
+      "bert-47",
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-55"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-56"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 161,
+    "time": 9660.0,
+    "retained": [
+      "bert-47"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-45",
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-55",
+      "cifar10-56"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 6
+  },
+  {
+    "round": 162,
+    "time": 9720.0,
+    "retained": [
+      "bert-47",
+      "cifar10-51",
+      "cifar10-55",
+      "cifar10-56"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-53",
+      "deepspeech2-45"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 6
+  },
+  {
+    "round": 163,
+    "time": 9780.0,
+    "retained": [
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-56",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-55"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 164,
+    "time": 9840.0,
+    "retained": [
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-55",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-59",
+      "cifar10-56"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 165,
+    "time": 9900.0,
+    "retained": [
+      "cifar10-53",
+      "cifar10-55",
+      "cifar10-56",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-59",
+      "cifar10-51"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 166,
+    "time": 9960.0,
+    "retained": [
+      "cifar10-53",
+      "cifar10-55",
+      "cifar10-56",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-51",
+      "deepspeech2-59"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 167,
+    "time": 10020.0,
+    "retained": [
+      "cifar10-51",
+      "cifar10-53",
+      "cifar10-55",
+      "cifar10-56",
+      "deepspeech2-45",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 168,
+    "time": 10080.0,
+    "retained": [
+      "cifar10-56",
+      "deepspeech2-45"
+    ],
+    "evicted": [
+      "cifar10-55"
+    ],
+    "replaced": [
+      "deepspeech2-59",
+      "cifar10-53",
+      "cifar10-55"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 5
+  },
+  {
+    "round": 169,
+    "time": 10140.0,
+    "retained": [
+      "deepspeech2-59",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-55",
+      "cifar10-56"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 170,
+    "time": 10200.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-55",
+      "cifar10-56",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-61"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 171,
+    "time": 10260.0,
+    "retained": [
+      "deepspeech2-59",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-61"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 172,
+    "time": 10320.0,
+    "retained": [
+      "cifar10-61",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-59"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 173,
+    "time": 10380.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-61",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-62"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 174,
+    "time": 10440.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-61",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-62"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 175,
+    "time": 10500.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-62",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-61"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 176,
+    "time": 10560.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-61",
+      "cifar10-62",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 177,
+    "time": 10620.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-61",
+      "cifar10-62",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 178,
+    "time": 10680.0,
+    "retained": [
+      "deepspeech2-59",
+      "cifar10-61",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-63",
+      "cifar10-62",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 8
+  },
+  {
+    "round": 179,
+    "time": 10740.0,
+    "retained": [
+      "cifar10-61",
+      "cifar10-62",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-59",
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "cifar10-67"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 9
+  },
+  {
+    "round": 180,
+    "time": 10800.0,
+    "retained": [
+      "cifar10-62",
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "deepspeech2-45"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-68",
+      "cifar10-61",
+      "cifar10-67",
+      "deepspeech2-59"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 181,
+    "time": 10860.0,
+    "retained": [
+      "cifar10-61",
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "cifar10-67",
+      "deepspeech2-45",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-62",
+      "cifar10-68"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 182,
+    "time": 10920.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "cifar10-67",
+      "cifar10-68",
+      "deepspeech2-45",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-62"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 9
+  },
+  {
+    "round": 183,
+    "time": 10980.0,
+    "retained": [
+      "cifar10-62",
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "cifar10-67",
+      "cifar10-68",
+      "deepspeech2-45",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-72"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 184,
+    "time": 11040.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-66",
+      "cifar10-67",
+      "cifar10-68",
+      "deepspeech2-45",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-62",
+      "cifar10-72"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 185,
+    "time": 11100.0,
+    "retained": [
+      "cifar10-62",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-68",
+      "cifar10-72",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-66",
+      "cifar10-63"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 9
+  },
+  {
+    "round": 186,
+    "time": 11160.0,
+    "retained": [
+      "cifar10-62",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-68",
+      "cifar10-72",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-73",
+      "cifar10-63",
+      "cifar10-66"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 187,
+    "time": 11220.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-68",
+      "cifar10-72",
+      "deepspeech2-59",
+      "cifar10-66"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-73"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 9
+  },
+  {
+    "round": 188,
+    "time": 11280.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-68",
+      "cifar10-72",
+      "cifar10-73",
+      "deepspeech2-59",
+      "cifar10-66"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 9
+  },
+  {
+    "round": 189,
+    "time": 11340.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-68",
+      "cifar10-72",
+      "cifar10-73",
+      "deepspeech2-59",
+      "cifar10-66"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-75"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 10
+  },
+  {
+    "round": 190,
+    "time": 11400.0,
+    "retained": [
+      "cifar10-63",
+      "cifar10-64",
+      "cifar10-65",
+      "cifar10-67",
+      "cifar10-73",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-76",
+      "cifar10-66",
+      "cifar10-75",
+      "cifar10-68",
+      "cifar10-72"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 11
+  },
+  {
+    "round": 191,
+    "time": 11460.0,
+    "retained": [
+      "cifar10-67",
+      "cifar10-73",
+      "cifar10-75",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-68",
+      "cifar10-72",
+      "cifar10-76",
+      "cifar10-66"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 8
+  },
+  {
+    "round": 192,
+    "time": 11520.0,
+    "retained": [
+      "cifar10-68",
+      "cifar10-72",
+      "cifar10-75",
+      "cifar10-76",
+      "deepspeech2-59",
+      "cifar10-66"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-73"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 7
+  },
+  {
+    "round": 193,
+    "time": 11580.0,
+    "retained": [
+      "cifar10-68",
+      "cifar10-72",
+      "cifar10-73",
+      "cifar10-75",
+      "cifar10-76",
+      "deepspeech2-59",
+      "cifar10-66"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-78"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 8
+  },
+  {
+    "round": 194,
+    "time": 11640.0,
+    "retained": [
+      "cifar10-72",
+      "cifar10-73",
+      "cifar10-76",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-75",
+      "cifar10-78"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 195,
+    "time": 11700.0,
+    "retained": [
+      "cifar10-72",
+      "cifar10-75",
+      "cifar10-78",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-76",
+      "cifar10-73"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 196,
+    "time": 11760.0,
+    "retained": [
+      "cifar10-75",
+      "cifar10-76",
+      "cifar10-78",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-79",
+      "cifar10-73"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 197,
+    "time": 11820.0,
+    "retained": [
+      "cifar10-73",
+      "cifar10-75",
+      "cifar10-76",
+      "cifar10-78",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-79"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 198,
+    "time": 11880.0,
+    "retained": [
+      "cifar10-73",
+      "cifar10-75",
+      "cifar10-76",
+      "cifar10-78",
+      "cifar10-79",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 199,
+    "time": 11940.0,
+    "retained": [
+      "cifar10-75",
+      "cifar10-76",
+      "cifar10-79",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-78"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 200,
+    "time": 12000.0,
+    "retained": [
+      "cifar10-78",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-81",
+      "cifar10-76",
+      "cifar10-79"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 201,
+    "time": 12060.0,
+    "retained": [
+      "cifar10-76",
+      "cifar10-79",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-83",
+      "cifar10-81",
+      "cifar10-78"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 202,
+    "time": 12120.0,
+    "retained": [
+      "cifar10-79",
+      "cifar10-81",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-78",
+      "cifar10-83"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 203,
+    "time": 12180.0,
+    "retained": [
+      "cifar10-78",
+      "cifar10-79",
+      "cifar10-81",
+      "cifar10-83",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-85"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 204,
+    "time": 12240.0,
+    "retained": [
+      "cifar10-78",
+      "cifar10-83",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-81",
+      "cifar10-85",
+      "cifar10-79"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 205,
+    "time": 12300.0,
+    "retained": [
+      "cifar10-81",
+      "cifar10-83",
+      "cifar10-85",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-79"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 206,
+    "time": 12360.0,
+    "retained": [
+      "cifar10-79",
+      "cifar10-81",
+      "cifar10-83",
+      "cifar10-85",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 207,
+    "time": 12420.0,
+    "retained": [
+      "cifar10-79",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-83",
+      "cifar10-85",
+      "cifar10-81"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 208,
+    "time": 12480.0,
+    "retained": [
+      "cifar10-83",
+      "cifar10-85",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-90",
+      "cifar10-81"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 209,
+    "time": 12540.0,
+    "retained": [
+      "cifar10-81",
+      "cifar10-85",
+      "deepspeech2-59"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-90",
+      "cifar10-83"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 210,
+    "time": 12600.0,
+    "retained": [
+      "cifar10-81",
+      "cifar10-85",
+      "cifar10-90"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-91",
+      "cifar10-83"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 211,
+    "time": 12660.0,
+    "retained": [
+      "cifar10-85",
+      "cifar10-90"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-83",
+      "cifar10-91"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 212,
+    "time": 12720.0,
+    "retained": [
+      "cifar10-83",
+      "cifar10-85",
+      "cifar10-90",
+      "cifar10-91"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-92"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 213,
+    "time": 12780.0,
+    "retained": [
+      "cifar10-83",
+      "cifar10-91"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-90",
+      "cifar10-92",
+      "cifar10-93"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 214,
+    "time": 12840.0,
+    "retained": [
+      "cifar10-90",
+      "cifar10-92"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-91",
+      "cifar10-93"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 215,
+    "time": 12900.0,
+    "retained": [
+      "cifar10-90",
+      "cifar10-91",
+      "cifar10-92",
+      "cifar10-93"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 216,
+    "time": 12960.0,
+    "retained": [
+      "cifar10-90",
+      "cifar10-91",
+      "cifar10-93"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-92"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 217,
+    "time": 13020.0,
+    "retained": [
+      "cifar10-90",
+      "cifar10-91",
+      "cifar10-92",
+      "cifar10-93"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 218,
+    "time": 13080.0,
+    "retained": [
+      "cifar10-90",
+      "cifar10-91",
+      "cifar10-92"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-94",
+      "cifar10-93"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 219,
+    "time": 13140.0,
+    "retained": [
+      "cifar10-91",
+      "cifar10-92",
+      "cifar10-93"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-95",
+      "cifar10-94"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 220,
+    "time": 13200.0,
+    "retained": [
+      "cifar10-93",
+      "cifar10-94"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-96",
+      "cifar10-92",
+      "cifar10-95"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 221,
+    "time": 13260.0,
+    "retained": [
+      "cifar10-92",
+      "cifar10-93",
+      "cifar10-95"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-96",
+      "cifar10-94"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 222,
+    "time": 13320.0,
+    "retained": [
+      "cifar10-93",
+      "cifar10-95",
+      "cifar10-96"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-94",
+      "cifar10-92"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 5
+  },
+  {
+    "round": 223,
+    "time": 13380.0,
+    "retained": [
+      "cifar10-93",
+      "cifar10-96"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-98",
+      "cifar10-92",
+      "cifar10-94",
+      "cifar10-95"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 6
+  },
+  {
+    "round": 224,
+    "time": 13440.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-95"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-96",
+      "cifar10-98"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 225,
+    "time": 13500.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-95",
+      "cifar10-96",
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 226,
+    "time": 13560.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-95",
+      "cifar10-96",
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 227,
+    "time": 13620.0,
+    "retained": [
+      "cifar10-96"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-94",
+      "cifar10-98",
+      "cifar10-95"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 228,
+    "time": 13680.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-95",
+      "cifar10-96"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 229,
+    "time": 13740.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-95"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-96",
+      "cifar10-98"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 230,
+    "time": 13800.0,
+    "retained": [
+      "cifar10-94",
+      "cifar10-95",
+      "cifar10-96",
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 231,
+    "time": 13860.0,
+    "retained": [
+      "cifar10-96"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-98"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 232,
+    "time": 13920.0,
+    "retained": [
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 233,
+    "time": 13980.0,
+    "retained": [
+      "cifar10-98"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 234,
+    "time": 14040.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 235,
+    "time": 14100.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 236,
+    "time": 14160.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 237,
+    "time": 14220.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 238,
+    "time": 14280.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-101"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 239,
+    "time": 14340.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-101"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 240,
+    "time": 14400.0,
+    "retained": [
+      "cifar10-101"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 241,
+    "time": 14460.0,
+    "retained": [
+      "cifar10-101"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-102"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 242,
+    "time": 14520.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "bert-103",
+      "cifar10-101",
+      "cifar10-102"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 243,
+    "time": 14580.0,
+    "retained": [
+      "bert-103",
+      "cifar10-101",
+      "cifar10-102"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-104"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 244,
+    "time": 14640.0,
+    "retained": [
+      "bert-103",
+      "cifar10-101",
+      "cifar10-102"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-104"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 245,
+    "time": 14700.0,
+    "retained": [
+      "cifar10-101",
+      "cifar10-104"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-102",
+      "bert-103"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 246,
+    "time": 14760.0,
+    "retained": [
+      "cifar10-102"
+    ],
+    "evicted": [
+      "bert-103",
+      "cifar10-104"
+    ],
+    "replaced": [
+      "cifar10-101",
+      "bert-103",
+      "cifar10-104"
+    ],
+    "physical_repair": true,
+    "repair_changed_jobs": [
+      "cifar10-101",
+      "cifar10-102",
+      "bert-103",
+      "cifar10-104"
+    ],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 247,
+    "time": 14820.0,
+    "retained": [
+      "cifar10-101",
+      "cifar10-102",
+      "bert-103",
+      "cifar10-104"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-108"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 248,
+    "time": 14880.0,
+    "retained": [
+      "cifar10-101",
+      "bert-103"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-104",
+      "cifar10-108",
+      "cifar10-102"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 5
+  },
+  {
+    "round": 249,
+    "time": 14940.0,
+    "retained": [
+      "bert-103",
+      "cifar10-104",
+      "cifar10-108"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-102"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 250,
+    "time": 15000.0,
+    "retained": [
+      "cifar10-102",
+      "bert-103",
+      "cifar10-104",
+      "cifar10-108"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 251,
+    "time": 15060.0,
+    "retained": [
+      "cifar10-102",
+      "bert-103",
+      "cifar10-104",
+      "cifar10-108"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 252,
+    "time": 15120.0,
+    "retained": [
+      "cifar10-102",
+      "bert-103",
+      "cifar10-104",
+      "cifar10-108"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-111"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 5
+  },
+  {
+    "round": 253,
+    "time": 15180.0,
+    "retained": [
+      "cifar10-104"
+    ],
+    "evicted": [],
+    "replaced": [
+      "bert-103",
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 254,
+    "time": 15240.0,
+    "retained": [
+      "bert-103",
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 255,
+    "time": 15300.0,
+    "retained": [
+      "bert-103",
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 256,
+    "time": 15360.0,
+    "retained": [
+      "bert-103"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 257,
+    "time": 15420.0,
+    "retained": [
+      "bert-103",
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 258,
+    "time": 15480.0,
+    "retained": [
+      "bert-103",
+      "cifar10-108",
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 259,
+    "time": 15540.0,
+    "retained": [
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 260,
+    "time": 15600.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-111"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 261,
+    "time": 15660.0,
+    "retained": [
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 262,
+    "time": 15720.0,
+    "retained": [
+      "cifar10-111"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 263,
+    "time": 15780.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 264,
+    "time": 15840.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 265,
+    "time": 15900.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 266,
+    "time": 15960.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-113"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 267,
+    "time": 16020.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-113"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 268,
+    "time": 16080.0,
+    "retained": [
+      "cifar10-113"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-114"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 269,
+    "time": 16140.0,
+    "retained": [
+      "cifar10-113"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-114"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 270,
+    "time": 16200.0,
+    "retained": [
+      "cifar10-114"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-113"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 271,
+    "time": 16260.0,
+    "retained": [
+      "cifar10-113",
+      "cifar10-114"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 272,
+    "time": 16320.0,
+    "retained": [
+      "cifar10-113"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-114"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 273,
+    "time": 16380.0,
+    "retained": [
+      "cifar10-113",
+      "cifar10-114"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 274,
+    "time": 16440.0,
+    "retained": [
+      "cifar10-114"
+    ],
+    "evicted": [
+      "deepspeech2-115"
+    ],
+    "replaced": [
+      "cifar10-113",
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 275,
+    "time": 16500.0,
+    "retained": [
+      "cifar10-113",
+      "cifar10-114",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 276,
+    "time": 16560.0,
+    "retained": [
+      "cifar10-113",
+      "cifar10-114"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 277,
+    "time": 16620.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-114"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 278,
+    "time": 16680.0,
+    "retained": [
+      "cifar10-114",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 279,
+    "time": 16740.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-117"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 280,
+    "time": 16800.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-118",
+      "cifar10-117"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 281,
+    "time": 16860.0,
+    "retained": [
+      "deepspeech2-115",
+      "cifar10-117"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-118"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 282,
+    "time": 16920.0,
+    "retained": [
+      "cifar10-117",
+      "cifar10-118"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 283,
+    "time": 16980.0,
+    "retained": [
+      "deepspeech2-115",
+      "cifar10-118"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-117"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 284,
+    "time": 17040.0,
+    "retained": [
+      "deepspeech2-115",
+      "cifar10-117",
+      "cifar10-118"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 285,
+    "time": 17100.0,
+    "retained": [
+      "deepspeech2-115",
+      "cifar10-117"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-118"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 286,
+    "time": 17160.0,
+    "retained": [
+      "cifar10-117"
+    ],
+    "evicted": [
+      "cifar10-118"
+    ],
+    "replaced": [
+      "deepspeech2-115",
+      "cifar10-118",
+      "cifar10-120"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 287,
+    "time": 17220.0,
+    "retained": [
+      "deepspeech2-115",
+      "cifar10-117"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-120",
+      "cifar10-118"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 288,
+    "time": 17280.0,
+    "retained": [
+      "cifar10-117",
+      "cifar10-120"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-118",
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 4
+  },
+  {
+    "round": 289,
+    "time": 17340.0,
+    "retained": [
+      "cifar10-117",
+      "cifar10-118",
+      "cifar10-120",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 290,
+    "time": 17400.0,
+    "retained": [
+      "cifar10-118",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-120",
+      "cifar10-122"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 4
+  },
+  {
+    "round": 291,
+    "time": 17460.0,
+    "retained": [
+      "cifar10-120",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-122"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 292,
+    "time": 17520.0,
+    "retained": [
+      "cifar10-120",
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 293,
+    "time": 17580.0,
+    "retained": [
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-120"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 294,
+    "time": 17640.0,
+    "retained": [
+      "cifar10-120",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-122"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 295,
+    "time": 17700.0,
+    "retained": [
+      "cifar10-120",
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 296,
+    "time": 17760.0,
+    "retained": [
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 297,
+    "time": 17820.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-122"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 2
+  },
+  {
+    "round": 298,
+    "time": 17880.0,
+    "retained": [
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 299,
+    "time": 17940.0,
+    "retained": [
+      "cifar10-122",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 300,
+    "time": 18000.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 301,
+    "time": 18060.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 302,
+    "time": 18120.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-124"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 303,
+    "time": 18180.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-124"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 304,
+    "time": 18240.0,
+    "retained": [
+      "cifar10-124",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 305,
+    "time": 18300.0,
+    "retained": [
+      "cifar10-124",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-125"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 306,
+    "time": 18360.0,
+    "retained": [
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-124"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 307,
+    "time": 18420.0,
+    "retained": [
+      "cifar10-124",
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 308,
+    "time": 18480.0,
+    "retained": [
+      "cifar10-124",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-125"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 309,
+    "time": 18540.0,
+    "retained": [
+      "cifar10-124",
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 310,
+    "time": 18600.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-124",
+      "cifar10-125"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 3
+  },
+  {
+    "round": 311,
+    "time": 18660.0,
+    "retained": [
+      "cifar10-124",
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 312,
+    "time": 18720.0,
+    "retained": [
+      "cifar10-124",
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 313,
+    "time": 18780.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-125"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 2
+  },
+  {
+    "round": 314,
+    "time": 18840.0,
+    "retained": [
+      "cifar10-125",
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 315,
+    "time": 18900.0,
+    "retained": [
+      "cifar10-125"
+    ],
+    "evicted": [],
+    "replaced": [
+      "deepspeech2-115"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 316,
+    "time": 18960.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 317,
+    "time": 19020.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 318,
+    "time": 19080.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 319,
+    "time": 19140.0,
+    "retained": [
+      "deepspeech2-115"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 320,
+    "time": 19200.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 321,
+    "time": 19260.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-128"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 322,
+    "time": 19320.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-130",
+      "cifar10-128"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 323,
+    "time": 19380.0,
+    "retained": [
+      "cifar10-128"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-131",
+      "cifar10-130"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 324,
+    "time": 19440.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-130"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-131"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 325,
+    "time": 19500.0,
+    "retained": [
+      "cifar10-130",
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-128"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 326,
+    "time": 19560.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-130"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 327,
+    "time": 19620.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-130"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-131"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 328,
+    "time": 19680.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-130",
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 329,
+    "time": 19740.0,
+    "retained": [
+      "cifar10-130"
+    ],
+    "evicted": [
+      "cifar10-131"
+    ],
+    "replaced": [
+      "cifar10-128",
+      "cifar10-131"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 330,
+    "time": 19800.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-130",
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 331,
+    "time": 19860.0,
+    "retained": [
+      "cifar10-128",
+      "cifar10-130",
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 332,
+    "time": 19920.0,
+    "retained": [
+      "cifar10-131"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-134"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 333,
+    "time": 19980.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-131",
+      "cifar10-134"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 2
+  },
+  {
+    "round": 334,
+    "time": 20040.0,
+    "retained": [
+      "cifar10-131",
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 335,
+    "time": 20100.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 336,
+    "time": 20160.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-134"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 337,
+    "time": 20220.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 338,
+    "time": 20280.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 339,
+    "time": 20340.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 340,
+    "time": 20400.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-134"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 341,
+    "time": 20460.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 342,
+    "time": 20520.0,
+    "retained": [
+      "cifar10-134"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 343,
+    "time": 20580.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-136"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 344,
+    "time": 20640.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-136"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 345,
+    "time": 20700.0,
+    "retained": [
+      "cifar10-136"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-137"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 346,
+    "time": 20760.0,
+    "retained": [
+      "cifar10-136"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-137"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 347,
+    "time": 20820.0,
+    "retained": [
+      "cifar10-137"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-136"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 348,
+    "time": 20880.0,
+    "retained": [
+      "cifar10-136",
+      "cifar10-137"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 349,
+    "time": 20940.0,
+    "retained": [
+      "cifar10-136"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-137"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 350,
+    "time": 21000.0,
+    "retained": [
+      "cifar10-136",
+      "cifar10-137"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 2
+  },
+  {
+    "round": 351,
+    "time": 21060.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-136",
+      "cifar10-137"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 2
+  },
+  {
+    "round": 352,
+    "time": 21120.0,
+    "retained": [
+      "cifar10-136",
+      "cifar10-137"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-138"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 353,
+    "time": 21180.0,
+    "retained": [
+      "cifar10-137"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-138",
+      "cifar10-136"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 3
+  },
+  {
+    "round": 354,
+    "time": 21240.0,
+    "retained": [
+      "cifar10-137",
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [
+      "cifar10-136"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 3
+  },
+  {
+    "round": 355,
+    "time": 21300.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 356,
+    "time": 21360.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 357,
+    "time": 21420.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-138"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 358,
+    "time": 21480.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 359,
+    "time": 21540.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-138"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 360,
+    "time": 21600.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 361,
+    "time": 21660.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 362,
+    "time": 21720.0,
+    "retained": [
+      "cifar10-138"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 363,
+    "time": 21780.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-141"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 364,
+    "time": 21840.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-141"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 365,
+    "time": 21900.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 366,
+    "time": 21960.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 367,
+    "time": 22020.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-141"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 368,
+    "time": 22080.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 369,
+    "time": 22140.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 370,
+    "time": 22200.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 371,
+    "time": 22260.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-141"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 372,
+    "time": 22320.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 373,
+    "time": 22380.0,
+    "retained": [
+      "cifar10-141"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 374,
+    "time": 22440.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 375,
+    "time": 22500.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 376,
+    "time": 22560.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 377,
+    "time": 22620.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 378,
+    "time": 22680.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 379,
+    "time": 22740.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 0
+  },
+  {
+    "round": 380,
+    "time": 22800.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-148"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 381,
+    "time": 22860.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-148"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 382,
+    "time": 22920.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 383,
+    "time": 22980.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 384,
+    "time": 23040.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-148"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 385,
+    "time": 23100.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 386,
+    "time": 23160.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 387,
+    "time": 23220.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 388,
+    "time": 23280.0,
+    "retained": [],
+    "evicted": [],
+    "replaced": [
+      "cifar10-148"
+    ],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 1,
+    "actual_jobs": 1
+  },
+  {
+    "round": 389,
+    "time": 23340.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  },
+  {
+    "round": 390,
+    "time": 23400.0,
+    "retained": [
+      "cifar10-148"
+    ],
+    "evicted": [],
+    "replaced": [],
+    "physical_repair": false,
+    "repair_changed_jobs": [],
+    "identity_swap_groups": 0,
+    "actual_jobs": 1
+  }
+]

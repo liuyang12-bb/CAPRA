@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "all_rounds": 178,
+    "active_rounds": 176
+  },
+  "smart_timing": null,
+  "repair_affected_jobs": {},
+  "repair_fraction_active": 0.0,
+  "opportunity_rounds": {
+    "same_gpu_type": 122,
+    "cpu_complement_same_type": 122,
+    "cpu_complement_selected": 148,
+    "different_application_selected": 148,
+    "cpu_complement_gpu_sum_fits": 109,
+    "cpu_complement_reference_colocated": 100,
+    "pair_gpu_sum_fits": 109,
+    "reference_already_colocated": 101,
+    "one_or_more_locked": 11,
+    "ram_complement_selected": 118,
+    "ram_complement_same_type": 71,
+    "ram_complement_gpu_sum_fits": 69,
+    "ram_complement_reference_colocated": 67,
+    "direct_move_blocked_by_peer_gpu": 82
+  },
+  "opportunity_training_share": {
+    "same_gpu_type": 0.8889345636676367,
+    "cpu_complement_same_type": 0.8889345636676367,
+    "cpu_complement_selected": 0.9772828074122955,
+    "different_application_selected": 0.9772828074122955,
+    "cpu_complement_gpu_sum_fits": 0.8604948020899817,
+    "cpu_complement_reference_colocated": 0.8400817818933157,
+    "pair_gpu_sum_fits": 0.8604948020899817,
+    "reference_already_colocated": 0.841217641522701,
+    "one_or_more_locked": 0.06307807141852641,
+    "ram_complement_selected": 0.9223396544823185,
+    "ram_complement_same_type": 0.6851505284451704,
+    "ram_complement_gpu_sum_fits": 0.6806070899276295,
+    "ram_complement_reference_colocated": 0.677469953808375,
+    "direct_move_blocked_by_peer_gpu": 0.7877997858093271
+  },
+  "application_training_share": {
+    "cifar10": 0.5829880680650361,
+    "bert": 0.027293084237513657,
+    "deepspeech2": 0.38971884769745024
+  },
+  "application_training_gpu_seconds_share": {
+    "cifar10": 0.3599262780907701,
+    "bert": 0.02036567742475967,
+    "deepspeech2": 0.6197080444844703
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

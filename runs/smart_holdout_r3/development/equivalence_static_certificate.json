@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "placement_original_sha256": "de17519bada688f22154adcc358c3855c8d4df95fb984bc15d3513be54d5873e",
+  "gpu_original_sha256": "fc7ea50c2ea94fa7bfadc9db2aa0a010ce356e2ae452a29e028b0b1eb6069979",
+  "quota_path": "ProportionalAllocator.baseline -> proportional -> rho only; no preferred/solve/repair",
+  "gpu_path": "GpuStage.info and lock_constraints do not query responses; choose only proportional validation",
+  "induction": "Equal initial Job/policy states and exact rho=1 at all reachable proportional points imply same GPU inputs/MIP, same deterministic placement and locks, same commit costs/batch and Job.step progress. Equal next state follows; repeat until all complete. A full smart control and R2 P-K control provide preregistered dynamic checks.",
+  "points": 88,
+  "r2_control": {
+    "status": "PASS",
+    "strict": true,
+    "rounds": 182,
+    "semantic_sha256": "373d33fa2ac2c102c62b713152da107dcc12a8ea12093563c101dbfc1df426d2",
+    "source_a": "runs\\ablation_ram_r2\\CAPRA_V2_ABLATION_R2\\w2_dense_original\\SIA-P-K",
+    "source_b": "runs\\ablation_ram_r2\\CAPRA_V2_ABLATION_R2\\w2_dense_cm\\SIA-P-K",
+    "events_a_sha256": "238353e0b36c8bc4581238ead7c403dff335068fc22dea981252b465420b011f",
+    "events_b_sha256": "e393c85808ad64a87d2e413edd3c0d98fe879e6c8ea54ecea043a1fd465079c2",
+    "excluded_exact_keys": [
+      "candidate_seconds",
+      "candidate_timings",
+      "commit_seconds",
+      "decision_seconds",
+      "generation_seconds",
+      "gpu_stage_seconds",
+      "mapping_scoring_seconds",
+      "method",
+      "ram_repair_seconds",
+      "reference_seconds",
+      "response_cache",
+      "scenario_id",
+      "smart_seconds",
+      "version"
+    ]
+  }
+}

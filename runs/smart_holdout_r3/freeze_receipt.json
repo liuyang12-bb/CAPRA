@@ -1,0 +1,13 @@
+{
+  "base_commit": "0876dd916e1b25d2030233826968683da730a55f",
+  "source_snapshot_sha256": "81169cb380c6bb699dd5166f931ded317cf796c63727275a05faad02a115983b",
+  "manifests_sha256": {
+    "configs/experiment_manifest_smart_r3.json": "985c63c70beb67f55d5245cb5be1028a655d5bc693ba328317c4c584e83d1c28",
+    "configs/experiment_manifest_holdout_r3.json": "8ae90d736b92e712b2c0dd3621880b596c7ec1041bd87be2d6e4706abc3f4c07"
+  },
+  "frozen_files": 1055,
+  "protected_files": 2000,
+  "archive_verified": true,
+  "physical_cells": 15,
+  "logical_aliases": 4
+}

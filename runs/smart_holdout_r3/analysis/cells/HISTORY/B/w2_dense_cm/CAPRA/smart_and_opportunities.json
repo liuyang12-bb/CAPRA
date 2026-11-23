@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "all_rounds": 180,
+    "active_rounds": 178
+  },
+  "smart_timing": null,
+  "repair_affected_jobs": {},
+  "repair_fraction_active": 0.0,
+  "opportunity_rounds": {
+    "same_gpu_type": 123,
+    "cpu_complement_same_type": 119,
+    "cpu_complement_selected": 143,
+    "different_application_selected": 146,
+    "cpu_complement_gpu_sum_fits": 102,
+    "cpu_complement_reference_colocated": 89,
+    "pair_gpu_sum_fits": 102,
+    "reference_already_colocated": 90,
+    "one_or_more_locked": 11,
+    "ram_complement_selected": 88,
+    "ram_complement_same_type": 73,
+    "ram_complement_gpu_sum_fits": 68,
+    "ram_complement_reference_colocated": 66,
+    "direct_move_blocked_by_peer_gpu": 68
+  },
+  "opportunity_training_share": {
+    "same_gpu_type": 0.8800609968855404,
+    "cpu_complement_same_type": 0.8743877696075264,
+    "cpu_complement_selected": 0.9645778679520812,
+    "different_application_selected": 0.9690363267468759,
+    "cpu_complement_gpu_sum_fits": 0.82916995128003,
+    "cpu_complement_reference_colocated": 0.807032734133702,
+    "pair_gpu_sum_fits": 0.82916995128003,
+    "reference_already_colocated": 0.8077951952029568,
+    "one_or_more_locked": 0.07371318540727052,
+    "ram_complement_selected": 0.8069035034439979,
+    "ram_complement_same_type": 0.7377780075212261,
+    "ram_complement_gpu_sum_fits": 0.7216370943771727,
+    "ram_complement_reference_colocated": 0.7172432509272302,
+    "direct_move_blocked_by_peer_gpu": 0.7399878523151678
+  },
+  "application_training_share": {
+    "cifar10": 0.582055026427676,
+    "bert": 0.024825215492175083,
+    "deepspeech2": 0.3931197580801489
+  },
+  "application_training_gpu_seconds_share": {
+    "cifar10": 0.37426433870737624,
+    "bert": 0.021490226851191327,
+    "deepspeech2": 0.6042454344414324
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

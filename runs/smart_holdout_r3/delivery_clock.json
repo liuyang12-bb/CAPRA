@@ -1,0 +1,12 @@
+{
+  "worktree_created_unix": 1795417822.2094703,
+  "initial_reading_implementation_since_worktree_seconds": 470.005895614624,
+  "initial_attachment_reading_before_worktree_seconds": null,
+  "initial_attachment_reading_before_worktree_note": "Not instrumented; not invented or silently included in measured interval",
+  "unified_budget_seconds": 7200,
+  "unified_budget_elapsed_seconds": 4582.991809900002,
+  "post_matrix_read_only_analysis_report_seconds": 396.5212285518646,
+  "worktree_to_seal_seconds": 5449.518934011459,
+  "wall_clock_scope": "End-to-end measured from independent worktree creation; preceding initial reading not instrumented",
+  "seal_check_seconds": 24.232521499998256
+}

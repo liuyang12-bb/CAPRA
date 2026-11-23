@@ -1,0 +1,511 @@
+CAPRA R3：Sia smart placement 基线与未使用负载验证
+交给 Codex 的完整执行提示词
+
+请在下面明确的范围内，直接完成代码接入、必要验证、冻结、正式实验、独立审计、分析及交付。普通实现细节自行解决并记录；遇到真实的正确性问题、环境无法对齐或预算耗尽时，保留证据并报告。不要只输出建议或计划。
+
+本任务实际执行15个正式单元，并登记4个经等价性证明复用的逻辑单元。保持当前CAPRA算法冻结，补齐基线并验证负载泛化。集群扩容只做代码范围评估和下一轮方案。
+
+一、唯一基准与任务目标
+
+仓库：https://github.com/liuyang12-bb/CAPRA
+唯一基准：
+0876dd916e1b25d2030233826968683da730a55f
+基准分支：capra/ablation-ram-r2
+
+基于该提交建立独立分支与工作副本，建议分支：
+capra/smart-holdout-r3
+如果名称已被其他工作使用，创建不冲突名称并记录，不覆盖。
+保护用户未提交工作和既有main/v2/R1/R2成果。本轮不改MELD。
+允许新分支本地提交；最终给出提交号和手动推送命令，不自动推送远端。
+
+本轮回答：
+1. 当前SIA-P的fast放置与Sia原有smart放置适配基线差多少？
+2. 对齐Sia原有位置保留能力后，CAPRA还有多少收益？
+3. 当前FKR+ram_slack_v1相对FK的增量，能否在未参与开发的Saturn7/8中延续？
+4. 原响应与冻结CM响应下，收益、个体退化和开销有什么不同？
+5. 下一版应该保持FKR为主，还是采用更简单的FK？
+
+当前主候选：
+CAPRA（F/K/R）+ ram_slack_v1。
+保留CAPRA-FK+ram_slack_v1及SIA-P-K作为强对照。
+本轮不开发新R门控、不调H、不改画像、不增加全局GPU联合搜索、不现场修算法追求胜出。
+
+必须先阅读并核对：
+- R2_README.md
+- docs/CAPRA_R2_DESIGN.md
+- docs/CAPRA_R2_RESULTS.md
+- docs/CAPRA_R2_INTERPRETATION.md
+- docs/NEXT_VALIDATION_PLAN.md
+- runs/ablation_ram_r2/analysis/next_candidate_inputs.json
+- runs/ablation_ram_r2/analysis/source_index.json
+- configs/experiment_manifest_ablation_r2.json
+- configs/experiment_manifest_ram_r2.json
+- src/capra/gpu_stage.py、upstream.py、execution.py、identity.py、costs.py
+- src/capra/placement.py、placement_r2.py、methods_r2.py、ram_slack.py
+- src/capra/runner_r2.py、audit_r2.py、audit_ram_r2.py、inputs.py
+- third_party/sia/sia-simulator/sia.py中的alloc_to_placement系列
+- 适用的AGENTS.md和相关测试。
+
+二、新版本、旧证据与实现边界
+
+建议两阶段版本：
+A：CAPRA_V2_SMART_R3
+B：CAPRA_V2_HOLDOUT_R3
+
+建议独立目录：
+- src/capra/ 下新增smart适配与R3入口/审计模块
+- data/holdout_r3/
+- configs/experiment_manifest_smart_r3.json
+- configs/experiment_manifest_holdout_r3.json
+- runs/smart_holdout_r3/
+- runs/smart_holdout_r3/development/
+- runs/smart_holdout_r3/analysis/
+- docs/CAPRA_R3_BASELINE_SPEC.md
+- docs/CAPRA_R3_DESIGN.md
+- docs/CAPRA_R3_RESULTS.md
+- docs/CAPRA_R3_SCALE_PLAN.md
+- R3_README.md
+
+R2入口不能直接当R3入口使用：runner_r2固定BASE=81b1109，旧freeze/run/audit/analysis有旧版本、旧目录和九格硬编码，audit还会写回。
+新增本轮入口，BASE必须为0876dd9完整SHA，方法与阶段白名单独立校验。
+
+旧原始事件、summary、manifest、输入、源码包和报告全部只读。需要复核旧数据时，用只读解析或复制件审计，不把旧audit/analyze入口指向历史目录。
+建立基准跟踪文件保护清单。优先采用新增文件/薄适配器，保留原算法文件字节。
+如确需共享接入点，限于显式、默认关闭的接口扩展：记录准确diff，保留旧语义，通过固定状态回放验证；不得改GPU目标、锁约束、费用、FKR逻辑或RAM规则。
+不要为了保持一个表面hash约束而用隐蔽全局monkey-patch。
+
+在第一格正式实验前，同时冻结：
+- smart适配规则和源码补丁；
+- 所有方法契约；
+- A/B全部15次真实运行及4个逻辑复用；
+- 两条holdout的筛选规则、实际CSV、源行号和hash；
+- original/CM画像与集群文件；
+- 数值环境、参数、顺序、预算、停止条件；
+- 旧结果引用规则和等价复用规则。
+A结果无论正负，都不允许用于修改B的算法、负载或参数。
+
+三、新增 SIA-SMART-P 的精确契约
+
+方法名：SIA-SMART-P
+报告中的定义：
+“仓库内Sia smart placement在当前单节点、物理恢复锁和比例辅助资源模型下的适配基线”。
+
+不称为官方完整系统的原样复现，不把自定义SIA-P-K等同于它。
+
+1. 只对此方法启用smart
+
+新增只作用于该方法实例的SiaPolicy/GpuStage适配器。
+GPU MIP目标、输入、配置集合、参数、求解器、锁约束和共同费用保持不变。
+每轮仍只进行一次相同形式的GPU MIP求解，不因smart放置失败而重新求一个更有利的GPU计划。
+
+只有SIA-SMART-P使用sia_smart_adapted_v1。
+现有SIA-P、SIA-P-K、Fixed、FK、完整CAPRA继续使用原fast参考路径。
+不得全局把smart_placement设为True，否则CAPRA的F参考也改变了。
+智能放置后仍执行共同物理锁处理、等价节点身份稳定和commit_v2。
+
+2. 预先固定的最小适配
+
+上游smart中的get_job_order当前写成：
+key=lambda x: job_allocs.get(jobname, (0, 0))[1]
+
+这使用外层变量而不是正在排序的任务。
+本轮主基线预先采用最小修正：
+key=lambda x: job_allocs.get(x, (0, 0))[1]
+
+只修变量引用，保持原稳定排序、原输入顺序的平局行为。
+不新增job-id平局策略，不换节点选择或驱逐启发式。
+在新增适配文件中实现，保留原third_party文件字节。
+保存原函数来源、source SHA、适配SHA、逐项补丁和修正理由。
+用固定小状态证明修正实现了按每个任务自身GPU数排序；不跑“有bug/无bug”两套正式矩阵后挑较弱基线。
+
+原optimize使用np.uint32节点余量。smart适配内部使用有符号独立副本，检查每次占用/释放的合法范围，防止无符号下溢掩盖错误。
+有符号防护在有效输入上应保持原数学行为，不改变节点挑选顺序。
+空作业/全零分配、返回类型等机械兼容问题可以做最小防护，准确记录；不改变非空有效任务的决策规则。
+如发现其他会改变放置策略的实质问题，先记录具体最小反例；不要自行设计新smart算法并仍沿用此基线名称。
+
+3. 比例CPU/RAM与候选集合
+
+SIA-SMART-P仅有候选['P']。
+所有非锁任务使用其所在节点真实比例配额：
+cpu_i = node.cpu * g_i / node.gpus
+ram_i = node.ram * g_i / node.gpus
+rho按同一真实画像计算，neutral=false。
+锁定任务配额、节点及剩余恢复时间保持原样。
+
+不调用K、R、NodeAllocator的优化路径、preferred()或RAM repair。
+可以复用经明确映射的比例执行路径，但日志中的用户方法名、placement engine与独立审计契约必须正确。
+不能仅检查rho>=比例下限而放过非比例配额。
+不能把smart替换为F/K评分择优。
+
+4. 恢复锁与共同见证修复
+
+原smart本身不知道CAPRA的恢复锁，碎片处理可能移动已保留任务。
+采用固定处理顺序：
+a. 根据本轮同一个GPU分配结果运行smart；
+b. 检查原始smart任务集合、GPU类型/数量、单节点形状和GPU容量；
+c. raw smart本身合法但与物理恢复锁冲突时，允许使用已存在的SHARED_PHYSICAL_LOCK_REPAIR，采用本轮同一MIP产生的物理放置见证；
+d. GPU类型/数量保持，执行共同identity.reference，然后比例配额和共同commit；
+e. 记录每一步以及修复原因。
+
+raw smart出现非法GPU占用、任务丢失/重复、跨节点违反当前范围或非预期异常时，保存失败并停止；不能偷偷回退fast或K后称smart成功。
+锁冲突的共同见证修复不是smart原生能力，必须单列频率及影响作业。
+不单独减免smart的迁移或重配置费用。
+如果大量轮次由见证替换布局，最终结论必须描述这个适配情况，不把全部行为归给原smart。
+
+四、冻结现有三种对照
+
+本轮holdout四方法规范：
+方法 | 上游放置 | 候选 | 配额
+SIA-SMART-P | sia_smart_adapted_v1 | P | proportional / allocator none
+SIA-P-K | 原fast | F,K | proportional / allocator none
+CAPRA-FK | 原fast | F,K | optimized / ram_slack_v1
+CAPRA | 原fast | F,K,R | optimized / ram_slack_v1
+
+原R2的F/K/R、Phi、H=180、EPS、平局、恢复锁、原节点分配器及RAM补充完全保持。
+FK必须继续真正不计算R，P-K必须继续不优化配额。
+A阶段只新增smart运行，其他方法来自标明版本的历史背景。
+B阶段新跑FK/FKR统一使用修复版，不混入legacy分配器。
+
+以下共同行为不变：
+- 40GPU、6节点、3类GPU，每类型2节点；
+- CPU3/GPU、RAM62.5GB/GPU，原4/8GPU节点和节点ID；
+- 单节点数据并行任务范围；
+- 训练工作量、GPU性能模型、batch规则；
+- interval60、H180、seed0、原求解器及数值线程1；
+- 相同真实恢复费用，aux-only仍按既有模型计零恢复费；
+- 控制器wall与模拟JCT分开，恢复时间计入JCT；
+- 画像倍率只乘一次，GPU画像学习与辅助倍率保持原隔离规则。
+
+五、holdout输入：只使用已经登记的Saturn7/8
+
+源文件：
+third_party/sia/sia-simulator/workloads/saturn/workload-7.csv
+third_party/sia/sia-simulator/workloads/saturn/workload-8.csv
+
+预期源SHA256：
+7：5b5351062076e375bf8fa44c4a60f7b3b06435cac20c23869b1b5f1a5254fc3b
+8：f06dd966a375293e312f6f3c929cb3bcb3827d8edf3e3fe4b61cdd3555653373
+
+先与0876dd9中NEXT_VALIDATION_PLAN和next_candidate_inputs.json核对，实际文件为证据，不用本提示词替代核验。
+
+固定筛选：
+- 应用属于现有支持集合cifar10/imagenet/bert/deepspeech2；
+- 原请求num_replicas为1..8；
+- 按原time，再按原始行号排序；
+- 取前80个合格作业；
+- 所有原始字段、任务名和到达时间保持不变；
+- 不压缩到达、不重采样、不复制任务凑数、不替换应用。
+
+预期核查：
+Saturn7：83条合格，前80为71CIFAR/5DS/4BERT，首末到达225/22771。
+Saturn8：85条合格，前80为71CIFAR/8DS/1BERT，首末到达90/22529。
+
+生成到data/holdout_r3/独立目录，记录源行号、源/派生CSV和生成器hash。
+已有同名文件若字节不同则拒绝覆盖并说明冲突。
+若来源不符或不足80，记录具体问题，不换更有利文件。
+
+两个画像条件直接引用：
+- data/scenarios_r1/responses_original.json
+- data/scenarios_r1/responses_cm.json
+集群直接引用data/scenarios_r1/cluster_cpu3.json。
+不修改任何画像值、参考点、轴、插值或敏感度角色。
+original和CM是两种冻结环境；它们之间改变多项响应，不能称为严格RAM单因素消融。
+这两条负载属于同一Saturn来源族，称“未参与当前开发的负载验证”，不夸大为跨多来源生产验证。
+
+六、预注册等价复用：省去四次确定性重复
+
+本轮采用15次实际正式运行、19个目标逻辑格。
+四个holdout CM比例基线仅在以下门槛全部通过时，从对应original实际运行复用。
+
+适用方法仅为SIA-SMART-P和SIA-P-K。FK/FKR绝不适用。
+
+必须形成独立等价性说明和机器核对：
+1. CPU3集群每个节点比例为3CPU/GPU、62.5GB/GPU。
+2. 两画像在全部涉及应用、合法GPU数量的比例点上合法，rho实际求值相同且为1；轴和合法域相同。仅在容差内近似相等不能单独作为严格轨迹等价的证明，不为通过复用门槛增加数值截断或改变画像求值。
+3. 比例方法没有读取非比例画像偏好、节点优化、RAM修复或其他可能改变决策的分支。
+4. 相同输入状态下GPU阶段、放置、费用、锁及执行都相同；由此给出逐轮状态相同的归纳论证。
+5. A阶段W2 original/CM的SIA-SMART-P完整实际语义轨迹严格一致。
+6. 保留R2中P-K original/CM控制证据，并验证新入口未改变P-K路径。
+7. 每次holdout比例真实运行中，审计全部候选和执行配额确实比例、rho=1，没有额外画像依赖。
+
+完整语义控制比较逐作业完成、等待、训练、恢复、进度，以及逐轮GPU分配/位置、候选、锁、batch、费用和执行分段。
+仅排除wall、缓存、路径、画像源hash、场景/版本标识等元数据，不排除会影响实际调度的字段。
+
+CM逻辑行必须标记：
+executed=false
+result_origin=EQUIVALENCE_REUSED
+source_run_id/source_path/source_input_hash/source_events_hash
+source_profile=original及其hash
+target_profile=CM及其hash
+equivalence_certificate_sha256
+
+不复制原始日志冒充新执行，不改写source start.json。
+语义指标可经证明复用；wall和组件耗时只能标“源original运行观测/复用”，不能写成CM重新测量。
+等价性门槛失败时停止并报告；不继续复用，也不自动把15次扩展为19次。
+规则必须在第一格正式运行前冻结，不能看到某格结果后临时决定复用。
+
+七、严格15次正式运行顺序
+
+A使用旧W2/W6 dense CSV；B使用新Saturn7/8原到达CSV。
+A/B都用相同CPU3集群。
+
+序号 | 阶段 | 负载 | 响应 | 方法 | allocator
+1 | A | w2_dense | original | SIA-SMART-P | none
+2 | A | w2_dense | CM | SIA-SMART-P | none
+3 | A | w6_dense | original | SIA-SMART-P | none
+4 | B | saturn7_supported80 | original | SIA-SMART-P | none
+5 | B | saturn7_supported80 | original | SIA-P-K | none
+6 | B | saturn7_supported80 | original | CAPRA-FK | ram_slack_v1
+7 | B | saturn7_supported80 | original | CAPRA | ram_slack_v1
+8 | B | saturn7_supported80 | CM | CAPRA-FK | ram_slack_v1
+9 | B | saturn7_supported80 | CM | CAPRA | ram_slack_v1
+10 | B | saturn8_supported80 | original | CAPRA | ram_slack_v1
+11 | B | saturn8_supported80 | original | CAPRA-FK | ram_slack_v1
+12 | B | saturn8_supported80 | original | SIA-P-K | none
+13 | B | saturn8_supported80 | original | SIA-SMART-P | none
+14 | B | saturn8_supported80 | CM | CAPRA | ram_slack_v1
+15 | B | saturn8_supported80 | CM | CAPRA-FK | ram_slack_v1
+
+Saturn8预先反转方法次序，避免始终同一种方法最先/最后运行；不据运行结果改顺序。
+第1/2格结束后做smart完整语义控制，控制失败则停止剩余矩阵。
+性能输赢不属于停止或改变B的理由。
+
+四个逻辑复用：
+- Saturn7/CM/SIA-SMART-P ← 第4格
+- Saturn7/CM/SIA-P-K ← 第5格
+- Saturn8/CM/SIA-SMART-P ← 第13格
+- Saturn8/CM/SIA-P-K ← 第12格
+
+真实新增正式执行：15格×80=1200次作业执行。
+本轮登记逻辑目标：A3+B16=19格，其中4格等价复用。
+历史背景引用另外列出，不计入这15次。
+不得将19×80包装为1520次新增执行或独立样本。
+短验证、测试内部模拟调用、失败和未运行状态另列。
+
+八、A阶段历史结果复用及版本说明
+
+A用于补齐当前已知场景的smart基线：
+- smart vs当前SIA-P：检查上游放置方式差异；
+- smart vs当前SIA-P-K：检查自定义K与原生smart适配的差异；
+- CAPRA/FK vs smart：检查已有资源方案相对该基线还剩多少收益。
+
+历史数据从0876dd9已保存的R1/R2证据中只读引用，记录真实源提交/run version/allocator mode/input hash。
+W2/W6原画像的旧FK/FKR结果含legacy版本，不改标签成新修复版。
+本轮默认将它们作为明确标注的旧版本背景；主修复版泛化结论以B为准，不为了“统一标签”补跑旧矩阵。
+CM可引用R2修复版Fixed/FK/FKR，以及既有比例背景。
+若另行说明原画像下RAM修复无操作，必须给出结构性依据和固定状态验证，仍保留历史来源；不能把少数快照一致写成全轨迹重跑成功。
+
+九、最小必要验证，避免额外扩矩阵
+
+先登记验证清单和固定状态，再执行：
+1. smart排序变量修正、同GPU数稳定排序。
+2. 未变配置位置保留、新增/变化任务、满节点任务、碎片驱逐、多任务重新装箱。
+3. 空/零分配、有符号余量、任务不丢不重、单节点形状、GPU容量。
+4. smart移动恢复锁时共同见证修复；不重置剩余恢复时间、不重复收费。
+5. 非法raw smart不得假装通过，不允许隐式fast/K回退。
+6. 调用隔离：smart没有K/R/辅助优化；P-K没有辅助优化；FK没有R；非smart方法不走smart。
+7. 在固定MIP分配结果上对fast/smart分别放置，只改变物理位置，不改变GPU类型/数量/节点数及batch。
+8. 对既有R2日志按预先固定规则选少量状态：前2/后2非空轮、首次K/R选中、首次锁、首次K不可行，去重。新入口的旧方法语义与R2记录一致，排除计时缓存。不启动整条旧负载重跑。
+9. holdout源hash、行号、字段、到达和80作业数核验。
+10. original/CM比例点和代码依赖核验；R2比例控制证据核验。
+11. 新审计的拒绝性：错误engine、非比例配额、缺失修复记录、错误GPU计划应失败。
+
+沿用与本次改动相关的既有测试；旧RAM证明可复核既有证据，不无条件重做整套大量状态回放。
+必要短端到端冒烟最多2次，每次最多12作业、30轮、runner90秒/外层120秒：
+- 用已开发W2 dense original测试SIA-SMART-P；
+- 用已开发W2 dense CM测试新入口下CAPRA+ram_slack_v1兼容。
+不要用Saturn7/8正式性能来调试/选择策略。
+所有冒烟和测试内Job.step/runner调用均登记；未完成整体JCT为空，不进入正式主表。
+
+十、原始日志和独立审计
+
+逐格记录：
+base_commit=0876dd9完整SHA、phase_version、方法规范、源码包SHA、manifest SHA、
+placement engine、原smart源码SHA/适配补丁SHA、sort_fix、signed_capacity、
+candidate_labels、quota_mode、allocator_mode、ram_repair_enabled、
+实际workload/cluster/responses的绝对及仓库相对路径和hash、
+Python/依赖/求解器、seed/线程、费用、单格及总预算。
+
+smart每轮额外记录：
+- smart收到的本轮GPU分配：类型、数量、节点数；
+- prev placements与初始节点容量；
+- raw_smart_plan；
+- 保留/驱逐/重新放置的任务；
+- raw合法性；
+- 共同物理见证修复前后与原因；
+- 身份稳定映射前后；
+- 最终实际allocation；
+- smart耗时、修复计数、R/aux调用隔离信息。
+
+原raw_sia_plan在旧方法中对应fast输出，新方法必须明确engine，不能混淆“GPU分配”和“节点放置”的字段含义。
+最终GPU配置/位置、batch、锁、费用与进度仍按现有方式完整记录。
+
+新增独立audit_r3：
+- 使用独立字面方法白名单，不默认把未知方法当FKR；
+- smart只有P，P-K只有F/K，FK只有F/K，CAPRA有F/K/R；
+- P-only没有F时relative_to_F按约定为空，不放宽其他方法的F保底；
+- raw smart与最终锁修复后的可行性分别检查；
+- smart修复只能使用共同同轮见证，GPU配置不变；
+- 比例任务CPU/RAM精确比例及rho重算；
+- 现有锁、费用、身份映射、batch、一次倍率、进度和JCT账本检查继续保留；
+- FK/RAM等旧契约和有限界不削弱；
+- 审计不调用被审调度/repair函数充当自己的正确性依据；
+- 当前输出写到R3目录，旧输入/历史结果的hash前后保持；
+- 4个复用逻辑格严格核对源hash、适用方法、证明和完成状态，源未完整完成时不能伪造目标完整结果。
+
+十一、预算与运行边界
+
+初步代码实现和设计完成后，在首次准备测试/离线状态验证之前建立一次7200秒（120分钟）的连续单调时钟预算。
+覆盖测试、快照、短冒烟、必要修正重验、输入核验、冻结、A/B全部正式执行、逐格审计、写盘和所属进程清理。
+A/B不重置，不沿用R2的旧deadline。
+前期阅读/初步开发与矩阵结束后的纯离线报告时间单列，同时给端到端总时间。
+全局deadline对测试、快照回放、冒烟、冻结、正式运行及独立审计的所有计算子进程统一生效；父进程为每个命令设置不超过剩余预算减清理预留的超时，并管理所属进程树。任何阶段预算不足即停止，不等到下一格开始才检查。
+矩阵结束后的纯离线分析、绘图和报告可以单列用时，但不得借此启动新的模拟、状态回放或修改冻结运行结果。
+
+按历史同机wall，本轮15格可按约60–90分钟正式模拟量规划，但这只是估计，不作为完成保证。
+禁止压缩holdout到达时间来迎合预算。
+
+正式格：
+- 每格runner上限900秒，外层所属树960秒，最多6000轮；
+- 实际限额受全局剩余时间约束，预留至少30秒清理；
+- 串行运行，不并行争用CPU污染决策开销；
+- 相同Python/依赖锁/HiGHS及线程；无法对齐时说明影响，不把环境差异当算法收益；
+- 保留STOP_REQUEST、30轮无进展、连续3次非空决策超过30秒等原停止规则；无进展计数沿用原实现仅在所有作业均已到达后生效，不把等待未来到达的空闲误判为失败；
+- 只终止本轮所属进程树，不按python进程名清理其他工作；
+- 继承正确的Windows Job Object机制；其他系统使用对应所属进程组方案并验证。
+
+正式算法/输入/审计失败后，保存错误和剩余NOT_RUN，停止后续正式格。
+到时保存全部完成/未完成/未运行状态，不自动续开预算、重试、改输入或删失败。
+本轮不登记自动正式重试。
+报告/画图的纯后处理错误可离线修复并留修订记录，不能改原始事件。
+不完整80/80的格不能用部分完成任务平均值冒充整体mean/P50/P95/P99/makespan。
+
+每格开始和结束输出阶段、序号/15、场景、方法、完成数、审计、已用/剩余预算。
+运行中持续反馈进度，不长时间只显示“正在运行”；沿用每20轮输出，并约每分钟给出有信息的状态。
+不把未完成阶段的暂时领先当正式结果。
+
+十二、主要结果与机制分析
+
+改善率=100*(1-method/baseline)，正为更快。
+每个负载/画像分别报告，不混合不同条件挑一个最大百分比代表全部。
+所有新/历史/等价复用都有source index；复用不构成新增独立样本。
+
+A报告：
+- smart vs SIA-P；
+- smart vs SIA-P-K；
+- 现有FK/FKR vs smart，明确legacy/修复版来源；
+- smart original/CM严格语义控制；
+- smart原始输出被共同见证修复的频率和影响范围。
+
+B每个Saturn7/8、original/CM逻辑环境展示四方法：
+SIA-SMART-P、SIA-P-K、CAPRA-FK+repair、CAPRA+repair。
+核心比较：
+1. FKR / SIA-SMART-P；
+2. FK / SIA-SMART-P；
+3. FK / SIA-P-K；
+4. FKR / SIA-P-K；
+5. FKR / FK；
+6. SIA-SMART-P / SIA-P-K。
+方法间比较必须使用同一画像。FK/FKR等资源优化方法相互比较时，保持allocator版本一致；比例基线按其契约使用allocator none，不因此排除它们与优化方法的主比较。跨画像只讨论预先声明的环境差异。
+
+每格必须包括：
+- 新执行/历史引用/等价复用身份；
+- completed、total、status、censored；
+- mean/P50/P95/P99 JCT、makespan；
+- 等待、训练、恢复及恒等式；
+- 每应用mean JCT；
+- 逐作业快/平/慢、绝对变化、相对基线JCT比值P95/max；
+- 最严重相对和绝对退化案例的时间账本；
+- 非空决策median/P95/max、>5秒次数、整格wall；
+- smart、MIP/共同GPU阶段、候选F/K/R、RAM补充等已有可测分项；
+- 嵌套计时关系，不能重复加和；旧缺失分项标不可得；
+- 所有轮统计另列，CM比例别名计时注明源original观测；
+- 迁移、纯节点迁移、GPU配置变化、aux更新、实际恢复；
+- smart原始保留/驱逐/修复次数；
+- F/K/R可行/选择、Phi与未扣恢复sum-rho；
+- 实际训练加权rho、rho/rho_prop、超比例训练份额；
+- CPU/RAM条件增益及正增益训练份额；
+- RAM补充实际更新、参与实际训练份额、终局闲置RAM剩余可改善机会；
+- 各应用训练/GPU时间份额、任务同时入选/同类型/可装入同节点/锁/参考已同机等既有机会统计。
+
+资源占用积分包含恢复，不称硬件忙碌利用率。
+条件差不能相加当总体收益，账本差不是严格组件因果占比。
+R选择次数不代表最终贡献百分比，mean JCT改善不等于makespan或吞吐同比改善。
+两个未使用trace、同trace派生画像、同方法重复/复用不能当成大量独立工作负载。
+此轮不追加种子、不制造显著性；重点展示完整固定对照和适用边界。
+
+十三、结果出来后要给出的研究判断
+
+必须用实际数字回答：
+1. 当前相对fast SIA-P的改善中，补齐smart后还保留多少？
+2. CAPRA相对两个稳定放置比例基线的增量是否一致？
+3. R在两个未使用负载中是否仍有价值，是否仅出现在CM？
+4. 收益是否伴随严重个体退化或过大控制开销？
+5. smart是否频繁依赖共同物理修复，影响其代表性？
+6. 下一步应保留FKR为主、转向FK为主，还是先解决尚未解释的问题？
+
+不设“必须达到某个百分比”的成功门槛，不要求每格获胜。
+如果smart消解大部分原有改善，应明确报告。
+如果FK在多数条件更合算，可以建议简化，不能为保住FKR而重选数据。
+如果FKR在冻结CM和新trace上保持额外收益，说明可支持的范围。
+如果缺少可组合任务、GPU类型/数量阻断机会，利用现有轨迹解释，不修改负载重新跑。
+本轮只提出算法选择建议，不在看结果后自动删R、改H或加入门控再测。
+
+十四、规模扩展只交付审查与下一轮方案
+
+保持本轮40GPU/6节点、每格80作业不变。
+生成CAPRA_R3_SCALE_PLAN.md，至少列明：
+- 当前每类型最多两节点的GPU可行性DP限制；
+- identity中的两节点交换/等价组限制；
+- 锁见证、节点ID、每节点GPU数、缓存键、资源分配调用与候选开销的范围；
+- 扩到每类型4/8节点，即总80/160GPU时，哪些模块要改、哪些可直接复用；
+- 工作负载规模和到达强度如何与容量一起控制，避免扩GPU后只是负载过轻；
+- 单节点作业的集群扩容与跨节点训练是不同问题；
+- 一个最小、可验收的后续扩容实施方案及所需实验、预算估算。
+
+本轮不实现新多节点装箱算法、不扩GPU、不加入跨节点/流水线任务、不启动规模矩阵。
+外部资源感知基线、画像误差、恢复成本敏感性可以列下一步优先级，不混进本轮。
+现有合成敏感度作为冻结受控模型使用，准确说明假设即可，不把更换数据来源作为本轮额外前置任务。
+
+十五、完整交付和验收
+
+新分支交付：
+1. 本提示词原文、BASELINE_SPEC和R3设计说明。
+2. smart原函数来源、精确最小补丁、新适配代码及hash。
+3. 旧算法默认路径保持说明、固定状态兼容回放结果。
+4. 两条holdout派生CSV、源行索引、来源/生成器hash。
+5. A/B两份manifest、可恢复源码快照、依赖/环境记录。
+6. 15个物理运行与4个逻辑复用的独立清单。
+7. 比例等价性证明、静态核验、A实测语义控制、复用证据索引。
+8. 每格原始events/start/termination/process/per_job/summary和独立审计。
+9. results.csv/json、comparisons.csv/json、paired_jobs、worst_cases、source_index。
+10. 智能放置原始/修复/身份映射统计、资源机会与开销分析。
+11. 中文CAPRA_R3_RESULTS.md，按A基线、B泛化、尾部、开销、范围组织。
+12. 至少三张由真实CSV生成的图：
+    a. 已有场景补smart后的平均JCT；
+    b. Saturn7/8×original/CM四方法主结果，复用格明显标记；
+    c. FKR相对FK的收益与开销，附尾部或个体退化。
+    导出PNG/PDF，检查中文字体、标题、图例、裁切和对应数据。
+13. CAPRA_R3_SCALE_PLAN.md及论文现有结论/待补证据清单。
+14. 统一预算、端到端时间、全部模拟调用、失败及进程清理回执。
+15. 证据hash、历史保护核对、分支、提交和手动推送命令。
+
+源码包、manifest、start和结果索引使用真实无循环引用：源码包不包含声称覆盖自身hash的清单，manifest指源码包，start指manifest。
+不要通过改写旧元数据制造“同版本”。
+新增分析脚本可在矩阵结束后完善，但不得修改冻结运行代码和原始数据。
+
+完整完成标准：
+- 15/15次物理正式运行、1200/1200次新增作业完成并通过审计；
+- 4个CM比例逻辑格具有完整、通过门槛的等价复用证据；
+- A的smart original/CM完整控制通过；
+- smart无隐式K/R/辅助优化或未声明fallback；
+- 旧CAPRA/P-K路径、数据和历史证据保持；
+- 全部实际运行登记、预算/清理完整；
+- 正负结果、尾部、makespan和开销全部保留；
+- 报告回答基线、泛化、R价值与下一步选择问题。
+
+未完整达到时，准确交付已完成、失败和剩余NOT_RUN，不写成全部成功。
+提前停止时仅对已有、通过审计且满足比较条件的数据生成结论和图；缺失比较标记“证据不足/未运行”。不为满足图表数量补跑，不用未完成格、复用占位或虚构数据填满主图。三张图及完整四条件比较仅属于完整完成标准。
+最终回复先给主要结果、smart基线变化、四个holdout条件的比较和FK/FKR建议，再给完成数、复用数、尾部/开销、时间、文件和提交。
+
+请按以上范围自主完成，不停留在计划，不自动扩展正式矩阵。

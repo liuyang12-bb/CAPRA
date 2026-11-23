@@ -1,0 +1,344 @@
+[
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 37,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 180,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/SIA-P-K",
+    "round": 181,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 72,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 177,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_original/CAPRA-FK",
+    "round": 178,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 1,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 16,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 20,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 46,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 194,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/SIA-P-K",
+    "round": 195,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 1,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 12,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 46,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 74,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 193,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w6_dense_original/CAPRA-FK",
+    "round": 194,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 37,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 180,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/SIA-P-K",
+    "round": 181,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 38,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 176,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "A/w2_dense_cm/CAPRA-FK",
+    "round": 177,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 38,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 178,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA-FK",
+    "round": 179,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 2,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 3,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 10,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 27,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 30,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 38,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 178,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  },
+  {
+    "source": "B/w2_dense_cm/CAPRA",
+    "round": 179,
+    "status": "PASS",
+    "factory_unchanged_class": true
+  }
+]

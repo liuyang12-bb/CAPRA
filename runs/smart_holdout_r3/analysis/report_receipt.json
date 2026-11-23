@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "wall_seconds": 5.016726999998355,
+  "figures": [
+    "A_smart_baseline",
+    "B_holdout_four_methods",
+    "R_increment_overhead_tail"
+  ],
+  "simulator_calls": 0,
+  "source_csv_sha256": "ee9eab4006413df62ff6d04f43a5f0547a3c117eb95b9fb0d42faf322810d609",
+  "comparisons_csv_sha256": "9f10fd84190c10548c402edc2e5e35e19ed478065400b6e3479bd6a17b4c8a0d"
+}

@@ -1,0 +1,27 @@
+--- vendored:SiaPolicy.alloc_to_placement_smart
++++ smart_r3:adapted_method
+@@ -56,6 +56,7 @@
+                             reclaim_jobs.append(reclaim_jobname)
+                     for reclaim_jobname in reclaim_jobs:
+                         gpus = single_placed_jobs.pop(reclaim_jobname)
++                        self.evicted.append(reclaim_jobname)
+                         # print(f"evicting {reclaim_jobname} -> {gpus}")
+                         for gpu_id in gpus:
+                             node_remaining_gpus[gpu_id] += 1
+@@ -69,7 +70,7 @@
+ 
+         # alloc any single node jobs from first node ID
+         def get_job_order(joblist):
+-            return sorted(joblist, key=lambda x: job_allocs.get(jobname, (0, 0))[1], reverse=True)
++            return sorted(joblist, key=lambda x: job_allocs.get(x, (0, 0))[1], reverse=True)
+         joblist = [
+             jobname for jobname in single_node_jobs if jobname not in single_placed_jobs]
+         # priority queue with prio = ngpus
+@@ -105,6 +106,7 @@
+                 while node_remaining_gpus[reclaim_node_id] < ngpus:
+                     reclaim_jobname = reclaim_jobs.pop(0)
+                     gpus = single_placed_jobs.pop(reclaim_jobname)
++                    self.evicted.append(reclaim_jobname)
+                     # print(f"evicting {reclaim_jobname} -> {gpus}")
+                     for gpu_id in gpus:
+                         node_remaining_gpus[gpu_id] += 1

@@ -1,0 +1,52 @@
+{
+  "counts": {
+    "all_rounds": 182,
+    "active_rounds": 180
+  },
+  "smart_timing": null,
+  "repair_affected_jobs": {},
+  "repair_fraction_active": 0.0,
+  "opportunity_rounds": {
+    "cpu_complement_selected": 151,
+    "different_application_selected": 152,
+    "same_gpu_type": 142,
+    "cpu_complement_same_type": 140,
+    "cpu_complement_gpu_sum_fits": 134,
+    "cpu_complement_reference_colocated": 133,
+    "pair_gpu_sum_fits": 134,
+    "reference_already_colocated": 133,
+    "ram_complement_selected": 131,
+    "ram_complement_reference_colocated": 106,
+    "ram_complement_same_type": 106,
+    "ram_complement_gpu_sum_fits": 106,
+    "direct_move_blocked_by_peer_gpu": 102,
+    "one_or_more_locked": 4
+  },
+  "opportunity_training_share": {
+    "cpu_complement_selected": 0.9726674641148325,
+    "different_application_selected": 0.9737141148325359,
+    "same_gpu_type": 0.9520334928229665,
+    "cpu_complement_same_type": 0.950189393939394,
+    "cpu_complement_gpu_sum_fits": 0.9375199362041468,
+    "cpu_complement_reference_colocated": 0.935725677830941,
+    "pair_gpu_sum_fits": 0.9375199362041468,
+    "reference_already_colocated": 0.935725677830941,
+    "ram_complement_selected": 0.9417962519936204,
+    "ram_complement_reference_colocated": 0.8047348484848484,
+    "ram_complement_same_type": 0.8047348484848484,
+    "ram_complement_gpu_sum_fits": 0.8047348484848484,
+    "direct_move_blocked_by_peer_gpu": 0.8635067783094099,
+    "one_or_more_locked": 0.029086921850079744
+  },
+  "application_training_share": {
+    "cifar10": 0.5756678628389155,
+    "bert": 0.024780701754385966,
+    "deepspeech2": 0.3995514354066986
+  },
+  "application_training_gpu_seconds_share": {
+    "cifar10": 0.3839017497603976,
+    "bert": 0.01878179703688551,
+    "deepspeech2": 0.5973164532027169
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

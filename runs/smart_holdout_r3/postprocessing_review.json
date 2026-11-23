@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "PNG_visual_inspected": 3,
+  "PDF_Poppler_visual_inspected": 3,
+  "Chinese_fonts_titles_legends_cropping": "PASS",
+  "CSV_numeric_matches_JSON": true,
+  "alias_asterisks_and_opaque_hatching": true,
+  "final_A_R_PNGs_identical_to_visually_inspected_version": true,
+  "PDF_font_warning": "FontTools drops unsupported OpenType MERG table; Poppler-rendered Chinese/title glyphs visually verified",
+  "report_only_revisions": [
+    "01_postprocessing_name_error",
+    "02_pdf_alias_hatch"
+  ],
+  "raw_or_frozen_runtime_changes": false,
+  "formal_reruns": 0,
+  "seal_script_revision": "03_seal_readme_quote"
+}

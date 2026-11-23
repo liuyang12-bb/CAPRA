@@ -1,0 +1,132 @@
+"""Thin interface around the official Sia goodput MIP, not a new GPU objective."""
+from copy import copy
+import numpy as np
+import cvxpy as cp
+from .upstream import JobInfo, NodeInfo, APPLICATIONS
+from .smart_r3 import SmartPolicy as SiaPolicy, ENGINE
+import time
+from .contracts import JobGpuPlan, validate
+from .tune import proportional
+
+
+class SmartGpuStage:
+    def __init__(self,nodes,interval,uniform_costs=False):
+        self.uniform_costs=uniform_costs
+        self.nodes=nodes
+        self.types=list(dict.fromkeys(n.gpu_type for n in nodes))
+        self.gpn={t:next(n.gpus for n in nodes if n.gpu_type==t) for t in self.types}
+        self.count={t:sum(n.gpu_type==t for n in nodes) for t in self.types}
+        self.policy=SiaPolicy(project_throughputs=True,sched_interval=interval)
+        self.policy.populate_valid_configs(self.count,self.gpn,{t:1 for t in self.types})
+        self.policy.capra_constraints=self.lock_constraints
+        self.locks={}
+        self.placements=[]
+        self.xputs={}
+        for app in ('cifar10','imagenet','bert','deepspeech2'):
+            self.xputs[app]={}
+            for t in self.types:
+                df=APPLICATIONS[t][app].placements
+                df=df[df.num_replicas==1]
+                self.xputs[app][t]=float(df.local_bsz.max()/df.step_time.max())
+
+    def info(self,job,now):
+        maxrep={t:min(max(2*job.max_profiled_replicas(t),1),self.gpn[t],job.applications[t].max_batch_size//job.applications[t].min_local_bsz) for t in self.types}
+        x=JobInfo({'nvidia.com/gpu':1},{t:job.get_speedup_fn(t) for t in self.types},job.submission_time,job.attained_service,{t:0 for t in self.types},maxrep)
+        x.used_gpu_seconds=job.used_gpu_seconds; x.wasted_gpu_seconds=job.wasted_gpu_seconds
+        x.category=None; x.num_restarts=job.num_restarts or 0; x.num_migrations=job.num_migrations or 0
+        x.age=now-job.submission_time
+        v=self.xputs[job.app_name]
+        x.cluster_throughputs=v
+        x.cluster_throughput_ratios={t:{u:v[t]/v[u] for u in self.types if u!=t} for t in self.types}
+        x.scaling_underway=job.name in self.locks
+        x.scale_unit={t:1 for t in self.types}
+        return x
+
+    def lock_constraints(self,X,names):
+        self.placements=[]
+        if not self.locks:
+            return []
+        # Shared conservative physical-feasibility repair domain: exact locked quotas,
+        # proportional quotas otherwise. Objective and X choices are still official Sia.
+        # This prevents forcing unexecutable aggregate GPU plans while locks borrow aux.
+        constraints=[]
+        for t in self.types:
+            idx=[k for k,c in self.policy.idx_to_config_map.items() if c[0]==t]
+            g=np.array([self.policy.idx_to_config_map[k][2] for k in idx],float)
+            typed=[n for n in self.nodes if n.gpu_type==t]
+            Y=[cp.Variable((len(names),len(idx)),boolean=True) for _ in typed]
+            constraints.append(sum(Y)==X[:,idx])
+            for n,y in zip(typed,Y):
+                constraints.append(cp.sum(cp.multiply(y,g))<=n.gpus)
+                c=np.tile(g*n.cpu/n.gpus,(len(names),1))
+                m=np.tile(g*n.ram/n.gpus,(len(names),1))
+                for j,name in enumerate(names):
+                    if name in self.locks:
+                        a=self.locks[name]
+                        if a.node!=n.id:
+                            constraints.append(y[j,:]==0)
+                        else:
+                            c[j,:]=a.cpu; m[j,:]=a.ram
+                constraints.extend([cp.sum(cp.multiply(y,c))<=n.cpu,cp.sum(cp.multiply(y,m))<=n.ram])
+                self.placements.append((n,idx,g,names,y))
+        return constraints
+
+    def choose(self,jobs,now,current,locks,response):
+        self.policy.smart_records=[];self.policy.mip_calls=0
+        self.locks=dict(locks)
+        active={j.name:j for j in jobs if j.submission_time<=now and j.completion_time is None}
+        if not active:
+            return {},dict(repairs=[],solver_status='NO_JOBS',placement_engine=ENGINE,smart_records=[],mip_calls=0,smart_seconds=0.,raw_valid=True)
+        if self.uniform_costs:
+            from .costs import application_costs
+            table=application_costs(active.values())
+            # Frozen application execution costs are device-independent. Do not guess
+            # an aggregate Sia penalty if a future domain introduces device variation.
+            assert all(len(set(v.values()))==1 for v in table.values())
+            self.policy.restart_costs={k:next(iter(table[j.app_name].values())) for k,j in active.items()}
+        info={k:self.info(j,now) for k,j in active.items()}
+        ni={t:{i:NodeInfo({'nvidia.com/gpu':n.gpus},False) for i,n in enumerate(n for n in self.nodes if n.gpu_type==t)} for t in self.types}
+        prev={k:(a.gpu_type,[int(a.node.rsplit(':',1)[1])]*a.gpus) for k,a in current.items() if k in active}
+        original=self.policy.optimize(info,ni,prev)
+        plan={}
+        for name,(t,ids) in original.items():
+            if not ids:
+                continue
+            assert len(set(ids))==1,'SIA_OUTSIDE_SINGLE_NODE_DOMAIN'
+            p=copy(active[name]);p.current_cluster=t;p.placement=(len(ids),);p.update_local_bsz(p.placement)
+            plan[name]=JobGpuPlan(name,t,len(ids),f'{t}:{ids[0]}',int(p.atomic_bsz),int(p.accum_steps))
+        original_plan=dict(plan)
+        # Raw GPU validity must be established before any shared physical-lock repair.
+        assert len(plan)==sum(v['gpus']>0 for r in self.policy.smart_records for v in r['gpu_allocations'].values())
+        for n in self.nodes:
+            assert sum(p.gpus for p in plan.values() if p.node==n.id)<=n.gpus,'RAW_SMART_GPU_CAPACITY'
+        assert self.policy.mip_calls==1,'SMART_MIP_CALL_COUNT'
+        assert all(r['raw_valid'] for r in self.policy.smart_records)
+        apps={k:active[k].app_name for k in plan}
+        node_map={n.id:n for n in self.nodes}
+        def baseline():return {k:(locks[k] if k in locks else proportional(p,node_map[p.node],response,apps[k])) for k,p in plan.items()}
+        repairs=[]
+        try:
+            # Also require the reference location to match a held physical location.
+            assert all(plan[k].node==a.node for k,a in locks.items())
+            validate(plan,baseline(),self.nodes,locks)
+        except AssertionError:
+            witness={}
+            for n,idx,g,names,y in self.placements:
+                assert y.value is not None
+                for j,k in enumerate(names):
+                    for c,gpus in enumerate(g):
+                        if y.value[j,c]>0.5:
+                            assert k not in witness
+                            witness[k]=n.id
+            assert set(witness)==set(plan),'NO_COMPLETE_PHYSICAL_WITNESS'
+            from dataclasses import replace
+            plan={k:replace(p,node=witness[k]) for k,p in plan.items()}
+            validate(plan,baseline(),self.nodes,locks)
+            repairs.append(dict(reason='SHARED_PHYSICAL_LOCK_REPAIR',before={k:p.node for k,p in original_plan.items()},after=witness))
+        witness_log=[]
+        for n,idx,g,names,y in self.placements:
+            assert y.value is not None
+            witness_log.extend(dict(job=k,node=n.id,gpu_type=n.gpu_type,gpus=int(g[c]),config_index=int(idx[c])) for j,k in enumerate(names) for c in range(len(idx)) if y.value[j,c]>0.5)
+        return plan,dict(placement_engine=ENGINE,smart_records=self.policy.smart_records,mip_calls=self.policy.mip_calls,raw_valid=True,
+            smart_seconds=sum(r['smart_seconds'] for r in self.policy.smart_records),same_mip_physical_witness=witness_log,repairs=repairs,solver_status=self.policy.capra_solver_status,solver_objective=float(self.policy.capra_solver_objective),physical_lock_constraints=bool(locks),original_sia_plan={k:dict(gpu_type=p.gpu_type,gpus=p.gpus,node=p.node) for k,p in original_plan.items()})

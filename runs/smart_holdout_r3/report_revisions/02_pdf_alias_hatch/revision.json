@@ -1,0 +1,5 @@
+{
+  "reason": "PDF rendering showed one alias hatch invisible; set explicit opaque edge color and denser hatch, retaining asterisk markers",
+  "raw_changes": false,
+  "formal_reruns": 0
+}

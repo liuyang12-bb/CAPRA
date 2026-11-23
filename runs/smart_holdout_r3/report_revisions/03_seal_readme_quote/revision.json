@@ -1,0 +1,7 @@
+{
+  "reason": "Final metadata seal script SyntaxError due to embedded quotes in generated README command; use triple-quoted literal",
+  "verification_had_not_started": true,
+  "raw_changes": false,
+  "frozen_runtime_changes": false,
+  "formal_reruns": 0
+}

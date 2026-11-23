@@ -1,0 +1,12 @@
+{
+  "recommendation": "建议下一轮以FK+ram_slack_v1为简洁主版本，保留冻结FKR作扩展强对照。R在四条件的平均JCT增量为+2.46%、+0.17%、+0.24%、−1.44%；三个条件增量很小或为负，Saturn7 original的P99还退化1.70%，而每个条件控制开销都增加。R2开发场景CM的9.21%未在这两条未使用负载中稳定延续；这不证明R无价值，也不自动删除R或加入新门控。当前控制耗时绝对值仍小，不能称不可用或过大。",
+  "R_comparisons": 4,
+  "R_mean_positive_conditions": 3,
+  "R_mean_improvement_percent": [
+    2.4617742096672113,
+    0.17108488985307924,
+    0.24119191549124563,
+    -1.4383910386965404
+  ],
+  "algorithm_changed_after_results": false
+}

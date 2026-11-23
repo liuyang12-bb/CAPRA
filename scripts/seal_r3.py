@@ -1,0 +1,65 @@
+"""Hash/provenance-only final verification and delivery clock. Never invoke a simulator."""
+import time,zipfile,hashlib,json
+from r3_utils import *
+def main():
+    began=time.perf_counter();protected=load(DEV/'protected_base.json');checked=0
+    for p,h in protected.items():
+        assert sha(ROOT/p)==h,('HISTORY_CHANGED_IN_R3',p)
+        assert sha(Path('D:/科研启航/CAPRA-ablation-ram-r2')/p)==h,('HISTORY_CHANGED_IN_R2_ORIGINAL_TREE',p)
+        checked+=1
+    freeze=load(RUN/'freeze_receipt.json') if (RUN/'freeze_receipt.json').exists() else None
+    manifests=[]
+    if freeze:
+        for mp,h in freeze['manifests_sha256'].items():
+            assert sha(ROOT/mp)==h;m=load(ROOT/mp);assert m['base_commit']==BASE
+            assert sha(ROOT/m['source_snapshot'])==m['source_snapshot_sha256']==freeze['source_snapshot_sha256']
+            for p,v in m['files_sha256'].items():assert sha(ROOT/p)==v,('FROZEN_RUNTIME_CHANGED',p)
+            with zipfile.ZipFile(ROOT/m['source_snapshot']) as z:
+                assert mp not in z.namelist(),'SOURCE_SNAPSHOT_MANIFEST_CYCLE'
+                for p,v in m['files_sha256'].items():assert hashlib.sha256(z.read(p)).hexdigest()==v,('SOURCE_ARCHIVE_CONTENT',p)
+            manifests.append(dict(path=mp,sha256=h,files=len(m['files_sha256'])))
+    rows=load(RUN/'results.json') if (RUN/'results.json').exists() else []
+    calls=load(RUN/'simulation_calls.json');b=ledger();processes=[]
+    for e in b['entries']:
+        if 'cleanup' in e:processes.append(dict(kind=e['kind'],cleanup=e['cleanup']))
+        if e.get('process'):processes.append(dict(kind='formal',cell=e['cell'],cleanup=e['process']['cleanup']))
+    assert all(p['cleanup']['active_after_cleanup']==0 for p in processes)
+    assert calls['formal_executed']==sum(e['kind']=='formal' for e in b['entries'])<=15
+    assert calls['smoke_executed']<=2
+    formal_indices=[e['cell'] for e in b['entries'] if e['kind']=='formal'];assert len(formal_indices)==len(set(formal_indices)), 'FORMAL_RETRY'
+    complete=[r for r in rows if r['status']=='ALL_COMPLETE' and r['audit']=='PASS']
+    for r in complete:
+        d=ROOT/r['output'];s=load(d/'start.json');sm=load(d/'summary.json');a=load(d/'r3_audit.json');term=load(d/'termination.json')
+        assert s['base_commit']==BASE and a['status']=='PASS' and sm['r3_raw_audit']=='PASS' and sm['completed']==sm['total']==80 and term['completed']==80
+        assert sha(ROOT/s['manifest_path']['relative'])==s['manifest_sha256']==r['manifest_sha256']
+        assert s['source_snapshot_sha256']==freeze['source_snapshot_sha256']
+        for k,v in load(d/'output_hashes.json').items():assert sha(d/k)==v
+        for k,v in load(d/'audit_hashes.json').items():assert sha(d/k)==v
+        assert load(d/'process.json')['cleanup']['active_after_cleanup']==0
+    integrity=load(RUN/'analysis/raw_integrity.json')
+    for p,h in integrity['files_sha256'].items():assert sha(ROOT/p)==h
+    aliases=load(RUN/'logical_reuse_results.json') if (RUN/'logical_reuse_results.json').exists() else []
+    for a in aliases:
+        assert a['executed'] is False and a['result_origin']=='EQUIVALENCE_REUSED'
+        cert=RUN/'analysis/equivalence'/f'alias_{a["logical_index"]}.json';assert sha(cert)==a['equivalence_certificate_sha256'];c=load(cert)
+        assert c['status']=='PASS' and c['source_completed']==c['source_total']==80
+        assert sha(ROOT/a['output']/'events.jsonl.gz')==a['source_events_hash']
+    end=next(e for e in reversed(b['entries']) if e['kind']=='budget_end');init=load(DEV/'initial_clock.json')
+    created=init['worktree_created_unix'];budget_start_epoch=__import__('datetime').datetime.fromisoformat(b['start_utc']).timestamp()
+    initial_seconds=budget_start_epoch-created;elapsed=end['elapsed_seconds']
+    now_epoch=time.time();post=now_epoch-(budget_start_epoch+elapsed)
+    clock=dict(worktree_created_unix=created,initial_reading_implementation_since_worktree_seconds=initial_seconds,initial_attachment_reading_before_worktree_seconds=None,initial_attachment_reading_before_worktree_note='Not instrumented; not invented or silently included in measured interval',unified_budget_seconds=7200,unified_budget_elapsed_seconds=elapsed,post_matrix_read_only_analysis_report_seconds=post,worktree_to_seal_seconds=now_epoch-created,wall_clock_scope='End-to-end measured from independent worktree creation; preceding initial reading not instrumented',seal_check_seconds=time.perf_counter()-began)
+    dump(RUN/'delivery_clock.json',clock)
+    result=dict(status='COMPLETE_PASS' if len(complete)==15 and len(aliases)==4 else 'PARTIAL_DELIVERY',base_commit=BASE,branch='capra/smart-holdout-r3',protected_files=checked,original_R2_tree_preserved=True,manifest_checks=manifests,physical_formal_executed=calls['formal_executed'],physical_formal_complete=len(complete),new_complete_job_executions=len(complete)*80,logical_reused=len(aliases),test_job_step_calls=sum(len(x) for x in calls['test_calls']),smoke_calls=calls['smoke_executed'],formal_retries=0,all_owned_descendants_after_cleanup=0,cleanup_receipts=processes,budget_elapsed_seconds=elapsed,budget_within_limit=elapsed<=7200,raw_integrity='PASS',simulator_calls_in_final_check=0,no_remote_push=True)
+    dump(RUN/'final_verification.json',result)
+    note=f"""# CAPRA R3 本地交付入口\n\n状态：{result['status']}。基准 `{BASE}`；分支 `capra/smart-holdout-r3`。正式完整{len(complete)}/15格，新增完整{len(complete)*80}/1200作业执行，CM等价逻辑复用{len(aliases)}/4格。历史版本和原目录保留；本轮未推送。\n\n- [中文结果报告](docs/CAPRA_R3_RESULTS.md)\n- [基线定义](docs/CAPRA_R3_BASELINE_SPEC.md)\n- [预注册设计](docs/CAPRA_R3_DESIGN.md)\n- [smart来源与最小补丁](docs/CAPRA_R3_SMART_PROVENANCE.json)\n- [smart函数补丁](docs/CAPRA_R3_SMART.patch)\n- [新物理结果](runs/smart_holdout_r3/results.csv)\n- [含历史与等价来源的分析](runs/smart_holdout_r3/analysis/results.csv)\n- [逐作业比较及原始来源](runs/smart_holdout_r3/analysis/)\n- [规模审查与下一轮计划，未执行](docs/CAPRA_R3_SCALE_PLAN.md)\n- [最终核对](runs/smart_holdout_r3/final_verification.json)\n- [时间账本](runs/smart_holdout_r3/delivery_clock.json)\n- [源码快照](runs/smart_holdout_r3/source_snapshot.zip)\n- [证据hash](runs/smart_holdout_r3/evidence_hashes.json)\n\n用户手动推送命令：\n\n```powershell\ngit -C "D:/科研启航/CAPRA-smart-holdout-r3" push -u origin capra/smart-holdout-r3\n```\n"""
+    (ROOT/'R3_README.md').write_bytes(note.encode('utf8'))
+    # Preserve an explicit additional-source diff; staged final commit will include exact added bytes.
+    files=[p for p in RUN.rglob('*') if p.is_file() and p.name not in ('evidence_hashes.json','EVIDENCE_INDEX.md')]
+    files += [p for p in (ROOT/'docs').glob('*R3*') if p.is_file()]+list((ROOT/'src/capra').glob('*r3.py'))+list((ROOT/'scripts').glob('*r3.py'))+[ROOT/'tests/test_r3.py',ROOT/'R3_README.md']
+    files += [p for p in (ROOT/'data/holdout_r3').rglob('*') if p.is_file()]+list((ROOT/'configs').glob('*_r3.json'))
+    hashes={p.relative_to(ROOT).as_posix():sha(p) for p in sorted(set(files))}
+    dump(RUN/'evidence_hashes.json',dict(base_commit=BASE,files_sha256=hashes,excludes_self_and_index=True))
+    (RUN/'EVIDENCE_INDEX.md').write_bytes(('## R3 evidence index\n\n'+ '\n'.join(f'- `{p}` SHA256 `{h}`' for p,h in hashes.items())+'\n').encode('utf8'))
+    print(json.dumps(result,ensure_ascii=False))
+if __name__=='__main__':main()

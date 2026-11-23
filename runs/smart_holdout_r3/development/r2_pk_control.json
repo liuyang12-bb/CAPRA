@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "strict": true,
+  "rounds": 182,
+  "semantic_sha256": "373d33fa2ac2c102c62b713152da107dcc12a8ea12093563c101dbfc1df426d2",
+  "source_a": "runs\\ablation_ram_r2\\CAPRA_V2_ABLATION_R2\\w2_dense_original\\SIA-P-K",
+  "source_b": "runs\\ablation_ram_r2\\CAPRA_V2_ABLATION_R2\\w2_dense_cm\\SIA-P-K",
+  "events_a_sha256": "238353e0b36c8bc4581238ead7c403dff335068fc22dea981252b465420b011f",
+  "events_b_sha256": "e393c85808ad64a87d2e413edd3c0d98fe879e6c8ea54ecea043a1fd465079c2",
+  "excluded_exact_keys": [
+    "candidate_seconds",
+    "candidate_timings",
+    "commit_seconds",
+    "decision_seconds",
+    "generation_seconds",
+    "gpu_stage_seconds",
+    "mapping_scoring_seconds",
+    "method",
+    "ram_repair_seconds",
+    "reference_seconds",
+    "response_cache",
+    "scenario_id",
+    "smart_seconds",
+    "version"
+  ]
+}

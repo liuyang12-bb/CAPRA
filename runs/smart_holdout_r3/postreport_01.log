@@ -1,0 +1,9 @@
+MERG NOT subset; don't know how to subset; dropped
+MERG NOT subset; don't know how to subset; dropped
+MERG NOT subset; don't know how to subset; dropped
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-smart-holdout-r3\scripts\report_r3.py", line 131, in <module>
+    if __name__=='__main__':main()
+  File "D:\科研启航\CAPRA-smart-holdout-r3\scripts\report_r3.py", line 126, in main
+    if freeze:text += [f'第一格前同时冻结源码包 `{freeze["source_snapshot_sha256"]}`，{freeze["frozen_files"]}文件；保护基准{freeze["protected_files"]}文件。源码包不含声称覆盖自身hash的manifest，manifest指包，start指manifest；所有新/历史/逻辑复用证据有source_index。']
+NameError: name 'freeze' is not defined

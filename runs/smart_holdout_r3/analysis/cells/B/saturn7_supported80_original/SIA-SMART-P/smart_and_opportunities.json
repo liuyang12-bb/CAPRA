@@ -1,0 +1,63 @@
+{
+  "counts": {
+    "all_rounds": 391,
+    "raw_retained_job_rounds": 775,
+    "raw_evicted_job_events": 8,
+    "raw_replaced_job_rounds": 343,
+    "active_rounds": 344,
+    "raw_smart_cluster_calls": 543,
+    "shared_witness_repair_rounds": 1,
+    "shared_witness_changed_job_rounds": 4
+  },
+  "smart_timing": {
+    "n": 344,
+    "median": 0.0006088500012992881,
+    "p95": 0.0015439450005942485,
+    "max": 0.002106100000673905,
+    "mean": 0.0007108148256203242,
+    "gt5_count": 0,
+    "gt5_fraction": 0.0
+  },
+  "repair_affected_jobs": {
+    "cifar10-101": 1,
+    "cifar10-102": 1,
+    "bert-103": 1,
+    "cifar10-104": 1
+  },
+  "repair_fraction_active": 0.0029069767441860465,
+  "opportunity_rounds": {
+    "different_application_selected": 190,
+    "same_gpu_type": 113,
+    "reference_already_colocated": 55,
+    "pair_gpu_sum_fits": 60,
+    "cpu_complement_same_type": 50,
+    "cpu_complement_selected": 60,
+    "cpu_complement_gpu_sum_fits": 45,
+    "cpu_complement_reference_colocated": 41,
+    "direct_move_blocked_by_peer_gpu": 10,
+    "one_or_more_locked": 3
+  },
+  "opportunity_training_share": {
+    "different_application_selected": 0.7532528077982623,
+    "same_gpu_type": 0.4582962492053401,
+    "reference_already_colocated": 0.20372960372960372,
+    "pair_gpu_sum_fits": 0.2248145793600339,
+    "cpu_complement_same_type": 0.18980716253443528,
+    "cpu_complement_selected": 0.21430387794024158,
+    "cpu_complement_gpu_sum_fits": 0.1751854206399661,
+    "cpu_complement_reference_colocated": 0.15738503920322103,
+    "direct_move_blocked_by_peer_gpu": 0.04305997033269761,
+    "one_or_more_locked": 0.008306844670481034
+  },
+  "application_training_share": {
+    "cifar10": 0.6818817546090273,
+    "deepspeech2": 0.27300275482093667,
+    "bert": 0.045115490570036026
+  },
+  "application_training_gpu_seconds_share": {
+    "cifar10": 0.540019898611835,
+    "deepspeech2": 0.42831288198228074,
+    "bert": 0.0316672194058843
+  },
+  "scope": "Nested descriptive co-selection/type/packing/lock/reference flags, not independent causal contributions. Pair flags use app resource donor/receiver properties; all third tasks fixed for direct moves."
+}

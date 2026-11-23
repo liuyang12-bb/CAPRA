@@ -1,0 +1,44 @@
+{
+  "status": "PASS",
+  "tests": {
+    "tests": 40,
+    "failures": 0,
+    "errors": 0,
+    "job_step_calls": 18,
+    "calls_file": "unit_simulation_calls_01.json"
+  },
+  "offline": {
+    "status": "PASS",
+    "replayed_states": 57,
+    "history_sources_verified": 18,
+    "proportional_points": 88,
+    "job_step_calls": 0,
+    "holdout_workloads": 2
+  },
+  "smoke_calls": 2,
+  "audit_rejections": {
+    "status": "PASS",
+    "cases": [
+      {
+        "case": "wrong_engine",
+        "status": "REJECTED",
+        "error": "AssertionError()"
+      },
+      {
+        "case": "nonproportional",
+        "status": "REJECTED",
+        "error": "AssertionError((1.003, 1.0))"
+      },
+      {
+        "case": "missing_repair",
+        "status": "REJECTED",
+        "error": "AssertionError('MISSING_SMART_REPAIR_RECORD')"
+      },
+      {
+        "case": "wrong_gpu_plan",
+        "status": "REJECTED",
+        "error": "AssertionError()"
+      }
+    ]
+  }
+}
