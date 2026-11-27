@@ -1,0 +1,15 @@
+{
+  "recommendation": "暂定CAPRA-FK+ram_slack_v1为论文主方法，保留冻结FKR作为资源感知重排扩展及完整消融。理由是FK相对Smart在四条件均降低平均JCT，R额外收益三正一负且Saturn8 Original的P99退化10.19%，决策P95约为FK的5.05～7.95倍。R最大决策1.98秒仍低于60秒周期，因此开销并非不可部署的证明；该主方法选择是基于现有证据的稳健收敛建议，不宣称FK在每一项指标上支配FKR，也不否定R在CM下的作用。本轮算法不改。",
+  "priority": "优先1：公平接入Synergy-TUNE外部强基线，先冻结目标、GPU/batch接口、容量/最低配额、恢复锁和执行模型并独立审计；优先2：CPU/RAM画像误差及少量可追溯实测，核验模板转移假设；优先3：按R3_SCALE_PLAN先验证多桶GPU可行性和多节点identity，再开展80GPU/160作业扩容；优先4：R针对性改进，仅依据明确正净机会遗漏或动态反馈反例另立版本。当前未得到正净Phi遗漏证书，不优先扩大R搜索或调H。以上均为建议，R4不执行R5/R6。",
+  "complete_cells": 12,
+  "R_mean_improvements": [
+    0.6300423625913987,
+    1.4166914971422306,
+    -1.3255549423941249,
+    2.2604846848818694
+  ],
+  "R_positive_conditions": 3,
+  "reviewed_small_states": 4,
+  "missed_positive_net_states": 0,
+  "algorithm_changed_in_R4": false
+}

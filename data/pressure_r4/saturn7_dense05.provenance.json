@@ -1,0 +1,527 @@
+{
+  "scenario": "saturn7_dense05",
+  "source": "data/holdout_r3/saturn7_supported80.csv",
+  "source_sha256": "5ac8e101d6fb7c32baf95acc2c8fd8cfee914aef3b43b2c8589325cd4094263a",
+  "output": "data/pressure_r4/saturn7_dense05.csv",
+  "sha256": "44f7ad31cbd3d7b953b547a494c98ae4c9b7258dfcfe98ce5f4e0f82f0a10a4b",
+  "generator_sha256": "fdcc550429df0321f0b816f0509abc830cb9fb1776c932b9d35c8fdfd5bf269d",
+  "rows": 80,
+  "formula": "t0 + Decimal(0.5)*(ti-t0)",
+  "all_non_time_fields_unchanged": true,
+  "row_order_preserved": true,
+  "source_and_derived_row_mapping": [
+    {
+      "source_row": 0,
+      "job": "cifar10-0",
+      "original_time": "225.0",
+      "dense_time": "225"
+    },
+    {
+      "source_row": 1,
+      "job": "cifar10-1",
+      "original_time": "345.0",
+      "dense_time": "285"
+    },
+    {
+      "source_row": 2,
+      "job": "cifar10-3",
+      "original_time": "836.0",
+      "dense_time": "530.5"
+    },
+    {
+      "source_row": 3,
+      "job": "cifar10-6",
+      "original_time": "1659.0",
+      "dense_time": "942"
+    },
+    {
+      "source_row": 4,
+      "job": "deepspeech2-7",
+      "original_time": "1747.0",
+      "dense_time": "986"
+    },
+    {
+      "source_row": 5,
+      "job": "cifar10-8",
+      "original_time": "2106.0",
+      "dense_time": "1165.5"
+    },
+    {
+      "source_row": 6,
+      "job": "deepspeech2-10",
+      "original_time": "2152.0",
+      "dense_time": "1188.5"
+    },
+    {
+      "source_row": 7,
+      "job": "cifar10-12",
+      "original_time": "2371.0",
+      "dense_time": "1298"
+    },
+    {
+      "source_row": 8,
+      "job": "cifar10-13",
+      "original_time": "2501.0",
+      "dense_time": "1363"
+    },
+    {
+      "source_row": 9,
+      "job": "cifar10-15",
+      "original_time": "2892.0",
+      "dense_time": "1558.5"
+    },
+    {
+      "source_row": 10,
+      "job": "cifar10-16",
+      "original_time": "2914.0",
+      "dense_time": "1569.5"
+    },
+    {
+      "source_row": 11,
+      "job": "bert-17",
+      "original_time": "2939.0",
+      "dense_time": "1582"
+    },
+    {
+      "source_row": 12,
+      "job": "cifar10-18",
+      "original_time": "3362.0",
+      "dense_time": "1793.5"
+    },
+    {
+      "source_row": 13,
+      "job": "cifar10-21",
+      "original_time": "4465.0",
+      "dense_time": "2345"
+    },
+    {
+      "source_row": 14,
+      "job": "cifar10-22",
+      "original_time": "4607.0",
+      "dense_time": "2416"
+    },
+    {
+      "source_row": 15,
+      "job": "cifar10-24",
+      "original_time": "4862.0",
+      "dense_time": "2543.5"
+    },
+    {
+      "source_row": 16,
+      "job": "cifar10-32",
+      "original_time": "7089.0",
+      "dense_time": "3657"
+    },
+    {
+      "source_row": 17,
+      "job": "bert-35",
+      "original_time": "7263.0",
+      "dense_time": "3744"
+    },
+    {
+      "source_row": 18,
+      "job": "cifar10-37",
+      "original_time": "7539.0",
+      "dense_time": "3882"
+    },
+    {
+      "source_row": 19,
+      "job": "cifar10-38",
+      "original_time": "7753.0",
+      "dense_time": "3989"
+    },
+    {
+      "source_row": 20,
+      "job": "cifar10-40",
+      "original_time": "8063.0",
+      "dense_time": "4144"
+    },
+    {
+      "source_row": 21,
+      "job": "cifar10-41",
+      "original_time": "8125.0",
+      "dense_time": "4175"
+    },
+    {
+      "source_row": 22,
+      "job": "cifar10-42",
+      "original_time": "8133.0",
+      "dense_time": "4179"
+    },
+    {
+      "source_row": 23,
+      "job": "cifar10-44",
+      "original_time": "8210.0",
+      "dense_time": "4217.5"
+    },
+    {
+      "source_row": 24,
+      "job": "deepspeech2-45",
+      "original_time": "8250.0",
+      "dense_time": "4237.5"
+    },
+    {
+      "source_row": 25,
+      "job": "bert-47",
+      "original_time": "8855.0",
+      "dense_time": "4540"
+    },
+    {
+      "source_row": 26,
+      "job": "cifar10-51",
+      "original_time": "9288.0",
+      "dense_time": "4756.5"
+    },
+    {
+      "source_row": 27,
+      "job": "cifar10-53",
+      "original_time": "9397.0",
+      "dense_time": "4811"
+    },
+    {
+      "source_row": 28,
+      "job": "cifar10-55",
+      "original_time": "9468.0",
+      "dense_time": "4846.5"
+    },
+    {
+      "source_row": 29,
+      "job": "cifar10-56",
+      "original_time": "9579.0",
+      "dense_time": "4902"
+    },
+    {
+      "source_row": 30,
+      "job": "deepspeech2-59",
+      "original_time": "9800.0",
+      "dense_time": "5012.5"
+    },
+    {
+      "source_row": 31,
+      "job": "cifar10-61",
+      "original_time": "10185.0",
+      "dense_time": "5205"
+    },
+    {
+      "source_row": 32,
+      "job": "cifar10-62",
+      "original_time": "10362.0",
+      "dense_time": "5293.5"
+    },
+    {
+      "source_row": 33,
+      "job": "cifar10-63",
+      "original_time": "10643.0",
+      "dense_time": "5434"
+    },
+    {
+      "source_row": 34,
+      "job": "cifar10-64",
+      "original_time": "10655.0",
+      "dense_time": "5440"
+    },
+    {
+      "source_row": 35,
+      "job": "cifar10-65",
+      "original_time": "10661.0",
+      "dense_time": "5443"
+    },
+    {
+      "source_row": 36,
+      "job": "cifar10-66",
+      "original_time": "10672.0",
+      "dense_time": "5448.5"
+    },
+    {
+      "source_row": 37,
+      "job": "cifar10-67",
+      "original_time": "10738.0",
+      "dense_time": "5481.5"
+    },
+    {
+      "source_row": 38,
+      "job": "cifar10-68",
+      "original_time": "10764.0",
+      "dense_time": "5494.5"
+    },
+    {
+      "source_row": 39,
+      "job": "cifar10-72",
+      "original_time": "10979.0",
+      "dense_time": "5602"
+    },
+    {
+      "source_row": 40,
+      "job": "cifar10-73",
+      "original_time": "11146.0",
+      "dense_time": "5685.5"
+    },
+    {
+      "source_row": 41,
+      "job": "cifar10-75",
+      "original_time": "11292.0",
+      "dense_time": "5758.5"
+    },
+    {
+      "source_row": 42,
+      "job": "cifar10-76",
+      "original_time": "11341.0",
+      "dense_time": "5783"
+    },
+    {
+      "source_row": 43,
+      "job": "cifar10-78",
+      "original_time": "11546.0",
+      "dense_time": "5885.5"
+    },
+    {
+      "source_row": 44,
+      "job": "cifar10-79",
+      "original_time": "11713.0",
+      "dense_time": "5969"
+    },
+    {
+      "source_row": 45,
+      "job": "cifar10-81",
+      "original_time": "11962.0",
+      "dense_time": "6093.5"
+    },
+    {
+      "source_row": 46,
+      "job": "cifar10-83",
+      "original_time": "12041.0",
+      "dense_time": "6133"
+    },
+    {
+      "source_row": 47,
+      "job": "cifar10-85",
+      "original_time": "12123.0",
+      "dense_time": "6174"
+    },
+    {
+      "source_row": 48,
+      "job": "cifar10-90",
+      "original_time": "12468.0",
+      "dense_time": "6346.5"
+    },
+    {
+      "source_row": 49,
+      "job": "cifar10-91",
+      "original_time": "12591.0",
+      "dense_time": "6408"
+    },
+    {
+      "source_row": 50,
+      "job": "cifar10-92",
+      "original_time": "12703.0",
+      "dense_time": "6464"
+    },
+    {
+      "source_row": 51,
+      "job": "cifar10-93",
+      "original_time": "12768.0",
+      "dense_time": "6496.5"
+    },
+    {
+      "source_row": 52,
+      "job": "cifar10-94",
+      "original_time": "13043.0",
+      "dense_time": "6634"
+    },
+    {
+      "source_row": 53,
+      "job": "cifar10-95",
+      "original_time": "13115.0",
+      "dense_time": "6670"
+    },
+    {
+      "source_row": 54,
+      "job": "cifar10-96",
+      "original_time": "13157.0",
+      "dense_time": "6691"
+    },
+    {
+      "source_row": 55,
+      "job": "cifar10-98",
+      "original_time": "13323.0",
+      "dense_time": "6774"
+    },
+    {
+      "source_row": 56,
+      "job": "cifar10-101",
+      "original_time": "14246.0",
+      "dense_time": "7235.5"
+    },
+    {
+      "source_row": 57,
+      "job": "cifar10-102",
+      "original_time": "14406.0",
+      "dense_time": "7315.5"
+    },
+    {
+      "source_row": 58,
+      "job": "bert-103",
+      "original_time": "14468.0",
+      "dense_time": "7346.5"
+    },
+    {
+      "source_row": 59,
+      "job": "cifar10-104",
+      "original_time": "14524.0",
+      "dense_time": "7374.5"
+    },
+    {
+      "source_row": 60,
+      "job": "cifar10-108",
+      "original_time": "14797.0",
+      "dense_time": "7511"
+    },
+    {
+      "source_row": 61,
+      "job": "cifar10-111",
+      "original_time": "15069.0",
+      "dense_time": "7647"
+    },
+    {
+      "source_row": 62,
+      "job": "cifar10-113",
+      "original_time": "15937.0",
+      "dense_time": "8081"
+    },
+    {
+      "source_row": 63,
+      "job": "cifar10-114",
+      "original_time": "16041.0",
+      "dense_time": "8133"
+    },
+    {
+      "source_row": 64,
+      "job": "deepspeech2-115",
+      "original_time": "16378.0",
+      "dense_time": "8301.5"
+    },
+    {
+      "source_row": 65,
+      "job": "cifar10-117",
+      "original_time": "16726.0",
+      "dense_time": "8475.5"
+    },
+    {
+      "source_row": 66,
+      "job": "cifar10-118",
+      "original_time": "16795.0",
+      "dense_time": "8510"
+    },
+    {
+      "source_row": 67,
+      "job": "cifar10-120",
+      "original_time": "17138.0",
+      "dense_time": "8681.5"
+    },
+    {
+      "source_row": 68,
+      "job": "cifar10-122",
+      "original_time": "17350.0",
+      "dense_time": "8787.5"
+    },
+    {
+      "source_row": 69,
+      "job": "cifar10-124",
+      "original_time": "18083.0",
+      "dense_time": "9154"
+    },
+    {
+      "source_row": 70,
+      "job": "cifar10-125",
+      "original_time": "18300.0",
+      "dense_time": "9262.5"
+    },
+    {
+      "source_row": 71,
+      "job": "cifar10-128",
+      "original_time": "19208.0",
+      "dense_time": "9716.5"
+    },
+    {
+      "source_row": 72,
+      "job": "cifar10-130",
+      "original_time": "19277.0",
+      "dense_time": "9751"
+    },
+    {
+      "source_row": 73,
+      "job": "cifar10-131",
+      "original_time": "19361.0",
+      "dense_time": "9793"
+    },
+    {
+      "source_row": 74,
+      "job": "cifar10-134",
+      "original_time": "19887.0",
+      "dense_time": "10056"
+    },
+    {
+      "source_row": 75,
+      "job": "cifar10-136",
+      "original_time": "20538.0",
+      "dense_time": "10381.5"
+    },
+    {
+      "source_row": 76,
+      "job": "cifar10-137",
+      "original_time": "20677.0",
+      "dense_time": "10451"
+    },
+    {
+      "source_row": 77,
+      "job": "cifar10-138",
+      "original_time": "21112.0",
+      "dense_time": "10668.5"
+    },
+    {
+      "source_row": 78,
+      "job": "cifar10-141",
+      "original_time": "21747.0",
+      "dense_time": "10986"
+    },
+    {
+      "source_row": 79,
+      "job": "cifar10-148",
+      "original_time": "22771.0",
+      "dense_time": "11498"
+    }
+  ],
+  "first_original": "225",
+  "last_original": "22771",
+  "first_dense": "225",
+  "last_dense": "11498",
+  "original_interarrivals": {
+    "n": 79,
+    "min": 6.0,
+    "median": 174.0,
+    "p95": 909.4999999999999,
+    "max": 2227.0,
+    "mean": 285.39240506329116,
+    "zero_count": 0
+  },
+  "dense_interarrivals": {
+    "n": 79,
+    "min": 3.0,
+    "median": 87.0,
+    "p95": 454.74999999999994,
+    "max": 1113.5,
+    "mean": 142.69620253164558,
+    "zero_count": 0
+  },
+  "applications": {
+    "cifar10": 71,
+    "deepspeech2": 5,
+    "bert": 4
+  },
+  "requested_gpus": {
+    "8": 33,
+    "6": 33,
+    "4": 14
+  },
+  "scope": "Pressure derivative of original R3 holdout, not independent holdout or production record"
+}

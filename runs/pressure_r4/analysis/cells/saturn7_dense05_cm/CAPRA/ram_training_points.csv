@@ -1,0 +1,9 @@
+round,job,application,node,gpus,cpu,ram,rho,training_seconds,extra_ram_this_supplement,legacy_final_ram,nonaxis_ram
+87,deepspeech2-59,deepspeech2,rtx:0,4,4.0,479.17,1.68751,60.0,41.670000000000016,437.5,True
+96,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,35.0,166.68,250.0,True
+97,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,60.0,0,416.68,True
+98,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,60.0,0,416.68,True
+99,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,60.0,0,416.68,True
+105,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,35.0,166.68,250.0,True
+108,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,35.0,166.68,250.0,True
+109,deepspeech2-45,deepspeech2,rtx:1,4,4.0,416.68,1.50004,60.0,0,416.68,True

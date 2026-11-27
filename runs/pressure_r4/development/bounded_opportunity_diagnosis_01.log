@@ -1,0 +1,13 @@
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_original", "method": "SIA-SMART-P", "N": 199, "stages": {"A": 199, "B": 64, "C": 58, "D": 46, "E": 4, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_original", "method": "CAPRA-FK", "N": 195, "stages": {"A": 195, "B": 55, "C": 52, "D": 42, "E": 10, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_original", "method": "CAPRA", "N": 196, "stages": {"A": 196, "B": 56, "C": 50, "D": 40, "E": 6, "F": 3, "G": 1, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_cm", "method": "SIA-SMART-P", "N": 199, "stages": {"A": 199, "B": 99, "C": 78, "D": 62, "E": 4, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_cm", "method": "CAPRA-FK", "N": 195, "stages": {"A": 195, "B": 92, "C": 64, "D": 46, "E": 9, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn7_dense05_cm", "method": "CAPRA", "N": 195, "stages": {"A": 195, "B": 93, "C": 65, "D": 48, "E": 3, "F": 2, "G": 1, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_original", "method": "CAPRA", "N": 195, "stages": {"A": 195, "B": 15, "C": 12, "D": 10, "E": 0, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_original", "method": "CAPRA-FK", "N": 195, "stages": {"A": 195, "B": 14, "C": 14, "D": 9, "E": 1, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_original", "method": "SIA-SMART-P", "N": 198, "stages": {"A": 198, "B": 14, "C": 14, "D": 11, "E": 0, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_cm", "method": "CAPRA", "N": 195, "stages": {"A": 195, "B": 115, "C": 55, "D": 25, "E": 1, "F": 1, "G": 1, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_cm", "method": "CAPRA-FK", "N": 195, "stages": {"A": 195, "B": 114, "C": 54, "D": 29, "E": 1, "F": 0, "G": 0, "H": 0, "I": 0}}
+{"event": "FUNNEL_READY", "scenario": "saturn8_dense05_cm", "method": "SIA-SMART-P", "N": 198, "stages": {"A": 198, "B": 107, "C": 77, "D": 47, "E": 0, "F": 0, "G": 0, "H": 0, "I": 0}}
+R4_BOUNDED_DIAGNOSIS_PASS

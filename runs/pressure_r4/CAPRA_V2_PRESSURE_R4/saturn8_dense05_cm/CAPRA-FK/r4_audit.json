@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "counts": {
+    "rounds": 197,
+    "lock_checks": 3,
+    "start": 80,
+    "migration": 220,
+    "aux_update": 57,
+    "reconfigure": 66
+  },
+  "selected": {
+    "F": 145,
+    "K": 52
+  },
+  "feasible": {
+    "F": 197,
+    "K": 186
+  },
+  "failures": {
+    "K:K_PINNED_GPU_FRAGMENTATION": 11
+  },
+  "raw_rounds": 197
+}

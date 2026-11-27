@@ -1,0 +1,8 @@
+{
+  "status": "ROUND_LIMIT",
+  "rounds": 30,
+  "wall_seconds": 20.859327299986035,
+  "completed": 7,
+  "total": 12,
+  "simulated_seconds": 1800.0
+}

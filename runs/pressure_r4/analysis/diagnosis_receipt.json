@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "wall_seconds": 11.244776999985334,
+  "funnel_cells": 12,
+  "small_states": 4,
+  "enumerated_layouts": 48,
+  "missed_positive_net_states": 0,
+  "cases": 12,
+  "Job_step_calls": 0,
+  "GPU_MIP_calls": 0,
+  "no_global_JCT_optimum_claim": true
+}

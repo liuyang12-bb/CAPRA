@@ -1,0 +1,85 @@
+test_actual_sia_stage_preserves_physical_restore_lock (test_contracts.Contracts) ... D:\科研启航\CAPRA-pressure-opportunity-r4\.venv\lib\site-packages\cvxpy\reductions\solvers\solving_chain_utils.py:30: UserWarning: The problem includes expressions that don't support CPP backend. Defaulting to the SCIPY backend for canonicalization.
+  warnings.warn(UserWarning(
+ok
+test_complementarity_actual_execution_and_migration (test_contracts.Contracts) ... ok
+test_exact_checkpoint_lock_and_complete_result (test_contracts.Contracts) ... ok
+test_independent_environment_and_imports (test_contracts.Contracts) ... ok
+test_neutral_aux_change_no_gain_same_deployment (test_contracts.Contracts) ... ok
+test_partial_return_never_mutates_live_job (test_contracts.Contracts) ... ok
+test_quota_only_update_does_not_migrate (test_contracts.Contracts) ... ok
+test_real_neutral_response_same_fixed_deployment (test_contracts.Contracts) ... ok
+test_rho_once_recovery_and_wait_unscaled (test_contracts.Contracts) ... ok
+test_FK_call_isolation_and_exact_proportion (test_r2.R2Contracts) ... ok
+test_competing_M_deterministic_capacity_and_bound (test_r2.R2Contracts) ... ok
+test_flat_full_saturated_locked_strict_noop (test_r2.R2Contracts) ... ok
+test_floating_capacity_and_cache_isolation (test_r2.R2Contracts) ... ok
+test_known_ram_gap_and_legacy_unchanged (test_r2.R2Contracts) ... ok
+test_three_job_certificate (test_r2.R2Contracts) ... ok
+test_empty_zero_signed_and_illegal_raw (test_r3.SmartTests) ... ok
+test_fast_smart_same_fixed_gpu_config (test_r3.SmartTests) ... ok
+test_independent_witness_accept_reject (test_r3.SmartTests) ... ok
+test_locked_remaining_no_double_charge (test_r3.SmartTests) ... ok
+test_preserve_change_new_full_fragment_repack (test_r3.SmartTests) ... ok
+test_smart_quota_isolation_and_name (test_r3.SmartTests) ... ok
+test_sort_and_stable_ties (test_r3.SmartTests) ... ok
+test_already_colocated_and_locks_do_not_skip_funnel (test_r4.R4Tests) ... ok
+test_exact_decimal_input_and_stable_ties (test_r4.R4Tests) ... ok
+test_method_whitelist_and_no_unknown_fallback (test_r4.R4Tests) ... ok
+test_strict_funnel_full_and_uncovered_protocol (test_r4.R4Tests) ... ok
+test_timing_proxy_semantics_and_FK_R_isolation (test_r4.R4Tests) ... FAIL
+test_arrival_exact_and_other_fields_unchanged (test_scenarios_r1.ScenarioChecks) ... ok
+test_capacity_only_cpu_and_supported_topology (test_scenarios_r1.ScenarioChecks) ... ok
+test_portable_input_and_hash_rejection (test_scenarios_r1.ScenarioChecks) ... ok
+test_response_control_monotonicity_and_cpu_capacity_reference (test_scenarios_r1.ScenarioChecks) ... ok
+test_static_feasible_certificate_and_ram_candidate_gap (test_scenarios_r1.ScenarioChecks) ... ok
+test_bert_reclaims_and_current_vector_is_not_permanent (test_v2_allocator.AllocatorMechanisms) ... ok
+test_coupled_reclaim_is_one_legal_pair (test_v2_allocator.AllocatorMechanisms) ... ok
+test_intermediate_cpu_points_and_locked_peer (test_v2_allocator.AllocatorMechanisms) ... ok
+test_joint_upgrade_not_missed (test_v2_allocator.AllocatorMechanisms) ... ok
+test_query_matches_v1_and_no_lower_clamp_credit (test_v2_allocator.AllocatorMechanisms) ... ok
+test_actual_cifar_cost_and_window_formula (test_v2_costs.CostsAndIdentity) ... ok
+test_prediction_commit_all_transition_kinds (test_v2_costs.CostsAndIdentity) ... ok
+test_swap_cost_lock_and_idempotence (test_v2_costs.CostsAndIdentity) ... ok
+test_type_and_count_change_charge_once_and_lock_commit_retains_remaining (test_v2_costs.CostsAndIdentity) ... ok
+test_common_reference_fixed_stability_and_soft_positions (test_v2_placement.CandidateMechanisms) ... ok
+test_gpu_fragmentation_8_2_2 (test_v2_placement.CandidateMechanisms) ... ok
+test_k_r_failure_returns_existing_complete_f (test_v2_placement.CandidateMechanisms) ... ok
+test_resource_complementarity_and_f_contract (test_v2_placement.CandidateMechanisms) ... ok
+
+======================================================================
+FAIL: test_timing_proxy_semantics_and_FK_R_isolation (test_r4.R4Tests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-pressure-opportunity-r4\tests\test_r4.py", line 30, in test_timing_proxy_semantics_and_FK_R_isolation
+    a,s=old(*args,method=method,allocator_mode=mode).select();p=new(*args,method=method,allocator_mode=mode)
+  File "D:\科研启航\CAPRA-pressure-opportunity-r4\src\capra\placement_r2.py", line 42, in select
+    assert all(x.node==self.plan[k].node for k,x in c['allocations'].items())
+AssertionError
+
+----------------------------------------------------------------------
+Ran 45 tests in 1.918s
+
+FAILED (failures=1)
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Unique configs:
+Configs: {0: ('rtx', 1, 1), 1: ('rtx', 1, 2), 2: ('rtx', 1, 4), 3: ('rtx', 1, 8)}
+Cluster total gpus: {'rtx': 16}
+Realloc factor: bert-0 --> 0.0, age: 0, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 33.39ms = 3.12ms (setup) + 30.27ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Realloc factor: bert-0 --> 0.3333333333333333, age: 60, restart penalty: 120, lost seconds: 0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': ['bert-0']}
+Solver took: 55.88ms = 1.04ms (setup) + 54.84ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active

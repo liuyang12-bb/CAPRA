@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "refs": [
+    "0876dd916e1b25d2030233826968683da730a55f refs/heads/capra/ablation-ram-r2",
+    "5af0bdb6b86b797225908f717b5b9324cd48a539 refs/heads/capra/pressure-opportunity-r4",
+    "81b1109ab1124feeac4e846003f4383b39143fc4 refs/heads/capra/scenarios-r1",
+    "5af0bdb6b86b797225908f717b5b9324cd48a539 refs/heads/capra/smart-holdout-r3",
+    "0b87934ae558960921889b01d14502155fb0c41c refs/heads/capra/v2-20261122",
+    "1f1f07fd2238b395e108f91dbbc224d07c0c8139 refs/heads/main"
+  ],
+  "main_preserved": true,
+  "no_remote_operation": true
+}

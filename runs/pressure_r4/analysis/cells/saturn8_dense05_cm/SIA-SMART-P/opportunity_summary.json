@@ -1,0 +1,27 @@
+{
+  "denominator_nonempty_rounds": 198,
+  "strict_nested_counts": {
+    "A": 198,
+    "B": 107,
+    "C": 77,
+    "D": 47,
+    "E": 0,
+    "F": 0,
+    "G": 0,
+    "H": 0,
+    "I": 0
+  },
+  "nonexclusive_tag_round_counts": {
+    "R_not_generated_by_protocol": 198,
+    "no_same_type_resource_complement": 91,
+    "different_gpu_pool": 168,
+    "pair_gpu_sum_exceeds_node": 65,
+    "already_colocated_in_F_or_K": 71,
+    "direct_move_capacity_cpu": 47,
+    "direct_move_capacity_gpus": 47,
+    "direct_move_capacity_ram": 47,
+    "recovery_lock_blocked": 2
+  },
+  "R_selected_all": 0,
+  "scope": "Strict new-colocation sufficient-certificate funnel; protocol-not-generated is not an algorithm bug"
+}

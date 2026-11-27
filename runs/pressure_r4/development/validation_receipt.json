@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "tests": {
+    "tests": 45,
+    "failures": 0,
+    "errors": 0,
+    "job_step_calls": 18,
+    "calls_file": "unit_simulation_calls_02.json"
+  },
+  "states": {
+    "status": "PASS",
+    "fixed_states": 80,
+    "R3_sources": 12,
+    "job_step_calls": 0,
+    "old_evidence_hashes_verified": true
+  },
+  "closed_loop": {
+    "status": "PASS",
+    "controls": [
+      {
+        "smoke": 1,
+        "status": "PASS",
+        "rounds": 30,
+        "strict_semantic_sha256": "d9868e2fe61794d51be47deddb0523b684431caea3b28ea0323f7690748cf1e5",
+        "R3_events_sha256": "ca26627a12066d5d3449de8ec3610da5a0dea7f9eb3403e1eb27c603a4537e39",
+        "R4_events_sha256": "e7fbb9cdfd9bb7c15d4ffd6a4204c483a29626143b7efff6866814ecb81eebe9",
+        "job_step_new_calls": 0
+      },
+      {
+        "smoke": 2,
+        "status": "PASS",
+        "rounds": 30,
+        "strict_semantic_sha256": "41743a8b9b46de5606b3c62593c5b254291e5830bbbe7bc827f651ff70d1f6a8",
+        "R3_events_sha256": "7d3934da7f9f59abaf07a70aded7b73002e679ae5cd343c2d3f175f1075ac2ca",
+        "R4_events_sha256": "e192aaefe3d9f948c834c2c853cc901fe8c9300438c6fd7e0bc8136d1945beeb",
+        "job_step_new_calls": 0
+      }
+    ],
+    "excluded_exact_keys": [
+      "candidate_seconds",
+      "candidate_timings",
+      "commit_seconds",
+      "decision_seconds",
+      "generation_seconds",
+      "gpu_stage_seconds",
+      "mapping_scoring_seconds",
+      "method",
+      "ram_repair_seconds",
+      "reference_seconds",
+      "response_cache",
+      "scenario_id",
+      "smart_seconds",
+      "version"
+    ],
+    "additional_exclusion": "r4_ read-only timing fields"
+  },
+  "smoke_calls": 2,
+  "rejections": {
+    "status": "PASS",
+    "cases": [
+      {
+        "case": "wrong_engine",
+        "status": "REJECTED",
+        "error": "AssertionError()"
+      },
+      {
+        "case": "nonproportional",
+        "status": "REJECTED",
+        "error": "AssertionError((1.003, 1.0))"
+      },
+      {
+        "case": "missing_repair",
+        "status": "REJECTED",
+        "error": "AssertionError('MISSING_SMART_REPAIR_RECORD')"
+      },
+      {
+        "case": "wrong_gpu_plan",
+        "status": "REJECTED",
+        "error": "AssertionError()"
+      }
+    ]
+  }
+}

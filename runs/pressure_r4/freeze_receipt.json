@@ -1,0 +1,10 @@
+{
+  "base_commit": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "source_snapshot_sha256": "efd43c230a3cb48f48e53a7f1560c4349d4acfebc246c538e18083791c5fc04b",
+  "manifest_sha256": "05bdac6e93be305bf09d6fed5217047facfe9f7362cbebb6bb1339801a2a6440",
+  "manifest": "configs/experiment_manifest_pressure_r4.json",
+  "frozen_files": 1064,
+  "protected_files": 2543,
+  "physical_cells": 12,
+  "archive_verified": true
+}

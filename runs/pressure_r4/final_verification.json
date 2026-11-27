@@ -1,0 +1,265 @@
+{
+  "status": "COMPLETE_PASS",
+  "base_commit": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "branch": "capra/pressure-opportunity-r4",
+  "protected_files": 2543,
+  "R3_original_tree_preserved": true,
+  "historical_worktrees": [
+    {
+      "worktree": "D:\\科研启航\\CAPRA",
+      "commit": "0b87934ae558960921889b01d14502155fb0c41c",
+      "status": "PASS",
+      "tracked_files": 1249
+    },
+    {
+      "worktree": "D:\\科研启航\\CAPRA-scenarios-r1",
+      "commit": "81b1109ab1124feeac4e846003f4383b39143fc4",
+      "status": "PASS",
+      "tracked_files": 1713
+    },
+    {
+      "worktree": "D:\\科研启航\\CAPRA-ablation-ram-r2",
+      "commit": "0876dd916e1b25d2030233826968683da730a55f",
+      "status": "PASS",
+      "tracked_files": 2000
+    },
+    {
+      "worktree": "D:\\科研启航\\CAPRA-smart-holdout-r3",
+      "commit": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+      "status": "PASS",
+      "tracked_files": 2543
+    }
+  ],
+  "formal_physical_executed": 12,
+  "formal_complete": 12,
+  "new_complete_job_executions": 960,
+  "formal_retries": 0,
+  "equivalence_reused_physical_cells": 0,
+  "test_suite_attempts": 2,
+  "unit_Job_step_calls": 36,
+  "smoke_calls": 2,
+  "all_owned_descendants_after_cleanup": 0,
+  "cleanup_receipts": [
+    {
+      "kind": "environment",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "tests",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "tests",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "R3_state_replay",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "derive_inputs",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "owned_tree_validation",
+      "cleanup": {
+        "active_before_cleanup": 4,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "smoke_01",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "smoke_02",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "closed_loop_control",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "audit_rejections",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "freeze",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 1,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 2,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 3,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 4,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 5,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 6,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 7,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 8,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 9,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 10,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 11,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "formal",
+      "cell": 12,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    },
+    {
+      "kind": "bounded_opportunity_diagnosis",
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
+    }
+  ],
+  "budget_elapsed_seconds": 3475.961399300024,
+  "budget_within_limit": true,
+  "diagnosis": {
+    "status": "PASS",
+    "wall_seconds": 11.244776999985334,
+    "funnel_cells": 12,
+    "small_states": 4,
+    "enumerated_layouts": 48,
+    "missed_positive_net_states": 0,
+    "cases": 12,
+    "Job_step_calls": 0,
+    "GPU_MIP_calls": 0,
+    "no_global_JCT_optimum_claim": true
+  },
+  "final_check_simulator_calls": 0,
+  "final_check_state_search_calls": 0,
+  "no_remote_push": true
+}

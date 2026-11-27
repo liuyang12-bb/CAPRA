@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "wall_seconds": 9.025981199985836,
+  "figures": [
+    "pressure_before_after",
+    "opportunity_funnel",
+    "main_jct_tail_cost"
+  ],
+  "CSV_results_sha256": "d9e74fad14914a81fce4ca09d3365d05f2e2a91401d1600b603076ca4b1fad60",
+  "CSV_comparisons_sha256": "800aeb604db807cf54f02920acbb9060282ed04ca64bdf782a48b0bd8b2ca9fa",
+  "simulation_calls": 0,
+  "state_search_calls": 0
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "wall_seconds": 27.19764950001263,
+  "new_cells": 12,
+  "historical_cells": 12,
+  "comparisons": 12,
+  "simulation_calls": 0,
+  "additional_state_search_calls": 0
+}

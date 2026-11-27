@@ -1,0 +1,10 @@
+{
+  "initial_reading_implementation_since_worktree_seconds": 842.4504959583282,
+  "initial_reading_before_worktree_seconds": null,
+  "unified_budget_seconds": 10800,
+  "unified_budget_elapsed_seconds": 3475.961399300024,
+  "post_budget_pure_offline_analysis_report_seconds": 336.96472217328846,
+  "worktree_to_seal_seconds": 4655.376617431641,
+  "scope": "Measured from independent worktree creation; preceding initial attachment reading not instrumented",
+  "final_hash_check_seconds": 3.293029199994635
+}

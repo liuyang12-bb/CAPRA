@@ -1,0 +1,32 @@
+{
+  "denominator_nonempty_rounds": 195,
+  "strict_nested_counts": {
+    "A": 195,
+    "B": 93,
+    "C": 65,
+    "D": 48,
+    "E": 3,
+    "F": 2,
+    "G": 1,
+    "H": 0,
+    "I": 0
+  },
+  "nonexclusive_tag_round_counts": {
+    "R_gross_gain_insufficient": 182,
+    "R_net_phi_not_strictly_higher": 182,
+    "no_same_type_resource_complement": 102,
+    "different_gpu_pool": 142,
+    "already_colocated_in_F_or_K": 65,
+    "R_selected_outside_strict_new_colocation_funnel": 13,
+    "pair_gpu_sum_exceeds_node": 45,
+    "direct_move_capacity_cpu": 45,
+    "direct_move_capacity_gpus": 46,
+    "direct_move_capacity_ram": 45,
+    "recovery_lock_blocked": 8,
+    "gross_gain_offset_by_recovery_or_window": 4,
+    "R_selected_cost_or_tie_only": 4,
+    "R_candidate_misses_direct_pair_witness": 1
+  },
+  "R_selected_all": 13,
+  "scope": "Strict new-colocation sufficient-certificate funnel; protocol-not-generated is not an algorithm bug"
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "visual_review": "All final PNGs and all three PDF rasterizations inspected; Chinese, legends, A-I counts/N, means/tails, units and common scales checked. P99 outlined bars avoid PDF hatch tiling artifact. Prior versions retained.",
+  "files_sha256": {
+    "runs/pressure_r4/figures/pressure_before_after.png": "b1e035a43a67c5cd622a310d57925b671b7cfdf37bfba189320430519f0a595c",
+    "runs/pressure_r4/figures/pressure_before_after.pdf": "d5949fc8e31ab56dabf9a97f44e1ee4eb3107cc3a304f795576dbfe612fdeaa8",
+    "runs/pressure_r4/figures/opportunity_funnel.png": "23cd10d92f49e01cdaeaa0e83305746dc44aa12b52f9198392e78665adf451ec",
+    "runs/pressure_r4/figures/opportunity_funnel.pdf": "7c87d72756a533b321d55852c6e0fc14e676484969d7d5cde54c4535ad4a8a2e",
+    "runs/pressure_r4/figures/main_jct_tail_cost.png": "9df6961aca759933e45cced6e5493dc9c2e4254db66f69b9b4cc2907991af6ba",
+    "runs/pressure_r4/figures/main_jct_tail_cost.pdf": "d30dc4a55b0ee93f7ae95fa254c573894a799085df2b9afd41833fafb6dec672",
+    "runs/pressure_r4/development/pdf_qa/pressure_before_after.png": "18b909c66af740f793bc71933284cceaf6941f56012606a9a452be6643d86e1b",
+    "runs/pressure_r4/development/pdf_qa/opportunity_funnel.png": "bc740972641bb106a5f64afd991e86eae3f608d5e99f639d5c0a120ca4335ffe",
+    "runs/pressure_r4/development/pdf_qa/main_jct_tail_cost.png": "d15e9a608b2760a65fe151dc45933ba9dc29ece59420e141ca0dc4cdb660a419"
+  },
+  "data_CSV_sha256": "d9e74fad14914a81fce4ca09d3365d05f2e2a91401d1600b603076ca4b1fad60",
+  "funnel_CSV_sha256": "d4471b8386a2a815a903de9795c566436ecea3f691170d37d180f4af19c579ce"
+}

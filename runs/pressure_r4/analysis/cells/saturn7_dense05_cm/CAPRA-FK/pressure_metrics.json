@@ -1,0 +1,349 @@
+{
+  "status": "PASS",
+  "allocation_scope": "Allocation capacity-time including recovery; not hardware busy utilization",
+  "window_start": 225.0,
+  "window_end": 11941.0,
+  "window_seconds": 11716.0,
+  "resources": [
+    {
+      "scope": "GLOBAL",
+      "gpus_allocated_fraction": 0.5216242744964151,
+      "cpu_allocated_fraction": 0.45286360532604986,
+      "ram_allocated_fraction": 0.31656550290201424,
+      "gpus_high_capacity_time_fraction": 0.037470126322977124,
+      "cpu_high_capacity_time_fraction": 0.0,
+      "ram_high_capacity_time_fraction": 0.0,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "TYPE:aws",
+      "gpus_allocated_fraction": 0.20612837145783544,
+      "cpu_allocated_fraction": 0.14339364970979857,
+      "ram_allocated_fraction": 0.18137350631614885,
+      "gpus_high_capacity_time_fraction": 0.06145442130419938,
+      "cpu_high_capacity_time_fraction": 0.0,
+      "ram_high_capacity_time_fraction": 0.04096961420279959,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "TYPE:dgx-ext",
+      "gpus_allocated_fraction": 0.6470745134858313,
+      "cpu_allocated_fraction": 0.7526495106407193,
+      "ram_allocated_fraction": 0.2344357237965178,
+      "gpus_high_capacity_time_fraction": 0.36847046773642883,
+      "cpu_high_capacity_time_fraction": 0.47661317855923524,
+      "ram_high_capacity_time_fraction": 0.0,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "TYPE:rtx",
+      "gpus_allocated_fraction": 0.5539219870262888,
+      "cpu_allocated_fraction": 0.3078126778195061,
+      "ram_allocated_fraction": 0.4662912803004438,
+      "gpus_high_capacity_time_fraction": 0.350546261522704,
+      "cpu_high_capacity_time_fraction": 0.07237965175827928,
+      "ram_high_capacity_time_fraction": 0.17369409354728577,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:aws:0",
+      "gpus_allocated_fraction": 0.2778251963127347,
+      "cpu_allocated_fraction": 0.1608910891089109,
+      "ram_allocated_fraction": 0.2633131444178902,
+      "gpus_high_capacity_time_fraction": 0.23557528166609765,
+      "cpu_high_capacity_time_fraction": 0.0,
+      "ram_high_capacity_time_fraction": 0.23557528166609765,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:aws:1",
+      "gpus_allocated_fraction": 0.13443154660293616,
+      "cpu_allocated_fraction": 0.12589621031068624,
+      "ram_allocated_fraction": 0.09943386821440764,
+      "gpus_high_capacity_time_fraction": 0.10242403550699898,
+      "cpu_high_capacity_time_fraction": 0.03584841242744964,
+      "ram_high_capacity_time_fraction": 0.08193922840559918,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:dgx-ext:0",
+      "gpus_allocated_fraction": 0.7004950495049505,
+      "cpu_allocated_fraction": 0.8149254580630477,
+      "ram_allocated_fraction": 0.2573610242403549,
+      "gpus_high_capacity_time_fraction": 0.5024752475247525,
+      "cpu_high_capacity_time_fraction": 0.7024581768521679,
+      "ram_high_capacity_time_fraction": 0.03072721065209969,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:dgx-ext:1",
+      "gpus_allocated_fraction": 0.5936539774667122,
+      "cpu_allocated_fraction": 0.6903735632183908,
+      "ram_allocated_fraction": 0.2115104233526802,
+      "gpus_high_capacity_time_fraction": 0.4501536360532605,
+      "cpu_high_capacity_time_fraction": 0.5827927620348242,
+      "ram_high_capacity_time_fraction": 0.015363605326049846,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:rtx:0",
+      "gpus_allocated_fraction": 0.692557186753158,
+      "cpu_allocated_fraction": 0.35179811084556734,
+      "ram_allocated_fraction": 0.5900250119494705,
+      "gpus_high_capacity_time_fraction": 0.6717309662000683,
+      "cpu_high_capacity_time_fraction": 0.16421987026288837,
+      "ram_high_capacity_time_fraction": 0.5365312393308297,
+      "window_seconds": 11716.0
+    },
+    {
+      "scope": "NODE:rtx:1",
+      "gpus_allocated_fraction": 0.4152867872994196,
+      "cpu_allocated_fraction": 0.2638272447934449,
+      "ram_allocated_fraction": 0.3425575486514167,
+      "gpus_high_capacity_time_fraction": 0.3715431888016388,
+      "cpu_high_capacity_time_fraction": 0.16200068282690339,
+      "ram_high_capacity_time_fraction": 0.2875554796858996,
+      "window_seconds": 11716.0
+    }
+  ],
+  "global_resources": {
+    "scope": "GLOBAL",
+    "gpus_allocated_fraction": 0.5216242744964151,
+    "cpu_allocated_fraction": 0.45286360532604986,
+    "ram_allocated_fraction": 0.31656550290201424,
+    "gpus_high_capacity_time_fraction": 0.037470126322977124,
+    "cpu_high_capacity_time_fraction": 0.0,
+    "ram_high_capacity_time_fraction": 0.0,
+    "window_seconds": 11716.0
+  },
+  "average_active_ready_jobs": 6.301980198019802,
+  "average_waiting_queue_jobs": 0.18683851143735064,
+  "average_training_jobs": 4.576220553089792,
+  "average_recovering_jobs": 1.5389211334926596,
+  "peak_active_ready_jobs": 18,
+  "peak_unscheduled_ready_queue": 0,
+  "queue_scope": "Global ready-but-unscheduled queue; waiting jobs have no assigned GPU pool, never arbitrarily split by type. Means from exact time ledgers, peaks at decision samples.",
+  "timings": {
+    "mip_total": {
+      "n": 195,
+      "median": 0.01431,
+      "p95": 0.08051399999999999,
+      "p99": 0.11657160000000001,
+      "max": 0.13162000000000001,
+      "mean": 0.021587282051282047,
+      "gt5_count": 0,
+      "gt5_fraction": 0.0
+    },
+    "mip_setup": {
+      "n": 195,
+      "median": 0.00157,
+      "p95": 0.006161999999999999,
+      "p99": 0.008298800000000007,
+      "max": 0.01397,
+      "mean": 0.0021274358974358973,
+      "gt5_count": 0,
+      "gt5_fraction": 0.0
+    },
+    "mip_solve": {
+      "n": 195,
+      "median": 0.0126,
+      "p95": 0.07484199999999995,
+      "p99": 0.10864720000000001,
+      "max": 0.12754000000000001,
+      "mean": 0.01945928205128205,
+      "gt5_count": 0,
+      "gt5_fraction": 0.0
+    },
+    "mip_all_calls": {
+      "n": 195,
+      "median": 0.01431,
+      "p95": 0.08051399999999999,
+      "p99": 0.11657160000000001,
+      "max": 0.13162000000000001,
+      "mean": 0.021587282051282047,
+      "gt5_count": 0,
+      "gt5_fraction": 0.0
+    },
+    "smart": null,
+    "audit_total_seconds": 3.694864499993855,
+    "MIP_stdout_count_matches": true,
+    "MIP_expected": 195,
+    "timing_scope": "MIP printed setup/solve intervals rounded0.01ms; primary components use nonempty-plan rounds, all MIP calls separately. GPU stage includes preparation/MIP/smart. Allocator, R, identity+score and RAM have nested boundaries; do not sum."
+  },
+  "smart_counts": {
+    "shared_witness_repair_rounds": 7
+  },
+  "smart_repair_affected_jobs": {
+    "deepspeech2-7": 1,
+    "cifar10-13": 1,
+    "cifar10-15": 1,
+    "cifar10-16": 1,
+    "bert-17": 1,
+    "bert-35": 1,
+    "cifar10-37": 1,
+    "deepspeech2-45": 3,
+    "cifar10-40": 2,
+    "cifar10-42": 2,
+    "cifar10-44": 1,
+    "bert-47": 3,
+    "cifar10-51": 2,
+    "cifar10-53": 1,
+    "cifar10-55": 1,
+    "deepspeech2-59": 2,
+    "cifar10-91": 1,
+    "cifar10-101": 1,
+    "cifar10-102": 1,
+    "bert-103": 2,
+    "cifar10-113": 1,
+    "cifar10-114": 1,
+    "deepspeech2-115": 1
+  },
+  "profile_preferred_aux_demand": {
+    "GLOBAL": {
+      "cpu": {
+        "mean": 0.7980769230769231,
+        "p95": 2.0416666666666665,
+        "max": 2.1666666666666665,
+        "over_capacity_decision_fraction": 0.26153846153846155
+      },
+      "ram": {
+        "mean": 0.327972882051282,
+        "p95": 0.533312,
+        "max": 0.549976,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "TYPE:aws": {
+      "cpu": {
+        "mean": 0.14743589743589744,
+        "p95": 0.5416666666666666,
+        "max": 0.9166666666666666,
+        "over_capacity_decision_fraction": 0.0
+      },
+      "ram": {
+        "mean": 0.18162153846153845,
+        "p95": 0.66664,
+        "max": 1.0,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "TYPE:dgx-ext": {
+      "cpu": {
+        "mean": 1.475534188034188,
+        "p95": 3.0,
+        "max": 3.0,
+        "over_capacity_decision_fraction": 0.6410256410256411
+      },
+      "ram": {
+        "mean": 0.24985717948717948,
+        "p95": 0.44165599999999855,
+        "max": 0.66664,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "TYPE:rtx": {
+      "cpu": {
+        "mean": 0.44594017094017097,
+        "p95": 1.8333333333333333,
+        "max": 2.25,
+        "over_capacity_decision_fraction": 0.1641025641025641
+      },
+      "ram": {
+        "mean": 0.47926425641025644,
+        "p95": 1.0,
+        "max": 1.0208300000000001,
+        "over_capacity_decision_fraction": 0.010256410256410256
+      }
+    },
+    "NODE:aws:0": {
+      "cpu": {
+        "mean": 0.1611111111111111,
+        "p95": 0.75,
+        "max": 0.8333333333333334,
+        "over_capacity_decision_fraction": 0.0
+      },
+      "ram": {
+        "mean": 0.26367323076923077,
+        "p95": 1.0,
+        "max": 1.0,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "NODE:aws:1": {
+      "cpu": {
+        "mean": 0.13376068376068376,
+        "p95": 0.75,
+        "max": 1.5,
+        "over_capacity_decision_fraction": 0.015384615384615385
+      },
+      "ram": {
+        "mean": 0.09956984615384615,
+        "p95": 1.0,
+        "max": 1.0,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "NODE:dgx-ext:0": {
+      "cpu": {
+        "mean": 1.5993589743589745,
+        "p95": 3.0,
+        "max": 3.0,
+        "over_capacity_decision_fraction": 0.5948717948717949
+      },
+      "ram": {
+        "mean": 0.27880646153846156,
+        "p95": 0.33327999999999997,
+        "max": 1.0,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "NODE:dgx-ext:1": {
+      "cpu": {
+        "mean": 1.3517094017094016,
+        "p95": 3.0,
+        "max": 3.0,
+        "over_capacity_decision_fraction": 0.4717948717948718
+      },
+      "ram": {
+        "mean": 0.22090789743589742,
+        "p95": 0.33327999999999997,
+        "max": 1.0,
+        "over_capacity_decision_fraction": 0.0
+      }
+    },
+    "NODE:rtx:0": {
+      "cpu": {
+        "mean": 0.5008547008547009,
+        "p95": 2.5,
+        "max": 2.5,
+        "over_capacity_decision_fraction": 0.11794871794871795
+      },
+      "ram": {
+        "mean": 0.6076831794871795,
+        "p95": 1.0,
+        "max": 1.375,
+        "over_capacity_decision_fraction": 0.015384615384615385
+      }
+    },
+    "NODE:rtx:1": {
+      "cpu": {
+        "mean": 0.391025641025641,
+        "p95": 2.0,
+        "max": 2.5,
+        "over_capacity_decision_fraction": 0.11794871794871795
+      },
+      "ram": {
+        "mean": 0.35084533333333334,
+        "p95": 1.0,
+        "max": 1.16664,
+        "over_capacity_decision_fraction": 0.02564102564102564
+      }
+    }
+  },
+  "auxiliary_limits": {
+    "selected_job_rounds": 1234,
+    "has_unrealized_within_node_rho_gain_job_rounds": 730,
+    "GPU_shape_caps_all_aux_gain_job_rounds": 270
+  },
+  "aux_demand_scope": "Decision-snapshot sum of each selected job frozen-table preferred legal-within-single-node quota / capacity; not original trace request, realized reservation, or proof of obtainable net gain. GPU-shape ceiling flag compares best legal response under current GPU shape with proportional response and global table maximum."
+}

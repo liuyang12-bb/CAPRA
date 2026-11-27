@@ -1,0 +1,1716 @@
+diff --git a/data/pressure_r4/generate.py b/data/pressure_r4/generate.py
+new file mode 100644
+index 0000000..c19f7e7
+--- /dev/null
++++ b/data/pressure_r4/generate.py
+@@ -0,0 +1,43 @@
++"""Exact Decimal half-spacing; preserve all 80 jobs and all non-time fields."""
++from pathlib import Path
++from decimal import Decimal
++import csv,io,json,hashlib
++from collections import Counter
++ROOT=Path(__file__).resolve().parents[2]
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def number(d):
++    s=format(d,'f')
++    return s.rstrip('0').rstrip('.') if '.' in s else s
++def transform(rows):
++    assert len(rows)==80 and len({r['name'] for r in rows})==80
++    t0=min(Decimal(r['time']) for r in rows);out=[];mapping=[]
++    for i,r in enumerate(rows):
++        d=dict(r);d['time']=number(t0+(Decimal(r['time'])-t0)/Decimal(2))
++        out.append(d);mapping.append(dict(source_row=i,job=r['name'],original_time=r['time'],dense_time=d['time']))
++    order=sorted(range(len(out)),key=lambda i:(Decimal(out[i]['time']),i))
++    # Frozen R3 input is time-sorted; exact affine transformation must preserve it.
++    assert order==list(range(80)),'UNEXPECTED_SOURCE_ORDER'
++    return out,mapping
++def distribution(xs):
++    import numpy as np
++    x=[float(v) for v in xs]
++    return dict(n=len(x),min=min(x),median=float(np.median(x)),p95=float(np.quantile(x,.95)),max=max(x),mean=float(np.mean(x)),zero_count=sum(v==0 for v in x))
++def main():
++    from sys import path;path.insert(0,str(ROOT/'scripts'))
++    from r4_utils import check_budget,dump,load
++    old=load(ROOT/'data/holdout_r3/provenance.json');by={x['output']:x for x in old};allmeta=[]
++    for w in (7,8):
++        check_budget();rel=f'data/holdout_r3/saturn{w}_supported80.csv';src=ROOT/rel
++        assert sha(src)==by[rel]['sha256']
++        with src.open(encoding='utf8',newline='') as f:reader=csv.DictReader(f);fields=reader.fieldnames;rows=list(reader)
++        out,mapping=transform(rows)
++        for a,b in zip(rows,out):assert {k:v for k,v in a.items() if k!='time'}=={k:v for k,v in b.items() if k!='time'}
++        text=io.StringIO(newline='');wr=csv.DictWriter(text,fields,lineterminator='\n');wr.writeheader();wr.writerows(out)
++        dst=ROOT/f'data/pressure_r4/saturn{w}_dense05.csv';data=text.getvalue().encode('utf8')
++        assert not dst.exists() or dst.read_bytes()==data,'REFUSE_CONFLICTING_DERIVED_INPUT'
++        if not dst.exists():dst.write_bytes(data)
++        orig=[Decimal(x['time']) for x in rows];dense=[Decimal(x['time']) for x in out]
++        record=dict(scenario=f'saturn{w}_dense05',source=rel,source_sha256=sha(src),output=dst.relative_to(ROOT).as_posix(),sha256=sha(dst),generator_sha256=sha(__file__),rows=80,formula='t0 + Decimal(0.5)*(ti-t0)',all_non_time_fields_unchanged=True,row_order_preserved=True,source_and_derived_row_mapping=mapping,first_original=number(min(orig)),last_original=number(max(orig)),first_dense=number(min(dense)),last_dense=number(max(dense)),original_interarrivals=distribution([b-a for a,b in zip(orig,orig[1:])]),dense_interarrivals=distribution([b-a for a,b in zip(dense,dense[1:])]),applications=dict(Counter(x['application'] for x in out)),requested_gpus=dict(Counter(x['num_replicas'] for x in out)),scope='Pressure derivative of original R3 holdout, not independent holdout or production record')
++        dump(dst.with_suffix('.provenance.json'),record);allmeta.append(record)
++    dump(ROOT/'data/pressure_r4/provenance.json',allmeta);print('R4_DENSE_INPUTS_PASS',flush=True)
++if __name__=='__main__':main()
+diff --git a/scripts/analyze_r4.py b/scripts/analyze_r4.py
+new file mode 100644
+index 0000000..67ea120
+--- /dev/null
++++ b/scripts/analyze_r4.py
+@@ -0,0 +1,270 @@
++"""Independent read-only event/accounting analysis; all writes under R2 analysis."""
++from collections import Counter,defaultdict
++import csv,gzip,math
++import numpy as np
++from r4_utils import *
++from capra.response import Responses
++from capra.inputs import resolve_inputs
++OUT=RUN/'analysis'
++SCENARIOS=('w2_dense_original','w6_dense_original','w2_dense_cm')
++def table(path,rows,fields=None):
++    if not rows:return
++    with Path(path).open('w',encoding='utf8',newline='') as f:
++        w=csv.DictWriter(f,fields or list(rows[0]),extrasaction='ignore');w.writeheader();w.writerows(rows)
++def dist(values):
++    if not values:return None
++    return dict(n=len(values),median=float(np.median(values)),p95=float(np.quantile(values,.95)),p99=float(np.quantile(values,.99)),max=max(values),mean=float(np.mean(values)),gt5_count=sum(v>5 for v in values),gt5_fraction=sum(v>5 for v in values)/len(values))
++def near(a,b):assert abs(a-b)<=1e-6,(a,b)
++def read_cell(source):
++    d=ROOT/source['output'];start=load(d/'start.json');summary=load(d/'summary.json');paths=resolve_inputs(start)
++    with paths['workload'].open(encoding='utf8',newline='') as f:rows=list(csv.DictReader(f))
++    if start['max_jobs'] is not None:rows=rows[:start['max_jobs']]
++    nodes={n['id']:n for n in load(paths['cluster'])};response=Responses(ROOT/source['target_responses'] if source.get('target_responses') else paths['responses'])
++    stats={r['name']:dict(job=r['name'],application=r['application'],arrival=float(r['time']),waiting=0.,training=0.,recovery=0.,progress=0.,completion=None) for r in rows}
++    active=0;rounds=0;timing=defaultdict(list);weighted=Counter();selected=Counter();feasible=Counter();failures=Counter();transition=Counter();pure=0;gpu_changes=0
++    phi=defaultdict(list);rawrho=defaultdict(list);ram=Counter();all_r_calls=0;new_r_calls_available=False;residual=[];point_rows=[];candidate_rows=[]
++    allocated=defaultdict(Counter);gpu_trace=__import__('hashlib').sha256()
++    with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:
++        for line in f:
++            r=__import__('json').loads(line);rounds+=1;timing['decision_all_rounds'].append(r['decision_seconds'])
++            gpu_trace.update((__import__('json').dumps(dict(plan=r['plan'],allocations={k:{f:x[f] for f in ('node','gpu_type','gpus')} for k,x in r['allocations'].items()}),sort_keys=True)+'\n').encode())
++            chosen=next(c for c in r['selection']['candidates'] if c['label']==r['selection']['selected'])
++            extra={};legacy_ram={};astats=r['selection']['allocator']
++            traces=astats.get('ram_traces',[])
++            if source['allocator_mode']=='ram_slack_v1':
++                for meta in chosen['quota'].values():
++                    tr=traces[meta['ram_trace_id']];ram['selected_updates']+=tr['ram_steps']
++                    for k,x in tr['initial'].items():legacy_ram[k]=x['ram'];extra[k]=max(0,tr['final'][k]['ram']-x['ram'])
++            if r['plan']:
++                active+=1;selected[chosen['label']]+=1;timing['decision'].append(r['decision_seconds'])
++                for field,key in [('gpu','gpu_stage_seconds'),('reference','reference_seconds'),('candidate_total','candidate_seconds'),('mapping_scoring_nested','mapping_scoring_seconds'),('commit','commit_seconds')]:timing[field].append(r[key])
++                if 'candidate_timings' in r['selection']:
++                    new_r_calls_available=True
++                    for label,value in r['selection']['candidate_timings'].items():
++                        if value is not None:timing[label].append(value)
++                    all_r_calls+=r['selection']['r_calls']
++                    timing['ram_repair_nested'].append(astats.get('ram_repair_seconds',0.))
++                    timing['node_pair_generation_nested'].append(astats['generation_seconds'])
++                    if 'r4_allocator_seconds' in astats:
++                        assert 0<=astats['r4_allocator_seconds']<=r['selection']['candidate_seconds']+1e-6
++                        timing['allocator_inclusive_nested'].append(astats['r4_allocator_seconds'])
++                for field in ('node_calls','node_cache_hits','generated_pairs','upgrades'):ram['legacy_'+field]+=astats[field]
++                for field in ('ram_calls','ram_cache_hits','ram_requests','ram_steps','ram_step_bound','ram_candidates'):ram[field]+=astats.get(field,0)
++                reference=next((c for c in r['selection']['candidates'] if c['label']=='F'),None);fphi=reference['score']['phi'] if reference else None;frho=sum(a['rho'] for a in reference['allocations'].values()) if reference else None
++                for c in r['selection']['candidates']:
++                    if not c['feasible']:failures[c['label']+':'+c['reason']]+=1;continue
++                    feasible[c['label']]+=1;pd=c['score']['phi']-fphi if reference else None;rd=sum(a['rho'] for a in c['allocations'].values())-frho if reference else None
++                    if reference:phi[c['label']].append(pd);rawrho[c['label']].append(rd)
++                    candidate_rows.append(dict(round=r['round'],label=c['label'],selected=c['label']==chosen['label'],phi=c['score']['phi'],sum_rho=sum(a['rho'] for a in c['allocations'].values()),phi_minus_F=pd,sum_rho_minus_F=rd,total_delay=c['score']['total_delay']))
++            for e in r['transitions']:
++                transition[e['kind']]+=1
++                if e['old'] and e['new']:
++                    same=(e['old']['gpu_type'],e['old']['gpus'])==(e['new']['gpu_type'],e['new']['gpus'])
++                    pure+=e['kind']=='migration' and same;gpu_changes+=not same
++            # Continuous, same-CPU one-target RAM opportunities; never call old pool_ram.
++            for k,a in r['allocations'].items():
++                if k in r['locks']:continue
++                n=nodes[a['node']];upper=min(a['gpus']*max(response.data['ram_axis']),n['ram']-math.fsum(x['ram'] for j,x in r['allocations'].items() if x['node']==a['node'] and j!=k))
++                rho=response.rho(stats[k]['application'],a['gpus'],a['cpu'],upper)
++                if upper>a['ram']+1e-9 and rho>a['rho']+1e-9:
++                    residual.append(dict(round=r['round'],time=r['time'],job=k,application=stats[k]['application'],node=a['node'],gpus=a['gpus'],cpu=a['cpu'],ram=a['ram'],rho=a['rho'],ram_upper=upper,rho_upper=rho,scope='One target independently, all others fixed; shared slack not summed'))
++            for e in r['executions']:
++                s=stats[e['job']];near(s['progress'],e['progress_before']);s['progress']=e['progress_after'];s['completion']=e['completion_time']
++                near(e['end']-e['start'],e['waiting']+e['training']+e['recovery'])
++                for field in ('waiting','training','recovery'):s[field]+=e[field]
++                a=e['allocation']
++                if a:
++                    for field in ('gpus','cpu','ram'):allocated[a['node']][field]+=a[field]*(e['end']-e['start'])
++                    ram['selected_extra_ram_gb_seconds_including_recovery']+=extra.get(e['job'],0.)*(e['end']-e['start'])
++                if not e['training']:continue
++                near(sum(seg['seconds'] for seg in e['segments']),e['training']);n=nodes[a['node']];g=a['gpus'];cp=n['cpu']*g/n['gpus'];mp=n['ram']*g/n['gpus']
++                rho=response.rho(s['application'],g,a['cpu'],a['ram']);near(rho,a['rho']);prop=response.rho(s['application'],g,cp,mp)
++                cd=rho-response.rho(s['application'],g,cp,a['ram']);md=rho-response.rho(s['application'],g,a['cpu'],mp);duration=e['training']
++                for key,value in [('rho',rho),('relative_rho',rho/prop),('above_prop',rho>prop+1e-9),('cpu_conditional',cd),('ram_conditional',md),('cpu_positive',cd>1e-9),('ram_positive',md>1e-9)]:weighted[key]+=duration*value
++                weighted['training']+=duration;weighted['ram_extra_this_round_training']+=duration*(extra.get(e['job'],0)>1e-9);weighted['extra_ram_gb']+=duration*extra.get(e['job'],0)
++                nonaxis=all(abs(a['ram']-z*g)>1e-7 for z in response.data['ram_axis']) and abs(a['ram']-mp)>1e-7
++                weighted['intermediate_ram_training']+=duration*nonaxis
++                if extra.get(e['job'],0)>1e-9 or nonaxis:
++                    point_rows.append(dict(round=r['round'],job=e['job'],application=s['application'],node=a['node'],gpus=g,cpu=a['cpu'],ram=a['ram'],rho=rho,training_seconds=duration,
++                        extra_ram_this_supplement=extra.get(e['job'],0),legacy_final_ram=legacy_ram.get(e['job']),nonaxis_ram=nonaxis))
++    completed=[s for s in stats.values() if s['completion'] is not None];all_done=len(completed)==len(stats)
++    for s in stats.values():
++        s['jct']=s['completion']-s['arrival'] if s['completion'] is not None else None
++        if s['jct'] is not None:near(s['jct'],s['waiting']+s['training']+s['recovery'])
++    with (d/'per_job.csv').open(encoding='utf8',newline='') as f:logged={s['job']:s for s in csv.DictReader(f)}
++    for k,s in stats.items():
++        for field in ('waiting','training','recovery','progress'):near(s[field],float(logged[k][field]))
++        if s['jct'] is not None:near(s['jct'],float(logged[k]['jct']))
++    jcts=[s['jct'] for s in completed]
++    if all_done:
++        for field,value in [('mean_jct',np.mean(jcts)),('p50_jct',np.quantile(jcts,.5)),('p95_jct',np.quantile(jcts,.95)),('p99_jct',np.quantile(jcts,.99))]:near(summary[field],float(value))
++    else:
++        for field in ('mean_jct','p50_jct','p95_jct','p99_jct','makespan'):assert summary[field] is None
++    if all_done:near(summary['makespan'],max(s['completion'] for s in completed)-min(s['arrival'] for s in stats.values()))
++    for field in ('waiting','training','recovery'):near(summary['mean_'+field],np.mean([s[field] for s in stats.values()]))
++    apps={app:dict(jobs=sum(s['application']==app for s in stats.values()),mean_jct=float(np.mean([s['jct'] for s in stats.values() if s['application']==app])) if all_done else None) for app in sorted({s['application'] for s in stats.values()})}
++    total=weighted['training'];training={k:v/total for k,v in weighted.items() if k!='training'}
++    metrics=dict(id=source['id'],source=source,summary=summary,application_results=apps,training=training,active_rounds=active,all_rounds=rounds,
++        timing={k:dist(timing[k]) for k in sorted(set(timing)|{'decision','decision_all_rounds'})},candidate_feasible=dict(feasible),candidate_selected=dict(selected),candidate_failures=dict(failures),
++        phi_minus_F={k:dict(dist(v),positive=sum(x>1e-9 for x in v),negative=sum(x<-1e-9 for x in v)) for k,v in phi.items()},
++        sum_rho_minus_F={k:dict(dist(v),positive=sum(x>1e-9 for x in v),negative=sum(x<-1e-9 for x in v)) for k,v in rawrho.items()},
++        transitions=dict(transition),pure_node_migrations=pure,other_gpu_configuration_changes=gpu_changes,actual_recovery=sum(s['recovery'] for s in stats.values()),
++        r_calls_active=all_r_calls if new_r_calls_available else None,component_timing_available=new_r_calls_available,ram=dict(ram),
++        residual_ram_opportunity_certificates=len(residual),residual_ram_rounds=len({x['round'] for x in residual}),gpu_node_trace_sha256=gpu_trace.hexdigest(),
++        input_hashes={k:(sha(ROOT/source['target_responses']) if k=='responses' and source.get('target_responses') else v['sha256']) for k,v in start['inputs'].items()},costs=start['costs'],allocation_resource_seconds={k:dict(v) for k,v in allocated.items()})
++    out=OUT/'cells'/source['id'];out.mkdir(parents=True,exist_ok=True)
++    dump(out/'metrics.json',metrics);dump(out/'residual_ram_opportunities.json',residual);table(out/'candidate_scores.csv',candidate_rows);table(out/'ram_training_points.csv',point_rows)
++    table(out/'per_job_recomputed.csv',list(stats.values()))
++    return metrics,stats
++def compare(label,phase,scenario,method,baseline,a,b,sa,sb):
++    assert a['input_hashes']==b['input_hashes'] and a['costs']==b['costs'],'UNFAIR_INPUT_OR_COST_COMPARISON'
++    rows=[]
++    for k,x in sa.items():
++        y=sb[k];assert x['application']==y['application'] and x['arrival']==y['arrival']
++        if x['jct'] is None or y['jct'] is None:continue
++        ratio=x['jct']/y['jct'];delta=x['jct']-y['jct'];direction='fast' if delta<-1e-7 else ('slow' if delta>1e-7 else 'tie')
++        row=dict(comparison=label,phase=phase,scenario=scenario,method=method,baseline=baseline,job=k,application=x['application'],method_jct=x['jct'],baseline_jct=y['jct'],delta_jct=delta,relative_baseline_jct_ratio=ratio,direction=direction)
++        for part in ('waiting','training','recovery'):row['method_'+part]=x[part];row['baseline_'+part]=y[part]
++        rows.append(row)
++    all_done=a['summary']['completed']==b['summary']['completed']==80
++    result=dict(comparison=label,phase=phase,scenario=scenario,method=method,baseline=baseline,method_id=a['id'],baseline_id=b['id'],paired_jobs=len(rows),
++        fast=sum(x['direction']=='fast' for x in rows),tie=sum(x['direction']=='tie' for x in rows),slow=sum(x['direction']=='slow' for x in rows),
++        ratio_p95=float(np.quantile([x['relative_baseline_jct_ratio'] for x in rows],.95)) if all_done else None,ratio_max=max((x['relative_baseline_jct_ratio'] for x in rows),default=None) if all_done else None,
++        worst_ratio_case=max(rows,key=lambda x:x['relative_baseline_jct_ratio']) if rows else None,worst_absolute_case=max(rows,key=lambda x:x['delta_jct']) if rows else None)
++    for field in ('mean_jct','p50_jct','p95_jct','p99_jct','makespan'):
++        x,y=a['summary'][field],b['summary'][field];result[field+'_improvement_percent']=100*(1-x/y) if all_done else None
++    for field in ('waiting','training','recovery'):result['mean_'+field+'_difference']=a['summary']['mean_'+field]-b['summary']['mean_'+field] if all_done else None
++    result['decision_p95_method']=a['summary']['decision_p95'];result['decision_p95_baseline']=b['summary']['decision_p95']
++    return result,rows
++
++
++def pressure(source,metrics,stats):
++    import re
++    d=ROOT/source['output'];start=load(d/'start.json');paths=resolve_inputs(start);nodes={x['id']:x for x in load(paths['cluster'])}
++    rows=list(csv.DictReader(paths['workload'].open(encoding='utf8',newline='')));arrivals={x['name']:float(x['time']) for x in rows}
++    if not all(x['completion'] is not None for x in stats.values()):return dict(status='INCOMPLETE',pressure_integrals=None)
++    lo=min(arrivals.values());hi=max(x['completion'] for x in stats.values());window=hi-lo
++    scopes={'GLOBAL':list(nodes)}
++    for typ in sorted({x['gpu_type'] for x in nodes.values()}):scopes['TYPE:'+typ]=[n for n,x in nodes.items() if x['gpu_type']==typ]
++    for n in nodes:scopes['NODE:'+n]=[n]
++    caps={s:{f:sum(nodes[n][f] for n in ns) for f in ('gpus','cpu','ram')} for s,ns in scopes.items()}
++    deltas=defaultdict(lambda:defaultdict(Counter));integrals=defaultdict(Counter);full=defaultdict(Counter);timeline=[];complete=set();smart=Counter();smart_times=[];repair_jobs=Counter();mip_rounds=[]
++    apps={x['name']:x['application'] for x in rows};profile=Responses(ROOT/source['target_responses'] if source.get('target_responses') else paths['responses']);pref_cache={};demand=defaultdict(list);aux_limits=Counter()
++    with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:
++        for line in f:
++            r=__import__('json').loads(line)
++            ready={k for k,t in arrivals.items() if t<=r['time'] and k not in complete};queued=ready-set(r['plan']);x=dict(round=r['round'],time=r['time'],arrived=sum(t<=r['time'] for t in arrivals.values()),completed_before=len(complete),active_ready_jobs=len(ready),selected_jobs=len(r['plan']),unscheduled_ready_queue=len(queued),recovering_locks=len(r['locks']),decision_seconds=r['decision_seconds'])
++            for typ in sorted({n['gpu_type'] for n in nodes.values()}):
++                ns=scopes['TYPE:'+typ]
++                for i,field in enumerate(('gpus','cpu','ram')):x[typ+'_'+field+'_at_decision']=sum(r['node_usage'][n][i] for n in ns)
++            if r['plan']:
++                wanted=defaultdict(Counter)
++                for job,a in r['allocations'].items():
++                    n=nodes[a['node']];g=a['gpus'];key=(apps[job],g,n['gpu_type'])
++                    if key not in pref_cache:
++                        # Static frozen-table preference, not a layout/state search or
++                        # an allocator call; there is no write to scheduler/model state.
++                        from types import SimpleNamespace
++                        c,m=profile.preferred(apps[job],g,SimpleNamespace(**n));rho=profile.rho(apps[job],g,c,m);prop=profile.rho(apps[job],g,n['cpu']*g/n['gpus'],n['ram']*g/n['gpus']);data=profile.data['profiles'][apps[job]];overall=max(max(v) for v in data['table'])/data['reference']
++                        pref_cache[key]=(c,m,rho,prop,overall)
++                    c,m,rho,prop,overall=pref_cache[key];wanted[a['node']]['cpu']+=c;wanted[a['node']]['ram']+=m
++                    aux_limits['selected_job_rounds']+=1;aux_limits['has_unrealized_within_node_rho_gain_job_rounds']+=rho>a['rho']+1e-9;aux_limits['GPU_shape_caps_all_aux_gain_job_rounds']+=rho<=prop+1e-9 and overall>prop+1e-9
++                for scope,ns in scopes.items():
++                    for field in ('cpu','ram'):demand[(scope,field)].append(sum(wanted[n][field] for n in ns)/caps[scope][field])
++            timeline.append(x)
++            if r['gpu_stage']['solver_status']!='NO_JOBS':mip_rounds.append((r['round'],bool(r['plan'])))
++            for c in r['gpu_stage'].get('smart_records',[]):
++                smart['raw_retained_job_rounds']+=len(c['retained']);smart['raw_evicted_events']+=len(c['evicted']);smart['raw_replaced_job_rounds']+=len(c['replaced'])
++            if r['plan'] and 'smart_seconds' in r['gpu_stage']:smart_times.append(r['gpu_stage']['smart_seconds'])
++            if r['gpu_stage']['repairs']:
++                smart['shared_witness_repair_rounds']+=1
++                for k,p in r['raw_sia_plan'].items():
++                    if p['node']!=r['lock_repaired_gpu_plan'][k]['node']:repair_jobs[k]+=1
++            for e in r['executions']:
++                a=e['allocation']
++                if a:
++                    for t,sign in ((e['start'],1),(e['end'],-1)):
++                        for field in ('gpus','cpu','ram'):deltas[t][a['node']][field]+=sign*a[field]
++                if e['completion_time'] is not None:complete.add(e['job'])
++    use={n:Counter() for n in nodes};previous=lo
++    for t,changes in sorted(deltas.items()):
++        left=max(previous,lo);right=min(t,hi);duration=max(0.,right-left)
++        if duration:
++            for scope,ns in scopes.items():
++                for field in ('gpus','cpu','ram'):
++                    value=sum(use[n][field] for n in ns);assert -1e-5<=value<=caps[scope][field]+1e-5
++                    integrals[scope][field]+=max(0,value)*duration
++                    threshold=1. if field=='gpus' else .95
++                    if value>=threshold*caps[scope][field]-1e-7:full[scope][field]+=duration
++        for n,values in changes.items():use[n].update(values)
++        previous=t
++    output=[]
++    for scope in scopes:
++        output.append(dict(scope=scope,**{f+'_allocated_fraction':integrals[scope][f]/(caps[scope][f]*window) for f in ('gpus','cpu','ram')},**{f+'_high_capacity_time_fraction':full[scope][f]/window for f in ('gpus','cpu','ram')},window_seconds=window))
++    global_row=next(x for x in output if x['scope']=='GLOBAL')
++    for field in ('gpus','cpu','ram'):near(global_row[field+'_allocated_fraction'],metrics['summary']['allocated_resource_fraction'][field])
++    durations={k:sum(s[k] for s in stats.values())/window for k in ('waiting','training','recovery')}
++    avg_active=sum(s['jct'] for s in stats.values())/window;near(avg_active,sum(durations.values()))
++    # Existing upstream printed intervals are measured values, not GPU-stage subtraction.
++    log=d.parent/(d.name+'.stdout.log');mip=[];mapping_valid=False
++    if log.exists():
++        found=re.findall(r'Solver took: ([0-9.]+)ms = ([0-9.]+)ms \(setup\) \+ ([0-9.]+)ms \(solve\)',log.read_text(encoding='utf8',errors='replace'))
++        mapping_valid=len(found)==len(mip_rounds)
++        if mapping_valid:mip=[dict(round=i,nonempty_plan=active,total_seconds=float(a)/1000,setup_seconds=float(b)/1000,solve_seconds=float(c)/1000) for (i,active),(a,b,c) in zip(mip_rounds,found)]
++    timings=dict(mip_total=dist([x['total_seconds'] for x in mip if x['nonempty_plan']]),mip_setup=dist([x['setup_seconds'] for x in mip if x['nonempty_plan']]),mip_solve=dist([x['solve_seconds'] for x in mip if x['nonempty_plan']]),mip_all_calls=dist([x['total_seconds'] for x in mip]),smart=dist(smart_times),audit_total_seconds=metrics['summary'].get('audit_seconds'),MIP_stdout_count_matches=mapping_valid,MIP_expected=len(mip_rounds),timing_scope='MIP printed setup/solve intervals rounded0.01ms; primary components use nonempty-plan rounds, all MIP calls separately. GPU stage includes preparation/MIP/smart. Allocator, R, identity+score and RAM have nested boundaries; do not sum.')
++    demand_summary={scope:{field:dict(mean=float(np.mean(demand[scope,field])),p95=float(np.quantile(demand[scope,field],.95)),max=max(demand[scope,field]),over_capacity_decision_fraction=sum(v>1+1e-9 for v in demand[scope,field])/len(demand[scope,field])) for field in ('cpu','ram')} for scope in scopes}
++    result=dict(status='PASS',allocation_scope='Allocation capacity-time including recovery; not hardware busy utilization',window_start=lo,window_end=hi,window_seconds=window,resources=output,global_resources=global_row,average_active_ready_jobs=avg_active,average_waiting_queue_jobs=durations['waiting'],average_training_jobs=durations['training'],average_recovering_jobs=durations['recovery'],peak_active_ready_jobs=max(x['active_ready_jobs'] for x in timeline),peak_unscheduled_ready_queue=max(x['unscheduled_ready_queue'] for x in timeline),queue_scope='Global ready-but-unscheduled queue; waiting jobs have no assigned GPU pool, never arbitrarily split by type. Means from exact time ledgers, peaks at decision samples.',timings=timings,smart_counts=dict(smart),smart_repair_affected_jobs=dict(repair_jobs),profile_preferred_aux_demand=demand_summary,auxiliary_limits=dict(aux_limits),aux_demand_scope='Decision-snapshot sum of each selected job frozen-table preferred legal-within-single-node quota / capacity; not original trace request, realized reservation, or proof of obtainable net gain. GPU-shape ceiling flag compares best legal response under current GPU shape with proportional response and global table maximum.')
++    out=OUT/'cells'/source['id'];dump(out/'pressure_metrics.json',result);table(out/'queue_resource_timeline.csv',timeline);table(out/'resource_capacity_time.csv',output);table(out/'upstream_mip_times.csv',mip)
++    return result
++
++def main():
++    began=time.perf_counter();OUT.mkdir(exist_ok=True);physical=load(RUN/'results.json');sources=[]
++    for r in physical:
++        if r.get('state')=='COMPLETE_PASS':sources.append(dict(id=r['scenario']+'/'+r['method'],phase='R4',scenario=r['scenario'],profile=r['profile'],method=r['method'],workload_id=r['workload_id'],source_workload_id=r['source_workload_id'],allocator_mode=r['allocator_mode'],phase_version=r['phase_version'],result_origin='NEW_EXECUTION',executed=True,reused=False,source_commit=None,base_commit=BASE,source_snapshot_sha256=r['source_snapshot_sha256'],output=r['output'],physical_index=r['index'],timing_scope='Observed actual R4 execution'))
++    history=load(ROOT/'runs/smart_holdout_r3/analysis/source_index.json')
++    for h in history:
++        if h['phase']=='B' and h['method'] in ('SIA-SMART-P','CAPRA-FK','CAPRA'):
++            sources.append(dict(h,id='HISTORY/R3/'+h['id'],phase='R3_REFERENCE',result_origin='HISTORICAL_REFERENCE',original_result_origin=h['result_origin'],executed=False,reused=True,source_commit='5af0bdb6b86b797225908f717b5b9324cd48a539',timing_scope='Historical source observed, including original timing for equivalence alias'))
++    metrics={};jobs={};flat=[];integrity={};resources=[]
++    for src in sources:
++        d=ROOT/src['output'];src['files_sha256']={n:sha(d/n) for n in ('start.json','events.jsonl.gz','summary.json','per_job.csv','node_resources.csv')}
++        for n,h in src['files_sha256'].items():integrity[(d/n).relative_to(ROOT).as_posix()]=h
++        x,j=read_cell(src);x['pressure']=pressure(src,x,j)
++        if (d/'process.json').exists():x['summary']['wall_seconds']=load(d/'process.json')['process_wall_seconds']
++        metrics[src['id']]=x;jobs[src['id']]=j
++        flat.append(dict(id=src['id'],phase=src['phase'],scenario=src['scenario'],profile=src['profile'],method=src['method'],display_method='CAPRA-FKR' if src['method']=='CAPRA' else src['method'],allocator_mode=src['allocator_mode'],result_origin=src['result_origin'],executed=src['executed'],timing_scope=src['timing_scope'],**{k:x['summary'].get(k) for k in ('status','submitted','completed','total','censored','mean_jct','p50_jct','p95_jct','p99_jct','makespan','mean_waiting','mean_training','mean_recovery','decision_median','decision_p95','decision_max','wall_seconds','audit_seconds')},decision_p99=x['timing']['decision']['p99'],decision_gt5_count=x['timing']['decision']['gt5_count'],gpu_allocated_fraction=x['pressure']['global_resources']['gpus_allocated_fraction'],cpu_allocated_fraction=x['pressure']['global_resources']['cpu_allocated_fraction'],ram_allocated_fraction=x['pressure']['global_resources']['ram_allocated_fraction'],average_active_jobs=x['pressure']['average_active_ready_jobs'],average_queue_jobs=x['pressure']['average_waiting_queue_jobs'],peak_queue=x['pressure']['peak_unscheduled_ready_queue']))
++        resources += [dict(id=src['id'],scenario=src['scenario'],method=src['method'],result_origin=src['result_origin'],**v) for v in x['pressure']['resources']]
++        print(__import__('json').dumps(dict(event='RAW_ANALYZED',id=src['id'],mean=x['summary']['mean_jct'],gpu=x['pressure']['global_resources']['gpus_allocated_fraction'])),flush=True)
++    comparisons=[];pairs=[]
++    for w in (7,8):
++        for profile in ('original','cm'):
++            scenario=f'saturn{w}_dense05_{profile}'
++            for a,b in [('CAPRA-FK','SIA-SMART-P'),('CAPRA','SIA-SMART-P'),('CAPRA','CAPRA-FK')]:
++                ida=scenario+'/'+a;idb=scenario+'/'+b
++                if ida in metrics and idb in metrics:
++                    c,p=compare(a+'/'+b,'R4',scenario,a,b,metrics[ida],metrics[idb],jobs[ida],jobs[idb]);comparisons.append(c);pairs+=p
++    sensitivity=[]
++    for src in sources:
++        if src['phase']!='R4':continue
++        old=next((s for s in sources if s['phase']=='R3_REFERENCE' and s['workload_id']==src['source_workload_id'] and s['method']==src['method'] and s['profile'].lower()==src['profile']),None)
++        if old is None:continue
++        a,b=metrics[src['id']],metrics[old['id']];assert a['input_hashes']['cluster']==b['input_hashes']['cluster'] and a['input_hashes']['responses']==b['input_hashes']['responses'] and a['costs']==b['costs']
++        for k in jobs[src['id']]:assert jobs[src['id']][k]['application']==jobs[old['id']][k]['application']
++        row=dict(scenario=src['scenario'],method=src['method'],R4_id=src['id'],R3_id=old['id'],scope='Scenario pressure sensitivity, not algorithm contribution or independent sample')
++        for field in ('mean_jct','p95_jct','p99_jct','makespan','mean_waiting','mean_training','mean_recovery'):
++            row['R3_'+field]=b['summary'][field];row['R4_'+field]=a['summary'][field]
++        for scope in ('GLOBAL','TYPE:aws','TYPE:dgx-ext','TYPE:rtx'):
++            ar=next(x for x in a['pressure']['resources'] if x['scope']==scope);br=next(x for x in b['pressure']['resources'] if x['scope']==scope)
++            for field in ('gpus','cpu','ram'):
++                row[scope+'_'+field+'_R3']=br[field+'_allocated_fraction'];row[scope+'_'+field+'_R4']=ar[field+'_allocated_fraction'];row[scope+'_'+field+'_delta_percentage_points']=100*(ar[field+'_allocated_fraction']-br[field+'_allocated_fraction'])
++        row['queue_R3']=b['pressure']['average_waiting_queue_jobs'];row['queue_R4']=a['pressure']['average_waiting_queue_jobs'];row['active_R3']=b['pressure']['average_active_ready_jobs'];row['active_R4']=a['pressure']['average_active_ready_jobs'];sensitivity.append(row)
++    for p,h in integrity.items():assert sha(ROOT/p)==h,('RAW_CHANGED',p)
++    dump(OUT/'source_index.json',sources);table(OUT/'source_index.csv',[{k:v for k,v in s.items() if k!='files_sha256'} for s in sources],sorted({k for s in sources for k in s if k!='files_sha256'}))
++    dump(OUT/'metrics.json',list(metrics.values()));dump(OUT/'results.json',flat);table(OUT/'results.csv',flat)
++    dump(OUT/'comparisons.json',comparisons);table(OUT/'comparisons.csv',comparisons,[k for k in comparisons[0] if k not in ('worst_ratio_case','worst_absolute_case')] if comparisons else [])
++    table(OUT/'paired_jobs.csv',pairs);table(OUT/'scenario_sensitivity.csv',sensitivity);dump(OUT/'scenario_sensitivity.json',sensitivity);table(OUT/'resource_pressure.csv',resources)
++    dump(OUT/'worst_cases.json',[{k:c[k] for k in ('scenario','method','baseline','worst_ratio_case','worst_absolute_case')} for c in comparisons])
++    dump(RUN/'source_index.json',sources);dump(OUT/'raw_integrity.json',dict(status='PASS',files_sha256=integrity,new_complete_jobs=sum(x.get('completed',0) for x in physical if x.get('state')=='COMPLETE_PASS'),historical_reference_rows=sum(s['phase']=='R3_REFERENCE' for s in sources),no_new_simulation=True))
++    dump(OUT/'analysis_receipt.json',dict(status='PASS',wall_seconds=time.perf_counter()-began,new_cells=sum(s['phase']=='R4' for s in sources),historical_cells=sum(s['phase']=='R3_REFERENCE' for s in sources),comparisons=len(comparisons),simulation_calls=0,additional_state_search_calls=0))
++    print('R4_READ_ONLY_ANALYSIS_PASS')
++if __name__=='__main__':main()
+diff --git a/scripts/diagnose_r4.py b/scripts/diagnose_r4.py
+new file mode 100644
+index 0000000..dbe8424
+--- /dev/null
++++ b/scripts/diagnose_r4.py
+@@ -0,0 +1,118 @@
++"""Budgeted read-only funnels, eight preregistered small-state reviews, real cases."""
++from collections import Counter
++import csv,gzip,json,itertools,time,hashlib
++from r4_utils import *
++from opportunity_r4 import funnel_round,STAGES,best_reference,legal_vector
++OUT=RUN/'analysis'
++def table(p,rows):
++    if not rows:return
++    with Path(p).open('w',encoding='utf8',newline='') as f:
++        w=csv.DictWriter(f,list(rows[0]));w.writeheader();w.writerows(rows)
++def raw(d):
++    with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:return [json.loads(x) for x in f]
++def context(d):
++    s=load(d/'start.json');nodes={n['id']:n for n in load(ROOT/s['inputs']['cluster']['relative'])};apps={x['name']:x['application'] for x in csv.DictReader((ROOT/s['inputs']['workload']['relative']).open(encoding='utf8'))}
++    from capra.response import Responses
++    return s,nodes,apps,Responses(ROOT/s['inputs']['responses']['relative'])
++def bounded_review(source,r):
++    from capra.contracts import Node,JobGpuPlan,Allocation,serialized,validate
++    from capra.response_v2 import V2Responses
++    from capra.placement_r3 import create_placement
++    from capra.audit_r4 import score as independent_score
++    d=ROOT/source['output'];s,nodes,apps,response=context(d);p=r['plan'];locked=r['locks'];todo=sorted(set(p)-set(locked))
++    assert len(p)<=6 and len(todo)<=4
++    options=[sorted(n for n,x in nodes.items() if x['gpu_type']==p[k]['gpu_type']) for k in todo]
++    assert all(len(x)<=2 for x in options);bound=1
++    for x in options:bound*=len(x)
++    assert bound<=16
++    args=({k:JobGpuPlan(**v) for k,v in p.items()},[Node(**n) for n in nodes.values()],apps,V2Responses(ROOT/s['inputs']['responses']['relative']),{k:Allocation(**v) for k,v in r['current'].items()},{k:Allocation(**v) for k,v in locked.items()},r['lock_remaining'],s['costs'],set(r['started']))
++    solver=create_placement(*args,method='CAPRA',allocator_mode='ram_slack_v1');rows=[];best=None;attempts=0
++    costs={a:next(iter(v.values())) for a,v in s['costs'].items()}
++    for ids in itertools.product(*options):
++        check_budget();attempts+=1;layout={k:a['node'] for k,a in locked.items()};layout.update(dict(zip(todo,ids)))
++        baseline,reasons=legal_vector(p,layout,nodes,locked,response,apps)
++        if baseline is None:rows.append(dict(layout=layout,feasible=False,reasons=reasons));continue
++        allocation,meta=solver.allocator.layout(layout);c=solver.finish('DIAGNOSTIC_ONLY',allocation,meta)
++        validate(args[0],c['allocations'],args[1],args[5]);a=serialized(c['allocations']);ind=independent_score(a,r['current'],locked,r['lock_remaining'],apps,costs,set(r['started']))
++        for k in ('phi','total_delay','total_new_cost','changes'):assert abs(c['score'][k]-ind[k])<=1e-7
++        for k,x in a.items():assert abs(x['rho']-response.rho(apps[k],x['gpus'],x['cpu'],x['ram']))<=1e-7
++        rec=dict(layout=layout,stable_allocations=a,feasible=True,phi=c['score']['phi'],sum_rho=sum(x['rho'] for x in a.values()),total_delay=c['score']['total_delay'],new_cost=c['score']['total_new_cost'],changes=c['score']['changes'],allocator_meta=meta)
++        rows.append(rec)
++        if best is None or rec['phi']>best['phi']+1e-9 or (abs(rec['phi']-best['phi'])<=1e-9 and (rec['total_delay'],rec['changes'])<(best['total_delay'],best['changes'])):best=rec
++    assert attempts==bound and best is not None
++    reference,_=best_reference(r['selection']['candidates']);valid=[c for c in r['selection']['candidates'] if c['feasible']];recorded_best=max(c['score']['phi'] for c in valid)
++    rcan=next(c for c in r['selection']['candidates'] if c['label']=='R')
++    original_layouts=[tuple((k,x['node']) for k,x in sorted(c['allocations'].items())) for c in valid]
++    b_layout=tuple((k,x['node']) for k,x in sorted(best['stable_allocations'].items()))
++    return dict(source=source['output'],scenario=source['scenario'],round=r['round'],time=r['time'],status='PASS',jobs=len(p),unlocked=len(todo),layout_bound=bound,attempted_layouts=attempts,feasible_layouts=sum(x['feasible'] for x in rows),layouts=rows,best=best,FK_reference_phi=reference['score']['phi'],recorded_best_phi=recorded_best,R_phi=rcan['score']['phi'] if rcan['feasible'] else None,best_over_FK_phi=best['phi']-reference['score']['phi'],best_over_recorded_phi=best['phi']-recorded_best,positive_net_layout_missed_by_recorded_candidates=best['phi']>recorded_best+1e-9,best_layout_not_in_recorded_candidates=b_layout not in original_layouts,allocator_statistics=solver.allocator.stats(),scope='At most16 whole layouts in preregistered small fixed-GPU state; original finite node allocator and score, not global quota/JCT optimum')
++def cases_for(source,rows,baseline_directory,historical=False):
++    d=ROOT/source['output'];base=Path(baseline_directory)
++    if not (base/'per_job.csv').exists():return []
++    full={x['job']:x for x in csv.DictReader((d/'per_job.csv').open(encoding='utf8'))};other={x['job']:x for x in csv.DictReader((base/'per_job.csv').open(encoding='utf8'))};changed={}
++    for r in rows:
++        if r['selection']['selected']!='R':continue
++        for t in r['transitions']:
++            if t['new'] is not None and t['job'] in full:changed.setdefault(t['job'],[]).append(r)
++    eligible=[k for k in changed if full[k]['jct'] and other[k]['jct']];slow=[k for k in eligible if float(full[k]['jct'])>float(other[k]['jct'])+1e-7];fast=[k for k in eligible if float(full[k]['jct'])<float(other[k]['jct'])-1e-7]
++    picks=[]
++    if slow:picks.append(('worst_R_involved_relative_degradation',max(slow,key=lambda k:float(full[k]['jct'])/float(other[k]['jct']))))
++    if fast:picks.append(('best_R_involved_absolute_improvement',min(fast,key=lambda k:float(full[k]['jct'])-float(other[k]['jct']))))
++    out=[]
++    for label,k in picks:
++        start=changed[k][0];selected=next(c for c in start['selection']['candidates'] if c['label']=='R');ref,_=best_reference(start['selection']['candidates'])
++        timeline=[]
++        for r in rows:
++            if r['round']<start['round']:continue
++            e=next((e for e in r['executions'] if e['job']==k),None)
++            if e:timeline.append(dict(round=r['round'],time=r['time'],selected=r['selection']['selected'],allocation=e['allocation'],batch=e['batch_after'],progress_before=e['progress_before'],progress_after=e['progress_after'],waiting=e['waiting'],training=e['training'],recovery=e['recovery'],rescale_remaining=e['rescale_remaining'],completion=e['completion_time'],transitions=[x for x in r['transitions'] if x['job']==k]))
++        # The row is a real dynamic paired outcome, never attributed solely to this R action.
++        out.append(dict(case=label,result_origin='HISTORICAL_REFERENCE' if historical else 'NEW_EXECUTION',scenario=source['scenario'],source=source['output'],source_events_sha256=sha(d/'events.jsonl.gz'),baseline=str(base.relative_to(ROOT)),baseline_events_sha256=sha(base/'events.jsonl.gz'),job_id=k,R_round=start['round'],R_time=start['time'],before=start['current'].get(k),R_allocation=selected['allocations'].get(k),FK_reference_allocation=ref['allocations'].get(k),predicted_R=selected['score']['jobs'].get(k),predicted_reference=ref['score']['jobs'].get(k),R_phi=selected['score']['phi'],FK_phi=ref['score']['phi'],actual_full_ledger={x:float(full[k][x]) for x in ('jct','waiting','training','recovery')},actual_baseline_ledger={x:float(other[k][x]) for x in ('jct','waiting','training','recovery')},delta_jct=float(full[k]['jct'])-float(other[k]['jct']),jct_ratio=float(full[k]['jct'])/float(other[k]['jct']),subsequent_execution_and_reconfiguration=timeline,warning='Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action'))
++    if not picks:out.append(dict(case='NO_ELIGIBLE_R_INVOLVED_PAIRED_JOB',scenario=source['scenario'],source=source['output'],R_selected_rounds=sum(r['selection']['selected']=='R' for r in rows)))
++    return out
++def main():
++    began=time.perf_counter();check_budget();OUT.mkdir(exist_ok=True);physical=load(RUN/'results.json');aggregates=[];cases=[];samples=[];sample_rules=[];integrity={}
++    for source in physical:
++        if source['state']!='COMPLETE_PASS':continue
++        check_budget();d=ROOT/source['output'];s,nodes,apps,response=context(d);rows=raw(d);cache={};counts=Counter();tags=Counter();denom=sum(bool(r['plan']) for r in rows);selected=0;out=OUT/'cells'/source['scenario']/source['method'];out.mkdir(parents=True,exist_ok=True);observed=[]
++        for name in ('start.json','events.jsonl.gz','summary.json','per_job.csv'):integrity[(d/name).relative_to(ROOT).as_posix()]=sha(d/name)
++        with gzip.open(out/'opportunity_rounds.jsonl.gz','wt',encoding='utf8') as f:
++            for r in rows:
++                check_budget();v=funnel_round(r,nodes,response,apps,cache);observed.append(v)
++                for k,x in v['stages'].items():counts[k]+=x
++                if v['denominator_nonempty']:tags.update(v['nonexclusive_tags'])
++                selected+=v['R_selected'];f.write(json.dumps(v,ensure_ascii=False)+'\n')
++        assert counts['A']==denom and all(counts[b]<=counts[a] for a,b in zip(STAGES,list(STAGES)[1:]))
++        for k,definition in STAGES.items():aggregates.append(dict(scenario=source['scenario'],method=source['method'],stage=k,definition=definition,numerator=counts[k],denominator_nonempty_rounds=denom,fraction=counts[k]/denom if denom else None,total_R_selected=selected,result_origin='NEW_EXECUTION'))
++        dump(out/'opportunity_summary.json',dict(denominator_nonempty_rounds=denom,strict_nested_counts=dict(counts),nonexclusive_tag_round_counts=dict(tags),R_selected_all=selected,scope='Strict new-colocation sufficient-certificate funnel; protocol-not-generated is not an algorithm bug'))
++        if source['method']=='CAPRA':
++            eligible=[(r,v) for r,v in zip(rows,observed) if 0<len(r['plan'])<=6 and len(set(r['plan'])-set(r['locks']))<=4]
++            selected_states={}
++            for rule,predicate in [('first_E_uncovered_or_no_gross',lambda r,v:v['stages']['E'] and (not v['stages']['F'] or not v['stages']['G'])),('first_R_selected_small',lambda r,v:v['R_selected'])]:
++                hit=next(((r,v) for r,v in eligible if predicate(r,v)),None)
++                sample_rules.append(dict(scenario=source['scenario'],rule=rule,round=None if hit is None else hit[0]['round']))
++                if hit:selected_states.setdefault(hit[0]['round'],dict(source=source,event=hit[0],rules=[]))['rules'].append(rule)
++            samples.extend(selected_states.values());cases+=cases_for(source,rows,d.parent/'CAPRA-FK')
++        print(json.dumps(dict(event='FUNNEL_READY',scenario=source['scenario'],method=source['method'],N=denom,stages=dict(counts))),flush=True)
++    assert len(samples)<=8
++    registration=dict(status='PREREGISTERED_RULE_APPLIED_BEFORE_ENUMERATION',max_states=8,max_layouts_per_state=16,max_total_layouts=128,rules=sample_rules,states=[dict(source=x['source']['output'],scenario=x['source']['scenario'],round=x['event']['round'],rules=x['rules'],event_sha256=hashlib.sha256(json.dumps(x['event'],sort_keys=True).encode()).hexdigest()) for x in samples])
++    dump(OUT/'bounded_diagnostic_preregistration.json',registration)
++    reviews=[]
++    for x in samples:
++        check_budget();review=bounded_review(x['source'],x['event']);review['selection_rules']=x['rules'];reviews.append(review)
++    assert sum(x['attempted_layouts'] for x in reviews)<=128
++    dump(OUT/'bounded_layout_reviews.json',reviews)
++    # Two existing historical comparisons, exact raw sources and fixed criteria, no simulation.
++    history=[dict(scenario='R2_w2_dense_cm_positive',output='runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA'),dict(scenario='R3_saturn8_cm_negative',output='runs/smart_holdout_r3/CAPRA_V2_HOLDOUT_R3/saturn8_supported80_cm/CAPRA')]
++    histreps=[]
++    for source in history:
++        check_budget();d=ROOT/source['output'];rows=raw(d);s,nodes,apps,response=context(d)
++        for name in ('start.json','events.jsonl.gz','summary.json','per_job.csv'):integrity[(d/name).relative_to(ROOT).as_posix()]=sha(d/name)
++        hit=next((r for r in rows if r['selection']['selected']=='R'),None)
++        histreps.append(dict(source=source,source_events_sha256=sha(d/'events.jsonl.gz'),first_R_round=None if hit is None else hit['round'],first_R_event=hit,warning='Historical explanation only, not new execution'))
++        cases+=cases_for(source,rows,d.parent/'CAPRA-FK',historical=True)
++    for p,h in integrity.items():assert sha(ROOT/p)==h
++    table(OUT/'opportunity_funnel.csv',aggregates);dump(OUT/'opportunity_cases.json',cases);dump(OUT/'historical_representative_rounds.json',histreps)
++    dump(OUT/'diagnostic_raw_integrity.json',dict(status='PASS',files_sha256=integrity))
++    dump(OUT/'diagnosis_receipt.json',dict(status='PASS',wall_seconds=time.perf_counter()-began,funnel_cells=len(aggregates)//9,small_states=len(reviews),enumerated_layouts=sum(x['attempted_layouts'] for x in reviews),missed_positive_net_states=sum(x['positive_net_layout_missed_by_recorded_candidates'] for x in reviews),cases=len(cases),Job_step_calls=0,GPU_MIP_calls=0,no_global_JCT_optimum_claim=True))
++    print('R4_BOUNDED_DIAGNOSIS_PASS',flush=True)
++if __name__=='__main__':main()
+diff --git a/scripts/environment_r4.py b/scripts/environment_r4.py
+new file mode 100644
+index 0000000..3f097b4
+--- /dev/null
++++ b/scripts/environment_r4.py
+@@ -0,0 +1,18 @@
++import os,sys,platform,hashlib,importlib.metadata
++from r4_utils import *
++def main():
++    check_budget();pins={'numpy':'1.26.4','scipy':'1.13.1','cvxpy':'1.6.5'}
++    versions={k:importlib.metadata.version(k) for k in pins};assert versions==pins and platform.python_version()=='3.10.10'
++    from scipy.optimize._highs import _highs_wrapper
++    old=load(ROOT/'configs/experiment_manifest_holdout_r3.json')['environment'];binary=Path(_highs_wrapper.__file__)
++    assert sha(binary)==old['highs_wrapper_sha256'] and sha(ROOT/'requirements_v2.lock.txt')==old['dependency_lock_sha256']
++    from capra.upstream import import_audit
++    paths=import_audit()
++    out=dict(old,base_commit=BASE,executable=sys.executable,prefix=sys.prefix,python=platform.python_version(),versions=versions,highs_wrapper_sha256=sha(binary),import_audit=paths)
++    dump(DEV/'environment.json',out)
++    raw=git('-C',str(ROOT),'ls-tree','-rz',BASE);paths={x.split(b'\t',1)[1].decode():x.split(b'\t',1)[0].split()[2].decode() for x in raw.split(b'\0') if x}
++    for p,h in paths.items():
++        check_budget();b=(ROOT/p).read_bytes();assert hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()==h,('BASE_CHANGED',p)
++    dump(DEV/'protected_base.json',{p:sha(ROOT/p) for p in paths})
++    print('R4_ENVIRONMENT_AND_2543_BASE_FILES_PASS')
++if __name__=='__main__':main()
+diff --git a/scripts/freeze_r4.py b/scripts/freeze_r4.py
+new file mode 100644
+index 0000000..a7d6f3d
+--- /dev/null
++++ b/scripts/freeze_r4.py
+@@ -0,0 +1,38 @@
++"""One acyclic source archive and fixed twelve actual cells before cell 1."""
++import zipfile
++from r4_utils import *
++from capra.methods_r4 import spec,engine
++def main():
++    check_budget();assert load(DEV/'validation_receipt.json')['status']=='PASS'
++    protected=load(DEV/'protected_base.json')
++    for p,h in protected.items():assert sha(ROOT/p)==h,('HISTORY_CHANGED',p)
++    cells=[];i=0
++    for w in (7,8):
++        for profile in ('original','cm'):
++            methods=('SIA-SMART-P','CAPRA-FK','CAPRA') if w==7 else ('CAPRA','CAPRA-FK','SIA-SMART-P')
++            for method in methods:
++                i+=1;mode='none' if method=='SIA-SMART-P' else 'ram_slack_v1';work=f'saturn{w}_dense05';inp=f'data/pressure_r4/{work}.csv';cluster='data/scenarios_r1/cluster_cpu3.json';response=f'data/scenarios_r1/responses_{profile}.json'
++                cells.append(dict(index=i,scenario=work+'_'+profile,workload_id=work,source_workload_id=f'saturn{w}_supported80',profile=profile,method=method,display_method='CAPRA-FKR' if method=='CAPRA' else method,placement_engine=engine(method),**spec(method,mode),input=inp,cluster=cluster,responses=response,input_hashes={k:sha(ROOT/p) for k,p in [('input',inp),('cluster',cluster),('responses',response)]},output=f'runs/pressure_r4/CAPRA_V2_PRESSURE_R4/{work}_{profile}/{method}',execution_required=True,result_origin='NEW_EXECUTION'))
++    assert len(cells)==12
++    files=[]
++    for b in ('src','third_party','tests'):
++        files += [p for p in (ROOT/b).rglob('*') if p.is_file() and '__pycache__' not in p.parts and '.git' not in p.parts]
++    files += list((ROOT/'scripts').glob('*r4.py'))+[ROOT/'scripts/scenario_control.py']
++    files += [ROOT/p for p in ('pyproject.toml','requirements.lock.txt','requirements_v2.lock.txt','docs/CAPRA_R4_DESIGN.md','docs/CAPRA_R4_EXECUTION_ORDER.txt','docs/CAPRA_R3_SMART_PROVENANCE.json','docs/CAPRA_R3_SMART.patch','data/pressure_r4/generate.py','data/pressure_r4/provenance.json','data/holdout_r3/provenance.json')]
++    files += [p for p in (ROOT/'data/pressure_r4').glob('*.provenance.json')]
++    files += [ROOT/c[k] for c in cells for k in ('input','cluster','responses')]+[ROOT/f'data/holdout_r3/saturn{w}_supported80.csv' for w in (7,8)]
++    files += [DEV/'environment.json',DEV/'closed_loop_control.json',DEV/'offline_validation_receipt.json'];files=sorted(set(files))
++    hashes={p.relative_to(ROOT).as_posix():sha(p) for p in files};snapshot=RUN/'source_snapshot.zip';assert not snapshot.exists()
++    with zipfile.ZipFile(snapshot,'w',zipfile.ZIP_DEFLATED,compresslevel=6) as z:
++        for p in files:z.write(p,p.relative_to(ROOT).as_posix())
++        z.writestr('R4_SOURCE_HASHES.json',__import__('json').dumps(dict(base_commit=BASE,files_sha256=hashes),indent=2))
++    digest=sha(snapshot);mp=ROOT/'configs/experiment_manifest_pressure_r4.json';assert not mp.exists()
++    manifest=dict(version='CAPRA_V2_PRESSURE_R4',base_commit=BASE,frozen_utc=datetime.now(timezone.utc).isoformat(),source_snapshot=snapshot.relative_to(ROOT).as_posix(),source_snapshot_sha256=digest,files_sha256=hashes,protected_sha256=protected,cells=cells,environment=load(DEV/'environment.json'),seed=0,interval=60,horizon=180,wall_limit=900,process_limit=960,max_rounds=6000,total_budget_seconds=10800,cleanup_reserve_seconds=30,shared_budget='runs/pressure_r4/budget_ledger.json',all_cell_order=list(range(1,13)),actual_executions_required=12,equivalence_reuse=False,formal_retries=0,no_remote_push=True,diagnostic_limits=dict(max_states=8,max_jobs=6,max_unlocked=4,max_layouts_per_state=16,max_total_layouts=128,selection='Per condition first E-positive un-covered/no-gross small state and first R-selected small state; dedup; no replacements',diagnostics_within_shared_budget=True),method_semantics_source='R3 unchanged; only new read-only timers',progress_stop='same original STOP_REQUEST/all-arrived30-stagnant/3x30s')
++    dump(mp,manifest)
++    with zipfile.ZipFile(snapshot) as z:
++        for p,h in hashes.items():assert __import__('hashlib').sha256(z.read(p)).hexdigest()==h
++    for c in cells:c.update(base_commit=BASE,phase_version=manifest['version'],manifest=mp.relative_to(ROOT).as_posix(),manifest_sha256=sha(mp),source_snapshot_sha256=digest)
++    dump(RUN/'matrix_index.json',cells);dump(RUN/'matrix_ledger.json',dict(cells=[dict(index=c['index'],state='CREATED',output=c['output'],executed=False) for c in cells]))
++    dump(RUN/'freeze_receipt.json',dict(base_commit=BASE,source_snapshot_sha256=digest,manifest_sha256=sha(mp),manifest=mp.relative_to(ROOT).as_posix(),frozen_files=len(hashes),protected_files=len(protected),physical_cells=12,archive_verified=True))
++    record('freeze',status='PASS',frozen_files=len(hashes),physical_cells=12);print('R4_FROZEN_TWELVE_ACTUAL_CELLS')
++if __name__=='__main__':main()
+diff --git a/scripts/history_protection_r4.py b/scripts/history_protection_r4.py
+new file mode 100644
+index 0000000..7b605ab
+--- /dev/null
++++ b/scripts/history_protection_r4.py
+@@ -0,0 +1,28 @@
++"""Read-only exact Git-blob census of all historical worktrees."""
++import os,subprocess,hashlib
++from r4_utils import *
++
++def main():
++    env={k:v for k,v in os.environ.items() if k!='GIT_CONFIG_COUNT' and not k.startswith(('GIT_CONFIG_KEY_','GIT_CONFIG_VALUE_'))}
++    records=[]
++    for name,commit in [
++        ('CAPRA','0b87934ae558960921889b01d14502155fb0c41c'),
++        ('CAPRA-scenarios-r1','81b1109ab1124feeac4e846003f4383b39143fc4'),
++        ('CAPRA-ablation-ram-r2','0876dd916e1b25d2030233826968683da730a55f'),
++        ('CAPRA-smart-holdout-r3','5af0bdb6b86b797225908f717b5b9324cd48a539')]:
++        tree=Path('D:/科研启航')/name
++        def git(*a):return subprocess.check_output(['git','-C',str(tree),*a],env=env)
++        assert git('rev-parse','HEAD').decode().strip()==commit
++        assert not git('status','--porcelain','--untracked-files=no')
++        verified={}
++        for item in git('ls-tree','-rz',commit).split(b'\0'):
++            if not item:continue
++            meta,rel=item.split(b'\t',1);mode,kind,oid=meta.split();assert kind==b'blob'
++            path=rel.decode('utf8');data=(tree/path).read_bytes()
++            actual=hashlib.sha1(b'blob '+str(len(data)).encode()+b'\0'+data).hexdigest()
++            assert actual==oid.decode(),(name,path)
++            verified[path]=hashlib.sha256(data).hexdigest()
++        records.append(dict(worktree=str(tree),commit=commit,status='PASS',tracked_files=len(verified),files_sha256=verified,untracked_files_untouched=True))
++    dump(RUN/'history_worktrees_verification.json',dict(status='PASS',worktrees=records,no_writes_to_history=True))
++    print('R4_HISTORY_WORKTREES_PASS',[(Path(x['worktree']).name,x['tracked_files']) for x in records])
++if __name__=='__main__':main()
+diff --git a/scripts/opportunity_r4.py b/scripts/opportunity_r4.py
+new file mode 100644
+index 0000000..4727e90
+--- /dev/null
++++ b/scripts/opportunity_r4.py
+@@ -0,0 +1,99 @@
++"""Read-only strict nested new-colocation funnel; no optimizer or simulation imports."""
++from collections import Counter
++from itertools import combinations
++EPS=1e-9
++STAGES={
++ 'A':'nonempty complete GPU plan',
++ 'B':'same-GPU-type CPU/RAM donor-receiver pair exists',
++ 'C':'some B pair GPU sum fits a same-type node',
++ 'D':'some C pair not colocated in any feasible F/K (P for smart)',
++ 'E':'some D pair has complete proportional-plus-lock direct-move witness',
++ 'F':'actual feasible R candidate covers some E pair',
++ 'G':'F and actual R gross sum-rho exceeds best F/K',
++ 'H':'G and recovery-adjusted original rule selects R',
++ 'I':'H and current actual training has positive auxiliary gain'}
++def best_reference(candidates):
++    valid=[c for c in candidates if c['feasible'] and c['label'] in ('F','K','P')]
++    assert valid
++    selected=valid[0]
++    for c in valid[1:]:
++        a,b=c['score'],selected['score']
++        if a['phi']>b['phi']+EPS or (abs(a['phi']-b['phi'])<=EPS and (a['total_delay']<b['total_delay']-EPS or (abs(a['total_delay']-b['total_delay'])<=EPS and a['changes']<b['changes']))):selected=c
++    return selected,valid
++def legal_vector(plan,layout,nodes,locks,response,apps):
++    if set(plan)!=set(layout):return None,['incomplete_job_set']
++    use={n:[0.,0.,0.] for n in nodes};out={};reasons=[]
++    for k,p in plan.items():
++        nid=layout[k]
++        if nid not in nodes or nodes[nid]['gpu_type']!=p['gpu_type']:return None,['different_gpu_pool']
++        n=nodes[nid];g=p['gpus']
++        if k in locks:
++            if locks[k]['node']!=nid:return None,['recovery_lock_blocked']
++            a=dict(locks[k])
++        else:
++            cpu=n['cpu']*g/n['gpus'];ram=n['ram']*g/n['gpus']
++            a=dict(node=nid,gpu_type=p['gpu_type'],gpus=g,cpu=cpu,ram=ram,rho=response.rho(apps[k],g,cpu,ram))
++        for f in ('cpu','ram'):
++            if not response.data[f+'_axis'][0]*g-EPS<=a[f]<=min(n[f],response.data[f+'_axis'][-1]*g)+EPS:return None,['profile_domain_'+f]
++        out[k]=a
++        for i,f in enumerate(('gpus','cpu','ram')):use[nid][i]+=a[f]
++    for nid,u in use.items():
++        for value,f in zip(u,('gpus','cpu','ram')):
++            if value>nodes[nid][f]+1e-7:reasons.append('direct_move_capacity_'+f)
++    return (None,reasons) if reasons else (out,[])
++def funnel_round(r,nodes,response,apps,role_cache=None):
++    role_cache={} if role_cache is None else role_cache
++    p=r['plan'];flags=set();allpairs=[];same=[];fits=[];remaining=[];witness=[]
++    reference,refs=best_reference(r['selection']['candidates'])
++    def roles(k):
++        x=p[k];g=x['gpus'];key=(apps[k],x['gpu_type'],g)
++        if key not in role_cache:
++            n=next(n for n in nodes.values() if n['gpu_type']==x['gpu_type']);cp=n['cpu']*g/n['gpus'];mp=n['ram']*g/n['gpus'];base=response.rho(apps[k],g,cp,mp);d={}
++            for f,v in [('cpu',cp),('ram',mp)]:
++                d[f+'_donor']=any(z*g<v-EPS and response.rho(apps[k],g,z*g if f=='cpu' else cp,z*g if f=='ram' else mp)>=base-EPS for z in response.data[f+'_axis'])
++                top=min(n[f],response.data[f+'_axis'][-1]*g)
++                d[f+'_receiver']=response.rho(apps[k],g,top if f=='cpu' else cp,top if f=='ram' else mp)>base+EPS
++            role_cache[key]=d
++        return role_cache[key]
++    for a,b in combinations(sorted(p),2):
++        ra,rb=roles(a),roles(b)
++        for resource in ('cpu','ram'):
++            if not ((ra[resource+'_donor'] and rb[resource+'_receiver']) or (rb[resource+'_donor'] and ra[resource+'_receiver'])):continue
++            pair=(a,b,resource);allpairs.append(pair)
++            if p[a]['gpu_type']!=p[b]['gpu_type']:flags.add('different_gpu_pool');continue
++            same.append(pair)
++            if not any(p[a]['gpus']+p[b]['gpus']<=n['gpus'] for n in nodes.values() if n['gpu_type']==p[a]['gpu_type']):flags.add('pair_gpu_sum_exceeds_node');continue
++            fits.append(pair)
++            if any(c['allocations'][a]['node']==c['allocations'][b]['node'] for c in refs):flags.add('already_colocated_in_F_or_K');continue
++            remaining.append(pair)
++            for c in refs:
++                layout={k:x['node'] for k,x in c['allocations'].items()}
++                for moving,peer in ((a,b),(b,a)):
++                    if moving in r['locks']:flags.add('recovery_lock_blocked');continue
++                    trial=dict(layout);trial[moving]=layout[peer]
++                    allocation,reasons=legal_vector(p,trial,nodes,r['locks'],response,apps)
++                    flags.update(reasons)
++                    if allocation is not None:
++                        witness.append(dict(pair=list(pair),reference=c['label'],moving=moving,target=layout[peer],layout=trial,allocations=allocation,scope='Sufficient direct whole-set proportional-plus-lock certificate, not positive net gain'))
++    rc=next((c for c in r['selection']['candidates'] if c['label']=='R'),None)
++    if rc is None:flags.add('R_not_generated_by_protocol')
++    elif not rc['feasible']:flags.add('R_infeasible:'+rc['reason'])
++    covered=[w for w in witness if rc and rc['feasible'] and rc['allocations'][w['pair'][0]]['node']==rc['allocations'][w['pair'][1]]['node']]
++    rho_ref=sum(a['rho'] for a in reference['allocations'].values());gross=net=None
++    if rc and rc['feasible']:
++        gross=sum(a['rho'] for a in rc['allocations'].values())-rho_ref;net=rc['score']['phi']-reference['score']['phi']
++        if gross<=EPS:flags.add('R_gross_gain_insufficient')
++        if net<=EPS:flags.add('R_net_phi_not_strictly_higher')
++        if gross>EPS and net<=EPS:flags.add('gross_gain_offset_by_recovery_or_window')
++        if witness and not covered:flags.add('R_candidate_misses_direct_pair_witness')
++    selected=r['selection']['selected']=='R'
++    if selected and gross is not None and gross<=EPS:flags.add('R_selected_cost_or_tie_only')
++    positive=sum(e['training'] for e in r['executions'] if e['allocation'] and e['allocation']['rho']>response.rho(apps[e['job']],e['allocation']['gpus'],nodes[e['allocation']['node']]['cpu']*e['allocation']['gpus']/nodes[e['allocation']['node']]['gpus'],nodes[e['allocation']['node']]['ram']*e['allocation']['gpus']/nodes[e['allocation']['node']]['gpus'])+EPS)
++    conditions=[bool(p),bool(same),bool(fits),bool(remaining),bool(witness),bool(covered),gross is not None and gross>EPS,selected,positive>EPS]
++    values=[];alive=True
++    for v in conditions:alive=alive and v;values.append(bool(alive))
++    stages=dict(zip(STAGES,values));assert all(not b or a for a,b in zip(values,values[1:]))
++    if selected and not stages['H']:flags.add('R_selected_outside_strict_new_colocation_funnel')
++    if not same and p:flags.add('no_same_type_resource_complement')
++    free={typ:sum(n['gpus'] for n in nodes.values() if n['gpu_type']==typ)-sum(x['gpus'] for x in p.values() if x['gpu_type']==typ) for typ in sorted({n['gpu_type'] for n in nodes.values()})}
++    return dict(round=r['round'],time=r['time'],denominator_nonempty=bool(p),stages=stages,nonexclusive_tags=sorted(flags),selected_jobs=sorted(p),gpu_free_by_type=free,pairs_all_resource_complement=[list(x) for x in allpairs],pairs_same_type=[list(x) for x in same],pairs_gpu_fits=[list(x) for x in fits],pairs_not_FK_covered=[list(x) for x in remaining],direct_legal_witnesses=witness,R_covered_witness_pairs=[w['pair'] for w in covered],best_reference=reference['label'],reference_phi=reference['score']['phi'],reference_sum_rho=rho_ref,R_gross_delta=gross,R_net_phi_delta=net,R_selected=selected,R_positive_aux_training_seconds=positive if selected else 0.,R_candidate_generated=rc is not None)
+diff --git a/scripts/r4_utils.py b/scripts/r4_utils.py
+new file mode 100644
+index 0000000..3c53782
+--- /dev/null
++++ b/scripts/r4_utils.py
+@@ -0,0 +1,18 @@
++from pathlib import Path
++from datetime import datetime,timezone
++import hashlib,json,time,os,subprocess
++ROOT=Path(__file__).resolve().parents[1];RUN=ROOT/'runs/pressure_r4';DEV=RUN/'development';BASE='5af0bdb6b86b797225908f717b5b9324cd48a539'
++def load(p):return json.loads(Path(p).read_text(encoding='utf8'))
++def dump(p,x):
++    p=Path(p);p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def git(*args):
++    # Some desktop launches expose COUNT/KEY without its empty VALUE to Python.
++    # Scope removal of that malformed command injection to this read-only child.
++    child_env={k:v for k,v in os.environ.items() if k!='GIT_CONFIG_COUNT' and not k.startswith(('GIT_CONFIG_KEY_','GIT_CONFIG_VALUE_'))}
++    return subprocess.check_output(['git',*args],env=child_env)
++def ledger():return load(RUN/'budget_ledger.json')
++def record(kind,**data):
++    b=ledger();b['entries'].append(dict(kind=kind,utc=datetime.now(timezone.utc).isoformat(),**data));b['elapsed_seconds']=time.perf_counter()-b['start_monotonic'];b['remaining_seconds']=max(0,b['deadline_monotonic']-time.perf_counter());dump(RUN/'budget_ledger.json',b)
++def check_budget(reserve=30):
++    b=ledger();assert time.perf_counter()+reserve<b['deadline_monotonic'],'R4_SHARED_BUDGET_EXHAUSTED';return b['deadline_monotonic']
+diff --git a/scripts/rejection_r4.py b/scripts/rejection_r4.py
+new file mode 100644
+index 0000000..8b4d3e6
+--- /dev/null
++++ b/scripts/rejection_r4.py
+@@ -0,0 +1,27 @@
++"""Post-smoke audit rejection tests on copies only; never mutate source evidence."""
++import shutil,json,gzip
++from r4_utils import *
++from capra.audit_r4 import audit
++def main():
++    source=DEV/'smoke_01';results=[]
++    for kind in ('wrong_engine','nonproportional','missing_repair','wrong_gpu_plan'):
++        check_budget();d=DEV/'audit_rejection'/kind;assert not d.exists();shutil.copytree(source,d)
++        s=load(d/'start.json')
++        with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:rows=[json.loads(x) for x in f]
++        r=next(x for x in rows if x['plan']);k=next(iter(r['plan']))
++        if kind=='wrong_engine':s['placement_engine']='sia_fast_original';dump(d/'start.json',s)
++        if kind=='nonproportional':r['selection']['candidates'][0]['allocations'][k]['cpu']+=0.01
++        if kind=='missing_repair':
++            # Declare repaired output with no record/witness, independent check must reject.
++            r['lock_repaired_gpu_plan'][k]['node']='invalid-node'
++        if kind=='wrong_gpu_plan':r['gpu_stage']['smart_records'][0]['gpu_allocations'][next(iter(r['gpu_stage']['smart_records'][0]['gpu_allocations']))]['gpus']+=1
++        with gzip.open(d/'events.jsonl.gz','wt',encoding='utf8') as f:
++            for x in rows:f.write(json.dumps(x)+'\n')
++        seals=load(d/'output_hashes.json')
++        for name in seals:seals[name]=sha(d/name)
++        dump(d/'output_hashes.json',seals)
++        try:audit(d)
++        except (AssertionError,KeyError) as e:results.append(dict(case=kind,status='REJECTED',error=repr(e)))
++        else:raise AssertionError(('INVALID_AUDIT_ACCEPTED',kind))
++    dump(DEV/'audit_rejection_receipt.json',dict(status='PASS',cases=results));print('R4_AUDIT_REJECTIONS_PASS')
++if __name__=='__main__':main()
+diff --git a/scripts/report_r4.py b/scripts/report_r4.py
+new file mode 100644
+index 0000000..152c86b
+--- /dev/null
++++ b/scripts/report_r4.py
+@@ -0,0 +1,142 @@
++"""Chinese research report and scientific plots from actual CSV; no simulation/search."""
++from pathlib import Path
++from collections import Counter
++import csv,json,time,math
++import numpy as np
++import matplotlib
++matplotlib.use('Agg')
++import matplotlib.pyplot as plt
++from matplotlib import font_manager
++from r4_utils import *
++OUT=RUN/'analysis';FIG=RUN/'figures'
++def fmt(x,n=2):return '—' if x is None or x=='' else f'{float(x):.{n}f}'
++def tab(head,rows):return '|'+ '|'.join(head)+'|\n|'+ '|'.join('---' for _ in head)+'|\n'+'\n'.join('|'+ '|'.join(str(v) for v in r)+'|' for r in rows)+'\n'
++def csvrows(p):return list(csv.DictReader(Path(p).open(encoding='utf8',newline='')))
++def main():
++    began=time.perf_counter();FIG.mkdir(exist_ok=True);rows=csvrows(OUT/'results.csv');comps=load(OUT/'comparisons.json');ccsv=csvrows(OUT/'comparisons.csv');metrics={x['id']:x for x in load(OUT/'metrics.json')};funnel=csvrows(OUT/'opportunity_funnel.csv') if (OUT/'opportunity_funnel.csv').exists() else [];sensitivity=csvrows(OUT/'scenario_sensitivity.csv');physical=load(RUN/'results.json');freeze=load(RUN/'freeze_receipt.json') if (RUN/'freeze_receipt.json').exists() else None
++    numeric=('mean_jct','p50_jct','p95_jct','p99_jct','makespan','mean_waiting','mean_training','mean_recovery','decision_median','decision_p95','decision_p99','decision_max','wall_seconds','audit_seconds','gpu_allocated_fraction','cpu_allocated_fraction','ram_allocated_fraction','average_active_jobs','average_queue_jobs','peak_queue')
++    for r in rows:
++        for k in numeric:r[k]=float(r[k]) if r[k] else None
++        for k in ('completed','total','censored','decision_gt5_count'):r[k]=int(r[k])
++        x=metrics[r['id']]['summary']
++        for k in ('mean_jct','p50_jct','p95_jct','p99_jct','makespan'):assert r[k]==x[k]
++    assert len(comps)==len(ccsv)
++    for a,b in zip(comps,ccsv):
++        assert all(str(a[k])==b[k] for k in ('scenario','method','baseline'))
++        for k in ('mean_jct_improvement_percent','p95_jct_improvement_percent','p99_jct_improvement_percent'):assert float(b[k])==a[k]
++    font=Path('C:/Windows/Fonts/msyh.ttc')
++    if font.exists():font_manager.fontManager.addfont(str(font));plt.rcParams['font.family']=font_manager.FontProperties(fname=str(font)).get_name()
++    plt.rcParams['axes.unicode_minus']=False;plt.rcParams['pdf.fonttype']=42
++    scenarios=[f'saturn{w}_dense05_{p}' for w in (7,8) for p in ('original','cm')];methods=('SIA-SMART-P','CAPRA-FK','CAPRA');names={'SIA-SMART-P':'Smart','CAPRA-FK':'FK','CAPRA':'FKR'};palette={'SIA-SMART-P':'#375d82','CAPRA-FK':'#dfa54f','CAPRA':'#6c9d7b'};short=lambda s:s.replace('saturn','S').replace('_dense05_original','-O').replace('_dense05_cm','-CM');saved=[]
++    def save(fig,name):
++        fig.savefig(FIG/(name+'.png'),dpi=180,bbox_inches='tight');fig.savefig(FIG/(name+'.pdf'),bbox_inches='tight');plt.close(fig);saved.append(name)
++    nr={(r['scenario'],r['method']):r for r in rows if r['phase']=='R4'}
++    sr={(r['scenario'],r['method']):r for r in sensitivity}
++    if nr and sr:
++        fig,axes=plt.subplots(2,2,figsize=(16,9));cats=[(s,m) for s in scenarios for m in methods if (s,m) in sr];x=np.arange(len(cats));a,b=axes[0]
++        a.bar(x-.18,[100*float(sr[s,m]['GLOBAL_gpus_R3']) for s,m in cats],.36,label='R3原到达',color='#adb6c2',edgecolor='black',linewidth=.3);a.bar(x+.18,[100*float(sr[s,m]['GLOBAL_gpus_R4']) for s,m in cats],.36,label='dense05',color='#3d6d90',edgecolor='black',linewidth=.3);a.set_xticks(x,[short(s)+'\n'+names[m] for s,m in cats],fontsize=8);a.set_ylabel('全局GPU分配容量时间占比（%）');a.set_title('同一算法，原始与增密场景');a.legend(fontsize=9)
++        tc=[(s,t) for s in scenarios if (s,'CAPRA') in sr for t in ('aws','dgx-ext','rtx')];z=np.arange(len(tc))
++        b.bar(z-.18,[100*float(sr[s,'CAPRA']['TYPE:'+t+'_gpus_R3']) for s,t in tc],.36,label='R3原到达',color='#adb6c2',edgecolor='black',linewidth=.3);b.bar(z+.18,[100*float(sr[s,'CAPRA']['TYPE:'+t+'_gpus_R4']) for s,t in tc],.36,label='dense05',color='#6c9d7b',edgecolor='black',linewidth=.3);b.set_xticks(z,[short(s)+'\n'+t for s,t in tc],fontsize=8);b.set_ylabel('该GPU类型分配容量时间占比（%）');b.set_title('FKR：不同GPU池的压力');b.legend(fontsize=9)
++        for ax,field,title,ylabel in [(axes[1,0],'queue','FKR：平均等待队列','平均等待作业数'),(axes[1,1],'mean_jct','FKR：JCT场景敏感性','平均JCT（秒）')]:
++            ss=[s for s in scenarios if (s,'CAPRA') in sr];xx=np.arange(len(ss));keya='queue_R3' if field=='queue' else 'R3_mean_jct';keyb='queue_R4' if field=='queue' else 'R4_mean_jct'
++            ax.bar(xx-.18,[float(sr[s,'CAPRA'][keya]) for s in ss],.36,label='R3原到达',color='#adb6c2',edgecolor='black',linewidth=.3);ax.bar(xx+.18,[float(sr[s,'CAPRA'][keyb]) for s in ss],.36,label='dense05',color='#6c9d7b',edgecolor='black',linewidth=.3);ax.set_xticks(xx,[short(s) for s in ss]);ax.set_title(title);ax.set_ylabel(ylabel);ax.legend(fontsize=9)
++        fig.suptitle('原始与dense05：场景敏感性，不是算法贡献；资源分配积分含恢复，不是物理忙碌率',fontsize=13);fig.tight_layout();save(fig,'pressure_before_after')
++    if funnel:
++        fig,axes=plt.subplots(2,2,figsize=(17,9));labels=['非空计划','互补同池','GPU可同机','F/K未共置','直接合法证书','R覆盖','sum-rho增益','扣费选R','真实正增益训练']
++        for ax,s in zip(axes.flat,scenarios):
++            vals={x['stage']:x for x in funnel if x['scenario']==s and x['method']=='CAPRA'}
++            if not vals:ax.set_title(short(s)+'：证据不足');continue
++            stages=list('ABCDEFGHI');n=int(vals['A']['denominator_nonempty_rounds']);counts=[int(vals[k]['numerator']) for k in stages];assert all(b<=a for a,b in zip(counts,counts[1:]));pct=[100*v/n if n else 0 for v in counts]
++            bars=ax.bar(range(9),pct,color=['#3a6387']*5+['#6c9d7b']*4,edgecolor='black',linewidth=.3)
++            for b,v in zip(bars,counts):ax.text(b.get_x()+b.get_width()/2,b.get_height()+1,str(v),ha='center',fontsize=9)
++            ax.set_xticks(range(9),labels,rotation=30,ha='right',fontsize=9);ax.set_ylim(0,112);ax.set_ylabel('占同一分母N的轮次（%）');ax.set_title(short(s)+f'：N={n}，全部R选择={vals["A"]["total_R_selected"]}')
++        fig.suptitle('严格嵌套的新共置机会漏斗（FKR）；R可因恢复加权窗口或平局规则在漏斗外入选',fontsize=13);fig.tight_layout();save(fig,'opportunity_funnel')
++    if nr:
++        fig,axes=plt.subplots(3,4,figsize=(18,10));x=np.arange(3)
++        for col,s in enumerate(scenarios):
++            rs=[nr.get((s,m)) for m in methods]
++            for row,(field,title) in enumerate([('mean_jct','平均JCT（秒）'),('p95_jct','JCT尾部（秒）'),('decision_p95','非空决策P95（秒）')]):
++                ax=axes[row,col];values=[r[field] if r else np.nan for r in rs]
++                if row==1:
++                    p99=[r['p99_jct'] if r else np.nan for r in rs];ax.bar(x-.17,values,.34,color=[palette[m] for m in methods],edgecolor='black',linewidth=.3,label='P95');ax.bar(x+.17,p99,.34,color='white',edgecolor=[palette[m] for m in methods],linewidth=1.3,label='P99');ax.legend(fontsize=8)
++                else:
++                    bars=ax.bar(x,values,color=[palette[m] for m in methods],edgecolor='black',linewidth=.3)
++                    for b,v in zip(bars,values):
++                        if math.isfinite(v):ax.text(b.get_x()+b.get_width()/2,v,fmt(v,3 if row==2 else 0),ha='center',va='bottom',fontsize=9)
++                    finite=[v for v in values if math.isfinite(v)];ax.set_ylim(0,max(finite+[.01])*1.2)
++                ax.set_xticks(x,['Smart','FK','FKR']);ax.set_ylabel(title)
++                if row==0:ax.set_title(short(s))
++        # Equal scales within each metric; leave explicit space for tail legends.
++        for row,fields,factor in [(0,('mean_jct',),1.2),(1,('p95_jct','p99_jct'),1.25),(2,('decision_p95',),1.2)]:
++            ceiling=max(r[f] for r in nr.values() for f in fields)*factor
++            for ax in axes[row]:ax.set_ylim(0,ceiling)
++        fig.suptitle('dense05：相同画像内三方法主对照；JCT越低越好，决策wall不计入模拟JCT',fontsize=13);fig.tight_layout();save(fig,'main_jct_tail_cost')
++    render_report(rows,comps,metrics,funnel,sensitivity,physical,freeze,saved)
++    dump(OUT/'report_receipt.json',dict(status='PASS',wall_seconds=time.perf_counter()-began,figures=saved,CSV_results_sha256=sha(OUT/'results.csv'),CSV_comparisons_sha256=sha(OUT/'comparisons.csv'),simulation_calls=0,state_search_calls=0))
++    print('R4_REPORT_WRITTEN')
++
++def render_report(rows,comps,metrics,funnel,sensitivity,physical,freeze,saved):
++    complete=sum(r.get('state')=='COMPLETE_PASS' for r in physical);rr=[c for c in comps if c['method']=='CAPRA' and c['baseline']=='CAPRA-FK'];fk=[c for c in comps if c['method']=='CAPRA-FK' and c['baseline']=='SIA-SMART-P'];reviews=load(OUT/'bounded_layout_reviews.json') if (OUT/'bounded_layout_reviews.json').exists() else [];diag=load(OUT/'diagnosis_receipt.json') if (OUT/'diagnosis_receipt.json').exists() else None
++    missed=[x for x in reviews if x['positive_net_layout_missed_by_recorded_candidates']];wins=sum(c['mean_jct_improvement_percent']>0 for c in rr)
++    if complete<12:recommend='暂时保持FK/FKR并行，不根据不完整矩阵收敛主方法；先处理明确的停止原因。'
++    else:recommend='先保留FK与FKR并行；主方法取舍由完整固定对照、尾部、开销与有限诊断证据联合判断，不设必须达到某个收益百分比的成功门槛。'
++    if complete==12 and missed:priority='优先1：对已给出正净Phi遗漏证书的R状态做针对性机理核验，另立语义版本再决定是否修正；优先2：公平接入Synergy-TUNE外部强基线；优先3：CPU/RAM画像误差与少量可追溯实测；优先4：按既有DP/identity方案独立验证80GPU/160作业扩容。遗漏证书仅局部静态评分，不保证修改后JCT改善。'
++    else:priority='优先1：统一目标/资源约束/恢复执行模型的Synergy-TUNE外部强基线；优先2：CPU/RAM画像误差与少量可追溯实测；优先3：按R3规模计划验证80GPU/160作业扩容；优先4：R针对性改进，仅在更明确机会或预测偏差证据支持时单独立项。有限小状态未发现遗漏不证明R全局完备。'
++    decision=OUT/'research_decision.json'
++    if complete==12 and decision.exists():
++        reviewed=load(decision);assert reviewed['results_csv_sha256']==sha(OUT/'results.csv') and reviewed['comparisons_csv_sha256']==sha(OUT/'comparisons.csv')
++        recommend=reviewed['recommendation'];priority=reviewed['priority']
++    judgment=dict(recommendation=recommend,priority=priority,complete_cells=complete,R_mean_improvements=[c['mean_jct_improvement_percent'] for c in rr],R_positive_conditions=wins,reviewed_small_states=len(reviews),missed_positive_net_states=len(missed),algorithm_changed_in_R4=False)
++    dump(OUT/'research_judgment.json',judgment)
++    body=['# CAPRA R4：冻结算法下的资源竞争压力与R机会诊断','',f'基准 `{BASE}`；独立分支 `capra/pressure-opportunity-r4`。正式完整{complete}/12格，完整新增作业{sum(r.get("completed",0) for r in physical if r.get("state")=="COMPLETE_PASS")}/960。R3原到达条件只标HISTORICAL_REFERENCE；本轮12格均要求独立实际运行，无比例等价复用。','',recommend,'','## 输入、算法与环境','', '只把原R3 supported80的时间改为Decimal精确`t0+(ti-t0)/2`：Saturn7首末225/11498秒，Saturn8为90/11309.5秒；其余字段、原行身份/顺序、应用、训练量和请求GPU不变。这是原holdout的压力派生场景，不是新独立holdout或真实生产记录。Original/CM沿用冻结哈希，为两种受控组合响应，非RAM单因素消融。','', 'R3 GPU MIP、goodput/在线模型与batch、物理锁、恢复费、commit、F/K/R、Phi/H180/EPS/平局、NodeAllocator及ram_slack_v1全部保持原源码；仅新增R4方法白名单/入口/独立审计及原样转发的只读计时代理。Smart仍是Sia smart placement单节点/锁/比例辅助资源适配基线，不称官方完整系统原样复现。FK真正不生成R。40GPU/6节点/三类型每型2节点，周期60秒、seed0、Python3.10.10/NumPy1.26.4/SciPy1.13.1/CVXPY1.6.5/原HiGHS二进制、数值线程1不变。','', '验证包括45项测试、R3固定状态回放和两次12作业30轮短闭环；首轮新增测试的非稳定身份夹具被原R3前置断言正确拒绝，修正夹具后复验通过，算法未改。首轮/复验、全部内部Job.step和进程清理单独留档；两次冒烟未完成整体指标为空。闭环对照直接与归档R3同输入smoke逐轮比较GPU计划/batch/配额/锁/费用/进度及逐作业CSV，不重跑R3。','', '## 12格主结果与配对比较','']
++    if complete==12 and decision.exists():
++        for answer in load(decision).get('answers',[]):body.append(answer)
++    new=[r for r in rows if r['phase']=='R4']
++    body += [tab(['场景','方法','submitted/完成/删失','mean','median','P95','P99','makespan'],[[r['scenario'],r['display_method'],f'{r["total"]}/{r["completed"]}/{r["censored"]}',*[fmt(r[k]) for k in ('mean_jct','p50_jct','p95_jct','p99_jct','makespan')]] for r in new])]
++    body += [tab(['场景','比较','mean改善%','P95改善%','P99改善%','makespan改善%','快/平/慢','比值P95/max'],[[c['scenario'],c['method']+'/'+c['baseline'],*[fmt(c[k+'_improvement_percent']) for k in ('mean_jct','p95_jct','p99_jct','makespan')],f'{c["fast"]}/{c["tie"]}/{c["slow"]}',fmt(c['ratio_p95'],3)+'/'+fmt(c['ratio_max'],3)] for c in comps])]
++    body += ['改善率100*(1-method/base)，正为更快。只比较同一dense05、同一画像；资源方法统一ram_slack_v1，Smart按合同为比例/none。比值是同任务相对基线JCT，不是独占slowdown；配对记录不是新增独立样本。不完整格留空全体统计，不拿完成子集平均冒充总体。','',tab(['场景/方法','平均等待','训练','恢复','三项和/mean'],[[r['scenario']+'/'+r['display_method'],*[fmt(r['mean_'+p]) for p in ('waiting','training','recovery')],fmt(sum(r['mean_'+p] for p in ('waiting','training','recovery')))+'/'+fmt(r['mean_jct'])] for r in new])]
++    body += ['','## 原始到达与dense05的压力变化','', '压力用资源分配量的时间积分/窗口容量时间计算，包含恢复，不是GPU或CPU实际忙碌率。按每个运行最早到达至最后完成的共同窗口，对每节点/类型/全局输出GPU/CPU/RAM占比及GPU满容量、CPU/RAM>=95%容量的精确时长。平均活跃/等待/训练/恢复作业数由完整时间账本积分得出；峰值队列为决策时刻采样。未调度作业没有指定GPU池，等待队列不任意分摊到某GPU类型。','']
++    body += [tab(['场景/方法','GPU原→密%','CPU原→密%','RAM原→密%','平均队列原→密','平均活跃原→密','mean原→密'],[[r['scenario']+'/'+r['method'],*[fmt(100*float(r['GLOBAL_'+p+'_R3']))+'→'+fmt(100*float(r['GLOBAL_'+p+'_R4'])) for p in ('gpus','cpu','ram')],fmt(r['queue_R3'],3)+'→'+fmt(r['queue_R4'],3),fmt(r['active_R3'],3)+'→'+fmt(r['active_R4'],3),fmt(r['R3_mean_jct'])+'→'+fmt(r['R4_mean_jct'])] for r in sensitivity])]
++    body += [tab(['场景/方法','AWS GPU原→密%','DGX GPU原→密%','RTX GPU原→密%'],[[r['scenario']+'/'+r['method'],*[fmt(100*float(r['TYPE:'+t+'_gpus_R3']))+'→'+fmt(100*float(r['TYPE:'+t+'_gpus_R4'])) for t in ('aws','dgx-ext','rtx')]] for r in sensitivity])]
++    body += [tab(['场景/方法','CPU分配>=95%容量时间%','RAM分配>=95%容量时间%','GPU形状限制辅助增益任务轮','仍有节点内rho潜力任务轮'],[[x['source']['scenario']+'/'+x['source']['method'],fmt(100*x['pressure']['global_resources']['cpu_high_capacity_time_fraction']),fmt(100*x['pressure']['global_resources']['ram_high_capacity_time_fraction']),x['pressure']['auxiliary_limits']['GPU_shape_caps_all_aux_gain_job_rounds'],x['pressure']['auxiliary_limits']['has_unrealized_within_node_rho_gain_job_rounds']] for x in metrics.values() if x['source']['phase']=='R4'])]
++    body += ['冻结画像下，每个已选作业当前GPU形状的合法节点内preferred配额之和/容量，以及超过容量的决策占比，另见pressure_metrics.json。它是读表的需求压力指标，不是原trace的CPU/RAM请求、实际预留或可获正净收益证明；GPU形状限制标志也不证明应改变GPU配置，本轮GPU MIP保持冻结。全局CPU/RAM不满不能替代每节点/池局部瓶颈检查。']
++    if sensitivity:
++        growth={t:np.mean([float(r['TYPE:'+t+'_gpus_delta_percentage_points']) for r in sensitivity]) for t in ('aws','dgx-ext','rtx')};top=max(growth,key=growth.get)
++        body += ['按所有同算法/同画像配对的描述性平均，GPU分配占比增幅最大池为'+top+'，各池增幅百分点为'+str({k:round(v,3) for k,v in growth.items()})+'。这是这些固定场景的描述，不制造显著性。']
++    body += ['R3→dense05只表述场景敏感性，不算算法贡献。占比增加可能来自到达窗口缩短和排队/训练轨迹变化；更高GPU占用也可能减少辅助资源空闲，不能先验认定帮助R。若某GPU池或队列未增压，应保留该负结果，不现场换密度或筛作业。']
++    if 'pressure_before_after' in saved:body += ['![压力前后](../runs/pressure_r4/figures/pressure_before_after.png)']
++    body += ['','## 严格嵌套机会漏斗与非互斥标签','', '统一分母N为每格非空完整GPU计划轮次；逐轮0/1去重。A非空→B同型互补→C GPU和可同机→D未在任一可行F/K中共置→E完整直接搬移合法见证→F实际R覆盖→G gross sum-rho胜最佳F/K→H扣费后原规则选R→I当轮实际训练正辅助增益。每层是前层子集。Smart/FK按协议不生成R，F之后为0，不是“算法漏候选”。R也可能因rho加权恢复窗口、平局规则或在已共置布局调整配额而在该漏斗外入选，全部R选择另列。标签R_selected_cost_or_tie_only只表示选R且gross sum-rho未严格增加，不能据此断言原始迁移总费用下降。','']
++    groups={}
++    for x in funnel:groups.setdefault((x['scenario'],x['method']),{})[x['stage']]=x
++    body += [tab(['场景/方法','N','A/B/C/D/E/F/G/H/I','全部R选择'],[[s+'/'+m,next(iter(v.values()))['denominator_nonempty_rounds'],'/'.join(v[k]['numerator'] for k in 'ABCDEFGHI'),next(iter(v.values()))['total_R_selected']] for (s,m),v in groups.items()])]
++    body += ['D是“某对尚未被F/K任一候选共置”的保守定义；F/K分别覆盖不同任务对不等于某个单一布局同时覆盖所有组合。E是比例基线+精确锁下不改变第三作业位置的充分直接见证；失败不证明没有其他合法布局。这个漏斗不是R全部动作空间或全局正净收益机会的完备证明。不同GPU池/碎片/辅助容量/锁/已共置/未生成R/增益不足/费用抵消等标签会重叠，不能相减推断遗漏数量。每轮任务、资源、证书、gross/净Phi在opportunity_rounds.jsonl.gz，非互斥标签在各格opportunity_summary.json。']
++    if 'opportunity_funnel' in saved:body += ['![机会漏斗](../runs/pressure_r4/figures/opportunity_funnel.png)']
++    body += ['','## 有限覆盖审查、历史正负案例与动态结果','']
++    if diag:body += [f'预算内诊断完成：{diag["small_states"]}个按预注册规则抽取的小状态、{diag["enumerated_layouts"]}个同型整布局，正净Phi优于记录F/K/R而遗漏的状态{diag["missed_positive_net_states"]}个。上限8状态、每状态总任务<=6/未锁<=4/最多16布局，总128布局；抽样列表在首次枚举前落盘。缺失类别不更换规则补满。节点配额、RAM补充、身份和评分仍用冻结R3算法，并独立核对容量/rho/评分。不是全局配额或全程JCT最优。']
++    else:body += ['预算内机会诊断未完整完成，缺失证据不填充、不追加状态枚举。']
++    body += [tab(['场景/轮','任务/未锁','已枚举/可行','最佳−FK Phi','最佳−记录最佳Phi','遗漏正净状态'],[[x['scenario']+'/'+str(x['round']),str(x['jobs'])+'/'+str(x['unlocked']),str(x['attempted_layouts'])+'/'+str(x['feasible_layouts']),fmt(x['best_over_FK_phi'],6),fmt(x['best_over_recorded_phi'],6),x['positive_net_layout_missed_by_recorded_candidates']] for x in reviews])]
++    cases=load(OUT/'opportunity_cases.json') if (OUT/'opportunity_cases.json').exists() else []
++    for c in cases:
++        if 'job_id' not in c:continue
++        a,b=c['actual_full_ledger'],c['actual_baseline_ledger'];pr=c.get('predicted_R') or {}
++        body += [f'{c["result_origin"]} / {c["scenario"]} / {c["case"]}：任务`{c["job_id"]}`，R轮{c["R_round"]}，JCT {fmt(b["jct"])}→{fmt(a["jct"])}秒，比值{fmt(c["jct_ratio"],4)}；等待/训练/恢复差 '+ '/'.join(fmt(a[k]-b[k]) for k in ('waiting','training','recovery'))+'秒。R预测rho='+fmt((c.get('R_allocation') or {}).get('rho'),5)+'，预测新费用='+fmt(pr.get('new_cost'))+'秒；R/参考Phi '+fmt(c['R_phi'],6)+'/'+fmt(c['FK_phi'],6)+'。完整节点/配额、费用、后续GPU/batch重配与逐段实际训练/恢复见opportunity_cases.json。']
++    body += ['R2 W2-CM正收益与R3 Saturn8-CM负收益仅从已有冻结原始日志读取，未重跑；源哈希、首次R代表轮及真实受影响任务可追溯。预测费用与实际commit/剩余恢复一致性由审计验证；若轨迹JCT变差，不能直接称迁移费计算错或rho预测错误。局部H180代理与未来GPU/完成/恢复反馈可不一致。所有案例的全程时间账本差都不是某单轮R行动的严格因果效果。','', '## 尾部、个体退化与资源实际收益','']
++    body += [tab(['场景/比较','最差相对任务','基线→方法JCT','比值','最差绝对任务/增加秒'],[[c['scenario']+'/'+c['method']+'/'+c['baseline'],c['worst_ratio_case']['job'],fmt(c['worst_ratio_case']['baseline_jct'])+'→'+fmt(c['worst_ratio_case']['method_jct']),fmt(c['ratio_max'],4),c['worst_absolute_case']['job']+'/'+fmt(c['worst_absolute_case']['delta_jct'])] for c in comps])]
++    body += [tab(['场景/方法','rho加权','超比例训练%','CPU正条件%','RAM正条件%','RAM更新/所选更新','残余单任务RAM机会轮'],[[x['source']['scenario']+'/'+x['source']['method'],fmt(x['training'].get('rho'),5),fmt(100*x['training'].get('above_prop',0)),fmt(100*x['training'].get('cpu_positive',0)),fmt(100*x['training'].get('ram_positive',0)),str(x['ram'].get('ram_steps','不可得'))+'/'+str(x['ram'].get('selected_updates','不可得')),x['residual_ram_rounds']] for x in metrics.values() if x['source']['phase']=='R4'])]
++    body += ['CPU/RAM条件差不能相加当整体JCT贡献。残余RAM机会固定GPU/CPU/位置及其他作业；为零不等于全局最优。R选择次数或某轮Phi优势不换算成端到端贡献百分比。','', '## 控制开销、候选、迁移与审计','']
++    body += [tab(['场景/方法','median/P95/P99/max秒','>5秒','整格wall秒','独立审计秒'],[[r['scenario']+'/'+r['display_method'],'/'.join(fmt(r[k],4) for k in ('decision_median','decision_p95','decision_p99','decision_max')),r['decision_gt5_count'],fmt(r['wall_seconds']),fmt(r['audit_seconds'])] for r in new])]
++    body += [tab(['场景/方法','F/K/R/P选择','可行候选','纯节点迁移','GPU配置变化','aux更新','实际恢复秒'],[[x['source']['scenario']+'/'+x['source']['method'],x['candidate_selected'],x['candidate_feasible'],x['pure_node_migrations'],x['other_gpu_configuration_changes'],x['transitions'].get('aux_update',0),fmt(x['actual_recovery'])] for x in metrics.values() if x['source']['phase']=='R4'])]
++    body += ['MIP组件使用原上游stdout setup/solve区间，逐次数量与事件调用对齐，精度0.01ms；不能对应时标不可得。共同GPU阶段包括MIP准备/求解和smart。identity/reference与mapping+scoring、节点分配器、R、RAM都是明确嵌套区间，不重复求和，也不从总量机械相减造缺失组件。每格完整组件median/P95/P99/max、all_rounds与非空轮分开保存于metrics.json/pressure_metrics.json；审计秒数为整格审计核心检查区间，最终序列化/写盘仍包含在整格wall中，均不进入模拟JCT。','']
++    for x in metrics.values():
++        if x['source']['phase']!='R4':continue
++        body += [x['source']['scenario']+'/'+x['source']['method']+' 组件P95（秒）：'+str({k:round(v['p95'],6) for k,v in x['timing'].items() if v and k in ('gpu','reference','mapping_scoring_nested','allocator_inclusive_nested','R','ram_repair_nested')})+'；MIP='+fmt((x['pressure']['timings']['mip_total'] or {}).get('p95'),6)+'；候选失败='+str(x['candidate_failures'])+'。']
++    if 'main_jct_tail_cost' in saved:body += ['![主结果与尾部开销](../runs/pressure_r4/figures/main_jct_tail_cost.png)']
++    body += ['','## 每应用JCT','',tab(['场景/方法','应用','作业数','mean JCT'],[[x['source']['scenario']+'/'+x['source']['method'],app,v['jobs'],fmt(v['mean_jct'])] for x in metrics.values() if x['source']['phase']=='R4' for app,v in x['application_results'].items()]),'','## 下一阶段明确决定','',recommend,'',priority,'', '判断限制：只有两条同Saturn来源族负载及其压力/画像派生，不是大量独立工作负载；单个固定种子，不制造显著性。沿用的CPU/RAM模板转移和CM合成敏感度不是硬件实测。当前仅单节点作业、40GPU、每类型两节点。本轮不执行R5/R6，不以删除DP/identity两节点断言扩容。','', '## 冻结、预算、失败与证据','']
++    budget=ledger();end=next(e for e in reversed(budget['entries']) if e['kind']=='budget_end')
++    body += [f'统一单调预算{fmt(end["elapsed_seconds"]/60)}/180分钟，未重置。覆盖首轮失败、复验、固定状态、两次闭环、输入、冻结、12格、逐格审计、预算内有限诊断及所属树清理。前期实现与完全离线报告另计，见delivery_clock.json；后处理没有追加模拟或状态搜索。正式无自动重试，所有失败与NOT_RUN保留。']
++    if freeze:body += [f'源码快照SHA256 `{freeze["source_snapshot_sha256"]}`，冻结{freeze["frozen_files"]}文件，保护基准{freeze["protected_files"]}文件。源码包不含其自身哈希清单或指向它的manifest循环；manifest指源码包，start指manifest。来源和结果hash、ledger各格CREATED/RUNNING/COMPLETE_PASS/FAIL/INCOMPLETE/NOT_RUN、实际调用清单与进程树清理见runs/pressure_r4。']
++    body += ['完整表和原始证据入口：R4_README.md；results.csv仅本轮实际运行，analysis/results.csv及source_index明确历史参照；diagnostic_raw_integrity.json与raw_integrity.json只读保护证明；全部证据SHA见evidence_hashes.json。','', '本地独立提交，不自动推送。手动命令：`git -C "D:/科研启航/CAPRA-pressure-opportunity-r4" push -u origin capra/pressure-opportunity-r4`。']
++    (ROOT/'docs/CAPRA_R4_RESULTS.md').write_bytes(('\n\n'.join(body)+'\n').encode('utf8'))
++    plan=['# CAPRA R4 下一阶段决定（只建议，不实施）','',recommend,'',priority,'','## 本轮R增量','',tab(['条件','FKR/FK mean改善%','P95改善%','P99改善%'],[[x['scenario'],fmt(x['mean_jct_improvement_percent']),fmt(x['p95_jct_improvement_percent']),fmt(x['p99_jct_improvement_percent'])] for x in rr]),'','## 可验收的下一步边界','', 'R针对性任务：只针对可追溯遗漏/恢复反馈反例，另立版本并冻结有限验证，不在看结果后无限改H或调画像。局部Phi改进须重新验证动态JCT、尾部与个体。','', '80GPU/160作业：先独立验证多桶GPU可行性与多节点身份映射，不能删两节点断言；扩容同时匹配作业量/到达强度，沿用R3_SCALE_PLAN，不把轻负载硬扩容当可扩展性证据。','', 'Synergy-TUNE：先明确GPU/batch目标与CPU/RAM接口，统一容量、最低配额、恢复锁/费用、训练执行与JCT口径；外部基线的适配合同与独立审计先行。','', '画像误差/少量实测：冻结有限扰动与可追溯CPU/RAM测量方案，不按结果放大敏感度，不把合成模板当硬件数据。','', '以上R5/R6均未实施，未新增正式实验。']
++    (ROOT/'docs/CAPRA_R4_NEXT_PLAN.md').write_bytes(('\n\n'.join(plan)+'\n').encode('utf8'))
++if __name__=='__main__':main()
+diff --git a/scripts/run_r4.py b/scripts/run_r4.py
+new file mode 100644
+index 0000000..93a5751
+--- /dev/null
++++ b/scripts/run_r4.py
+@@ -0,0 +1,109 @@
++"""180-minute shared deadline, actual 12-cell serial matrix and recoverable ledger."""
++import csv,os,sys,time,traceback
++from r4_utils import *
++from scenario_control import execute,env,Owned
++def main():
++    os.environ.update(env());bp=RUN/'budget_ledger.json';resuming=bp.exists()
++    if resuming:
++        assert '--resume' in sys.argv,'NO_IMPLICIT_BUDGET_RESET_OR_RESUME'
++        b=ledger();assert abs((time.time()-time.perf_counter())-b['clock_epoch_estimate'])<30,'MONOTONIC_CLOCK_DOMAIN_CHANGED'
++        if b.get('controller_pid')!=os.getpid():
++            # On Windows os.kill(pid,0) is not a safe liveness probe.
++            import ctypes as C
++            from ctypes import wintypes as W
++            k=C.WinDLL('kernel32',use_last_error=True)
++            k.OpenProcess.argtypes=[W.DWORD,W.BOOL,W.DWORD];k.OpenProcess.restype=W.HANDLE
++            k.GetExitCodeProcess.argtypes=[W.HANDLE,C.POINTER(W.DWORD)];k.CloseHandle.argtypes=[W.HANDLE]
++            h=k.OpenProcess(0x1000,False,b['controller_pid'])
++            if h:
++                code=W.DWORD()
++                try:active=bool(k.GetExitCodeProcess(h,C.byref(code))) and code.value==259
++                finally:k.CloseHandle(h)
++                assert not active,'PRIOR_CONTROLLER_STILL_RUNNING'
++        start=b['start_monotonic'];deadline=b['deadline_monotonic'];check_budget();b['controller_pid']=os.getpid();dump(bp,b)
++    else:
++        start=time.perf_counter();deadline=start+10800;dump(bp,dict(start_monotonic=start,deadline_monotonic=deadline,start_utc=datetime.now(timezone.utc).isoformat(),clock_epoch_estimate=time.time()-start,controller_pid=os.getpid(),total_budget_seconds=10800,entries=[]))
++    results=[];matrix_start=None
++    def stage(kind,script,limit):
++        prior=[e for e in ledger()['entries'] if e['kind']==kind]
++        if prior and prior[-1]['status']=='PASS':return prior[-1]
++        if kind.startswith('smoke_'):assert not prior,'PREREGISTERED_TWO_SMOKES_ONLY'
++        check_budget();attempt=len(prior)+1;left=deadline-time.perf_counter();print(__import__('json').dumps(dict(event='STAGE_START',stage=kind,elapsed_seconds=time.perf_counter()-start,remaining_seconds=left)),flush=True)
++        cmd=script if isinstance(script,list) else [sys.executable,'-X','utf8','-B',script]
++        receipt=execute(cmd,DEV/f'{kind}_{attempt:02d}.log',min(limit,left-30),deadline-30)
++        record(kind,attempt=attempt,status='PASS' if receipt['exit_code']==0 and not receipt['external_timeout'] else 'FAILED',**receipt)
++        assert receipt['exit_code']==0 and not receipt['external_timeout'],(kind,receipt)
++        print(__import__('json').dumps(dict(event='STAGE_PASS',stage=kind,wall=receipt['process_wall_seconds'],remaining_seconds=deadline-time.perf_counter())),flush=True);return receipt
++    def save():
++        dump(RUN/'results.json',results)
++        fields=['index','scenario','profile','method','display_method','state','status','executed','result_origin','completed','total','submitted','censored','mean_jct','p50_jct','p95_jct','p99_jct','makespan','mean_waiting','mean_training','mean_recovery','decision_median','decision_p95','decision_p99','decision_max','audit_seconds','wall_seconds','audit','output','error']
++        with (RUN/'results.csv').open('w',encoding='utf8',newline='') as f:w=csv.DictWriter(f,fields,extrasaction='ignore');w.writeheader();w.writerows(results)
++    try:
++        if not (RUN/'freeze_receipt.json').exists():
++            stage('environment','scripts/environment_r4.py',180)
++            stage('tests','scripts/tests_r4.py',240)
++            stage('R3_state_replay','scripts/validate_r4.py',360)
++            stage('derive_inputs','data/pressure_r4/generate.py',90)
++            check_budget()
++            if not any(e['kind']=='owned_tree_validation' and e['status']=='PASS' for e in ledger()['entries']):
++                with (DEV/'owned_tree.log').open('w') as f:
++                    j=Owned([sys.executable,'-u','-c',"import subprocess,sys,time;subprocess.Popen([sys.executable,'-c','import time;time.sleep(300)']);print('READY',flush=True);time.sleep(300)"],f,env());began=time.perf_counter()
++                    try:
++                        while 'READY' not in (DEV/'owned_tree.log').read_text() and time.perf_counter()-began<20:check_budget();time.sleep(.05)
++                        active=j.active()
++                    finally:cleanup=j.close()
++                assert active>=2 and cleanup['active_after_cleanup']==0;record('owned_tree_validation',status='PASS',descendants=active,cleanup=cleanup)
++            for i,(method,profile,mode) in enumerate([('SIA-SMART-P','original','none'),('CAPRA','cm','ram_slack_v1')],1):
++                cmd=[sys.executable,'-X','utf8','-B','-m','capra.runner_r4','--input','data/scenarios_r1/w2_dense.csv','--cluster','data/scenarios_r1/cluster_cpu3.json','--responses',f'data/scenarios_r1/responses_{profile}.json','--scenario-id',f'w2_dense_{profile}','--run-version','CAPRA_V2_PRESSURE_R4_PREP','--allocator-mode',mode,'--method',method,'--output',str(DEV/f'smoke_{i:02d}'),'--max-jobs','12','--max-rounds','30','--wall-limit','90']
++                receipt=stage(f'smoke_{i:02d}',cmd,120);dump(DEV/f'smoke_{i:02d}/process.json',receipt)
++                s=load(DEV/f'smoke_{i:02d}/summary.json');assert s['r4_raw_audit']=='PASS' and s['total']==12 and s['mean_jct'] is None
++            stage('closed_loop_control','scripts/smoke_control_r4.py',90)
++            stage('audit_rejections','scripts/rejection_r4.py',90)
++            dump(DEV/'validation_receipt.json',dict(status='PASS',tests=load(DEV/'unit_tests_receipt.json'),states=load(DEV/'offline_validation_receipt.json'),closed_loop=load(DEV/'closed_loop_control.json'),smoke_calls=2,rejections=load(DEV/'audit_rejection_receipt.json')))
++            stage('freeze','scripts/freeze_r4.py',180)
++        cells=load(RUN/'matrix_index.json');ml=load(RUN/'matrix_ledger.json');by={x['index']:x for x in ml['cells']};blocked=False;matrix_start=time.perf_counter()
++        for c in cells:
++            state=by[c['index']];out=ROOT/c['output'];left=deadline-time.perf_counter()
++            if state['state']=='COMPLETE_PASS':
++                assert resuming
++                for name,h in state['final_files_sha256'].items():assert sha(out/name)==h,('RESUME_OUTPUT_CHANGED',name)
++                s=load(out/'summary.json');st=load(out/'start.json');assert s['r4_raw_audit']=='PASS' and s['completed']==s['total']==80 and st['manifest_sha256']==c['manifest_sha256'] and st['source_snapshot_sha256']==c['source_snapshot_sha256']
++                results.append(dict(c,**{k:v for k,v in s.items() if k not in c},state='COMPLETE_PASS',executed=True,reused_after_resume=True));save();continue
++            if state['state']=='RUNNING':
++                state.update(state='INCOMPLETE',error='Unclosed execution on resume; no automatic rerun');blocked=True
++            if state['state'] in ('FAIL','INCOMPLETE'):blocked=True
++            if blocked or left<=60 or (ROOT/'STOP_REQUEST.json').exists():
++                state.update(state=state['state'] if state['state'] in ('FAIL','INCOMPLETE') else 'NOT_RUN',error=state.get('error','Earlier failure, STOP_REQUEST or shared budget'))
++                results.append(dict(c,state=state['state'],status=state['state'],executed=state.get('executed',False),submitted=80,total=80,completed=state.get('completed',0),censored=80-state.get('completed',0),audit='NOT_RUN',error=state['error']));dump(RUN/'matrix_ledger.json',ml);save();continue
++            assert state['state'] in ('CREATED','NOT_RUN') and not out.exists(),'REFUSE_UNDECLARED_OR_OVERWRITE_RUN'
++            print(__import__('json').dumps(dict(event='CELL_START',index=c['index'],total_cells=12,scenario=c['scenario'],method=c['display_method'],completed=0,total=80,elapsed_seconds=time.perf_counter()-start,remaining_seconds=left)),flush=True)
++            began=time.perf_counter();limit=min(960,left-30);runner_limit=min(900,max(1,limit-60));process=None
++            cmd=[sys.executable,'-X','utf8','-B','-m','capra.runner_r4','--input',c['input'],'--cluster',c['cluster'],'--responses',c['responses'],'--scenario-id',c['scenario'],'--run-version','CAPRA_V2_PRESSURE_R4','--allocator-mode',c['allocator_mode'],'--manifest',c['manifest'],'--method',c['method'],'--output',str(out),'--interval','60','--max-rounds','6000','--wall-limit',str(runner_limit)]
++            state.update(state='RUNNING',executed=True,start_utc=datetime.now(timezone.utc).isoformat(),start_monotonic=began,command=cmd);dump(RUN/'matrix_ledger.json',ml)
++            try:
++                process=execute(cmd,out.parent/(out.name+'.stdout.log'),limit,deadline-30)
++                if out.exists():dump(out/'process.json',process)
++                assert process['exit_code']==0 and not process['external_timeout'] and process['cleanup']['active_after_cleanup']==0,('OWNED_EXECUTION_FAILURE',process)
++                s=load(out/'summary.json');assert s['r4_raw_audit']=='PASS' and s['total']==80
++                complete=s['status']=='ALL_COMPLETE' and s['completed']==80;actual='COMPLETE_PASS' if complete else 'INCOMPLETE'
++                results.append({**c,**{k:v for k,v in s.items() if k not in c},'state':actual,'executed':True,'wall_seconds':process['process_wall_seconds'],'wall_scope':'full owned subprocess including independent audit'})
++                state.update(state=actual,completed=s['completed'],final_files_sha256={p.name:sha(p) for p in out.iterdir() if p.is_file()});blocked=not complete
++            except Exception as e:
++                blocked=True;term=load(out/'termination.json') if (out/'termination.json').exists() else {};done=term.get('completed',0);actual='INCOMPLETE' if process and process['external_timeout'] else 'FAIL'
++                state.update(state=actual,completed=done,error=repr(e));results.append(dict(c,state=actual,status=actual,executed=True,submitted=80,total=80,completed=done,censored=80-done,audit='FAILED',error=repr(e),mean_jct=None,p50_jct=None,p95_jct=None,p99_jct=None,makespan=None))
++                dump(RUN/f'failure_cell_{c["index"]}.json',dict(error=repr(e),traceback=traceback.format_exc(),process=process))
++            finally:
++                state.update(end_utc=datetime.now(timezone.utc).isoformat(),end_monotonic=time.perf_counter(),wall_seconds=time.perf_counter()-began,process=process)
++                dump(RUN/'matrix_ledger.json',ml);record('formal',cell=c['index'],scenario=c['scenario'],method=c['method'],state=state['state'],wall_seconds=state['wall_seconds'],command=cmd,process=process,output=c['output']);save()
++            print(__import__('json').dumps(dict(event='CELL_END',index=c['index'],scenario=c['scenario'],method=c['display_method'],state=state['state'],completed=results[-1]['completed'],total=80,audit=results[-1]['audit'],mean_jct=results[-1].get('mean_jct'),elapsed_seconds=time.perf_counter()-start,remaining_seconds=deadline-time.perf_counter())),flush=True)
++        if not blocked:stage('bounded_opportunity_diagnosis','scripts/diagnose_r4.py',900)
++        dump(RUN/'matrix_receipt.json',dict(status='COMPLETE' if len(results)==12 and all(x['state']=='COMPLETE_PASS' for x in results) else 'FINISHED_WITH_GAPS',registered_cells=12,physical_executed=sum(x['executed'] for x in results),completed_cells=sum(x['state']=='COMPLETE_PASS' for x in results),completed_jobs=sum(x.get('completed',0) for x in results),elapsed_seconds=time.perf_counter()-start,matrix_wall_seconds=time.perf_counter()-matrix_start,no_formal_retries=True,shared_budget=ledger()))
++    except Exception as e:
++        attempt=1+len(list(RUN.glob('controller_failure_*.json')));dump(RUN/f'controller_failure_{attempt:02d}.json',dict(error=repr(e),traceback=traceback.format_exc(),elapsed_seconds=time.perf_counter()-start))
++        if not (RUN/'matrix_index.json').exists():dump(RUN/'formal_not_run.json',dict(status='NOT_RUN',physical_cells=12,executed_formal=0,reason='Preparation failed before freeze'))
++        raise
++    finally:
++        record('budget_end',status='FINISHED',elapsed_seconds=time.perf_counter()-start)
++        dump(RUN/'simulation_calls.json',dict(test_calls=[load(p) for p in sorted(DEV.glob('unit_simulation_calls_*.json'))],process_calls=[e for e in ledger()['entries'] if e['kind'].startswith('smoke_') or e['kind']=='formal'],formal_executed=sum(e['kind']=='formal' for e in ledger()['entries']),smoke_executed=sum(e['kind'].startswith('smoke_') for e in ledger()['entries']),diagnosis_calls=[e for e in ledger()['entries'] if e['kind']=='bounded_opportunity_diagnosis']))
++    print('R4_MATRIX_FINISHED',flush=True)
++if __name__=='__main__':main()
+diff --git a/scripts/seal_r4.py b/scripts/seal_r4.py
+new file mode 100644
+index 0000000..a58cf74
+--- /dev/null
++++ b/scripts/seal_r4.py
+@@ -0,0 +1,57 @@
++"""Final hash/provenance census only. No simulation, optimization or state search."""
++import zipfile,json,time,hashlib
++from r4_utils import *
++def main():
++    began=time.perf_counter();protected=load(DEV/'protected_base.json');historical=load(RUN/'history_worktrees_verification.json')
++    assert historical['status']=='PASS' and len(historical['worktrees'])==4
++    for p,h in protected.items():
++        assert sha(ROOT/p)==h,('BASE_CHANGED_IN_R4',p)
++        assert sha(Path('D:/科研启航/CAPRA-smart-holdout-r3')/p)==h,('R3_ORIGINAL_TREE_CHANGED',p)
++    source=load(RUN/'freeze_receipt.json') if (RUN/'freeze_receipt.json').exists() else None
++    if source:
++        mp=ROOT/source['manifest'];assert sha(mp)==source['manifest_sha256'];m=load(mp);assert m['base_commit']==BASE and len(m['cells'])==12 and not m['equivalence_reuse']
++        archive=ROOT/m['source_snapshot'];assert sha(archive)==m['source_snapshot_sha256']==source['source_snapshot_sha256']
++        for p,h in m['files_sha256'].items():assert sha(ROOT/p)==h,('FROZEN_SOURCE_CHANGED',p)
++        with zipfile.ZipFile(archive) as z:
++            assert source['manifest'] not in z.namelist()
++            for p,h in m['files_sha256'].items():assert hashlib.sha256(z.read(p)).hexdigest()==h
++    cells=load(RUN/'results.json') if (RUN/'results.json').exists() else [];index=load(RUN/'matrix_index.json') if source else [];states=load(RUN/'matrix_ledger.json')['cells'] if source else [];calls=load(RUN/'simulation_calls.json');budget=ledger();cleanups=[]
++    for e in budget['entries']:
++        if 'cleanup' in e:cleanups.append(dict(kind=e['kind'],cleanup=e['cleanup']))
++        if e.get('process'):cleanups.append(dict(kind='formal',cell=e['cell'],cleanup=e['process']['cleanup']))
++    assert all(x['cleanup']['active_after_cleanup']==0 for x in cleanups)
++    physical_calls=[e for e in budget['entries'] if e['kind']=='formal'];assert len(physical_calls)<=12 and len({x['cell'] for x in physical_calls})==len(physical_calls),'FORMAL_RETRY'
++    assert calls['formal_executed']==len(physical_calls) and calls['smoke_executed']<=2
++    complete=[x for x in cells if x['state']=='COMPLETE_PASS']
++    assert len(cells)==len({x['index'] for x in cells})
++    for c in complete:
++        d=ROOT/c['output'];s=load(d/'start.json');sm=load(d/'summary.json');au=load(d/'r4_audit.json');pr=load(d/'process.json');st=next(x for x in states if x['index']==c['index'])
++        assert st['state']=='COMPLETE_PASS' and s['base_commit']==BASE and sm['r4_raw_audit']=='PASS' and au['status']=='PASS' and sm['completed']==sm['total']==80
++        assert s['source_snapshot_sha256']==source['source_snapshot_sha256'] and s['manifest_sha256']==source['manifest_sha256']
++        assert pr['exit_code']==0 and pr['cleanup']['active_after_cleanup']==0 and not pr['external_timeout']
++        for p,h in load(d/'output_hashes.json').items():assert sha(d/p)==h
++        for p,h in load(d/'audit_hashes.json').items():assert sha(d/p)==h
++        for p,h in st['final_files_sha256'].items():assert sha(d/p)==h,('LEDGER_CLOSED_FILE_CHANGED',p)
++        reg=next(x for x in m['cells'] if x['index']==c['index']);assert reg['scenario']==c['scenario'] and reg['method']==c['method'] and reg['input_hashes']==c['input_hashes']
++    for name in ('raw_integrity.json','diagnostic_raw_integrity.json'):
++        p=RUN/'analysis'/name
++        if p.exists():
++            for rel,h in load(p)['files_sha256'].items():assert sha(ROOT/rel)==h
++    diagnosis=load(RUN/'analysis/diagnosis_receipt.json') if (RUN/'analysis/diagnosis_receipt.json').exists() else None
++    if diagnosis:
++        assert diagnosis['small_states']<=8 and diagnosis['enumerated_layouts']<=128 and diagnosis['Job_step_calls']==0 and diagnosis['GPU_MIP_calls']==0
++        # The diagnosis itself completed in an owned child before budget_end.
++        assert any(x['kind']=='bounded_opportunity_diagnosis' and x['status']=='PASS' for x in budget['entries'])
++    end=next(x for x in reversed(budget['entries']) if x['kind']=='budget_end');elapsed=end['elapsed_seconds'];initial=load(DEV/'initial_clock.json');start_epoch=datetime.fromisoformat(budget['start_utc']).timestamp();now=time.time();created=initial['worktree_created_unix']
++    dump(RUN/'delivery_clock.json',dict(initial_reading_implementation_since_worktree_seconds=start_epoch-created,initial_reading_before_worktree_seconds=None,unified_budget_seconds=10800,unified_budget_elapsed_seconds=elapsed,post_budget_pure_offline_analysis_report_seconds=now-start_epoch-elapsed,worktree_to_seal_seconds=now-created,scope='Measured from independent worktree creation; preceding initial attachment reading not instrumented',final_hash_check_seconds=time.perf_counter()-began))
++    verification=dict(status='COMPLETE_PASS' if len(complete)==12 and diagnosis and diagnosis['status']=='PASS' else 'PARTIAL_DELIVERY',base_commit=BASE,branch='capra/pressure-opportunity-r4',protected_files=len(protected),R3_original_tree_preserved=True,historical_worktrees=[{k:x[k] for k in ('worktree','commit','status','tracked_files')} for x in historical['worktrees']],formal_physical_executed=len(physical_calls),formal_complete=len(complete),new_complete_job_executions=80*len(complete),formal_retries=0,equivalence_reused_physical_cells=0,test_suite_attempts=len(calls['test_calls']),unit_Job_step_calls=sum(len(x) for x in calls['test_calls']),smoke_calls=calls['smoke_executed'],all_owned_descendants_after_cleanup=0,cleanup_receipts=cleanups,budget_elapsed_seconds=elapsed,budget_within_limit=elapsed<=10800,diagnosis=diagnosis,final_check_simulator_calls=0,final_check_state_search_calls=0,no_remote_push=True)
++    dump(RUN/'final_verification.json',verification)
++    lines=['# CAPRA R4 本地交付入口','',f'状态：{verification["status"]}。基准 `{BASE}`；独立分支 `capra/pressure-opportunity-r4`。实际完整{len(complete)}/12格，新增完整{len(complete)*80}/960作业，全部格要求实际运行，无等价复用。R3算法及历史字节保留；本轮未推送。','', '- [中文主报告](docs/CAPRA_R4_RESULTS.md)','- [预注册设计](docs/CAPRA_R4_DESIGN.md)','- [下一阶段决定](docs/CAPRA_R4_NEXT_PLAN.md)','- [准确代码补丁](docs/CAPRA_R4_CODE.patch)','- [输入生成与逐行来源](data/pressure_r4/)','- [实际物理结果](runs/pressure_r4/results.csv)','- [含历史参照的结果与来源](runs/pressure_r4/analysis/)','- [严格机会漏斗](runs/pressure_r4/analysis/opportunity_funnel.csv)','- [代表作业与动态轨迹](runs/pressure_r4/analysis/opportunity_cases.json)','- [有限小状态审查](runs/pressure_r4/analysis/bounded_layout_reviews.json)','- [图件PNG/PDF](runs/pressure_r4/figures/)','- [源码快照](runs/pressure_r4/source_snapshot.zip)','- [最终核验](runs/pressure_r4/final_verification.json)','- [时间账本](runs/pressure_r4/delivery_clock.json)','- [证据哈希](runs/pressure_r4/evidence_hashes.json)','', '手动推送：','','```powershell','git -C "D:/科研启航/CAPRA-pressure-opportunity-r4" push -u origin capra/pressure-opportunity-r4','```','']
++    (ROOT/'R4_README.md').write_bytes('\n'.join(lines).encode('utf8'))
++    files=[p for p in RUN.rglob('*') if p.is_file() and p.name not in ('evidence_hashes.json','EVIDENCE_INDEX.md')]
++    files += [p for p in (ROOT/'docs').glob('*R4*') if p.is_file()]+list((ROOT/'src/capra').glob('*r4.py'))+list((ROOT/'scripts').glob('*r4.py'))+[ROOT/'tests/test_r4.py',ROOT/'R4_README.md']
++    files += [p for p in (ROOT/'data/pressure_r4').rglob('*') if p.is_file() and '__pycache__' not in p.parts]+list((ROOT/'configs').glob('*_r4.json'))
++    hashes={p.relative_to(ROOT).as_posix():sha(p) for p in sorted(set(files))};dump(RUN/'evidence_hashes.json',dict(base_commit=BASE,files_sha256=hashes,excludes_self_and_index=True))
++    (RUN/'EVIDENCE_INDEX.md').write_bytes(('## R4 evidence index\n\n'+'\n'.join(f'- `{p}` SHA256 `{h}`' for p,h in hashes.items())+'\n').encode('utf8'))
++    print(json.dumps({k:v for k,v in verification.items() if k!='cleanup_receipts'},ensure_ascii=False))
++if __name__=='__main__':main()
+diff --git a/scripts/smoke_control_r4.py b/scripts/smoke_control_r4.py
+new file mode 100644
+index 0000000..6cd06c6
+--- /dev/null
++++ b/scripts/smoke_control_r4.py
+@@ -0,0 +1,22 @@
++"""Two closed-loop controls against archived R3 smokes, never rerun R3."""
++import gzip,json,hashlib,itertools
++from r4_utils import *
++from equivalence_r3 import DROP
++def semantic(x):
++    if isinstance(x,dict):return {k:semantic(v) for k,v in x.items() if k not in DROP and not k.startswith('r4_')}
++    if isinstance(x,list):return [semantic(v) for v in x]
++    return x
++def main():
++    results=[]
++    for i in (1,2):
++        a=ROOT/f'runs/smart_holdout_r3/development/smoke_{i:02d}';b=DEV/f'smoke_{i:02d}';h=hashlib.sha256();count=0
++        with gzip.open(a/'events.jsonl.gz','rt',encoding='utf8') as fa,gzip.open(b/'events.jsonl.gz','rt',encoding='utf8') as fb:
++            for count,(la,lb) in enumerate(itertools.zip_longest(fa,fb),1):
++                check_budget();assert la and lb
++                x,y=semantic(json.loads(la)),semantic(json.loads(lb));assert x==y,('R3_R4_CLOSED_LOOP_CHANGED',i,count)
++                h.update(json.dumps(x,sort_keys=True,separators=(',',':')).encode())
++        assert (a/'per_job.csv').read_bytes()==(b/'per_job.csv').read_bytes()
++        results.append(dict(smoke=i,status='PASS',rounds=count,strict_semantic_sha256=h.hexdigest(),R3_events_sha256=sha(a/'events.jsonl.gz'),R4_events_sha256=sha(b/'events.jsonl.gz'),job_step_new_calls=0))
++    dump(DEV/'closed_loop_control.json',dict(status='PASS',controls=results,excluded_exact_keys=sorted(DROP),additional_exclusion='r4_ read-only timing fields'))
++    print('R4_CLOSED_LOOP_CONTROL_PASS')
++if __name__=='__main__':main()
+diff --git a/scripts/tests_r4.py b/scripts/tests_r4.py
+new file mode 100644
+index 0000000..c8651ba
+--- /dev/null
++++ b/scripts/tests_r4.py
+@@ -0,0 +1,16 @@
++"""Run original/new tests once, register every actual Job.step inside tests."""
++import sys,time,unittest
++from r4_utils import DEV,dump
++from capra.upstream import Job
++original=Job.step;calls=[];attempt=1+len(list(DEV.glob('unit_simulation_calls_*.json')))
++def tracked(self,*args,**kwargs):
++    start=time.perf_counter()
++    try:return original(self,*args,**kwargs)
++    finally:calls.append(dict(job=self.name,seconds=args[0] if args else kwargs.get('seconds'),wall_seconds=time.perf_counter()-start,kind='unit_test_Job.step'))
++Job.step=tracked
++try:
++    suite=unittest.defaultTestLoader.discover('tests');result=unittest.TextTestRunner(verbosity=2).run(suite)
++finally:
++    Job.step=original;dump(DEV/f'unit_simulation_calls_{attempt:02d}.json',calls)
++dump(DEV/'unit_tests_receipt.json',dict(tests=result.testsRun,failures=len(result.failures),errors=len(result.errors),job_step_calls=len(calls),calls_file=f'unit_simulation_calls_{attempt:02d}.json'))
++sys.exit(0 if result.wasSuccessful() else 1)
+diff --git a/scripts/validate_r4.py b/scripts/validate_r4.py
+new file mode 100644
+index 0000000..21d7e7a
+--- /dev/null
++++ b/scripts/validate_r4.py
+@@ -0,0 +1,47 @@
++"""Preregister all R3 fixed states then replay instrumented R4 without Job.step."""
++import csv,gzip,json,hashlib
++from r4_utils import *
++from capra.contracts import Node,Allocation,JobGpuPlan,serialized
++from capra.response_v2 import V2Responses
++from capra.placement_r4 import create_placement
++def raw(d):
++    with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:return [json.loads(x) for x in f]
++def clean(x):
++    if isinstance(x,dict):return {k:clean(v) for k,v in x.items() if not k.startswith('r4_') and k not in ('generation_seconds','ram_repair_seconds','candidate_seconds','mapping_scoring_seconds','candidate_timings')}
++    if isinstance(x,list):return [clean(v) for v in x]
++    return x
++def main():
++    sources=[x for x in load(ROOT/'runs/smart_holdout_r3/analysis/source_index.json') if x['phase']=='B' and x['method'] in ('SIA-SMART-P','CAPRA-FK','CAPRA')]
++    chosen=[];cache={};absent=[]
++    for src in sources:
++        check_budget();d=ROOT/src['output'];rows=raw(d);cache[src['id']]={x['round']:x for x in rows};active=[x for x in rows if x['plan']];pick={x['round'] for x in active[:2]+active[-2:]}
++        for rule,predicate in [('first_K',lambda r:r['selection']['selected']=='K'),('first_R',lambda r:r['selection']['selected']=='R'),('first_lock',lambda r:bool(r['locks'])),('first_K_infeasible',lambda r:any(c['label']=='K' and not c['feasible'] for c in r['selection']['candidates']))]:
++            hit=next((r for r in active if predicate(r)),None)
++            if hit:pick.add(hit['round'])
++            else:absent.append(dict(source=src['id'],rule=rule,round=None))
++        chosen.extend(dict(source=src,round=i) for i in sorted(pick))
++    dump(DEV/'state_replay_preregistration.json',dict(states=chosen,missing_categories=absent))
++    results=[]
++    for c in chosen:
++        check_budget();src=c['source'];r=cache[src['id']][c['round']];s=load(ROOT/src['output']/'start.json')
++        response_path=ROOT/src.get('target_responses',s['inputs']['responses']['relative'])
++        apps={x['name']:x['application'] for x in csv.DictReader((ROOT/s['inputs']['workload']['relative']).open(encoding='utf8'))};nodes=[Node(**n) for n in load(ROOT/s['inputs']['cluster']['relative'])]
++        args=({k:JobGpuPlan(**v) for k,v in r['plan'].items()},nodes,apps,V2Responses(response_path),{k:Allocation(**v) for k,v in r['current'].items()},{k:Allocation(**v) for k,v in r['locks'].items()},r['lock_remaining'],s['costs'],set(r['started']))
++        a,m=create_placement(*args,method=src['method'],allocator_mode=src['allocator_mode']).select()
++        assert serialized(a)==r['allocations'] and clean(m['candidates'])==clean(r['selection']['candidates'])
++        assert m['selected']==r['selection']['selected'] and m['phi']==r['selection']['phi'] and m['relative_to_F']==r['selection']['relative_to_F']
++        assert m['r_calls']==r['selection']['r_calls']
++        # All original GPU/batch/execution code is bit-identical, and source events
++        # keep GPU plan/batch/locks/progress as the fixed complete replay input.
++        results.append(dict(source=src['id'],round=r['round'],status='PASS',fixed_gpu_plan_sha256=hashlib.sha256(json.dumps(r['plan'],sort_keys=True).encode()).hexdigest(),unchanged_execution_source=True))
++    for src in sources:
++        for name,h in src['files_sha256'].items():assert sha(ROOT/src['output']/name)==h
++    dump(DEV/'state_replay_results.json',results)
++    # Read-only historical scope check, never invoke an old writer/audit.
++    r3=load(ROOT/'runs/smart_holdout_r3/final_verification.json');assert r3['physical_formal_complete']==15 and r3['new_complete_job_executions']==1200
++    points=load(ROOT/'configs/experiment_manifest_holdout_r3.json')
++    for c in points['cells']:
++        for k,h in c['input_hashes'].items():assert sha(ROOT/c[k])==h
++    dump(DEV/'offline_validation_receipt.json',dict(status='PASS',fixed_states=len(results),R3_sources=len(sources),job_step_calls=0,old_evidence_hashes_verified=True))
++    print('R4_OFFLINE_VALIDATION_PASS',flush=True)
++if __name__=='__main__':main()
+diff --git a/src/capra/audit_r4.py b/src/capra/audit_r4.py
+new file mode 100644
+index 0000000..7522637
+--- /dev/null
++++ b/src/capra/audit_r4.py
+@@ -0,0 +1,244 @@
++"""Raw v2 replay: independent costs, mappings, candidate scores, execution and JCT.
++
++No imports from placement/identity/costs/node_allocator or the Sia optimizer.
++"""
++from collections import Counter,defaultdict
++from pathlib import Path
++import ast,csv,gzip,json,hashlib,time
++import numpy as np
++from .audit import audit as common_audit
++from .response import Responses
++from .inputs import resolve_inputs
++from .audit_ram_r2 import verify_trace
++
++ROOT=Path(__file__).resolve().parents[2]
++EPS=1e-9
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def key(a):return None if a is None else (a['node'],a['gpu_type'],a['gpus'])
++def close(a,b):assert abs(a-b)<=1e-7,(a,b)
++def app_costs():
++    tree=ast.parse((ROOT/'third_party/sia/sia-simulator/applications.py').read_text(encoding='utf8'));out={}
++    for v in ast.walk(tree):
++        if isinstance(v,ast.If) and isinstance(v.test,ast.Compare) and isinstance(v.test.left,ast.Attribute) and v.test.left.attr=='name' and len(v.test.comparators)==1 and isinstance(v.test.comparators[0],ast.Constant):
++            for s in v.body:
++                if isinstance(s,ast.Assign) and any(isinstance(x,ast.Attribute) and x.attr=='rescale_time' for x in s.targets):out[v.test.comparators[0].value]=float(ast.literal_eval(s.value))
++    return out
++
++def prediction(k,a,current,locks,rem,apps,costs,seen):
++    old=current.get(k)
++    if k in locks:
++        assert a==locks[k]
++        return dict(kind='locked',new_cost=0.,existing_remaining=rem[k],delay=rem[k],gpu_change=False)
++    if a is None:return dict(kind='suspend' if old else 'unchanged',new_cost=0.,existing_remaining=0.,delay=0.,gpu_change=old is not None)
++    if key(a)==key(old):return dict(kind='unchanged' if a==old else 'aux_update',new_cost=0.,existing_remaining=0.,delay=0.,gpu_change=False)
++    kind=('resume' if k in seen else 'start') if old is None else ('migration' if a['node']!=old['node'] else 'reconfigure')
++    d=costs[apps[k]]
++    return dict(kind=kind,new_cost=d,existing_remaining=0.,delay=d,gpu_change=True)
++
++def score(alloc,current,locks,rem,apps,costs,seen):
++    jobs={}
++    for k,a in sorted(alloc.items()):
++        t=prediction(k,a,current,locks,rem,apps,costs,seen)
++        jobs[k]=dict(**t,rho=a['rho'],effective_window=max(0,180-t['delay']),contribution=a['rho']*max(0,1-t['delay']/180))
++    return dict(phi=sum(x['contribution'] for x in jobs.values()),total_delay=sum(x['delay'] for x in jobs.values()),total_new_cost=sum(x['new_cost'] for x in jobs.values()),changes=sum(x['gpu_change'] for x in jobs.values()),jobs=jobs)
++
++def stable(before,nodes,current,locks,rem,apps,costs,seen):
++    a={k:dict(v) for k,v in before.items()};groups=defaultdict(list)
++    for n in nodes.values():groups[(n['gpu_type'],n['gpus'],n['cpu'],n['ram'])].append(n['id'])
++    for _,ids in sorted(groups.items()):
++        ids=sorted(ids)
++        if len(ids)!=2:continue
++        swap=dict(zip(ids,ids[::-1]));b={k:dict(v,node=swap.get(v['node'],v['node'])) for k,v in a.items()}
++        if not all(b.get(k)==v for k,v in locks.items()):continue
++        da=score(a,current,locks,rem,apps,costs,seen)['total_delay'];db=score(b,current,locks,rem,apps,costs,seen)['total_delay']
++        canonical=lambda x:tuple((k,v['node']) for k,v in sorted(x.items()))
++        if db<da-EPS or (abs(db-da)<=EPS and canonical(b)<canonical(a)):a=b
++    return a
++
++def audit(directory):
++    audit_started=time.perf_counter();decision_times=[]
++    d=Path(directory);start=json.loads((d/'start.json').read_text(encoding='utf8'))
++    assert start['version'].startswith('CAPRA_V2') and start['horizon']==180
++    assert d.resolve().is_relative_to((ROOT/'runs/pressure_r4').resolve()),'REFUSE_HISTORICAL_WRITE'
++    contracts={'SIA-SMART-P':(['P'],'proportional'),'CAPRA-FK':(['F','K'],'optimized'),'CAPRA':(['F','K','R'],'optimized')}
++    expected_labels,quota_mode=contracts[start['method']]
++    mode=start['allocator_mode'];assert mode in ('none','ram_slack_v1')
++    assert (mode=='none')==(quota_mode=='proportional')
++    expected_spec=dict(candidate_labels=expected_labels,quota_mode=quota_mode,allocator_mode=mode,ram_repair_enabled=mode=='ram_slack_v1')
++    for k,v in expected_spec.items():assert start[k]==v,(k,start[k],v)
++    assert start['base_commit']=='5af0bdb6b86b797225908f717b5b9324cd48a539' and start['phase_version']==start['version']
++    if start['manifest_path']:
++        info=start['manifest_path'];mp=ROOT/info['relative']
++        assert sha(mp)==info['sha256']==start['manifest_sha256']
++        manifest=json.loads(mp.read_text(encoding='utf8'));assert manifest['version']==start['version'] and manifest['base_commit']==start['base_commit']
++        assert sha(ROOT/manifest['source_snapshot'])==manifest['source_snapshot_sha256']==start['source_snapshot_sha256']
++        for p,h in manifest['files_sha256'].items():assert sha(ROOT/p)==h,('FROZEN_SOURCE',p)
++        cell=[c for c in manifest['cells'] if c['method']==start['method'] and c['scenario']==start['scenario_id']]
++        assert len(cell)==1 and cell[0]['allocator_mode']==mode
++        for kind,key in (('workload','input'),('cluster','cluster'),('responses','responses')):assert start['inputs'][kind]['relative']==cell[0][key]
++    assert start['seed']==0 and start['interval']==60 and not start['neutral']
++    assert start['numeric_environment']==dict(OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',NUMEXPR_NUM_THREADS='1',PYTHONHASHSEED='0')
++    assert (start['python'],start['numpy'],start['scipy'],start['cvxpy'])==('3.10.10','1.26.4','1.13.1','1.6.5')
++    assert sha(ROOT/'requirements_v2.lock.txt')==start['dependency_lock_sha256']
++    if start['manifest_path']:
++        assert manifest['environment']['dependency_lock_sha256']==start['dependency_lock_sha256']
++        assert start['max_jobs'] is None and start['max_rounds']==6000
++    summary=common_audit(d)
++    inputs=resolve_inputs(start)
++    rows=list(csv.DictReader(inputs['workload'].open(encoding='utf8',newline='')))
++    if start['max_jobs'] is not None:rows=rows[:start['max_jobs']]
++    apps={r['name']:r['application'] for r in rows};arrivals={r['name']:float(r['time']) for r in rows}
++    costs=app_costs();nodes={n['id']:n for n in json.loads(inputs['cluster'].read_text())}
++    for app,values in start['costs'].items():assert all(v==costs[app] for v in values.values())
++    response=Responses(inputs['responses'],start['neutral'])
++    from .audit_smart_r4 import check_start,check_round
++    check_start(start)
++    ca=response.data['cpu_axis'];ma=response.data['ram_axis']
++    last={};rem={};seen=set();complete=set();last_end={};counts=Counter();selected=Counter();feasible=Counter();failed=Counter();gains=[]
++    training=0.;weighted=0.;boosted=0.;app_train=Counter();new_cost_total=0.;node_only=0;pool_total=0;upgrade_total=0;node_cache=0
++    def check_alloc(p,a,locks):
++        assert set(p)==set(a),'CANDIDATE_INCOMPLETE'
++        use={k:[0.,0.,0.] for k in nodes}
++        for k,x in a.items():
++            n=nodes[x['node']];g=x['gpus']
++            assert x['gpu_type']==n['gpu_type']==p[k]['gpu_type'] and g==p[k]['gpus'] and p[k]['nodes']==1
++            assert g in ([1,2,4] if n['gpus']==4 else [1,2,4,8])
++            assert x['cpu']>=ca[0]*g-1e-7 and x['ram']>=ma[0]*g-1e-7,'BELOW_PROFILE_MINIMUM'
++            rho=response.rho(apps[k],g,x['cpu'],x['ram']);close(rho,x['rho'])
++            if k in locks:assert x==locks[k]
++            else:assert rho+1e-7>=response.rho(apps[k],g,n['cpu']*g/n['gpus'],n['ram']*g/n['gpus'])
++            for i,f in enumerate(('gpus','cpu','ram')):use[n['id']][i]+=x[f]
++        for nid,u in use.items():assert all(v<=nodes[nid][f]+1e-7 for v,f in zip(u,('gpus','cpu','ram')))
++        return use
++    with gzip.open(d/'events.jsonl.gz','rt',encoding='utf8') as f:
++        for line in f:
++            r=json.loads(line);counts['rounds']+=1
++            if r['plan']:decision_times.append(r['decision_seconds'])
++            current={k:a for k,a in last.items() if k not in complete}
++            assert current==r['current'] and set(r['started'])==seen
++            locks={k:a for k,a in current.items() if rem.get(k,0)>EPS}
++            assert locks==r['locks']
++            assert r['lock_remaining']=={k:rem[k] for k in locks};counts['lock_checks']+=len(locks)
++            p=r['plan'];raw=r['raw_sia_plan'];repaired=r['lock_repaired_gpu_plan']
++            check_round(r,start,nodes)
++            assert set(p)==set(raw)==set(repaired)
++            for k in p:
++                assert all(p[k][a]==repaired[k][a] for a in ('name','gpu_type','gpus','nodes','atomic_bsz','accum_steps'))
++                assert p[k]['gpus']==raw[k]['gpus'] and p[k]['gpu_type']==raw[k]['gpu_type']
++                if not r['gpu_stage']['repairs']:assert repaired[k]['node']==raw[k]['node']
++            ref=r['reference'];check_alloc(repaired,ref['before'],locks)
++            expected_ref=stable(ref['before'],nodes,current,locks,r['lock_remaining'],apps,costs,seen)
++            assert expected_ref==ref['after'];assert all(p[k]['node']==expected_ref[k]['node'] for k in p)
++            close(ref['mapping']['before_delay'],score(ref['before'],current,locks,r['lock_remaining'],apps,costs,seen)['total_delay'])
++            close(ref['mapping']['after_delay'],score(expected_ref,current,locks,r['lock_remaining'],apps,costs,seen)['total_delay'])
++            candidates=r['selection']['candidates'];assert len(candidates)<=3
++            labels=[c['label'] for c in candidates]
++            assert labels==expected_labels
++            assert r['version']==start['version'] and r['method']==start['method']
++            assert r['selection']['method_spec']==expected_spec
++            assert r['selection']['r_calls']==int('R' in expected_labels) and r['selection']['r_skipped']==('R' not in expected_labels)
++            timings=r['selection']['candidate_timings']
++            for label in ('F','K','R','P'):
++                if label in expected_labels:assert timings[label]>=0
++                else:assert timings[label] is None
++            assert sum(v for v in timings.values() if v is not None)<=r['selection']['candidate_seconds']+1e-6
++            astats=r['selection']['allocator'];assert astats['r4_allocator_seconds']>=0 and astats['r4_allocator_requests']>=0;traces=astats.get('ram_traces',[])
++            if mode=='ram_slack_v1':
++                assert len(traces)==astats['ram_calls']
++                for i,trace in enumerate(traces):
++                    assert trace['trace_id']==i and trace['jobs']==sorted(trace['initial'])
++                    assert all(k in p for k in trace['initial'])
++                    verify_trace(trace,nodes[trace['node']],apps,response,locks)
++                assert astats['ram_steps']==sum(t['ram_steps'] for t in traces)
++                assert astats['ram_candidates']==sum(t['ram_candidates'] for t in traces)
++                assert astats['ram_step_bound']==sum(t['ram_step_bound'] for t in traces)
++                close(astats['ram_repair_seconds'],sum(t['ram_repair_seconds'] for t in traces))
++            else:assert not traces
++            if quota_mode=='proportional':assert astats['node_calls']==astats['generated_pairs']==astats['upgrades']==0
++            valid=[]
++            for c in candidates:
++                label=c['label']
++                if not c['feasible']:
++                    assert label in ('K','R') and c['reason'];failed[label+':'+c['reason']]+=1;continue
++                feasible[label]+=1;a=c['allocations'];check_alloc(p,a,locks)
++                if quota_mode=='proportional':
++                    assert c['quota']=={}
++                    for k,x in a.items():
++                        if k not in locks:
++                            n=nodes[x['node']];assert x['cpu']==n['cpu']*x['gpus']/n['gpus'] and x['ram']==n['ram']*x['gpus']/n['gpus'],'NONPROPORTIONAL_QUOTA';assert x['rho']==response.rho(apps[k],x['gpus'],x['cpu'],x['ram'])==1.,'PROPORTIONAL_RHO'
++                if mode=='ram_slack_v1':
++                    before=c['mapping_before']
++                    for nid,meta in c['quota'].items():
++                        trace=traces[meta['ram_trace_id']]
++                        assert trace['node']==nid and set(trace['final'])=={k for k,x in before.items() if x['node']==nid}
++                        assert trace['final']=={k:x for k,x in before.items() if x['node']==nid}
++                assert stable(c['mapping_before'],nodes,current,locks,r['lock_remaining'],apps,costs,seen)==a
++                # Mapping changes only node identities and preserves all co-location groups.
++                for k,x in a.items():assert all(x[field]==c['mapping_before'][k][field] for field in ('gpu_type','gpus','cpu','ram','rho'))
++                for k in a:
++                    for j in a:assert (a[k]['node']==a[j]['node'])==(c['mapping_before'][k]['node']==c['mapping_before'][j]['node'])
++                s=score(a,current,locks,r['lock_remaining'],apps,costs,seen)
++                for field in ('phi','total_delay','total_new_cost','changes'):close(s[field],c['score'][field])
++                for k,t in s['jobs'].items():
++                    for field in t:
++                        if isinstance(t[field],(int,float)):close(t[field],c['score']['jobs'][k][field])
++                        else:assert t[field]==c['score']['jobs'][k][field]
++                if label in ('F','P'):assert all(x['node']==p[k]['node'] for k,x in a.items())
++                for m in c['quota'].values():
++                    assert 1<=m['initial_vectors']<=2 and m['upgrades']<=m['upgrade_bound']
++                    assert m['upgrade_bound']==sum(v-1 for v in m['candidate_pairs'].values())
++                valid.append((c,s))
++            winner=valid[0]
++            for candidate in valid[1:]:
++                a,b=candidate[1],winner[1]
++                if a['phi']>b['phi']+EPS or (abs(a['phi']-b['phi'])<=EPS and (a['total_delay']<b['total_delay']-EPS or (abs(a['total_delay']-b['total_delay'])<=EPS and a['changes']<b['changes']))):winner=candidate
++            c,s=winner;assert r['selection']['selected']==c['label'];assert c['allocations']==r['allocations'];selected[c['label']]+=1
++            if 'F' in expected_labels:
++                delta=s['phi']-valid[0][1]['phi'];assert delta>=-EPS;close(delta,r['selection']['relative_to_F']);gains.append(delta)
++            if 'F' not in expected_labels:assert r['selection']['relative_to_F'] is None
++            usage=check_alloc(p,r['allocations'],locks);assert usage==r['node_usage']
++            events={e['job']:e for e in r['transitions']};assert len(events)==len(r['transitions'])
++            for k in set(current)|set(p):
++                a=r['allocations'].get(k);old=current.get(k);t=prediction(k,a,current,locks,r['lock_remaining'],apps,costs,seen)
++                if k in p:
++                    for field in t:assert r['commit_predictions'][k][field]==t[field]
++                    close(r['post_commit_remaining'][k],t['delay'])
++                if t['kind'] not in ('unchanged','locked'):
++                    e=events.pop(k);assert e['old']==old and e['new']==a and e['kind']==t['kind'];close(e['cost'],t['new_cost'])
++                    counts[t['kind']]+=1;new_cost_total+=t['new_cost']
++                    if t['kind']=='migration' and (old['gpu_type'],old['gpus'])==(a['gpu_type'],a['gpus']):node_only+=1
++                if a is not None and t['gpu_change']:rem[k]=t['new_cost'];seen.add(k)
++            assert not events
++            for e in r['executions']:
++                k=e['job'];assert k not in complete
++                close(e['start'],last_end.get(k,arrivals[k]));assert e['allocation']==r['allocations'].get(k)
++                recovery=min(rem.get(k,0),e['end']-e['start']) if e['allocation'] else 0.
++                close(e['recovery'],recovery)
++                if e['allocation']:rem[k]=max(0.,rem.get(k,0)-recovery)
++                close(e['rescale_remaining'],rem.get(k,0))
++                if e['segments']:close(e['segments'][0]['start'],e['start']+recovery)
++                for seg in e['segments']:
++                    training+=seg['seconds'];weighted+=seg['seconds']*seg['rho'];boosted+=seg['seconds']*(seg['rho']>1+EPS);app_train[apps[k]]+=seg['seconds']
++                if e['completion_time'] is not None:complete.add(k)
++                last_end[k]=e['end']
++            astats=r['selection']['allocator'];pool_total+=astats['generated_pairs'];upgrade_total+=astats['upgrades'];node_cache+=astats['node_cache_hits']
++            assert r['decision_seconds']+1e-6>=r['gpu_stage_seconds']+r['reference_seconds']+r['candidate_seconds']+r['commit_seconds']
++            last=r['allocations']
++    assert len(complete)==summary['completed']
++    per=list(csv.DictReader((d/'per_job.csv').open(encoding='utf8',newline='')))
++    jcts=[float(v['jct']) for v in per if v['jct']]
++    window=summary['makespan'] if summary['makespan'] is not None else max(last_end.values(),default=0)-min(arrivals.values())
++    avg={nid:{field:seconds[i]/window if window>0 else 0 for i,field in enumerate(('gpus','cpu','ram'))} for nid,seconds in summary['node_allocated_resource_seconds'].items()}
++    occ={field:sum(v[field] for v in avg.values())/sum(n[field] for n in nodes.values()) for field in ('gpus','cpu','ram')}
++    summary.update(submitted=len(apps),decision_p99=float(np.quantile(decision_times,.99)) if decision_times else None,audit_seconds=time.perf_counter()-audit_started,version=start['version'],p50_jct=float(np.quantile(jcts,.5)) if len(complete)==len(apps) else None,
++        mean_waiting=float(np.mean([float(x['waiting']) for x in per])),mean_training=float(np.mean([float(x['training']) for x in per])),mean_recovery=float(np.mean([float(x['recovery']) for x in per])),
++        average_node_allocations=avg,allocated_resource_fraction=occ,occupancy_scope='Allocation time including recovery, not physical busy utilization',
++        candidate_selected=dict(selected),candidate_feasible=dict(feasible),candidate_failures=dict(failed),relative_to_F=dict(median=float(np.median(gains)) if gains else None,p95=float(np.quantile(gains,.95)) if gains else None,max=max(gains,default=None)),
++        pure_node_migrations=node_only,total_new_recovery_cost=new_cost_total,total_actual_recovery=sum(float(x['recovery']) for x in per),
++        training_weighted_rho=weighted/training if training else None,boosted_training_fraction=boosted/training if training else None,
++        application_training_share={k:v/training for k,v in app_train.items()} if training else {},quota_generated_pairs=pool_total,quota_upgrade_steps=upgrade_total,node_trial_cache_hits=node_cache,
++        v2_raw_audit='PASS',r4_raw_audit='PASS',quota_mode=quota_mode,allocator_mode=mode,candidate_labels=expected_labels,independent_checks=dict(counts))
++    (d/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
++    (d/'r4_audit.json').write_text(json.dumps(dict(status='PASS',counts=dict(counts),selected=dict(selected),feasible=dict(feasible),failures=dict(failed),raw_rounds=counts['rounds']),indent=2)+'\n',encoding='utf8')
++    (d/'audit_hashes.json').write_text(json.dumps({name:sha(d/name) for name in ('summary.json','per_job.csv','node_resources.csv','r4_audit.json')},indent=2)+'\n',encoding='utf8')
++    return summary
+diff --git a/src/capra/audit_smart_r4.py b/src/capra/audit_smart_r4.py
+new file mode 100644
+index 0000000..5c940d8
+--- /dev/null
++++ b/src/capra/audit_smart_r4.py
+@@ -0,0 +1,53 @@
++"""Independent raw-smart/lock-witness checks. No scheduling function imports."""
++import hashlib,json
++from pathlib import Path
++ROOT=Path(__file__).resolve().parents[2]
++def check_start(start):
++    methods={'SIA-SMART-P':'sia_smart_adapted_v1','CAPRA-FK':'sia_fast_original','CAPRA':'sia_fast_original'}
++    assert start['method'] in methods and start['placement_engine']==methods[start['method']]
++    assert start['version'] in ('CAPRA_V2_PRESSURE_R4','CAPRA_V2_PRESSURE_R4_PREP')
++    p=start['smart_provenance']
++    for field,file in [('source_file_sha256',p['source_file']),('adapter_file_sha256','src/capra/smart_r3.py'),('patch_sha256','docs/CAPRA_R3_SMART.patch')]:
++        assert hashlib.sha256((ROOT/file).read_bytes()).hexdigest()==p[field]
++def check_round(r,start,nodes):
++    meta=r['gpu_stage'];assert meta['placement_engine']==start['placement_engine']
++    if start['method']!='SIA-SMART-P':
++        assert not meta.get('smart_records');return
++    assert meta['raw_valid'] and meta['mip_calls']==(1 if meta['solver_status']!='NO_JOBS' else 0)
++    raw=r['raw_sia_plan'];seen={};usage={k:0 for k in nodes}
++    for c in meta['smart_records']:
++        assert c['sort_fix'] and c['signed_capacity'] and c['raw_valid']
++        assert len(c['initial_capacity'])==len(c['remaining_capacity'])
++        use=[0]*len(c['initial_capacity'])
++        assert set(c['gpu_allocations'])==set(c['raw_smart_plan'])
++        for k,p in c['gpu_allocations'].items():
++            ids=c['raw_smart_plan'][k]
++            assert len(ids)==p['gpus'] and (not ids or len(set(ids))==1)
++            assert p['nodes']==1 and p['gpus'] in (1,2,4,8)
++            for idx in ids:assert 0<=idx<len(use);use[idx]+=1
++            assert k not in seen
++            if ids:seen[k]=dict(gpu_type=c['cluster'],gpus=p['gpus'],node=f"{c['cluster']}:{ids[0]}")
++        assert all(0<=u<=n and n-u==left for n,u,left in zip(c['initial_capacity'],use,c['remaining_capacity']))
++        for k in c['retained']:
++            assert k in c['preservable'] and k not in c['evicted'] and c['raw_smart_plan'][k]==c['prev_placements'][k]['nodes']
++    assert seen==raw,'RAW_SMART_GPU_PLAN'
++    for k,p in raw.items():
++        assert p['gpu_type']==nodes[p['node']]['gpu_type'];usage[p['node']]+=p['gpus']
++    assert all(usage[n]<=nodes[n]['gpus'] for n in nodes)
++    repaired=r['lock_repaired_gpu_plan'];repairs=meta['repairs'];locks=r['locks']
++    if repairs:
++        assert len(repairs)==1 and repairs[0]['reason']=='SHARED_PHYSICAL_LOCK_REPAIR' and locks
++        assert repairs[0]['before']=={k:p['node'] for k,p in raw.items()}
++        witness=meta['same_mip_physical_witness'];assert len(witness)==len({x['job'] for x in witness})
++        assert {x['job'] for x in witness}==set(raw)
++        for w in witness:
++            k=w['job'];assert (w['gpu_type'],w['gpus'])==(raw[k]['gpu_type'],raw[k]['gpus'])
++            assert w['node']==repaired[k]['node']==repairs[0]['after'][k]
++        # The replacement must have an actual locked physical/auxiliary conflict.
++        conflict=any(k not in raw or raw[k]['node']!=a['node'] for k,a in locks.items())
++        for nid,n in nodes.items():
++            for f in ('cpu','ram'):
++                total=sum(locks[k][f] if k in locks else n[f]*p['gpus']/n['gpus'] for k,p in raw.items() if p['node']==nid)
++                conflict=conflict or total>n[f]+1e-7
++        assert conflict,'UNJUSTIFIED_SMART_REPAIR'
++    else:assert all(repaired[k]['node']==p['node'] for k,p in raw.items()),'MISSING_SMART_REPAIR_RECORD'
+diff --git a/src/capra/methods_r4.py b/src/capra/methods_r4.py
+new file mode 100644
+index 0000000..738a87b
+--- /dev/null
++++ b/src/capra/methods_r4.py
+@@ -0,0 +1,7 @@
++"""R4 protocol whitelist; all algorithms come unchanged from R3."""
++from .methods_r3 import spec as r3_spec,engine
++VERSIONS=('CAPRA_V2_PRESSURE_R4','CAPRA_V2_PRESSURE_R4_PREP')
++METHODS=('SIA-SMART-P','CAPRA-FK','CAPRA')
++def spec(method,mode):
++    assert method in METHODS
++    return r3_spec(method,mode)
+diff --git a/src/capra/placement_r4.py b/src/capra/placement_r4.py
+new file mode 100644
+index 0000000..ee280c1
+--- /dev/null
++++ b/src/capra/placement_r4.py
+@@ -0,0 +1,20 @@
++"""Pure inclusive timers around unchanged R3 allocator calls; no strategy changes."""
++import time
++from .placement_r3 import create_placement as r3_create
++from .methods_r4 import spec
++class TimedAllocator:
++    def __init__(self,base):self.base=base;self.seconds=0.;self.requests=0
++    def call(self,name,*args,**kwargs):
++        began=time.perf_counter()
++        try:return getattr(self.base,name)(*args,**kwargs)
++        finally:self.seconds+=time.perf_counter()-began;self.requests+=1
++    def baseline(self,*a,**k):return self.call('baseline',*a,**k)
++    def solve(self,*a,**k):return self.call('solve',*a,**k)
++    def layout(self,*a,**k):return self.call('layout',*a,**k)
++    def stats(self):return dict(self.base.stats(),r4_allocator_seconds=self.seconds,r4_allocator_requests=self.requests)
++    def __getattr__(self,name):return getattr(self.base,name)
++def create_placement(*args,method,allocator_mode):
++    spec(method,allocator_mode)
++    out=r3_create(*args,method=method,allocator_mode=allocator_mode)
++    out.allocator=TimedAllocator(out.allocator)
++    return out
+diff --git a/src/capra/runner_r4.py b/src/capra/runner_r4.py
+new file mode 100644
+index 0000000..06545b8
+--- /dev/null
++++ b/src/capra/runner_r4.py
+@@ -0,0 +1,155 @@
++import argparse
++from dataclasses import asdict
++from datetime import datetime,timezone
++import csv,gzip,hashlib,json,os,random,sys,time,traceback
++from pathlib import Path
++import numpy as np
++from .upstream import ROOT,Job,APPLICATIONS,import_audit
++from .contracts import Node,serialized
++from .response_v2 import V2Responses as Responses
++from .gpu_stage import GpuStage
++from .execution import commit_v2
++from .costs import application_costs
++from .identity import reference
++from .placement_r4 import create_placement
++from .methods_r4 import spec,engine,VERSIONS
++from .gpu_stage_r3 import SmartGpuStage
++from .inputs import describe
++
++VERSION='CAPRA_V2_PRESSURE_R4'
++BASE='5af0bdb6b86b797225908f717b5b9324cd48a539'
++
++
++def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
++def dump(path,value):Path(path).write_text(json.dumps(value,ensure_ascii=False,indent=2,default=convert)+'\n',encoding='utf8')
++def convert(x):
++    if isinstance(x,np.generic):return x.item()
++    if isinstance(x,np.ndarray):return x.tolist()
++    raise TypeError(str(type(x)))
++
++
++def run(input_path,method,output,interval=60,max_rounds=6000,wall_limit=900,neutral=False,max_jobs=None,cluster=None,responses=None,scenario_id=None,run_version=VERSION,allocator_mode="legacy",manifest=None):
++    began=time.perf_counter()
++    assert Path(input_path).resolve().is_relative_to(ROOT.resolve()),'FOREIGN_INPUT_PATH'
++    output=Path(output).resolve()
++    assert output.is_relative_to(ROOT.resolve()) and not output.exists()
++    output.mkdir(parents=True)
++    random.seed(0);np.random.seed(0)
++    cluster=Path(cluster) if cluster is not None else ROOT/'configs/cluster.json'
++    responses=Path(responses) if responses is not None else ROOT/'data/responses.json'
++    inputs={k:describe(v) for k,v in dict(workload=input_path,cluster=cluster,responses=responses).items()}
++    assert run_version in VERSIONS
++    assert not neutral
++    method_contract=spec(method,allocator_mode)
++    import platform,scipy,cvxpy
++    from .inputs import sha as input_sha
++    frozen=json.loads(Path(manifest).read_text(encoding='utf8')) if manifest else None
++    if frozen:
++        assert frozen['version']==run_version and frozen['base_commit']==BASE
++        for name,digest in frozen['files_sha256'].items():assert sha(ROOT/name)==digest,('FROZEN_CHANGED',name)
++        assert sha(ROOT/frozen['source_snapshot'])==frozen['source_snapshot_sha256']
++        match=[c for c in frozen['cells'] if c['scenario']==scenario_id and c['method']==method]
++        assert len(match)==1 and match[0]['allocator_mode']==allocator_mode
++        for kind,key in (('workload','input'),('cluster','cluster'),('responses','responses')):assert inputs[kind]['relative']==match[0][key]
++    runtime_meta=dict(base_commit=BASE,phase_version=run_version,manifest_path=describe(manifest) if manifest else None,
++        manifest_sha256=sha(manifest) if manifest else None,source_snapshot_sha256=frozen['source_snapshot_sha256'] if frozen else None,
++        seed=0,process_limit_nominal=frozen['process_limit'] if frozen else 120,cost_model='Unchanged actual Application.rescale_time; aux-only zero',python=platform.python_version(),numpy=np.__version__,scipy=scipy.__version__,cvxpy=cvxpy.__version__,
++        solver='SCIPY/HiGHS;time_limit10;mip_rel_gap1e-4',dependency_lock_sha256=sha(ROOT/'requirements_v2.lock.txt'),
++        numeric_environment={k:os.environ.get(k) for k in ('OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS','PYTHONHASHSEED')},
++        placement_engine=engine(method),smart_provenance=json.loads((ROOT/'docs/CAPRA_R3_SMART_PROVENANCE.json').read_text(encoding='utf8')),total_budget_seconds=10800,**method_contract)
++    nodes=[Node(**n) for n in json.loads(cluster.read_text())]
++    response=Responses(responses,neutral=neutral)
++    rows=list(csv.DictReader(Path(input_path).open(encoding='utf8',newline='')))
++    if max_jobs is not None:rows=rows[:max_jobs]
++    jobs=[Job(r['name'],{t:APPLICATIONS[t][r['application']] for t in dict.fromkeys(n.gpu_type for n in nodes)},float(r['time']),target_num_replicas=int(r['num_replicas']),target_batch_size=int(r['batch_size'])) for r in rows]
++    stage=(SmartGpuStage if method=='SIA-SMART-P' else GpuStage)(nodes,interval,uniform_costs=True)
++    costs=application_costs(jobs)
++    dump(output/'start.json',dict(version=run_version,scenario_id=scenario_id,inputs=inputs,method=method,**runtime_meta,costs=costs,horizon=180,input=str(Path(input_path).resolve()),input_sha256=sha(input_path),cluster_sha256=sha(cluster),responses_sha256=sha(responses),interval=interval,max_rounds=max_rounds,wall_limit=wall_limit,neutral=neutral,max_jobs=max_jobs,utc=datetime.now(timezone.utc).isoformat(),import_audit=import_audit()))
++    current={};now=0.0;overheads=[];status='ROUND_LIMIT';stagnant=0;previous_progress=0
++    try:
++        with gzip.open(output/'events.jsonl.gz','wt',encoding='utf8') as log:
++            for round_id in range(max_rounds):
++                if time.perf_counter()-began>wall_limit:status='WALL_LIMIT';break
++                if (ROOT/'STOP_REQUEST.json').exists():status='USER_STOP';break
++                decision_start=time.perf_counter()
++                current={k:a for k,a in current.items() if next(j for j in jobs if j.name==k).completion_time is None}
++                locks={j.name:current[j.name] for j in jobs if j.name in current and j.rescale_time>1e-9 and j.completion_time is None}
++                remaining={j.name:float(j.rescale_time) for j in jobs if j.name in locks}
++                apps={j.name:j.app_name for j in jobs}
++                started={j.name for j in jobs if j.num_restarts is not None}
++                plan,gpu_meta=stage.choose(jobs,now,current,locks,response)
++                gpu_seconds=time.perf_counter()-decision_start
++                gpu_meta.setdefault('placement_engine',engine(method))
++                repaired_plan=serialized(plan)
++                map_start=time.perf_counter()
++                plan,ref_meta=reference(plan,nodes,current,locks,remaining,apps,costs,started,response)
++                reference_seconds=time.perf_counter()-map_start
++                placement=create_placement(plan,nodes,apps,response,current,locks,remaining,costs,started,method=method,allocator_mode=allocator_mode)
++                allocations,selection=placement.select(method)
++                commit_start=time.perf_counter()
++                transitions,usage,committed=commit_v2(jobs,plan,allocations,nodes,current,locks,now,remaining,apps,costs,started)
++                commit_seconds=time.perf_counter()-commit_start
++                chosen=next(c for c in selection['candidates'] if c['label']==selection['selected'])
++                for k in plan:
++                    assert all(abs(committed[k][field]-chosen['score']['jobs'][k][field])<1e-8 for field in ('new_cost','existing_remaining','delay'))
++                post_commit_remaining={j.name:float(j.rescale_time) for j in jobs if j.name in plan}
++                decision_seconds=time.perf_counter()-decision_start
++                if plan:overheads.append(decision_seconds)
++                executions=[]
++                for j in jobs:
++                    start=max(now,j.submission_time)
++                    end=now+interval
++                    if start>=end or j.completion_time is not None:
++                        continue
++                    j.current_time=start
++                    j.capra_segments=[]
++                    before=float(j.progress); before_training=j.execution_time; before_restore=j.rescale_time
++                    a=allocations.get(j.name)
++                    j.step(end-start)
++                    train=float(j.execution_time-before_training)
++                    restore=float(min(before_restore,end-start)) if a else 0.0
++                    active_end=float(j.completion_time) if j.completion_time is not None else end
++                    wait=active_end-start-train-restore
++                    assert wait>=-1e-7,(j.name,wait)
++                    executions.append(dict(job=j.name,start=start,end=active_end,allocation=asdict(a) if a else None,
++                        progress_before=before,progress_after=float(j.progress),training=train,recovery=restore,waiting=max(0.0,wait),completion_time=j.completion_time,
++                        segments=j.capra_segments,batch_after=dict(atomic_bsz=int(j.atomic_bsz),accum_steps=int(j.accum_steps)),rescale_remaining=float(j.rescale_time)))
++                completed=sum(j.completion_time is not None for j in jobs)
++                record=dict(version=run_version,round=round_id,time=now,interval=interval,method=method,plan=serialized(plan),gpu_stage=gpu_meta,
++                    raw_sia_plan=gpu_meta.get('original_sia_plan',{}),lock_repaired_gpu_plan=repaired_plan,reference=ref_meta,
++                    current=serialized(current),locks=serialized(locks),lock_remaining=remaining,started=sorted(started),
++                    allocations=serialized(allocations),node_usage=usage,transitions=transitions,fallbacks=[],selection=selection,
++                    commit_predictions=committed,post_commit_remaining=post_commit_remaining,
++                    gpu_stage_seconds=gpu_seconds,reference_seconds=reference_seconds,candidate_seconds=selection['candidate_seconds'],mapping_scoring_seconds=selection['mapping_scoring_seconds'],commit_seconds=commit_seconds,
++                    response_cache=dict(size=len(response.cache),hits=response.hits,misses=response.misses),
++                    decision_seconds=decision_seconds,executions=executions,completed=completed,total=len(jobs))
++                log.write(json.dumps(record,ensure_ascii=False,default=convert)+'\n');log.flush()
++                current=allocations;now=end
++                progress=sum(j.progress for j in jobs)
++                if now>=max(j.submission_time for j in jobs):
++                    stagnant=stagnant+1 if progress<=previous_progress+1e-10 else 0
++                previous_progress=progress
++                if round_id%20==0 or completed==len(jobs):
++                    print(json.dumps(dict(round=round_id,completed=completed,total=len(jobs),simulated_seconds=now,wall_seconds=round(time.perf_counter()-began,2),last_decision_seconds=round(decision_seconds,4),max_decision_seconds=round(max(overheads,default=0.),4))),flush=True)
++                if completed==len(jobs):status='ALL_COMPLETE';break
++                if stagnant>=30:status='NO_PROGRESS_30_ROUNDS';break
++                if plan and len(overheads)>=3 and all(v>30 for v in overheads[-3:]):status='CONTROL_OVERHEAD_3X30S';break
++        wall=time.perf_counter()-began
++        dump(output/'termination.json',dict(status=status,rounds=round_id+1,wall_seconds=wall,completed=sum(j.completion_time is not None for j in jobs),total=len(jobs),simulated_seconds=now))
++    except Exception as e:
++        dump(output/'failure.json',dict(error=repr(e),traceback=traceback.format_exc(),wall_seconds=time.perf_counter()-began))
++        raise
++    dump(output/'output_hashes.json',{p.name:sha(p) for p in output.iterdir() if p.is_file() and p.name!='output_hashes.json'})
++    from .audit_r4 import audit
++    result=audit(output)
++    print(json.dumps(result,ensure_ascii=False),flush=True)
++    return result
++
++
++def main():
++    p=argparse.ArgumentParser();p.add_argument('--input',required=True);p.add_argument('--method',choices=['SIA-SMART-P','CAPRA-FK','CAPRA'],required=True);p.add_argument('--output',required=True)
++    p.add_argument('--interval',type=int,default=60);p.add_argument('--max-rounds',type=int,default=6000);p.add_argument('--wall-limit',type=float,default=900);p.add_argument('--neutral',action='store_true');p.add_argument('--max-jobs',type=int)
++    p.add_argument('--cluster');p.add_argument('--responses');p.add_argument('--scenario-id');p.add_argument('--run-version',default=VERSION)
++    p.add_argument('--allocator-mode',choices=['none','legacy','ram_slack_v1'],required=True);p.add_argument('--manifest')
++    a=p.parse_args();run(a.input,a.method,a.output,a.interval,a.max_rounds,a.wall_limit,a.neutral,a.max_jobs,a.cluster,a.responses,a.scenario_id,a.run_version,a.allocator_mode,a.manifest)
++if __name__=='__main__':main()
+diff --git a/tests/test_r4.py b/tests/test_r4.py
+new file mode 100644
+index 0000000..847b8b3
+--- /dev/null
++++ b/tests/test_r4.py
+@@ -0,0 +1,59 @@
++import unittest,copy,sys
++from pathlib import Path
++from unittest.mock import patch
++ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'scripts'))
++from capra.contracts import Node,JobGpuPlan,Allocation,serialized
++from capra.response_v2 import V2Responses
++from capra.response import Responses
++from capra.placement_r3 import create_placement as old
++from capra.placement_r4 import create_placement as new
++from capra.node_allocator import NodeAllocator
++from opportunity_r4 import funnel_round
++from capra.audit_r3 import score
++import importlib.util
++sp=importlib.util.spec_from_file_location('dense_generator',ROOT/'data/pressure_r4/generate.py');gen=importlib.util.module_from_spec(sp);sp.loader.exec_module(gen)
++def clean(x):
++    if isinstance(x,dict):return {k:clean(v) for k,v in x.items() if not k.startswith('r4_') and k not in ('generation_seconds','ram_repair_seconds','candidate_seconds','mapping_scoring_seconds','candidate_timings')}
++    if isinstance(x,list):return [clean(v) for v in x]
++    return x
++class R4Tests(unittest.TestCase):
++    def test_exact_decimal_input_and_stable_ties(self):
++        rows=[dict(name='x'+str(i),time=str(100+i//2),application='cifar10',num_replicas='1',batch_size='32') for i in range(80)]
++        out,m=gen.transform(rows);self.assertEqual(out[2]['time'],'100.5');self.assertEqual(out[3]['time'],'100.5')
++        self.assertEqual([x['name'] for x in rows],[x['name'] for x in out]);self.assertEqual(len(m),80)
++        self.assertTrue(all({k:v for k,v in a.items() if k!='time'}=={k:v for k,v in b.items() if k!='time'} for a,b in zip(rows,out)))
++    def test_timing_proxy_semantics_and_FK_R_isolation(self):
++        nodes=[Node('rtx:0','rtx',8,24,500),Node('rtx:1','rtx',8,24,500)]
++        plan={k:JobGpuPlan(k,'rtx',2,'rtx:'+str(i),1,0) for i,k in enumerate(('b','c'))};apps={'c':'cifar10','b':'bert'};costs={'cifar10':{'rtx':50},'bert':{'rtx':120}}
++        for method,mode in [('SIA-SMART-P','none'),('CAPRA-FK','ram_slack_v1'),('CAPRA','ram_slack_v1')]:
++            args=(plan,nodes,apps,V2Responses(ROOT/'data/scenarios_r1/responses_cm.json'),{}, {},{},costs,set())
++            a,s=old(*args,method=method,allocator_mode=mode).select();p=new(*args,method=method,allocator_mode=mode)
++            if method!='CAPRA':
++                with patch.object(p,'reordered',side_effect=AssertionError('R_FORBIDDEN')):b,t=p.select()
++            else:b,t=p.select()
++            self.assertEqual(a,b);self.assertEqual(clean(s),clean(t));self.assertGreaterEqual(t['allocator']['r4_allocator_seconds'],0)
++    def fixture(self):
++        nodes={f'rtx:{i}':dict(id=f'rtx:{i}',gpu_type='rtx',gpus=8,cpu=24,ram=500) for i in (0,1)}
++        apps={'c':'cifar10','b':'bert'};response=Responses(ROOT/'data/scenarios_r1/responses_cm.json');costs={'cifar10':50,'bert':120}
++        plan={'c':vars(JobGpuPlan('c','rtx',4,'rtx:0',1,0)),'b':vars(JobGpuPlan('b','rtx',2,'rtx:1',1,0))}
++        base={'c':vars(Allocation('rtx:0','rtx',4,12,250,1)),'b':vars(Allocation('rtx:1','rtx',2,6,125,1))}
++        alt={'c':vars(Allocation('rtx:0','rtx',4,20,83.32,response.rho('cifar10',4,20,83.32))),'b':vars(Allocation('rtx:0','rtx',2,2,125,1))}
++        def candidate(label,a):return dict(label=label,feasible=True,allocations=a,score=score(a,{}, {},{},apps,costs,set()))
++        r=dict(round=0,time=0.,plan=plan,locks={},selection=dict(candidates=[candidate('F',base),candidate('K',base),candidate('R',alt)],selected='R'),executions=[dict(job='c',training=10.,allocation=alt['c'])])
++        return r,nodes,response,apps
++    def test_strict_funnel_full_and_uncovered_protocol(self):
++        r,n,p,a=self.fixture();x=funnel_round(r,n,p,a);self.assertTrue(all(x['stages'].values()));self.assertTrue(x['direct_legal_witnesses'])
++        r['selection']['candidates']=r['selection']['candidates'][:2];r['selection']['selected']='F';x=funnel_round(r,n,p,a)
++        self.assertTrue(x['stages']['E']);self.assertFalse(x['stages']['F']);self.assertIn('R_not_generated_by_protocol',x['nonexclusive_tags'])
++    def test_already_colocated_and_locks_do_not_skip_funnel(self):
++        r,n,p,a=self.fixture();r['locks']=r['selection']['candidates'][0]['allocations'];x=funnel_round(r,n,p,a)
++        self.assertTrue(x['stages']['D']);self.assertFalse(x['stages']['E']);self.assertIn('recovery_lock_blocked',x['nonexclusive_tags'])
++        r,n,p,a=self.fixture()
++        for c in r['selection']['candidates'][:2]:c['allocations']['b']=dict(c['allocations']['b'],node='rtx:0')
++        x=funnel_round(r,n,p,a);self.assertTrue(x['stages']['C']);self.assertFalse(x['stages']['D']);self.assertFalse(x['stages']['I'])
++    def test_method_whitelist_and_no_unknown_fallback(self):
++        from capra.methods_r4 import spec
++        with self.assertRaises(AssertionError):spec('SIA-P-K','none')
++        with self.assertRaises(AssertionError):spec('UNKNOWN','ram_slack_v1')
++        with self.assertRaises(AssertionError):spec('SIA-SMART-P','ram_slack_v1')
++if __name__=='__main__':unittest.main()

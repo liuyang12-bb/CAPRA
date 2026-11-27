@@ -1,0 +1,62 @@
+{
+  "method": "SIA-SMART-P",
+  "input": "D:\\科研启航\\CAPRA-pressure-opportunity-r4\\data\\scenarios_r1\\w2_dense.csv",
+  "status": "ROUND_LIMIT",
+  "total": 12,
+  "completed": 6,
+  "censored": 6,
+  "mean_jct": null,
+  "p95_jct": null,
+  "p99_jct": null,
+  "makespan": null,
+  "decision_median": 0.026572800023132004,
+  "decision_p95": 0.04192777498974464,
+  "decision_max": 0.10315389998140745,
+  "wall_seconds": 26.646493699983694,
+  "wall_scope": "full subprocess including imports",
+  "runner_body_wall_seconds": 21.009339000011096,
+  "rounds": 30,
+  "decisions": 28,
+  "transitions": {
+    "start": 9,
+    "migration": 12,
+    "reconfigure": 9
+  },
+  "fallbacks": {},
+  "gpu_repairs": 0,
+  "audit": "PASS",
+  "segment_checks": 727,
+  "scheduling_wall_charged_to_simulation": false,
+  "node_allocated_resource_seconds": {
+    "aws:0": [
+      540.0,
+      1620.0,
+      33750.0
+    ],
+    "aws:1": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "dgx-ext:0": [
+      9148.0,
+      27444.0,
+      571750.0
+    ],
+    "dgx-ext:1": [
+      5804.0,
+      17412.0,
+      362750.0
+    ],
+    "rtx:0": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "rtx:1": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

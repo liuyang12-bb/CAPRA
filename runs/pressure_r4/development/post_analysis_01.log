@@ -1,0 +1,25 @@
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_original/SIA-SMART-P", "mean": 1012.1, "gpu": 0.5769786590488993}
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_original/CAPRA-FK", "mean": 926.525, "gpu": 0.5248463639467394}
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_original/CAPRA", "mean": 920.6875, "gpu": 0.5263699214749061}
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_cm/SIA-SMART-P", "mean": 1012.1, "gpu": 0.5769786590488993}
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_cm/CAPRA-FK", "mean": 922.925, "gpu": 0.5216242744964151}
+{"event": "RAW_ANALYZED", "id": "saturn7_dense05_cm/CAPRA", "mean": 909.85, "gpu": 0.5013741891430522}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_original/CAPRA", "mean": 1124.625, "gpu": 0.6258418301773627}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_original/CAPRA-FK", "mean": 1109.9125, "gpu": 0.6339623853997087}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_original/SIA-SMART-P", "mean": 1138.8875, "gpu": 0.647444547524669}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_cm/CAPRA", "mean": 1004.75, "gpu": 0.5927298432010968}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_cm/CAPRA-FK", "mean": 1027.9875, "gpu": 0.6075314883043441}
+{"event": "RAW_ANALYZED", "id": "saturn8_dense05_cm/SIA-SMART-P", "mean": 1138.8875, "gpu": 0.647444547524669}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_original/SIA-SMART-P", "mean": 835.6625, "gpu": 0.2940643602795272}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_original/CAPRA-FK", "mean": 750.475, "gpu": 0.2527570012176031}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_original/CAPRA", "mean": 732.0, "gpu": 0.24610584449469472}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_cm/CAPRA-FK", "mean": 708.7125, "gpu": 0.23513437119499042}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_cm/CAPRA", "mean": 707.5, "gpu": 0.23481257610019135}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_original/CAPRA", "mean": 816.875, "gpu": 0.30743523655585164}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_original/CAPRA-FK", "mean": 818.85, "gpu": 0.30576645843344546}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_original/SIA-SMART-P", "mean": 916.3625, "gpu": 0.34483251722494257}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_cm/CAPRA", "mean": 796.9, "gpu": 0.30058538290157705}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_cm/CAPRA-FK", "mean": 785.6, "gpu": 0.293923375999301}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn7_supported80_cm/SIA-SMART-P", "mean": 835.6625, "gpu": 0.2940643602795272}
+{"event": "RAW_ANALYZED", "id": "HISTORY/R3/B/saturn8_supported80_cm/SIA-SMART-P", "mean": 916.3625, "gpu": 0.34483251722494257}
+R4_READ_ONLY_ANALYSIS_PASS

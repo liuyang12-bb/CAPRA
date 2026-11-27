@@ -1,0 +1,6 @@
+{
+  "reason": "Original R3 P-only path correctly rejected fixture before R4: input plan must already be canonical identity-stabilized. Set b on node0,c on node1 for sorted job-id tie.",
+  "algorithm_changed": false,
+  "formal_started": false,
+  "same_budget_deadline": true
+}

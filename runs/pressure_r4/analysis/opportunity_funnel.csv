@@ -1,0 +1,109 @@
+scenario,method,stage,definition,numerator,denominator_nonempty_rounds,fraction,total_R_selected,result_origin
+saturn7_dense05_original,SIA-SMART-P,A,nonempty complete GPU plan,199,199,1.0,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,B,same-GPU-type CPU/RAM donor-receiver pair exists,64,199,0.32160804020100503,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,C,some B pair GPU sum fits a same-type node,58,199,0.2914572864321608,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,D,some C pair not colocated in any feasible F/K (P for smart),46,199,0.23115577889447236,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,E,some D pair has complete proportional-plus-lock direct-move witness,4,199,0.020100502512562814,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,F,actual feasible R candidate covers some E pair,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,G,F and actual R gross sum-rho exceeds best F/K,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,H,G and recovery-adjusted original rule selects R,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,SIA-SMART-P,I,H and current actual training has positive auxiliary gain,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,A,nonempty complete GPU plan,195,195,1.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,B,same-GPU-type CPU/RAM donor-receiver pair exists,55,195,0.28205128205128205,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,C,some B pair GPU sum fits a same-type node,52,195,0.26666666666666666,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,D,some C pair not colocated in any feasible F/K (P for smart),42,195,0.2153846153846154,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,E,some D pair has complete proportional-plus-lock direct-move witness,10,195,0.05128205128205128,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,F,actual feasible R candidate covers some E pair,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,G,F and actual R gross sum-rho exceeds best F/K,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,H,G and recovery-adjusted original rule selects R,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA-FK,I,H and current actual training has positive auxiliary gain,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,A,nonempty complete GPU plan,196,196,1.0,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,B,same-GPU-type CPU/RAM donor-receiver pair exists,56,196,0.2857142857142857,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,C,some B pair GPU sum fits a same-type node,50,196,0.25510204081632654,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,D,some C pair not colocated in any feasible F/K (P for smart),40,196,0.20408163265306123,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,E,some D pair has complete proportional-plus-lock direct-move witness,6,196,0.030612244897959183,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,F,actual feasible R candidate covers some E pair,3,196,0.015306122448979591,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,G,F and actual R gross sum-rho exceeds best F/K,1,196,0.00510204081632653,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,H,G and recovery-adjusted original rule selects R,0,196,0.0,15,NEW_EXECUTION
+saturn7_dense05_original,CAPRA,I,H and current actual training has positive auxiliary gain,0,196,0.0,15,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,A,nonempty complete GPU plan,199,199,1.0,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,B,same-GPU-type CPU/RAM donor-receiver pair exists,99,199,0.49748743718592964,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,C,some B pair GPU sum fits a same-type node,78,199,0.39195979899497485,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,D,some C pair not colocated in any feasible F/K (P for smart),62,199,0.31155778894472363,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,E,some D pair has complete proportional-plus-lock direct-move witness,4,199,0.020100502512562814,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,F,actual feasible R candidate covers some E pair,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,G,F and actual R gross sum-rho exceeds best F/K,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,H,G and recovery-adjusted original rule selects R,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,SIA-SMART-P,I,H and current actual training has positive auxiliary gain,0,199,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,A,nonempty complete GPU plan,195,195,1.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,B,same-GPU-type CPU/RAM donor-receiver pair exists,92,195,0.4717948717948718,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,C,some B pair GPU sum fits a same-type node,64,195,0.3282051282051282,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,D,some C pair not colocated in any feasible F/K (P for smart),46,195,0.2358974358974359,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,E,some D pair has complete proportional-plus-lock direct-move witness,9,195,0.046153846153846156,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,F,actual feasible R candidate covers some E pair,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,G,F and actual R gross sum-rho exceeds best F/K,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,H,G and recovery-adjusted original rule selects R,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA-FK,I,H and current actual training has positive auxiliary gain,0,195,0.0,0,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,A,nonempty complete GPU plan,195,195,1.0,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,B,same-GPU-type CPU/RAM donor-receiver pair exists,93,195,0.47692307692307695,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,C,some B pair GPU sum fits a same-type node,65,195,0.3333333333333333,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,D,some C pair not colocated in any feasible F/K (P for smart),48,195,0.24615384615384617,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,E,some D pair has complete proportional-plus-lock direct-move witness,3,195,0.015384615384615385,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,F,actual feasible R candidate covers some E pair,2,195,0.010256410256410256,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,G,F and actual R gross sum-rho exceeds best F/K,1,195,0.005128205128205128,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,H,G and recovery-adjusted original rule selects R,0,195,0.0,13,NEW_EXECUTION
+saturn7_dense05_cm,CAPRA,I,H and current actual training has positive auxiliary gain,0,195,0.0,13,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,A,nonempty complete GPU plan,195,195,1.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,B,same-GPU-type CPU/RAM donor-receiver pair exists,15,195,0.07692307692307693,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,C,some B pair GPU sum fits a same-type node,12,195,0.06153846153846154,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,D,some C pair not colocated in any feasible F/K (P for smart),10,195,0.05128205128205128,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,E,some D pair has complete proportional-plus-lock direct-move witness,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,F,actual feasible R candidate covers some E pair,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,G,F and actual R gross sum-rho exceeds best F/K,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,H,G and recovery-adjusted original rule selects R,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA,I,H and current actual training has positive auxiliary gain,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,A,nonempty complete GPU plan,195,195,1.0,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,B,same-GPU-type CPU/RAM donor-receiver pair exists,14,195,0.07179487179487179,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,C,some B pair GPU sum fits a same-type node,14,195,0.07179487179487179,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,D,some C pair not colocated in any feasible F/K (P for smart),9,195,0.046153846153846156,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,E,some D pair has complete proportional-plus-lock direct-move witness,1,195,0.005128205128205128,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,F,actual feasible R candidate covers some E pair,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,G,F and actual R gross sum-rho exceeds best F/K,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,H,G and recovery-adjusted original rule selects R,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,CAPRA-FK,I,H and current actual training has positive auxiliary gain,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,A,nonempty complete GPU plan,198,198,1.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,B,same-GPU-type CPU/RAM donor-receiver pair exists,14,198,0.0707070707070707,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,C,some B pair GPU sum fits a same-type node,14,198,0.0707070707070707,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,D,some C pair not colocated in any feasible F/K (P for smart),11,198,0.05555555555555555,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,E,some D pair has complete proportional-plus-lock direct-move witness,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,F,actual feasible R candidate covers some E pair,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,G,F and actual R gross sum-rho exceeds best F/K,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,H,G and recovery-adjusted original rule selects R,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_original,SIA-SMART-P,I,H and current actual training has positive auxiliary gain,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,A,nonempty complete GPU plan,195,195,1.0,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,B,same-GPU-type CPU/RAM donor-receiver pair exists,115,195,0.5897435897435898,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,C,some B pair GPU sum fits a same-type node,55,195,0.28205128205128205,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,D,some C pair not colocated in any feasible F/K (P for smart),25,195,0.1282051282051282,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,E,some D pair has complete proportional-plus-lock direct-move witness,1,195,0.005128205128205128,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,F,actual feasible R candidate covers some E pair,1,195,0.005128205128205128,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,G,F and actual R gross sum-rho exceeds best F/K,1,195,0.005128205128205128,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,H,G and recovery-adjusted original rule selects R,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA,I,H and current actual training has positive auxiliary gain,0,195,0.0,6,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,A,nonempty complete GPU plan,195,195,1.0,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,B,same-GPU-type CPU/RAM donor-receiver pair exists,114,195,0.5846153846153846,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,C,some B pair GPU sum fits a same-type node,54,195,0.27692307692307694,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,D,some C pair not colocated in any feasible F/K (P for smart),29,195,0.14871794871794872,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,E,some D pair has complete proportional-plus-lock direct-move witness,1,195,0.005128205128205128,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,F,actual feasible R candidate covers some E pair,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,G,F and actual R gross sum-rho exceeds best F/K,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,H,G and recovery-adjusted original rule selects R,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,CAPRA-FK,I,H and current actual training has positive auxiliary gain,0,195,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,A,nonempty complete GPU plan,198,198,1.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,B,same-GPU-type CPU/RAM donor-receiver pair exists,107,198,0.5404040404040404,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,C,some B pair GPU sum fits a same-type node,77,198,0.3888888888888889,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,D,some C pair not colocated in any feasible F/K (P for smart),47,198,0.23737373737373738,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,E,some D pair has complete proportional-plus-lock direct-move witness,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,F,actual feasible R candidate covers some E pair,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,G,F and actual R gross sum-rho exceeds best F/K,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,H,G and recovery-adjusted original rule selects R,0,198,0.0,0,NEW_EXECUTION
+saturn8_dense05_cm,SIA-SMART-P,I,H and current actual training has positive auxiliary gain,0,198,0.0,0,NEW_EXECUTION

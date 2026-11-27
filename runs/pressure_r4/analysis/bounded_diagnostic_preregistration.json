@@ -1,0 +1,86 @@
+{
+  "status": "PREREGISTERED_RULE_APPLIED_BEFORE_ENUMERATION",
+  "max_states": 8,
+  "max_layouts_per_state": 16,
+  "max_total_layouts": 128,
+  "rules": [
+    {
+      "scenario": "saturn7_dense05_original",
+      "rule": "first_E_uncovered_or_no_gross",
+      "round": 67
+    },
+    {
+      "scenario": "saturn7_dense05_original",
+      "rule": "first_R_selected_small",
+      "round": 21
+    },
+    {
+      "scenario": "saturn7_dense05_cm",
+      "rule": "first_E_uncovered_or_no_gross",
+      "round": 67
+    },
+    {
+      "scenario": "saturn7_dense05_cm",
+      "rule": "first_R_selected_small",
+      "round": 20
+    },
+    {
+      "scenario": "saturn8_dense05_original",
+      "rule": "first_E_uncovered_or_no_gross",
+      "round": null
+    },
+    {
+      "scenario": "saturn8_dense05_original",
+      "rule": "first_R_selected_small",
+      "round": null
+    },
+    {
+      "scenario": "saturn8_dense05_cm",
+      "rule": "first_E_uncovered_or_no_gross",
+      "round": null
+    },
+    {
+      "scenario": "saturn8_dense05_cm",
+      "rule": "first_R_selected_small",
+      "round": null
+    }
+  ],
+  "states": [
+    {
+      "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_original/CAPRA",
+      "scenario": "saturn7_dense05_original",
+      "round": 67,
+      "rules": [
+        "first_E_uncovered_or_no_gross"
+      ],
+      "event_sha256": "cb030aeaadaf1dcfbddf8f4a68b39d9eee5d5ff48c9b5266a9f4b08a477aa77a"
+    },
+    {
+      "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_original/CAPRA",
+      "scenario": "saturn7_dense05_original",
+      "round": 21,
+      "rules": [
+        "first_R_selected_small"
+      ],
+      "event_sha256": "d125293de5b2da45942828a8bc0cf199ce31302c51a908b84b512b9415fca2b4"
+    },
+    {
+      "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/CAPRA",
+      "scenario": "saturn7_dense05_cm",
+      "round": 67,
+      "rules": [
+        "first_E_uncovered_or_no_gross"
+      ],
+      "event_sha256": "0ebd18fa7d41feed44f5862667082ab9dbf4688f02b0bf6b58db4ef911bc1549"
+    },
+    {
+      "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/CAPRA",
+      "scenario": "saturn7_dense05_cm",
+      "round": 20,
+      "rules": [
+        "first_R_selected_small"
+      ],
+      "event_sha256": "53900d6e5800533fa8ba802f2f4e2e5b4e9dc33f6b774c955b0f762f61376bc5"
+    }
+  ]
+}

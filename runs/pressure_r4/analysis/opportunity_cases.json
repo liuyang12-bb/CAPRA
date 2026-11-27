@@ -1,0 +1,5549 @@
+[
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn7_dense05_original",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_original/CAPRA",
+    "source_events_sha256": "e70cad6e7338fcb2d8948e2308667bee318af5ff0247b8b6df037a26b6716b84",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn7_dense05_original\\CAPRA-FK",
+    "baseline_events_sha256": "787b7225df291a82735f738a9d9ab5e0b9b6a7229827e31e779ad889e656c19b",
+    "job_id": "cifar10-122",
+    "R_round": 155,
+    "R_time": 9300.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 4,
+      "cpu": 12.0,
+      "ram": 250.0,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 4,
+      "cpu": 24.0,
+      "ram": 250.0,
+      "rho": 1.75
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 4,
+      "cpu": 15.0,
+      "ram": 250.0,
+      "rho": 1.225
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.75,
+      "contribution": 1.2638888888888888
+    },
+    "predicted_reference": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.225,
+      "contribution": 0.8847222222222223
+    },
+    "R_phi": 6.072222222222222,
+    "FK_phi": 6.018055555555556,
+    "actual_full_ledger": {
+      "jct": 635.5,
+      "waiting": 32.5,
+      "training": 353.0,
+      "recovery": 250.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 477.5,
+      "waiting": 32.5,
+      "training": 295.0,
+      "recovery": 150.0
+    },
+    "delta_jct": 158.0,
+    "jct_ratio": 1.330890052356021,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 155,
+        "time": 9300.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 24.0,
+          "ram": 250.0,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 24609.918795151523,
+        "progress_after": 26562.76879491081,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-122",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 156,
+        "time": 9360.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 24.0,
+          "ram": 250.0,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 26562.76879491081,
+        "progress_after": 38541.124574355345,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 157,
+        "time": 9420.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 24.0,
+          "ram": 250.0,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 38541.124574355345,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 3.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 9423.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn7_dense05_original",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_original/CAPRA",
+    "source_events_sha256": "e70cad6e7338fcb2d8948e2308667bee318af5ff0247b8b6df037a26b6716b84",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn7_dense05_original\\CAPRA-FK",
+    "baseline_events_sha256": "787b7225df291a82735f738a9d9ab5e0b9b6a7229827e31e779ad889e656c19b",
+    "job_id": "cifar10-108",
+    "R_round": 133,
+    "R_time": 7980.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 10.0,
+      "ram": 125.0,
+      "rho": 1.53
+    },
+    "R_allocation": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 4,
+      "cpu": 24.0,
+      "ram": 250.0,
+      "rho": 1.75
+    },
+    "FK_reference_allocation": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 4,
+      "cpu": 24.0,
+      "ram": 250.0,
+      "rho": 1.75
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.75,
+      "contribution": 1.2638888888888888
+    },
+    "predicted_reference": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.75,
+      "contribution": 1.2638888888888888
+    },
+    "R_phi": 7.091111111111111,
+    "FK_phi": 6.849444444444445,
+    "actual_full_ledger": {
+      "jct": 652.0,
+      "waiting": 49.0,
+      "training": 403.0,
+      "recovery": 200.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 790.0,
+      "waiting": 49.0,
+      "training": 491.0,
+      "recovery": 250.0
+    },
+    "delta_jct": -138.0,
+    "jct_ratio": 0.8253164556962025,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 133,
+        "time": 7980.0,
+        "selected": "R",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 24.0,
+          "ram": 250.0,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 24174.656310315506,
+        "progress_after": 24699.736192869637,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-108",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 10.0,
+              "ram": 125.0,
+              "rho": 1.53
+            },
+            "new": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 134,
+        "time": 8040.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 500.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 24699.736192869637,
+        "progress_after": 26802.453332015957,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-108",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 500.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 135,
+        "time": 8100.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 500.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 26802.453332015957,
+        "progress_after": 38528.84640802595,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 136,
+        "time": 8160.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 500.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 38528.84640802595,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 3.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 8163.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn7_dense05_cm",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/CAPRA",
+    "source_events_sha256": "cec44b387d2c2ac70d2839e353e63c582d4dfe5b8376fb2682259619fa46e506",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn7_dense05_cm\\CAPRA-FK",
+    "baseline_events_sha256": "ecf8d2f0eb80bf9484fca29ad75267d276ad2da19358ce468d7bf6bb7a3398b7",
+    "job_id": "cifar10-55",
+    "R_round": 83,
+    "R_time": 4980.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "unchanged",
+      "new_cost": 0.0,
+      "existing_remaining": 0.0,
+      "delay": 0.0,
+      "gpu_change": false,
+      "effective_window": 180.0,
+      "rho": 1.0,
+      "contribution": 1.0
+    },
+    "R_phi": 6.5600000000000005,
+    "FK_phi": 6.265555555555556,
+    "actual_full_ledger": {
+      "jct": 941.5,
+      "waiting": 13.5,
+      "training": 528.0,
+      "recovery": 400.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 609.5,
+      "waiting": 13.5,
+      "training": 346.0,
+      "recovery": 250.0
+    },
+    "delta_jct": 332.0,
+    "jct_ratio": 1.5447087776866284,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 83,
+        "time": 4980.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 64,
+          "accum_steps": 0
+        },
+        "progress_before": 279.95641649406707,
+        "progress_after": 464.98297599083423,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 84,
+        "time": 5040.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 304,
+          "accum_steps": 0
+        },
+        "progress_before": 464.98297599083423,
+        "progress_after": 1613.6917165574293,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 85,
+        "time": 5100.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 574,
+          "accum_steps": 0
+        },
+        "progress_before": 1613.6917165574293,
+        "progress_after": 4141.6217426299045,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 86,
+        "time": 5160.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 709,
+          "accum_steps": 0
+        },
+        "progress_before": 4141.6217426299045,
+        "progress_after": 7192.498487464249,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 87,
+        "time": 5220.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 877,
+          "accum_steps": 0
+        },
+        "progress_before": 7192.498487464249,
+        "progress_after": 10547.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 88,
+        "time": 5280.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 20.0,
+          "ram": 83.32,
+          "rho": 1.53
+        },
+        "batch": {
+          "atomic_bsz": 719,
+          "accum_steps": 0
+        },
+        "progress_before": 10547.0,
+        "progress_after": 12432.2845782103,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 83.32,
+              "rho": 1.53
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 89,
+        "time": 5340.0,
+        "selected": "F",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 166.64,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 12432.2845782103,
+        "progress_after": 12730.035857511182,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 83.32,
+              "rho": 1.53
+            },
+            "new": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 90,
+        "time": 5400.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 166.64,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 12730.035857511182,
+        "progress_after": 17262.361320037362,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 91,
+        "time": 5460.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 166.64,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 17262.361320037362,
+        "progress_after": 19141.0,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 92,
+        "time": 5520.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 19141.0,
+        "progress_after": 20440.14608592818,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 93,
+        "time": 5580.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 20440.14608592818,
+        "progress_after": 28269.835421172887,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 94,
+        "time": 5640.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 28269.835421172887,
+        "progress_after": 36086.9886228892,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 95,
+        "time": 5700.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 36086.9886228892,
+        "progress_after": 36880.6737505321,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-55",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 96,
+        "time": 5760.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 36880.6737505321,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 28.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 5788.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn7_dense05_cm",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/CAPRA",
+    "source_events_sha256": "cec44b387d2c2ac70d2839e353e63c582d4dfe5b8376fb2682259619fa46e506",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn7_dense05_cm\\CAPRA-FK",
+    "baseline_events_sha256": "ecf8d2f0eb80bf9484fca29ad75267d276ad2da19358ce468d7bf6bb7a3398b7",
+    "job_id": "cifar10-79",
+    "R_round": 110,
+    "R_time": 6600.0,
+    "before": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "reconfigure",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "reconfigure",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "R_phi": 13.194444444444443,
+    "FK_phi": 12.638888888888888,
+    "actual_full_ledger": {
+      "jct": 1052.0,
+      "waiting": 31.0,
+      "training": 821.0,
+      "recovery": 200.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 1442.0,
+      "waiting": 31.0,
+      "training": 961.0,
+      "recovery": 450.0
+    },
+    "delta_jct": -390.0,
+    "jct_ratio": 0.7295423023578363,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 110,
+        "time": 6600.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1084,
+          "accum_steps": 0
+        },
+        "progress_before": 11929.736123278468,
+        "progress_after": 12561.304066604693,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-79",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 111,
+        "time": 6660.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1340,
+          "accum_steps": 0
+        },
+        "progress_before": 12561.304066604693,
+        "progress_after": 16473.074187351336,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 112,
+        "time": 6720.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1657,
+          "accum_steps": 0
+        },
+        "progress_before": 16473.074187351336,
+        "progress_after": 20383.82160662999,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 113,
+        "time": 6780.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 20383.82160662999,
+        "progress_after": 24918.95825529903,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 114,
+        "time": 6840.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 24918.95825529903,
+        "progress_after": 29614.99948286108,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 115,
+        "time": 6900.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 29614.99948286108,
+        "progress_after": 34304.62726932752,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 116,
+        "time": 6960.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 34304.62726932752,
+        "progress_after": 38997.68853836351,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 117,
+        "time": 7020.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 38997.68853836351,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 1.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 7021.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn8_dense05_original",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn8_dense05_original/CAPRA",
+    "source_events_sha256": "70a369da3ae06b7c399de798b625c1f97cbf15fdb146d81ddafa40a5446d5510",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn8_dense05_original\\CAPRA-FK",
+    "baseline_events_sha256": "5566b119364f815cc9fe4fc5286f553383477ab0581e2a4911c669636e004ea7",
+    "job_id": "cifar10-92",
+    "R_round": 118,
+    "R_time": 7080.0,
+    "before": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 125.0,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "rtx:1",
+      "gpu_type": "rtx",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 125.0,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 125.0,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "unchanged",
+      "new_cost": 0.0,
+      "existing_remaining": 0.0,
+      "delay": 0.0,
+      "gpu_change": false,
+      "effective_window": 180.0,
+      "rho": 1.0,
+      "contribution": 1.0
+    },
+    "R_phi": 17.33333333333333,
+    "FK_phi": 16.77777777777778,
+    "actual_full_ledger": {
+      "jct": 1613.0,
+      "waiting": 47.0,
+      "training": 1216.0,
+      "recovery": 350.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 1107.0,
+      "waiting": 47.0,
+      "training": 860.0,
+      "recovery": 200.0
+    },
+    "delta_jct": 506.0,
+    "jct_ratio": 1.4570912375790424,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 118,
+        "time": 7080.0,
+        "selected": "R",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 616,
+          "accum_steps": 0
+        },
+        "progress_before": 6024.941568653018,
+        "progress_after": 6231.1185294692905,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-92",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "rtx:1",
+              "gpu_type": "rtx",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 119,
+        "time": 7140.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 709,
+          "accum_steps": 0
+        },
+        "progress_before": 6231.1185294692905,
+        "progress_after": 7464.758931767907,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 120,
+        "time": 7200.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 709,
+          "accum_steps": 0
+        },
+        "progress_before": 7464.758931767907,
+        "progress_after": 8768.164985568521,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 121,
+        "time": 7260.0,
+        "selected": "R",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 761,
+          "accum_steps": 0
+        },
+        "progress_before": 8768.164985568521,
+        "progress_after": 10079.075042806879,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 122,
+        "time": 7320.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 817,
+          "accum_steps": 0
+        },
+        "progress_before": 10079.075042806879,
+        "progress_after": 11443.317721399031,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 123,
+        "time": 7380.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 877,
+          "accum_steps": 0
+        },
+        "progress_before": 11443.317721399031,
+        "progress_after": 12826.117840254872,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 124,
+        "time": 7440.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:1",
+          "gpu_type": "rtx",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 941,
+          "accum_steps": 0
+        },
+        "progress_before": 12826.117840254872,
+        "progress_after": 14229.752231125442,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 125,
+        "time": 7500.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 719,
+          "accum_steps": 0
+        },
+        "progress_before": 14229.752231125442,
+        "progress_after": 14660.666951383968,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-92",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:1",
+              "gpu_type": "rtx",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 126,
+        "time": 7560.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 829,
+          "accum_steps": 0
+        },
+        "progress_before": 14660.666951383968,
+        "progress_after": 17274.600444883912,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 127,
+        "time": 7620.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 17274.600444883912,
+        "progress_after": 19900.023380981325,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 128,
+        "time": 7680.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 19900.023380981325,
+        "progress_after": 22853.524468457854,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 129,
+        "time": 7740.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 22853.524468457854,
+        "progress_after": 25781.74793989932,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 130,
+        "time": 7800.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 25781.74793989932,
+        "progress_after": 29012.102187725704,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 131,
+        "time": 7860.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 29012.102187725704,
+        "progress_after": 32356.448376944085,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 132,
+        "time": 7920.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 32356.448376944085,
+        "progress_after": 33137.348991234234,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-92",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 133,
+        "time": 7980.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 33137.348991234234,
+        "progress_after": 37820.154336961874,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 134,
+        "time": 8040.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 37820.154336961874,
+        "progress_after": 38607.396002251364,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-92",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 135,
+        "time": 8100.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 38607.396002251364,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 6.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 8106.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn8_dense05_original",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn8_dense05_original/CAPRA",
+    "source_events_sha256": "70a369da3ae06b7c399de798b625c1f97cbf15fdb146d81ddafa40a5446d5510",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn8_dense05_original\\CAPRA-FK",
+    "baseline_events_sha256": "5566b119364f815cc9fe4fc5286f553383477ab0581e2a4911c669636e004ea7",
+    "job_id": "cifar10-131",
+    "R_round": 156,
+    "R_time": 9360.0,
+    "before": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 125.0,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 125.0,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 8.0,
+      "ram": 125.0,
+      "rho": 1.3
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.3,
+      "contribution": 0.9388888888888889
+    },
+    "R_phi": 10.405555555555555,
+    "FK_phi": 10.322222222222223,
+    "actual_full_ledger": {
+      "jct": 696.5,
+      "waiting": 46.5,
+      "training": 450.0,
+      "recovery": 200.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 897.5,
+      "waiting": 46.5,
+      "training": 451.0,
+      "recovery": 400.0
+    },
+    "delta_jct": -201.0,
+    "jct_ratio": 0.7760445682451254,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 156,
+        "time": 9360.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 125.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 350,
+          "accum_steps": 0
+        },
+        "progress_before": 1421.9941279312898,
+        "progress_after": 1702.684229832811,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-131",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 157,
+        "time": 9420.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 10.0,
+          "ram": 125.0,
+          "rho": 1.53
+        },
+        "batch": {
+          "atomic_bsz": 661,
+          "accum_steps": 0
+        },
+        "progress_before": 1702.684229832811,
+        "progress_after": 5859.525874101919,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-131",
+            "kind": "aux_update",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 125.0,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 10.0,
+              "ram": 125.0,
+              "rho": 1.53
+            },
+            "cost": 0.0,
+            "prediction": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false
+            },
+            "remaining_after": 0.0
+          }
+        ]
+      },
+      {
+        "round": 158,
+        "time": 9480.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 10.0,
+          "ram": 125.0,
+          "rho": 1.53
+        },
+        "batch": {
+          "atomic_bsz": 941,
+          "accum_steps": 0
+        },
+        "progress_before": 5859.525874101919,
+        "progress_after": 10821.088598222985,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 159,
+        "time": 9540.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 8.0,
+          "ram": 125.0,
+          "rho": 1.3
+        },
+        "batch": {
+          "atomic_bsz": 1164,
+          "accum_steps": 0
+        },
+        "progress_before": 10821.088598222985,
+        "progress_after": 15574.096844291395,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-131",
+            "kind": "aux_update",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 10.0,
+              "ram": 125.0,
+              "rho": 1.53
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 8.0,
+              "ram": 125.0,
+              "rho": 1.3
+            },
+            "cost": 0.0,
+            "prediction": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false
+            },
+            "remaining_after": 0.0
+          }
+        ]
+      },
+      {
+        "round": 160,
+        "time": 9600.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 889,
+          "accum_steps": 0
+        },
+        "progress_before": 15574.096844291395,
+        "progress_after": 16912.067160513303,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-131",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 8.0,
+              "ram": 125.0,
+              "rho": 1.3
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 161,
+        "time": 9660.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 16912.067160513303,
+        "progress_after": 24750.574981763202,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 162,
+        "time": 9720.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 24750.574981763202,
+        "progress_after": 32569.613804240646,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 163,
+        "time": 9780.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 250.0,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 32569.613804240646,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 50.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 9830.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn8_dense05_cm",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn8_dense05_cm/CAPRA",
+    "source_events_sha256": "f3545ee6a2253c016530a89c6057adc822d87782cfa53303dffe5a487a8d2a5a",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn8_dense05_cm\\CAPRA-FK",
+    "baseline_events_sha256": "58e2fc60296bf5efe06d015c4a819a133aadb54322ea421aca68c40d07705119",
+    "job_id": "cifar10-97",
+    "R_round": 118,
+    "R_time": 7080.0,
+    "before": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 5.0,
+      "ram": 20.83,
+      "rho": 1.53
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "aux_update",
+      "new_cost": 0.0,
+      "existing_remaining": 0.0,
+      "delay": 0.0,
+      "gpu_change": false,
+      "effective_window": 180.0,
+      "rho": 1.0,
+      "contribution": 1.0
+    },
+    "predicted_reference": {
+      "kind": "aux_update",
+      "new_cost": 0.0,
+      "existing_remaining": 0.0,
+      "delay": 0.0,
+      "gpu_change": false,
+      "effective_window": 180.0,
+      "rho": 1.0,
+      "contribution": 1.0
+    },
+    "R_phi": 18.54007444444444,
+    "FK_phi": 16.444444444444443,
+    "actual_full_ledger": {
+      "jct": 1165.0,
+      "waiting": 117.0,
+      "training": 748.0,
+      "recovery": 300.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 859.0,
+      "waiting": 57.0,
+      "training": 602.0,
+      "recovery": 200.0
+    },
+    "delta_jct": 306.0,
+    "jct_ratio": 1.3562281722933645,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 118,
+        "time": 7080.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 2231.0403402170964,
+        "progress_after": 3094.2014487895603,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-97",
+            "kind": "aux_update",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 5.0,
+              "ram": 20.83,
+              "rho": 1.53
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "cost": 0.0,
+            "prediction": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false
+            },
+            "remaining_after": 0.0
+          }
+        ]
+      },
+      {
+        "round": 119,
+        "time": 7140.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 161,
+          "accum_steps": 0
+        },
+        "progress_before": 3094.2014487895603,
+        "progress_after": 3453.2849702650683,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-97",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 120,
+        "time": 7200.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 661,
+          "accum_steps": 0
+        },
+        "progress_before": 3453.2849702650683,
+        "progress_after": 6014.669211262361,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 121,
+        "time": 7260.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 817,
+          "accum_steps": 0
+        },
+        "progress_before": 6014.669211262361,
+        "progress_after": 9324.852039094432,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 122,
+        "time": 7320.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 941,
+          "accum_steps": 0
+        },
+        "progress_before": 9324.852039094432,
+        "progress_after": 12867.492194294555,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 123,
+        "time": 7380.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1249,
+          "accum_steps": 0
+        },
+        "progress_before": 12867.492194294555,
+        "progress_after": 16797.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 124,
+        "time": 7440.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1544,
+          "accum_steps": 0
+        },
+        "progress_before": 16797.0,
+        "progress_after": 20773.815670303713,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 125,
+        "time": 7500.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 20773.815670303713,
+        "progress_after": 25387.355575499343,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 126,
+        "time": 7560.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 25387.355575499343,
+        "progress_after": 30079.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 127,
+        "time": 7620.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 30079.0,
+        "progress_after": 31397.62855743235,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-97",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 128,
+        "time": 7680.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 31397.62855743235,
+        "progress_after": 32194.64043066998,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-97",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 129,
+        "time": 7740.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 32194.64043066998,
+        "progress_after": 36880.6737505321,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 130,
+        "time": 7800.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 36880.6737505321,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 28.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 7828.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "NEW_EXECUTION",
+    "scenario": "saturn8_dense05_cm",
+    "source": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn8_dense05_cm/CAPRA",
+    "source_events_sha256": "f3545ee6a2253c016530a89c6057adc822d87782cfa53303dffe5a487a8d2a5a",
+    "baseline": "runs\\pressure_r4\\CAPRA_V2_PRESSURE_R4\\saturn8_dense05_cm\\CAPRA-FK",
+    "baseline_events_sha256": "58e2fc60296bf5efe06d015c4a819a133aadb54322ea421aca68c40d07705119",
+    "job_id": "cifar10-108",
+    "R_round": 133,
+    "R_time": 7980.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 6.0,
+      "ram": 41.66,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 4,
+      "cpu": 12.0,
+      "ram": 83.32,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 4,
+      "cpu": 12.0,
+      "ram": 83.32,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "reconfigure",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "R_phi": 8.444444444444445,
+    "FK_phi": 8.166666666666668,
+    "actual_full_ledger": {
+      "jct": 729.0,
+      "waiting": 36.0,
+      "training": 543.0,
+      "recovery": 150.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 969.0,
+      "waiting": 36.0,
+      "training": 633.0,
+      "recovery": 300.0
+    },
+    "delta_jct": -240.0,
+    "jct_ratio": 0.7523219814241486,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 133,
+        "time": 7980.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 955,
+          "accum_steps": 0
+        },
+        "progress_before": 17845.473096846268,
+        "progress_after": 19112.16007347325,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-108",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 134,
+        "time": 8040.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 19112.16007347325,
+        "progress_after": 26953.85671659374,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 135,
+        "time": 8100.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 26953.85671659374,
+        "progress_after": 34766.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 136,
+        "time": 8160.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 34766.0,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 33.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 8193.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "HISTORICAL_REFERENCE",
+    "scenario": "R2_w2_dense_cm_positive",
+    "source": "runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA",
+    "source_events_sha256": "06c4ebed23c2be6080343010ba47d5c2158ff2e6c6f9880e77bb1f0341d4cad6",
+    "baseline": "runs\\ablation_ram_r2\\CAPRA_V2_RAM_R2\\w2_dense_cm\\CAPRA-FK",
+    "baseline_events_sha256": "55b4b7f6c9795c8504f65d7aeefb8ecb0e8e0cadafb0f6ad678000f9f9521957",
+    "job_id": "cifar10-96",
+    "R_round": 118,
+    "R_time": 7080.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 3.0,
+      "ram": 20.83,
+      "rho": 1.0
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "predicted_reference": {
+      "kind": "migration",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 1.0,
+      "contribution": 0.7222222222222222
+    },
+    "R_phi": 25.885119999999997,
+    "FK_phi": 25.26010333333333,
+    "actual_full_ledger": {
+      "jct": 1654.5,
+      "waiting": 296.5,
+      "training": 1108.0,
+      "recovery": 250.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 971.5,
+      "waiting": 56.5,
+      "training": 715.0,
+      "recovery": 200.0
+    },
+    "delta_jct": 683.0,
+    "jct_ratio": 1.703036541430777,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 118,
+        "time": 7080.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 323.1245062219516,
+        "progress_after": 462.5546757243343,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-96",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 119,
+        "time": 7140.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 462.5546757243343,
+        "progress_after": 1330.0121694074476,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 120,
+        "time": 7200.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 1330.0121694074476,
+        "progress_after": 1473.6927489232717,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-96",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 121,
+        "time": 7260.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 1473.6927489232717,
+        "progress_after": 2341.674386444281,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 122,
+        "time": 7320.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 2341.674386444281,
+        "progress_after": 3211.2083477094943,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 123,
+        "time": 7380.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 3211.2083477094943,
+        "progress_after": 4079.3706788804625,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 124,
+        "time": 7440.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 661,
+          "accum_steps": 1
+        },
+        "progress_before": 4079.3706788804625,
+        "progress_after": 5048.194238146824,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 125,
+        "time": 7500.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 761,
+          "accum_steps": 1
+        },
+        "progress_before": 5048.194238146824,
+        "progress_after": 6560.706182652231,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 126,
+        "time": 7560.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 877,
+          "accum_steps": 1
+        },
+        "progress_before": 6560.706182652231,
+        "progress_after": 8138.171089792532,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 127,
+        "time": 7620.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 941,
+          "accum_steps": 1
+        },
+        "progress_before": 8138.171089792532,
+        "progress_after": 9823.644431462531,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 128,
+        "time": 7680.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1084,
+          "accum_steps": 1
+        },
+        "progress_before": 9823.644431462531,
+        "progress_after": 11567.325001506006,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 129,
+        "time": 7740.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1084,
+          "accum_steps": 1
+        },
+        "progress_before": 11567.325001506006,
+        "progress_after": 13372.633441684447,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 130,
+        "time": 7800.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1249,
+          "accum_steps": 1
+        },
+        "progress_before": 13372.633441684447,
+        "progress_after": 15224.696523238492,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 131,
+        "time": 7860.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1340,
+          "accum_steps": 1
+        },
+        "progress_before": 15224.696523238492,
+        "progress_after": 17186.052524432842,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 132,
+        "time": 7920.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1438,
+          "accum_steps": 1
+        },
+        "progress_before": 17186.052524432842,
+        "progress_after": 19141.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 133,
+        "time": 7980.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 3.0,
+          "ram": 20.83,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1778,
+          "accum_steps": 1
+        },
+        "progress_before": 19141.0,
+        "progress_after": 21270.012581592753,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 134,
+        "time": 8040.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 21270.012581592753,
+        "progress_after": 22020.896615100013,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-96",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 3.0,
+              "ram": 20.83,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 135,
+        "time": 8100.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 22020.896615100013,
+        "progress_after": 26720.707190465215,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 136,
+        "time": 8160.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 26720.707190465215,
+        "progress_after": 31412.17932104616,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 137,
+        "time": 8220.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 31412.17932104616,
+        "progress_after": 36101.67343909627,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 138,
+        "time": 8280.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 2048,
+          "accum_steps": 0
+        },
+        "progress_before": 36101.67343909627,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 38.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 8318.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "HISTORICAL_REFERENCE",
+    "scenario": "R2_w2_dense_cm_positive",
+    "source": "runs/ablation_ram_r2/CAPRA_V2_RAM_R2/w2_dense_cm/CAPRA",
+    "source_events_sha256": "06c4ebed23c2be6080343010ba47d5c2158ff2e6c6f9880e77bb1f0341d4cad6",
+    "baseline": "runs\\ablation_ram_r2\\CAPRA_V2_RAM_R2\\w2_dense_cm\\CAPRA-FK",
+    "baseline_events_sha256": "55b4b7f6c9795c8504f65d7aeefb8ecb0e8e0cadafb0f6ad678000f9f9521957",
+    "job_id": "deepspeech2-49",
+    "R_round": 106,
+    "R_time": 6360.0,
+    "before": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 2.0,
+      "ram": 375.0,
+      "rho": 2.4
+    },
+    "R_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 2.0,
+      "ram": 375.0,
+      "rho": 2.4
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:0",
+      "gpu_type": "dgx-ext",
+      "gpus": 2,
+      "cpu": 2.0,
+      "ram": 375.0,
+      "rho": 2.4
+    },
+    "predicted_R": {
+      "kind": "migration",
+      "new_cost": 25.0,
+      "existing_remaining": 0.0,
+      "delay": 25.0,
+      "gpu_change": true,
+      "effective_window": 155.0,
+      "rho": 2.4,
+      "contribution": 2.066666666666667
+    },
+    "predicted_reference": {
+      "kind": "migration",
+      "new_cost": 25.0,
+      "existing_remaining": 0.0,
+      "delay": 25.0,
+      "gpu_change": true,
+      "effective_window": 155.0,
+      "rho": 2.4,
+      "contribution": 2.066666666666667
+    },
+    "R_phi": 26.10038666666667,
+    "FK_phi": 25.822614444444447,
+    "actual_full_ledger": {
+      "jct": 2939.0,
+      "waiting": 19.0,
+      "training": 2670.0,
+      "recovery": 250.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 4241.0,
+      "waiting": 19.0,
+      "training": 3897.0,
+      "recovery": 325.0
+    },
+    "delta_jct": -1302.0,
+    "jct_ratio": 0.6929969346852157,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 106,
+        "time": 6360.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 278,
+          "accum_steps": 0
+        },
+        "progress_before": 10930.944210445186,
+        "progress_after": 11380.116189285458,
+        "waiting": 0.0,
+        "training": 35.0,
+        "recovery": 25.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "deepspeech2-49",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "cost": 25.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 25.0,
+              "existing_remaining": 0.0,
+              "delay": 25.0,
+              "gpu_change": true
+            },
+            "remaining_after": 25.0
+          }
+        ]
+      },
+      {
+        "round": 107,
+        "time": 6420.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 11380.116189285458,
+        "progress_after": 11824.178294960633,
+        "waiting": 0.0,
+        "training": 35.0,
+        "recovery": 25.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "deepspeech2-49",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "cost": 25.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 25.0,
+              "existing_remaining": 0.0,
+              "delay": 25.0,
+              "gpu_change": true
+            },
+            "remaining_after": 25.0
+          }
+        ]
+      },
+      {
+        "round": 108,
+        "time": 6480.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 11824.178294960633,
+        "progress_after": 12619.915169850921,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 109,
+        "time": 6540.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 12619.915169850921,
+        "progress_after": 13445.769239201498,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 110,
+        "time": 6600.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 13445.769239201498,
+        "progress_after": 14268.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 111,
+        "time": 6660.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 14268.0,
+        "progress_after": 15108.79868625313,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 112,
+        "time": 6720.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 1.0,
+          "ram": 187.5,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 1
+        },
+        "progress_before": 15108.79868625313,
+        "progress_after": 15376.79452017298,
+        "waiting": 0.0,
+        "training": 35.0,
+        "recovery": 25.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "deepspeech2-49",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 1.0,
+              "ram": 187.5,
+              "rho": 2.4
+            },
+            "cost": 25.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 25.0,
+              "existing_remaining": 0.0,
+              "delay": 25.0,
+              "gpu_change": true
+            },
+            "remaining_after": 25.0
+          }
+        ]
+      },
+      {
+        "round": 113,
+        "time": 6780.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 1.0,
+          "ram": 187.5,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 1
+        },
+        "progress_before": 15376.79452017298,
+        "progress_after": 15841.055376918155,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 114,
+        "time": 6840.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 15841.055376918155,
+        "progress_after": 16335.497985021388,
+        "waiting": 0.0,
+        "training": 35.0,
+        "recovery": 25.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "deepspeech2-49",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 1.0,
+              "ram": 187.5,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "cost": 25.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 25.0,
+              "existing_remaining": 0.0,
+              "delay": 25.0,
+              "gpu_change": true
+            },
+            "remaining_after": 25.0
+          }
+        ]
+      },
+      {
+        "round": 115,
+        "time": 6900.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 16335.497985021388,
+        "progress_after": 17192.89462874723,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 116,
+        "time": 6960.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 17192.89462874723,
+        "progress_after": 18047.199600909968,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 117,
+        "time": 7020.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 18047.199600909968,
+        "progress_after": 18904.69845086805,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 118,
+        "time": 7080.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 18904.69845086805,
+        "progress_after": 19761.741311695223,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 119,
+        "time": 7140.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 19761.741311695223,
+        "progress_after": 20617.39106513023,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 120,
+        "time": 7200.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 20617.39106513023,
+        "progress_after": 21116.595088530612,
+        "waiting": 0.0,
+        "training": 35.0,
+        "recovery": 25.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "deepspeech2-49",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 2.0,
+              "ram": 375.0,
+              "rho": 2.4
+            },
+            "cost": 25.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 25.0,
+              "existing_remaining": 0.0,
+              "delay": 25.0,
+              "gpu_change": true
+            },
+            "remaining_after": 25.0
+          }
+        ]
+      },
+      {
+        "round": 121,
+        "time": 7260.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 21116.595088530612,
+        "progress_after": 21971.618128494647,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 122,
+        "time": 7320.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 21971.618128494647,
+        "progress_after": 22825.71165486556,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 123,
+        "time": 7380.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 22825.71165486556,
+        "progress_after": 23684.586005280675,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 124,
+        "time": 7440.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 23684.586005280675,
+        "progress_after": 24540.92261651239,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 125,
+        "time": 7500.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 24540.92261651239,
+        "progress_after": 25396.71383898394,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 126,
+        "time": 7560.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 25396.71383898394,
+        "progress_after": 26252.879634843834,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 127,
+        "time": 7620.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 26252.879634843834,
+        "progress_after": 27107.593784897155,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 128,
+        "time": 7680.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 27107.593784897155,
+        "progress_after": 27964.32379161501,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 129,
+        "time": 7740.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 2.0,
+          "ram": 375.0,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 320,
+          "accum_steps": 0
+        },
+        "progress_before": 27964.32379161501,
+        "progress_after": 28536.0,
+        "waiting": 0.0,
+        "training": 40.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 7780.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "worst_R_involved_relative_degradation",
+    "result_origin": "HISTORICAL_REFERENCE",
+    "scenario": "R3_saturn8_cm_negative",
+    "source": "runs/smart_holdout_r3/CAPRA_V2_HOLDOUT_R3/saturn8_supported80_cm/CAPRA",
+    "source_events_sha256": "5388d030932525a0f04500fa816cc53d436394137756d45d8402c03ed702ff6f",
+    "baseline": "runs\\smart_holdout_r3\\CAPRA_V2_HOLDOUT_R3\\saturn8_supported80_cm\\CAPRA-FK",
+    "baseline_events_sha256": "3b75c624d289dcf12683a678a3b348e4977a6e6b5652e94833d13f0c467e4a31",
+    "job_id": "cifar10-75",
+    "R_round": 198,
+    "R_time": 11880.0,
+    "before": null,
+    "R_allocation": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 1,
+      "cpu": 9.0,
+      "ram": 20.83,
+      "rho": 2.4
+    },
+    "FK_reference_allocation": {
+      "node": "rtx:0",
+      "gpu_type": "rtx",
+      "gpus": 1,
+      "cpu": 9.0,
+      "ram": 20.83,
+      "rho": 2.4
+    },
+    "predicted_R": {
+      "kind": "start",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 2.4,
+      "contribution": 1.7333333333333332
+    },
+    "predicted_reference": {
+      "kind": "start",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 2.4,
+      "contribution": 1.7333333333333332
+    },
+    "R_phi": 7.622222222222223,
+    "FK_phi": 6.955555555555556,
+    "actual_full_ledger": {
+      "jct": 751.0,
+      "waiting": 57.0,
+      "training": 444.0,
+      "recovery": 250.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 623.0,
+      "waiting": 57.0,
+      "training": 416.0,
+      "recovery": 150.0
+    },
+    "delta_jct": 128.0,
+    "jct_ratio": 1.2054574638844302,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 198,
+        "time": 11880.0,
+        "selected": "R",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 1,
+          "cpu": 9.0,
+          "ram": 20.83,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 0.0,
+        "progress_after": 179.4439267061275,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "start",
+            "old": null,
+            "new": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 1,
+              "cpu": 9.0,
+              "ram": 20.83,
+              "rho": 2.4
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "start",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 199,
+        "time": 11940.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 12.0,
+          "ram": 41.66,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 64,
+          "accum_steps": 0
+        },
+        "progress_before": 179.4439267061275,
+        "progress_after": 488.191910373463,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 1,
+              "cpu": 9.0,
+              "ram": 20.83,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 12.0,
+              "ram": 41.66,
+              "rho": 1.75
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 200,
+        "time": 12000.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 12.0,
+          "ram": 41.66,
+          "rho": 1.75
+        },
+        "batch": {
+          "atomic_bsz": 498,
+          "accum_steps": 0
+        },
+        "progress_before": 488.191910373463,
+        "progress_after": 3280.3786678241177,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 201,
+        "time": 12060.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 661,
+          "accum_steps": 0
+        },
+        "progress_before": 3280.3786678241177,
+        "progress_after": 6170.436360284383,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "aux_update",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 12.0,
+              "ram": 41.66,
+              "rho": 1.75
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 0.0,
+            "prediction": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false
+            },
+            "remaining_after": 0.0
+          }
+        ]
+      },
+      {
+        "round": 202,
+        "time": 12120.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 817,
+          "accum_steps": 0
+        },
+        "progress_before": 6170.436360284383,
+        "progress_after": 9489.375073018122,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 203,
+        "time": 12180.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 670,
+          "accum_steps": 0
+        },
+        "progress_before": 9489.375073018122,
+        "progress_after": 10453.188312555381,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 204,
+        "time": 12240.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 889,
+          "accum_steps": 0
+        },
+        "progress_before": 10453.188312555381,
+        "progress_after": 16636.570627940444,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 205,
+        "time": 12300.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 16636.570627940444,
+        "progress_after": 24495.961726701196,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 206,
+        "time": 12360.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 24495.961726701196,
+        "progress_after": 32328.36030992686,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 207,
+        "time": 12420.0,
+        "selected": "K",
+        "allocation": {
+          "node": "rtx:0",
+          "gpu_type": "rtx",
+          "gpus": 8,
+          "cpu": 24.0,
+          "ram": 166.64,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 512,
+          "accum_steps": 0
+        },
+        "progress_before": 32328.36030992686,
+        "progress_after": 33299.658089620476,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 208,
+        "time": 12480.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 33299.658089620476,
+        "progress_after": 34668.00201315093,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-75",
+            "kind": "migration",
+            "old": {
+              "node": "rtx:0",
+              "gpu_type": "rtx",
+              "gpus": 8,
+              "cpu": 24.0,
+              "ram": 166.64,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 209,
+        "time": 12540.0,
+        "selected": "K",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 34668.00201315093,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 34.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 12574.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  },
+  {
+    "case": "best_R_involved_absolute_improvement",
+    "result_origin": "HISTORICAL_REFERENCE",
+    "scenario": "R3_saturn8_cm_negative",
+    "source": "runs/smart_holdout_r3/CAPRA_V2_HOLDOUT_R3/saturn8_supported80_cm/CAPRA",
+    "source_events_sha256": "5388d030932525a0f04500fa816cc53d436394137756d45d8402c03ed702ff6f",
+    "baseline": "runs\\smart_holdout_r3\\CAPRA_V2_HOLDOUT_R3\\saturn8_supported80_cm\\CAPRA-FK",
+    "baseline_events_sha256": "3b75c624d289dcf12683a678a3b348e4977a6e6b5652e94833d13f0c467e4a31",
+    "job_id": "cifar10-3",
+    "R_round": 7,
+    "R_time": 420.0,
+    "before": null,
+    "R_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 9.0,
+      "ram": 20.83,
+      "rho": 2.4
+    },
+    "FK_reference_allocation": {
+      "node": "dgx-ext:1",
+      "gpu_type": "dgx-ext",
+      "gpus": 1,
+      "cpu": 9.0,
+      "ram": 20.83,
+      "rho": 2.4
+    },
+    "predicted_R": {
+      "kind": "start",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 2.4,
+      "contribution": 1.7333333333333332
+    },
+    "predicted_reference": {
+      "kind": "start",
+      "new_cost": 50.0,
+      "existing_remaining": 0.0,
+      "delay": 50.0,
+      "gpu_change": true,
+      "effective_window": 130.0,
+      "rho": 2.4,
+      "contribution": 1.7333333333333332
+    },
+    "R_phi": 6.866666666666666,
+    "FK_phi": 6.541666666666667,
+    "actual_full_ledger": {
+      "jct": 642.0,
+      "waiting": 42.0,
+      "training": 450.0,
+      "recovery": 150.0
+    },
+    "actual_baseline_ledger": {
+      "jct": 737.0,
+      "waiting": 42.0,
+      "training": 445.0,
+      "recovery": 250.0
+    },
+    "delta_jct": -95.0,
+    "jct_ratio": 0.8710990502035278,
+    "subsequent_execution_and_reconfiguration": [
+      {
+        "round": 7,
+        "time": 420.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 9.0,
+          "ram": 20.83,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 0.0,
+        "progress_after": 344.8333908379778,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-3",
+            "kind": "start",
+            "old": null,
+            "new": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 9.0,
+              "ram": 20.83,
+              "rho": 2.4
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "start",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 8,
+        "time": 480.0,
+        "selected": "R",
+        "allocation": {
+          "node": "dgx-ext:1",
+          "gpu_type": "dgx-ext",
+          "gpus": 1,
+          "cpu": 9.0,
+          "ram": 20.83,
+          "rho": 2.4
+        },
+        "batch": {
+          "atomic_bsz": 128,
+          "accum_steps": 0
+        },
+        "progress_before": 344.8333908379778,
+        "progress_after": 2481.933356335191,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 9,
+        "time": 540.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 150,
+          "accum_steps": 0
+        },
+        "progress_before": 2481.933356335191,
+        "progress_after": 2779.9527771723197,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-3",
+            "kind": "migration",
+            "old": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 1,
+              "cpu": 9.0,
+              "ram": 20.83,
+              "rho": 2.4
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "migration",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 10,
+        "time": 600.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 616,
+          "accum_steps": 0
+        },
+        "progress_before": 2779.9527771723197,
+        "progress_after": 5469.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 11,
+        "time": 660.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 2,
+          "cpu": 6.0,
+          "ram": 41.66,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 817,
+          "accum_steps": 0
+        },
+        "progress_before": 5469.0,
+        "progress_after": 8707.009411414278,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 12,
+        "time": 720.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 625,
+          "accum_steps": 0
+        },
+        "progress_before": 8707.009411414278,
+        "progress_after": 9671.503486350452,
+        "waiting": 0.0,
+        "training": 10.0,
+        "recovery": 50.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": [
+          {
+            "job": "cifar10-3",
+            "kind": "reconfigure",
+            "old": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 2,
+              "cpu": 6.0,
+              "ram": 41.66,
+              "rho": 1.0
+            },
+            "new": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "cost": 50.0,
+            "prediction": {
+              "kind": "reconfigure",
+              "new_cost": 50.0,
+              "existing_remaining": 0.0,
+              "delay": 50.0,
+              "gpu_change": true
+            },
+            "remaining_after": 50.0
+          }
+        ]
+      },
+      {
+        "round": 13,
+        "time": 780.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 829,
+          "accum_steps": 0
+        },
+        "progress_before": 9671.503486350452,
+        "progress_after": 15569.784484242566,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 14,
+        "time": 840.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 15569.784484242566,
+        "progress_after": 23438.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 15,
+        "time": 900.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 23438.0,
+        "progress_after": 31250.0,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": null,
+        "transitions": []
+      },
+      {
+        "round": 16,
+        "time": 960.0,
+        "selected": "F",
+        "allocation": {
+          "node": "dgx-ext:0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "cpu": 12.0,
+          "ram": 83.32,
+          "rho": 1.0
+        },
+        "batch": {
+          "atomic_bsz": 1024,
+          "accum_steps": 0
+        },
+        "progress_before": 31250.0,
+        "progress_after": 39062.90816659533,
+        "waiting": 0.0,
+        "training": 60.0,
+        "recovery": 0.0,
+        "rescale_remaining": 0.0,
+        "completion": 1020.0,
+        "transitions": []
+      }
+    ],
+    "warning": "Whole dynamic trajectories diverge; ledger delta is not a strict causal effect of one R action"
+  }
+]

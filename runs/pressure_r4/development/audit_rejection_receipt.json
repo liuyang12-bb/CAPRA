@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "case": "wrong_engine",
+      "status": "REJECTED",
+      "error": "AssertionError()"
+    },
+    {
+      "case": "nonproportional",
+      "status": "REJECTED",
+      "error": "AssertionError((1.003, 1.0))"
+    },
+    {
+      "case": "missing_repair",
+      "status": "REJECTED",
+      "error": "AssertionError('MISSING_SMART_REPAIR_RECORD')"
+    },
+    {
+      "case": "wrong_gpu_plan",
+      "status": "REJECTED",
+      "error": "AssertionError()"
+    }
+  ]
+}
