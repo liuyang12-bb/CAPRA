@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "wall_seconds": 0.16223479999462143,
+  "simulation_calls": 0,
+  "solver_calls": 0,
+  "state_enumeration_calls": 0,
+  "code_test_not_executed": true
+}

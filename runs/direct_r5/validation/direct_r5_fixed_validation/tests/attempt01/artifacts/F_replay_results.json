@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "states": [
+    {
+      "index": 0,
+      "status": "PASS"
+    },
+    {
+      "index": 1,
+      "status": "PASS"
+    },
+    {
+      "index": 2,
+      "status": "PASS"
+    }
+  ],
+  "total_states": 3,
+  "no_historical_simulation": true
+}

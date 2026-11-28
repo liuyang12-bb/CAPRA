@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "all_rounds": {
+    "rounds": 60,
+    "D_COMPLETE": 60,
+    "selected_F": 55,
+    "selected_D": 5
+  },
+  "nonempty_rounds": {
+    "rounds": 56,
+    "D_COMPLETE": 56,
+    "selected_F": 51,
+    "selected_D": 5
+  },
+  "independent_can_finish": "two-dimensional bounded occupancy DP",
+  "no_placement_or_allocator_invocation": true,
+  "training_rho_once_checks": 862
+}

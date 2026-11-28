@@ -1,0 +1,7 @@
+{
+  "worktree_environment_setup_started_unix": 1795859856.7579525,
+  "setup_finished_unix": 1795859913.5957384,
+  "source_base": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "environment": "R4 dependency bytes copied to isolated R5 .venv; new ASCII editable path; old environment untouched",
+  "before_setup_reading_seconds_not_instrumented": true
+}

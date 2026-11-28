@@ -1,0 +1,67 @@
+{
+  "implementation_status": "IMPLEMENTATION_COMPLETE",
+  "validation_status": "VALIDATION_COMPLETE",
+  "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "branch": "capra/direct-placement-r5",
+  "formal_performance_experiments": "NOT_RUN",
+  "tests": {
+    "status": "PASS",
+    "groups": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_seconds": 5.912396799947601,
+    "unique_F_replay_states": 3,
+    "formal_experiments": 0,
+    "simulator_Job_step_calls": 0
+  },
+  "test_attempts": 2,
+  "unique_R4_F_replay_states": 3,
+  "total_R4_F_replay_executions": 6,
+  "smoke_attempts": 2,
+  "smoke_results": [
+    {
+      "kind": "smoke1",
+      "status": "PARTIAL_SMOKE",
+      "rounds": 60,
+      "completed": 6,
+      "unfinished": 2,
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+      "process_wall_seconds": 32.64488530001836
+    },
+    {
+      "kind": "smoke2",
+      "status": "COMPLETE_SMOKE",
+      "rounds": 46,
+      "completed": 8,
+      "unfinished": 0,
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+      "process_wall_seconds": 32.061488699982874
+    }
+  ],
+  "algorithm_counts_nonempty": {
+    "nonempty_rounds": 100,
+    "D_COMPLETE": 100,
+    "selected_F": 87,
+    "F_complete_tie": 84,
+    "selected_D": 13,
+    "F_higher_phi": 3
+  },
+  "cooperative_budget_fallbacks_in_smokes": 0,
+  "implementation_errors_in_smokes": 0,
+  "protected_files": 3094,
+  "R4_original_tree_preserved": true,
+  "historical_refs": {
+    "main": "1f1f07fd2238b395e108f91dbbc224d07c0c8139",
+    "capra/v2-20261122": "0b87934ae558960921889b01d14502155fb0c41c",
+    "capra/scenarios-r1": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "capra/ablation-ram-r2": "0876dd916e1b25d2030233826968683da730a55f",
+    "capra/smart-holdout-r3": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+    "capra/pressure-opportunity-r4": "ffa953fb9cd12773992559512d85065bbd26b7b2"
+  },
+  "all_owned_descendants_after_cleanup": 0,
+  "validation_command_wall_seconds": 163.69514099991648,
+  "validation_remaining_seconds": 736.3048590000835,
+  "formal_retries": 0,
+  "no_remote_push": true
+}

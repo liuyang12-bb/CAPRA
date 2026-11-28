@@ -1,0 +1,20 @@
+{
+  "status": "VALIDATION_COMPLETE",
+  "tests": "PASS",
+  "smokes": [
+    {
+      "kind": "smoke1",
+      "status": "PARTIAL_SMOKE",
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01"
+    },
+    {
+      "kind": "smoke2",
+      "status": "COMPLETE_SMOKE",
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01"
+    }
+  ],
+  "remaining_seconds": 785.5696366000338,
+  "used_command_wall_seconds": 114.43036339996615,
+  "formal_performance_experiments": "NOT_RUN",
+  "all_attempts_preserved": true
+}

@@ -1,0 +1,22 @@
+{
+  "command": [
+    "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "D:\\科研启航\\CAPRA-direct-placement-r5\\scripts\\verify_direct_r5_delivery.py",
+    "--child",
+    "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02"
+  ],
+  "exit_code": 0,
+  "process_wall_seconds": 3.632701399968937,
+  "external_wall_limit": 159.0,
+  "external_timeout": false,
+  "user_stop": false,
+  "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02\\stdout.log",
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  }
+}

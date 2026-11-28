@@ -1,0 +1,11 @@
+{
+  "measured_setup_to_documentation_seconds": 1493.9565916061401,
+  "cumulative_validation_command_wall_seconds": 163.69514099991648,
+  "remaining_validation_seconds": 736.3048590000835,
+  "reading_coding_documentation_and_orchestration_seconds": 1330.2614506062237,
+  "pre_setup_prompt_reading_and_worktree_creation_seconds": null,
+  "scope": "End-to-end measured from isolated environment setup start; initial prompt reading/worktree creation before that marker not instrumented, not falsely included",
+  "documentation_utc": "2026-11-28T10:22:30.714544+00:00",
+  "measured_setup_to_seal_seconds": 1627.2383761405945,
+  "seal_computation_seconds": 0.035045400029048324
+}

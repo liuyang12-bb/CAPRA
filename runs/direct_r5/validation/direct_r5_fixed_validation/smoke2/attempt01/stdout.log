@@ -1,0 +1,253 @@
+Solver params: p=-0.5, lambda_a=0.01, lambda_n=1.1
+Project speedups active
+Unique configs:
+Configs: {0: ('aws', 1, 1), 1: ('aws', 1, 2), 2: ('aws', 1, 4), 3: ('dgx-ext', 1, 1), 4: ('dgx-ext', 1, 2), 5: ('dgx-ext', 1, 4), 6: ('dgx-ext', 1, 8), 7: ('rtx', 1, 1), 8: ('rtx', 1, 2), 9: ('rtx', 1, 4), 10: ('rtx', 1, 8)}
+Cluster total gpus: {'aws': 8, 'dgx-ext': 16, 'rtx': 16}
+{"round": 0, "completed": 0, "total": 8, "selected": "F", "D_status": "COMPLETE", "decision_seconds": 0.001651700004003942, "wall_seconds": 1.5673498999676667}
+Realloc factor: deepspeech2-0 --> 0.5454545454545454, age: 30.0, restart penalty: 25.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 23.15ms = 1.95ms (setup) + 21.20ms (solve)
+Optimization metrics: optimal objective value = 1.0000, effective ngpus = 1.0
+Realloc factor: deepspeech2-0 --> 0.782608695652174, age: 90.0, restart penalty: 25.0, lost seconds: 0.0, num restarts: 0
+Realloc factor: cifar10-2 --> 0.3103448275862069, age: 22.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.65ms = 2.01ms (setup) + 8.64ms (solve)
+Optimization metrics: optimal objective value = 1.6200, effective ngpus = 4.282652854919434
+Realloc factor: deepspeech2-0 --> 0.7142857142857143, age: 150.0, restart penalty: 25.0, lost seconds: 25.0, num restarts: 1
+Realloc factor: cifar10-2 --> 0.6226415094339622, age: 82.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Realloc factor: cifar10-3 --> 0.10714285714285714, age: 6.0, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Realloc factor: cifar10-4 --> 0.0990990990990991, age: 5.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 9.70ms = 0.00ms (setup) + 9.70ms (solve)
+Optimization metrics: optimal objective value = 3.1000, effective ngpus = 14.233149528503418
+Realloc factor: deepspeech2-0 --> 0.6808510638297872, age: 210.0, restart penalty: 25.0, lost seconds: 50.0, num restarts: 2
+Realloc factor: cifar10-2 --> 0.4805194805194805, age: 142.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-3 --> 0.5689655172413793, age: 66.0, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Realloc factor: cifar10-4 --> 0.5670995670995671, age: 65.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 24.03ms = 13.16ms (setup) + 10.87ms (solve)
+Optimization metrics: optimal objective value = 2.2300, effective ngpus = 23.360222578048706
+Realloc factor: deepspeech2-0 --> 0.7457627118644068, age: 270.0, restart penalty: 25.0, lost seconds: 50.0, num restarts: 2
+Realloc factor: cifar10-2 --> 0.6039603960396039, age: 202.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-3 --> 0.4318181818181818, age: 126.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-4 --> 0.4301994301994302, age: 125.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 17.90ms = 0.00ms (setup) + 17.90ms (solve)
+Optimization metrics: optimal objective value = 2.2600, effective ngpus = 16.394328594207764
+Realloc factor: deepspeech2-0 --> 0.7183098591549296, age: 330.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-2 --> 0.68, age: 262.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-3 --> 0.576271186440678, age: 186.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-4 --> 0.5753715498938429, age: 185.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.74ms = 2.58ms (setup) + 10.15ms (solve)
+Optimization metrics: optimal objective value = 1.8800, effective ngpus = 29.270724058151245
+Realloc factor: deepspeech2-0 --> 0.7590361445783133, age: 390.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-2 --> 0.5973154362416108, age: 322.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-3 --> 0.6621621621621622, age: 246.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-4 --> 0.6615905245346869, age: 245.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 13.60ms = 0.00ms (setup) + 13.60ms (solve)
+Optimization metrics: optimal objective value = 1.7700, effective ngpus = 39.96168124675751
+Realloc factor: deepspeech2-0 --> 0.7894736842105263, age: 450.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-2 --> 0.653179190751445, age: 382.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-3 --> 0.5786516853932584, age: 306.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-4 --> 0.5780590717299579, age: 305.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-7 --> 0.49238578680203043, age: 48.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.86ms = 2.04ms (setup) + 8.82ms (solve)
+Optimization metrics: optimal objective value = 2.5500, effective ngpus = 40.7160120010376
+Realloc factor: deepspeech2-0 --> 0.8130841121495327, age: 510.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-2 --> 0.6954314720812182, age: 442.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-3 --> 0.6394230769230769, age: 366.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-4 --> 0.6389891696750902, age: 365.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-7 --> 0.6845425867507886, age: 108.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Realloc factor: cifar10-8 --> 0.24812030075187969, age: 16.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 21.24ms = 1.61ms (setup) + 19.63ms (solve)
+Optimization metrics: optimal objective value = 2.8800, effective ngpus = 52.175347089767456
+{"round": 10, "completed": 1, "total": 8, "selected": "D", "D_status": "COMPLETE", "decision_seconds": 0.08474080002633855, "wall_seconds": 10.208984499971848}
+Realloc factor: deepspeech2-0 --> 0.8319327731092437, age: 570.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-3 --> 0.6848739495798319, age: 426.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-4 --> 0.6845425867507886, age: 425.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-7 --> 0.5423340961098398, age: 168.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-8 --> 0.6047430830039525, age: 76.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 18.47ms = 4.93ms (setup) + 13.55ms (solve)
+Optimization metrics: optimal objective value = 2.1400, effective ngpus = 41.64829206466675
+Realloc factor: deepspeech2-0 --> 0.8473282442748091, age: 630.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-3 --> 0.6268656716417911, age: 486.0, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-4 --> 0.7198879551820728, age: 485.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-7 --> 0.6409335727109515, age: 228.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-8 --> 0.46380697050938335, age: 136.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 17.53ms = 0.00ms (setup) + 17.53ms (solve)
+Optimization metrics: optimal objective value = 2.0100, effective ngpus = 47.014259815216064
+Realloc factor: deepspeech2-0 --> 0.8601398601398601, age: 690.0, restart penalty: 25.0, lost seconds: 75.0, num restarts: 3
+Realloc factor: cifar10-3 --> 0.6644295302013423, age: 546.0, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-4 --> 0.6641477749790092, age: 545.5, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-7 --> 0.7045790251107829, age: 288.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-8 --> 0.39148073022312374, age: 196.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.20ms = 0.00ms (setup) + 12.20ms (solve)
+Optimization metrics: optimal objective value = 1.9700, effective ngpus = 46.45311093330383
+Realloc factor: deepspeech2-0 --> 0.8387096774193549, age: 750.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-7 --> 0.7490589711417817, age: 348.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-8 --> 0.5106035889070146, age: 256.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 8.99ms = 1.00ms (setup) + 7.99ms (solve)
+Optimization metrics: optimal objective value = 1.1200, effective ngpus = 25.18955373764038
+Realloc factor: deepspeech2-0 --> 0.8502994011976048, age: 810.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-7 --> 0.6728462377317339, age: 408.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-8 --> 0.5907230559345157, age: 316.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-10 --> 0.33774834437086093, age: 25.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 4.91ms = 1.00ms (setup) + 3.91ms (solve)
+Optimization metrics: optimal objective value = 2.0200, effective ngpus = 28.06204128265381
+Realloc factor: deepspeech2-0 --> 0.8603351955307262, age: 870.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-7 --> 0.7107039537126326, age: 468.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-8 --> 0.6483001172332943, age: 376.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-10 --> 0.6309963099630996, age: 85.5, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.23ms = 1.22ms (setup) + 11.01ms (solve)
+Optimization metrics: optimal objective value = 1.3800, effective ngpus = 43.59179162979126
+Realloc factor: deepspeech2-0 --> 0.8691099476439791, age: 930.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-7 --> 0.7407087294727744, age: 528.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-8 --> 0.5889003083247688, age: 436.5, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-10 --> 0.4884910485933504, age: 145.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-11 --> 0.358974358974359, age: 28.0, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 15.94ms = 4.51ms (setup) + 11.43ms (solve)
+Optimization metrics: optimal objective value = 2.2100, effective ngpus = 45.66186714172363
+Realloc factor: deepspeech2-0 --> 0.8768472906403941, age: 990.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-8 --> 0.6340347666971637, age: 496.5, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-10 --> 0.6086105675146771, age: 205.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-11 --> 0.6376811594202898, age: 88.0, restart penalty: 50.0, lost seconds: 0.0, num restarts: 0
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 14.15ms = 0.00ms (setup) + 14.15ms (solve)
+Optimization metrics: optimal objective value = 1.3000, effective ngpus = 44.34651184082031
+Realloc factor: deepspeech2-0 --> 0.8837209302325582, age: 1050.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-8 --> 0.5877988458367683, age: 556.5, restart penalty: 50.0, lost seconds: 200.0, num restarts: 4
+Realloc factor: cifar10-10 --> 0.6830427892234548, age: 265.5, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Realloc factor: cifar10-11 --> 0.494949494949495, age: 148.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 13.22ms = 0.79ms (setup) + 12.43ms (solve)
+Optimization metrics: optimal objective value = 1.1900, effective ngpus = 52.577585220336914
+Realloc factor: deepspeech2-0 --> 0.8898678414096917, age: 1110.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-8 --> 0.6249062265566392, age: 616.5, restart penalty: 50.0, lost seconds: 200.0, num restarts: 4
+Realloc factor: cifar10-10 --> 0.6005326231691078, age: 325.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-11 --> 0.6124031007751938, age: 208.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.74ms = 0.00ms (setup) + 12.74ms (solve)
+Optimization metrics: optimal objective value = 1.1000, effective ngpus = 58.92766761779785
+{"round": 20, "completed": 5, "total": 8, "selected": "F", "D_status": "COMPLETE", "decision_seconds": 0.055802399991080165, "wall_seconds": 21.075226399989333}
+Realloc factor: deepspeech2-0 --> 0.895397489539749, age: 1170.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-10 --> 0.6555683122847302, age: 385.5, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Realloc factor: cifar10-11 --> 0.6855345911949685, age: 268.0, restart penalty: 50.0, lost seconds: 50.0, num restarts: 1
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.44ms = 1.00ms (setup) + 9.44ms (solve)
+Optimization metrics: optimal objective value = 0.8100, effective ngpus = 70.24153518676758
+Realloc factor: deepspeech2-0 --> 0.900398406374502, age: 1230.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-10 --> 0.5963673057517659, age: 445.5, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-11 --> 0.6031746031746031, age: 328.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 13.33ms = 1.45ms (setup) + 11.88ms (solve)
+Optimization metrics: optimal objective value = 0.7200, effective ngpus = 70.00825119018555
+Realloc factor: deepspeech2-0 --> 0.9049429657794676, age: 1290.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-10 --> 0.63996399639964, age: 505.5, restart penalty: 50.0, lost seconds: 150.0, num restarts: 3
+Realloc factor: cifar10-11 --> 0.6575342465753424, age: 388.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 13.82ms = 0.00ms (setup) + 13.82ms (solve)
+Optimization metrics: optimal objective value = 0.7100, effective ngpus = 73.25660133361816
+Realloc factor: deepspeech2-0 --> 0.9090909090909091, age: 1350.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Realloc factor: cifar10-11 --> 0.6987951807228916, age: 448.0, restart penalty: 50.0, lost seconds: 100.0, num restarts: 2
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 4.92ms = 1.34ms (setup) + 3.58ms (solve)
+Optimization metrics: optimal objective value = 0.5500, effective ngpus = 31.67136573791504
+Realloc factor: deepspeech2-0 --> 0.9128919860627178, age: 1410.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 11.78ms = 2.46ms (setup) + 9.32ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.535309791564941
+Realloc factor: deepspeech2-0 --> 0.9163879598662207, age: 1470.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.39ms = 1.34ms (setup) + 11.04ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539947509765625
+Realloc factor: deepspeech2-0 --> 0.9196141479099679, age: 1530.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 9.46ms = 0.00ms (setup) + 9.46ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539334297180176
+Realloc factor: deepspeech2-0 --> 0.9226006191950464, age: 1590.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.22ms = 0.00ms (setup) + 12.22ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9253731343283582, age: 1650.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 11.32ms = 2.01ms (setup) + 9.31ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539945602416992
+Realloc factor: deepspeech2-0 --> 0.9279538904899135, age: 1710.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.40ms = 0.00ms (setup) + 10.40ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+{"round": 30, "completed": 7, "total": 8, "selected": "F", "D_status": "COMPLETE", "decision_seconds": 0.02065080002648756, "wall_seconds": 22.66131439997116}
+Realloc factor: deepspeech2-0 --> 0.9303621169916435, age: 1770.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.75ms = 2.04ms (setup) + 8.71ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9326145552560647, age: 1830.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.71ms = 0.00ms (setup) + 12.71ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539947509765625
+Realloc factor: deepspeech2-0 --> 0.9347258485639687, age: 1890.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 8.04ms = 1.97ms (setup) + 6.07ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539947509765625
+Realloc factor: deepspeech2-0 --> 0.9367088607594937, age: 1950.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 5.75ms = 1.00ms (setup) + 4.75ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9385749385749386, age: 2010.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 13.78ms = 4.00ms (setup) + 9.78ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9403341288782816, age: 2070.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.89ms = 2.97ms (setup) + 7.92ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539945602416992
+Realloc factor: deepspeech2-0 --> 0.9419953596287703, age: 2130.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 14.34ms = 0.00ms (setup) + 14.34ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9435665914221218, age: 2190.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.61ms = 0.00ms (setup) + 10.61ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539947509765625
+Realloc factor: deepspeech2-0 --> 0.945054945054945, age: 2250.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 6.18ms = 0.00ms (setup) + 6.18ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9464668094218416, age: 2310.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.40ms = 1.84ms (setup) + 8.55ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+{"round": 40, "completed": 7, "total": 8, "selected": "F", "D_status": "COMPLETE", "decision_seconds": 0.02128749998519197, "wall_seconds": 22.955220000003465}
+Realloc factor: deepspeech2-0 --> 0.9478079331941545, age: 2370.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 6.12ms = 0.00ms (setup) + 6.12ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9490835030549898, age: 2430.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.98ms = 0.00ms (setup) + 12.98ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9502982107355865, age: 2490.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 10.58ms = 0.00ms (setup) + 10.58ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.9514563106796117, age: 2550.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 12.68ms = 0.00ms (setup) + 12.68ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+Realloc factor: deepspeech2-0 --> 0.952561669829222, age: 2610.0, restart penalty: 25.0, lost seconds: 100.0, num restarts: 4
+Preserving allocations for jobs blocked on checkpoint-restore: {'rigid': [], 'adaptive': []}
+Solver took: 11.89ms = 1.04ms (setup) + 10.86ms (solve)
+Optimization metrics: optimal objective value = 0.3400, effective ngpus = 8.539946556091309
+{"round": 45, "completed": 8, "total": 8, "selected": "F", "D_status": "COMPLETE", "decision_seconds": 0.024077999987639487, "wall_seconds": 23.108703499950934}
+{"method": "CAPRA-Direct", "input": "D:\\科研启航\\CAPRA-direct-placement-r5\\data\\pressure_r4\\saturn8_dense05.csv", "status": "ALL_COMPLETE", "total": 8, "completed": 8, "censored": 0, "mean_jct": 802.9375, "p95_jct": 1936.324999999999, "p99_jct": 2493.6649999999995, "makespan": 2633.0, "decision_median": 0.030124599987175316, "decision_p95": 0.06629826501011848, "decision_max": 0.08474080002633855, "wall_seconds": 23.1090877999668, "wall_scope": "runner body; imports excluded", "runner_body_wall_seconds": 23.1090877999668, "rounds": 46, "decisions": 44, "transitions": {"start": 8, "migration": 15, "reconfigure": 8, "aux_update": 4}, "fallbacks": {}, "gpu_repairs": 0, "audit": "PASS", "segment_checks": 863, "scheduling_wall_charged_to_simulation": false, "node_allocated_resource_seconds": {"aws:0": [1860.0, 2820.0, 118749.6], "aws:1": [180.0, 1620.0, 3749.3999999999996], "dgx-ext:0": [5160.0, 24600.0, 127483.19999999998], "dgx-ext:1": [5808.0, 25896.0, 120980.64], "rtx:0": [16024.0, 16024.0, 1031500.0], "rtx:1": [120.0, 1080.0, 2499.6]}, "version": "CAPRA_V2_DIRECT_R5", "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2", "submitted": 8, "arrived": 8, "unfinished": 0, "direct_raw_audit": "PASS", "algorithm_counts_all_rounds": {"rounds": 46, "D_COMPLETE": 46, "selected_F": 38, "selected_D": 8}, "algorithm_counts_nonempty_rounds": {"rounds": 44, "D_COMPLETE": 44, "selected_F": 36, "selected_D": 8}, "decision_distribution": {"n": 44, "median": 0.030124599987175316, "p95": 0.06629826501011848, "p99": 0.07958935702161399, "max": 0.08474080002633855}, "component_times": {"f_reference": {"n": 44, "median": 0.0003653000167105347, "p95": 0.0006487099919468165, "p99": 0.0007288549875374883, "max": 0.0007596000214107335}, "f_quota": {"n": 44, "median": 0.002138949988875538, "p95": 0.007343735022004694, "p99": 0.00828131597605534, "max": 0.008878499967977405}, "D": {"n": 44, "median": 0.0038288500218186527, "p95": 0.01993569502083119, "p99": 0.023376433994853868, "max": 0.023473699984606355}, "completion_checks_nested": {"n": 44, "median": 0.0008738499600440264, "p95": 0.002562269842019305, "p99": 0.0031805259158136324, "max": 0.0036370998132042587}, "allocator_nested": {"n": 44, "median": 0.0036790999001823366, "p95": 0.020449640063452536, "p99": 0.024249410926713608, "max": 0.02480939991073683}, "scoring_nested": {"n": 44, "median": 0.00011584992171265185, "p95": 0.00030310999718494717, "p99": 0.00036467613361310217, "max": 0.0004020000924356282}, "gpu_stage_seconds": {"n": 44, "median": 0.02056264999555424, "p95": 0.03706700003531296, "p99": 0.04387536900758278, "max": 0.048382500011939555}, "commit_seconds": {"n": 44, "median": 5.020000389777124e-05, "p95": 0.003919204979320057, "p99": 0.004565513020497747, "max": 0.004819600027985871}}, "timing_scope": "F reference/F quota/D are sequential; completion/allocator/scoring are nested, do not sum. Wall decision not charged to JCT.", "mean_waiting": 22.8125, "mean_training": 602.0, "mean_recovery": 178.125, "audit_seconds": 2.097118799982127, "formal_performance_experiment": "NOT_RUN"}

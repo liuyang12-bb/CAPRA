@@ -1,0 +1,380 @@
+{
+  "total_seconds": 900.0,
+  "budget_kind": "CUMULATIVE_COMMAND_ACTUAL_WALL_INCLUDING_OWNED_CLEANUP",
+  "created_utc": "2026-11-28T10:12:26.319727+00:00",
+  "attempts": [
+    {
+      "kind": "environment",
+      "index": 1,
+      "status": "PASS",
+      "started_utc": "2026-11-28T10:12:26.550898+00:00",
+      "outer_hard_limit": 90.0,
+      "process_execution_limit": 69.0,
+      "cleanup_reserved_seconds": 21,
+      "source_fingerprint": "c57aa87f6d41bed582b7de8427935d540b5e675b7626703e8a074bb303b621b9",
+      "source_manifest": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\environment\\attempt01\\source_manifest.json",
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "scripts/environment_direct_r5.py"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\environment\\attempt01",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "scripts/environment_direct_r5.py"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 42.27518950001104,
+        "external_wall_limit": 69.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\environment\\attempt01\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 42.27803099999437,
+      "ended_utc": "2026-11-28T10:13:08.830634+00:00"
+    },
+    {
+      "kind": "tests",
+      "index": 1,
+      "status": "PASS",
+      "started_utc": "2026-11-28T10:13:08.858717+00:00",
+      "outer_hard_limit": 240.0,
+      "process_execution_limit": 219.0,
+      "cleanup_reserved_seconds": 21,
+      "source_fingerprint": "c57aa87f6d41bed582b7de8427935d540b5e675b7626703e8a074bb303b621b9",
+      "source_manifest": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt01\\source_manifest.json",
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "scripts/tests_direct_r5.py"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt01",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "scripts/tests_direct_r5.py"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 7.438709900015965,
+        "external_wall_limit": 219.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt01\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 7.440877399989404,
+      "ended_utc": "2026-11-28T10:13:16.301925+00:00"
+    },
+    {
+      "kind": "smoke1",
+      "index": 1,
+      "status": "PARTIAL_SMOKE",
+      "started_utc": "2026-11-28T10:13:16.329649+00:00",
+      "outer_hard_limit": 120.0,
+      "process_execution_limit": 99.0,
+      "cleanup_reserved_seconds": 21,
+      "source_fingerprint": "c57aa87f6d41bed582b7de8427935d540b5e675b7626703e8a074bb303b621b9",
+      "source_manifest": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\source_manifest.json",
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_direct_r5",
+        "--method",
+        "CAPRA-Direct",
+        "--allocator-mode",
+        "ram_slack_v1",
+        "--input",
+        "data/pressure_r4/saturn7_dense05.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu3.json",
+        "--responses",
+        "data/scenarios_r1/responses_original.json",
+        "--output",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+        "--max-jobs",
+        "8",
+        "--max-rounds",
+        "60",
+        "--interval",
+        "60",
+        "--wall-limit",
+        "90.0"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "-m",
+          "capra.runner_direct_r5",
+          "--method",
+          "CAPRA-Direct",
+          "--allocator-mode",
+          "ram_slack_v1",
+          "--input",
+          "data/pressure_r4/saturn7_dense05.csv",
+          "--cluster",
+          "data/scenarios_r1/cluster_cpu3.json",
+          "--responses",
+          "data/scenarios_r1/responses_original.json",
+          "--output",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+          "--max-jobs",
+          "8",
+          "--max-rounds",
+          "60",
+          "--interval",
+          "60",
+          "--wall-limit",
+          "90.0"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 32.64488530001836,
+        "external_wall_limit": 99.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 32.64757869997993,
+      "ended_utc": "2026-11-28T10:13:48.980123+00:00"
+    },
+    {
+      "kind": "smoke2",
+      "index": 1,
+      "status": "COMPLETE_SMOKE",
+      "started_utc": "2026-11-28T10:13:49.006478+00:00",
+      "outer_hard_limit": 120.0,
+      "process_execution_limit": 99.0,
+      "cleanup_reserved_seconds": 21,
+      "source_fingerprint": "c57aa87f6d41bed582b7de8427935d540b5e675b7626703e8a074bb303b621b9",
+      "source_manifest": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\source_manifest.json",
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_direct_r5",
+        "--method",
+        "CAPRA-Direct",
+        "--allocator-mode",
+        "ram_slack_v1",
+        "--input",
+        "data/pressure_r4/saturn8_dense05.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu3.json",
+        "--responses",
+        "data/scenarios_r1/responses_cm.json",
+        "--output",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+        "--max-jobs",
+        "8",
+        "--max-rounds",
+        "60",
+        "--interval",
+        "60",
+        "--wall-limit",
+        "90.0"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "-m",
+          "capra.runner_direct_r5",
+          "--method",
+          "CAPRA-Direct",
+          "--allocator-mode",
+          "ram_slack_v1",
+          "--input",
+          "data/pressure_r4/saturn8_dense05.csv",
+          "--cluster",
+          "data/scenarios_r1/cluster_cpu3.json",
+          "--responses",
+          "data/scenarios_r1/responses_cm.json",
+          "--output",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+          "--max-jobs",
+          "8",
+          "--max-rounds",
+          "60",
+          "--interval",
+          "60",
+          "--wall-limit",
+          "90.0"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 32.061488699982874,
+        "external_wall_limit": 99.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 32.06387630000245,
+      "ended_utc": "2026-11-28T10:14:21.070121+00:00"
+    },
+    {
+      "kind": "final_evidence",
+      "index": 1,
+      "status": "PASS",
+      "outer_hard_limit": 180.0,
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\scripts\\verify_direct_r5_delivery.py",
+        "--child",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt01"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt01",
+      "started_utc": "2026-11-28T10:17:21.626157+00:00",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\scripts\\verify_direct_r5_delivery.py",
+          "--child",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt01"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 38.20104329998139,
+        "external_wall_limit": 159.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt01\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 38.20250349998241,
+      "ended_utc": "2026-11-28T10:17:59.833975+00:00"
+    },
+    {
+      "kind": "tests",
+      "index": 2,
+      "status": "PASS",
+      "outer_hard_limit": 180.0,
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "scripts/tests_direct_r5.py"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt02",
+      "started_utc": "2026-11-28T10:19:41.462624+00:00",
+      "source_fingerprint": "1fd415ae49b65b905ba107efc4a8410802fd5ddd3ef1c2dbd492991075f7b746",
+      "source_manifest": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt02\\source_manifest.json",
+      "reason": "Add infeasible/exact-fragmentation coverage; unchanged smoke runtime; no smoke repeat",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "scripts/tests_direct_r5.py"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 7.425673599995207,
+        "external_wall_limit": 159.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\tests\\attempt02\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 7.427818699972704,
+      "ended_utc": "2026-11-28T10:19:48.892405+00:00"
+    },
+    {
+      "kind": "final_evidence",
+      "index": 2,
+      "status": "PASS",
+      "outer_hard_limit": 180.0,
+      "command": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\scripts\\verify_direct_r5_delivery.py",
+        "--child",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02",
+      "started_utc": "2026-11-28T10:21:34.537138+00:00",
+      "process": {
+        "command": [
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+          "-X",
+          "utf8",
+          "-B",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\scripts\\verify_direct_r5_delivery.py",
+          "--child",
+          "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02"
+        ],
+        "exit_code": 0,
+        "process_wall_seconds": 3.632701399968937,
+        "external_wall_limit": 159.0,
+        "external_timeout": false,
+        "user_stop": false,
+        "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\final_evidence\\attempt02\\stdout.log",
+        "cleanup": {
+          "active_before_cleanup": 0,
+          "active_after_cleanup": 0,
+          "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+        }
+      },
+      "charged_seconds": 3.634455399995204,
+      "ended_utc": "2026-11-28T10:21:38.174367+00:00"
+    }
+  ],
+  "controller_pid": 31280,
+  "used_seconds": 163.69514099991648,
+  "remaining_seconds": 736.3048590000835
+}

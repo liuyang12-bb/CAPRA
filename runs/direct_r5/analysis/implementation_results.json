@@ -1,0 +1,992 @@
+{
+  "implementation_status": "IMPLEMENTATION_COMPLETE",
+  "validation_status": "VALIDATION_COMPLETE",
+  "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "formal_performance_experiments": "NOT_RUN",
+  "tests": {
+    "status": "PASS",
+    "groups": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_seconds": 5.912396799947601,
+    "unique_F_replay_states": 3,
+    "formal_experiments": 0,
+    "simulator_Job_step_calls": 0
+  },
+  "independent_completion_test": {
+    "status": "PASS",
+    "isolated_states": 82,
+    "infeasible_states": 22,
+    "max_jobs": 5,
+    "max_assignments_per_state": 8,
+    "no_online_search_change": true
+  },
+  "unique_R4_F_replay_states": 3,
+  "test_attempts": 2,
+  "smoke_attempts": 2,
+  "smokes": [
+    {
+      "case": "smoke1",
+      "status": "PARTIAL_SMOKE",
+      "submitted": 8,
+      "arrived": 8,
+      "completed": 6,
+      "unfinished": 2,
+      "rounds": 60,
+      "algorithm_counts_nonempty": {
+        "nonempty_rounds": 56,
+        "D_COMPLETE": 56,
+        "selected_F": 51,
+        "F_complete_tie": 50,
+        "selected_D": 5,
+        "F_higher_phi": 1
+      },
+      "algorithm_counts_all": {
+        "rounds": 60,
+        "D_COMPLETE": 60,
+        "selected_F": 55,
+        "selected_D": 5
+      },
+      "decision": {
+        "n": 56,
+        "median": 0.03130519998376258,
+        "p95": 0.06031740001344588,
+        "p99": 0.09157526499475364,
+        "max": 0.11524050001753494
+      },
+      "component_times": {
+        "f_reference": {
+          "n": 56,
+          "median": 0.0004181500116828829,
+          "p95": 0.0006401249847840518,
+          "p99": 0.000761839983169921,
+          "max": 0.0008097999962046742
+        },
+        "f_quota": {
+          "n": 56,
+          "median": 0.0019499999762047082,
+          "p95": 0.0059062499640276656,
+          "p99": 0.006306785022024998,
+          "max": 0.006545100011862814
+        },
+        "D": {
+          "n": 56,
+          "median": 0.0039315500180236995,
+          "p95": 0.013835650024702772,
+          "p99": 0.01613766002119519,
+          "max": 0.01650220004376024
+        },
+        "completion_checks_nested": {
+          "n": 56,
+          "median": 0.0009262999810744077,
+          "p95": 0.002101200007018633,
+          "p99": 0.004148720027296815,
+          "max": 0.006271500024013221
+        },
+        "allocator_nested": {
+          "n": 56,
+          "median": 0.0033289000275544822,
+          "p95": 0.015040275116916746,
+          "p99": 0.01711957492225338,
+          "max": 0.017672599875368178
+        },
+        "scoring_nested": {
+          "n": 56,
+          "median": 0.00014049990568310022,
+          "p95": 0.00025080013438127935,
+          "p99": 0.00026946480793412777,
+          "max": 0.0002780999056994915
+        },
+        "gpu_stage_seconds": {
+          "n": 56,
+          "median": 0.022989750024862587,
+          "p95": 0.035987549999845214,
+          "p99": 0.0823733499797528,
+          "max": 0.10717450000811368
+        },
+        "commit_seconds": {
+          "n": 56,
+          "median": 6.570000550709665e-05,
+          "p95": 0.0035306249774293974,
+          "p99": 0.004201859969180078,
+          "max": 0.004268299962859601
+        }
+      },
+      "body_wall_seconds": 23.876280099968426,
+      "owned_wall_seconds": 32.64488530001836,
+      "charged_wall_seconds": 32.64757869997993,
+      "audit_seconds": 2.1362086000153795,
+      "input_hashes": {
+        "workload": "44f7ad31cbd3d7b953b547a494c98ae4c9b7258dfcfe98ce5f4e0f82f0a10a4b",
+        "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+        "responses": "23fa463408b32d2697b84d2ea8a562e547222832b9d38a9117a79cfcdfde07b3"
+      },
+      "commands": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_direct_r5",
+        "--method",
+        "CAPRA-Direct",
+        "--allocator-mode",
+        "ram_slack_v1",
+        "--input",
+        "data/pressure_r4/saturn7_dense05.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu3.json",
+        "--responses",
+        "data/scenarios_r1/responses_original.json",
+        "--output",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+        "--max-jobs",
+        "8",
+        "--max-rounds",
+        "60",
+        "--interval",
+        "60",
+        "--wall-limit",
+        "90.0"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+      "mean_jct": null,
+      "p95_jct": null,
+      "p99_jct": null,
+      "makespan": null,
+      "performance_scope": "FIXED_FIRST8_SMOKE_NOT_PERFORMANCE_EVIDENCE"
+    },
+    {
+      "case": "smoke2",
+      "status": "COMPLETE_SMOKE",
+      "submitted": 8,
+      "arrived": 8,
+      "completed": 8,
+      "unfinished": 0,
+      "rounds": 46,
+      "algorithm_counts_nonempty": {
+        "nonempty_rounds": 44,
+        "D_COMPLETE": 44,
+        "selected_F": 36,
+        "F_complete_tie": 34,
+        "selected_D": 8,
+        "F_higher_phi": 2
+      },
+      "algorithm_counts_all": {
+        "rounds": 46,
+        "D_COMPLETE": 46,
+        "selected_F": 38,
+        "selected_D": 8
+      },
+      "decision": {
+        "n": 44,
+        "median": 0.030124599987175316,
+        "p95": 0.06629826501011848,
+        "p99": 0.07958935702161399,
+        "max": 0.08474080002633855
+      },
+      "component_times": {
+        "f_reference": {
+          "n": 44,
+          "median": 0.0003653000167105347,
+          "p95": 0.0006487099919468165,
+          "p99": 0.0007288549875374883,
+          "max": 0.0007596000214107335
+        },
+        "f_quota": {
+          "n": 44,
+          "median": 0.002138949988875538,
+          "p95": 0.007343735022004694,
+          "p99": 0.00828131597605534,
+          "max": 0.008878499967977405
+        },
+        "D": {
+          "n": 44,
+          "median": 0.0038288500218186527,
+          "p95": 0.01993569502083119,
+          "p99": 0.023376433994853868,
+          "max": 0.023473699984606355
+        },
+        "completion_checks_nested": {
+          "n": 44,
+          "median": 0.0008738499600440264,
+          "p95": 0.002562269842019305,
+          "p99": 0.0031805259158136324,
+          "max": 0.0036370998132042587
+        },
+        "allocator_nested": {
+          "n": 44,
+          "median": 0.0036790999001823366,
+          "p95": 0.020449640063452536,
+          "p99": 0.024249410926713608,
+          "max": 0.02480939991073683
+        },
+        "scoring_nested": {
+          "n": 44,
+          "median": 0.00011584992171265185,
+          "p95": 0.00030310999718494717,
+          "p99": 0.00036467613361310217,
+          "max": 0.0004020000924356282
+        },
+        "gpu_stage_seconds": {
+          "n": 44,
+          "median": 0.02056264999555424,
+          "p95": 0.03706700003531296,
+          "p99": 0.04387536900758278,
+          "max": 0.048382500011939555
+        },
+        "commit_seconds": {
+          "n": 44,
+          "median": 5.020000389777124e-05,
+          "p95": 0.003919204979320057,
+          "p99": 0.004565513020497747,
+          "max": 0.004819600027985871
+        }
+      },
+      "body_wall_seconds": 23.1090877999668,
+      "owned_wall_seconds": 32.061488699982874,
+      "charged_wall_seconds": 32.06387630000245,
+      "audit_seconds": 2.097118799982127,
+      "input_hashes": {
+        "workload": "e1028199a17ef943c03922730e5b59c7f3ece2e83892729742510af74319db75",
+        "cluster": "8f88c856b1f229e8c3271327340fe36be9a0dacd5fc8f174d7220420182d4842",
+        "responses": "75f4ce5e011ae5dd232be3f2b5122101c2761b833c2b8e2a1c18c2d4a1d60782"
+      },
+      "commands": [
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "-m",
+        "capra.runner_direct_r5",
+        "--method",
+        "CAPRA-Direct",
+        "--allocator-mode",
+        "ram_slack_v1",
+        "--input",
+        "data/pressure_r4/saturn8_dense05.csv",
+        "--cluster",
+        "data/scenarios_r1/cluster_cpu3.json",
+        "--responses",
+        "data/scenarios_r1/responses_cm.json",
+        "--output",
+        "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+        "--max-jobs",
+        "8",
+        "--max-rounds",
+        "60",
+        "--interval",
+        "60",
+        "--wall-limit",
+        "90.0"
+      ],
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+      "mean_jct": 802.9375,
+      "p95_jct": 1936.324999999999,
+      "p99_jct": 2493.6649999999995,
+      "makespan": 2633.0,
+      "performance_scope": "FIXED_FIRST8_SMOKE_NOT_PERFORMANCE_EVIDENCE"
+    }
+  ],
+  "algorithm_counts_nonempty": {
+    "nonempty_rounds": 100,
+    "D_COMPLETE": 100,
+    "selected_F": 87,
+    "F_complete_tie": 84,
+    "selected_D": 13,
+    "F_higher_phi": 3
+  },
+  "algorithm_counts_all": {
+    "rounds": 106,
+    "D_COMPLETE": 106,
+    "selected_F": 93,
+    "selected_D": 13
+  },
+  "decision_distribution": {
+    "n": 100,
+    "median": 0.030865049979183823,
+    "p95": 0.06567034497857094,
+    "p99": 0.08504579702625066,
+    "max": 0.11524050001753494
+  },
+  "component_times": {
+    "f_reference": {
+      "n": 100,
+      "median": 0.0004079999926034361,
+      "p95": 0.0006497949943877757,
+      "p99": 0.0007601020211586731,
+      "max": 0.0008097999962046742
+    },
+    "f_quota": {
+      "n": 100,
+      "median": 0.0019499999762047082,
+      "p95": 0.006951315002515912,
+      "p99": 0.007503587986575447,
+      "max": 0.008878499967977405
+    },
+    "D": {
+      "n": 100,
+      "median": 0.003916050016414374,
+      "p95": 0.016591715041431594,
+      "p99": 0.02324976200819947,
+      "max": 0.023473699984606355
+    },
+    "completion_checks_nested": {
+      "n": 100,
+      "median": 0.0009262999810744077,
+      "p95": 0.002429364909767173,
+      "p99": 0.0036634438153123616,
+      "max": 0.006271500024013221
+    },
+    "allocator_nested": {
+      "n": 100,
+      "median": 0.0034736499655991793,
+      "p95": 0.0179010799532989,
+      "p99": 0.023520122947520584,
+      "max": 0.02480939991073683
+    },
+    "scoring_nested": {
+      "n": 100,
+      "median": 0.00013884992222301662,
+      "p95": 0.00026831510767806317,
+      "p99": 0.0003160681872395803,
+      "max": 0.0004020000924356282
+    },
+    "gpu_stage_seconds": {
+      "n": 100,
+      "median": 0.022730299970135093,
+      "p95": 0.037273420035489835,
+      "p99": 0.0625324299570641,
+      "max": 0.10717450000811368
+    },
+    "commit_seconds": {
+      "n": 100,
+      "median": 6.189997657202184e-05,
+      "p95": 0.003965799979050643,
+      "p99": 0.004273812963510866,
+      "max": 0.004819600027985871
+    }
+  },
+  "counter_sums_nonempty": {
+    "dp_checks": 1072,
+    "preferred_queries": 486,
+    "budget_checks": 3891,
+    "solve_requests": 1274,
+    "cold_solves": 1069,
+    "cache_hits": 205,
+    "response_hits": 48946,
+    "response_misses": 1353,
+    "response_queries": 50299,
+    "solve_request_bound": 1686,
+    "D_after_request_bound": 486
+  },
+  "request_bounds": [
+    {
+      "case": "smoke1",
+      "round": 4,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke1",
+      "round": 5,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 6,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 7,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 8,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 9,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke1",
+      "round": 10,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke1",
+      "round": 11,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke1",
+      "round": 12,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 13,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke1",
+      "round": 14,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke1",
+      "round": 15,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke1",
+      "round": 16,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 17,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 18,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 19,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 20,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 21,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 22,
+      "requests": 20,
+      "bound": 22
+    },
+    {
+      "case": "smoke1",
+      "round": 23,
+      "requests": 20,
+      "bound": 22
+    },
+    {
+      "case": "smoke1",
+      "round": 24,
+      "requests": 18,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 25,
+      "requests": 15,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 26,
+      "requests": 15,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 27,
+      "requests": 15,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 28,
+      "requests": 15,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 29,
+      "requests": 15,
+      "bound": 20
+    },
+    {
+      "case": "smoke1",
+      "round": 30,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke1",
+      "round": 31,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 32,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 33,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 34,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 35,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 36,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 37,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 38,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 39,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 40,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 41,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 42,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 43,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 44,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 45,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 46,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 47,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 48,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 49,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 50,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 51,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 52,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 53,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 54,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 55,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 56,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 57,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 58,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke1",
+      "round": 59,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke2",
+      "round": 2,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 3,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke2",
+      "round": 4,
+      "requests": 18,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 5,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 6,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 7,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 8,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 9,
+      "requests": 19,
+      "bound": 22
+    },
+    {
+      "case": "smoke2",
+      "round": 10,
+      "requests": 20,
+      "bound": 24
+    },
+    {
+      "case": "smoke2",
+      "round": 11,
+      "requests": 19,
+      "bound": 22
+    },
+    {
+      "case": "smoke2",
+      "round": 12,
+      "requests": 16,
+      "bound": 22
+    },
+    {
+      "case": "smoke2",
+      "round": 13,
+      "requests": 16,
+      "bound": 22
+    },
+    {
+      "case": "smoke2",
+      "round": 14,
+      "requests": 15,
+      "bound": 18
+    },
+    {
+      "case": "smoke2",
+      "round": 15,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 16,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 17,
+      "requests": 19,
+      "bound": 22
+    },
+    {
+      "case": "smoke2",
+      "round": 18,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 19,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 20,
+      "requests": 17,
+      "bound": 20
+    },
+    {
+      "case": "smoke2",
+      "round": 21,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke2",
+      "round": 22,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke2",
+      "round": 23,
+      "requests": 14,
+      "bound": 18
+    },
+    {
+      "case": "smoke2",
+      "round": 24,
+      "requests": 12,
+      "bound": 16
+    },
+    {
+      "case": "smoke2",
+      "round": 25,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 26,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 27,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 28,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 29,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 30,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 31,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 32,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 33,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 34,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 35,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 36,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 37,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 38,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 39,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 40,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 41,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 42,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 43,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 44,
+      "requests": 9,
+      "bound": 14
+    },
+    {
+      "case": "smoke2",
+      "round": 45,
+      "requests": 9,
+      "bound": 14
+    }
+  ],
+  "budget_used_seconds": 163.69514099991648,
+  "budget_remaining_seconds": 736.3048590000835,
+  "exceptions_in_successful_smokes": 0,
+  "actual_smoke_budget_fallbacks": 0,
+  "no_background_processes": true,
+  "no_remote_push": true
+}

@@ -1,0 +1,26 @@
+{
+  "version": "CAPRA_V2_DIRECT_R5",
+  "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "branch": "capra/direct-placement-r5",
+  "method": "CAPRA-Direct",
+  "allocator_mode": "ram_slack_v1",
+  "horizon": 180,
+  "interval": 60,
+  "placement_cooperative_budget_seconds": 5,
+  "total_cumulative_validation_command_wall_seconds": 900,
+  "formal_performance_experiments": "NOT_RUN",
+  "smokes": [
+    {"case": "smoke1", "workload": "data/pressure_r4/saturn7_dense05.csv", "responses": "data/scenarios_r1/responses_original.json"},
+    {"case": "smoke2", "workload": "data/pressure_r4/saturn8_dense05.csv", "responses": "data/scenarios_r1/responses_cm.json"}
+  ],
+  "cluster": "data/scenarios_r1/cluster_cpu3.json",
+  "max_jobs": 8,
+  "max_rounds": 60,
+  "runner_wall_seconds": 90,
+  "owned_tree_including_cleanup_hard_seconds": 120,
+  "seed": 0,
+  "numeric_threads": 1,
+  "F_replay_unique_states": 3,
+  "old_files_policy": "BYTE_IDENTICAL",
+  "budget_retry_policy": "Only correctness fixes to the same fixed cases; new attempt directories; never reset cumulative ledger"
+}

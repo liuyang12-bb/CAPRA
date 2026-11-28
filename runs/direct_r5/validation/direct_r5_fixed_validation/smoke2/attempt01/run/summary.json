@@ -1,0 +1,152 @@
+{
+  "method": "CAPRA-Direct",
+  "input": "D:\\科研启航\\CAPRA-direct-placement-r5\\data\\pressure_r4\\saturn8_dense05.csv",
+  "status": "ALL_COMPLETE",
+  "total": 8,
+  "completed": 8,
+  "censored": 0,
+  "mean_jct": 802.9375,
+  "p95_jct": 1936.324999999999,
+  "p99_jct": 2493.6649999999995,
+  "makespan": 2633.0,
+  "decision_median": 0.030124599987175316,
+  "decision_p95": 0.06629826501011848,
+  "decision_max": 0.08474080002633855,
+  "wall_seconds": 23.1090877999668,
+  "wall_scope": "runner body; imports excluded",
+  "runner_body_wall_seconds": 23.1090877999668,
+  "rounds": 46,
+  "decisions": 44,
+  "transitions": {
+    "start": 8,
+    "migration": 15,
+    "reconfigure": 8,
+    "aux_update": 4
+  },
+  "fallbacks": {},
+  "gpu_repairs": 0,
+  "audit": "PASS",
+  "segment_checks": 863,
+  "scheduling_wall_charged_to_simulation": false,
+  "node_allocated_resource_seconds": {
+    "aws:0": [
+      1860.0,
+      2820.0,
+      118749.6
+    ],
+    "aws:1": [
+      180.0,
+      1620.0,
+      3749.3999999999996
+    ],
+    "dgx-ext:0": [
+      5160.0,
+      24600.0,
+      127483.19999999998
+    ],
+    "dgx-ext:1": [
+      5808.0,
+      25896.0,
+      120980.64
+    ],
+    "rtx:0": [
+      16024.0,
+      16024.0,
+      1031500.0
+    ],
+    "rtx:1": [
+      120.0,
+      1080.0,
+      2499.6
+    ]
+  },
+  "version": "CAPRA_V2_DIRECT_R5",
+  "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "submitted": 8,
+  "arrived": 8,
+  "unfinished": 0,
+  "direct_raw_audit": "PASS",
+  "algorithm_counts_all_rounds": {
+    "rounds": 46,
+    "D_COMPLETE": 46,
+    "selected_F": 38,
+    "selected_D": 8
+  },
+  "algorithm_counts_nonempty_rounds": {
+    "rounds": 44,
+    "D_COMPLETE": 44,
+    "selected_F": 36,
+    "selected_D": 8
+  },
+  "decision_distribution": {
+    "n": 44,
+    "median": 0.030124599987175316,
+    "p95": 0.06629826501011848,
+    "p99": 0.07958935702161399,
+    "max": 0.08474080002633855
+  },
+  "component_times": {
+    "f_reference": {
+      "n": 44,
+      "median": 0.0003653000167105347,
+      "p95": 0.0006487099919468165,
+      "p99": 0.0007288549875374883,
+      "max": 0.0007596000214107335
+    },
+    "f_quota": {
+      "n": 44,
+      "median": 0.002138949988875538,
+      "p95": 0.007343735022004694,
+      "p99": 0.00828131597605534,
+      "max": 0.008878499967977405
+    },
+    "D": {
+      "n": 44,
+      "median": 0.0038288500218186527,
+      "p95": 0.01993569502083119,
+      "p99": 0.023376433994853868,
+      "max": 0.023473699984606355
+    },
+    "completion_checks_nested": {
+      "n": 44,
+      "median": 0.0008738499600440264,
+      "p95": 0.002562269842019305,
+      "p99": 0.0031805259158136324,
+      "max": 0.0036370998132042587
+    },
+    "allocator_nested": {
+      "n": 44,
+      "median": 0.0036790999001823366,
+      "p95": 0.020449640063452536,
+      "p99": 0.024249410926713608,
+      "max": 0.02480939991073683
+    },
+    "scoring_nested": {
+      "n": 44,
+      "median": 0.00011584992171265185,
+      "p95": 0.00030310999718494717,
+      "p99": 0.00036467613361310217,
+      "max": 0.0004020000924356282
+    },
+    "gpu_stage_seconds": {
+      "n": 44,
+      "median": 0.02056264999555424,
+      "p95": 0.03706700003531296,
+      "p99": 0.04387536900758278,
+      "max": 0.048382500011939555
+    },
+    "commit_seconds": {
+      "n": 44,
+      "median": 5.020000389777124e-05,
+      "p95": 0.003919204979320057,
+      "p99": 0.004565513020497747,
+      "max": 0.004819600027985871
+    }
+  },
+  "timing_scope": "F reference/F quota/D are sequential; completion/allocator/scoring are nested, do not sum. Wall decision not charged to JCT.",
+  "mean_waiting": 22.8125,
+  "mean_training": 602.0,
+  "mean_recovery": 178.125,
+  "audit_seconds": 2.097118799982127,
+  "formal_performance_experiment": "NOT_RUN"
+}

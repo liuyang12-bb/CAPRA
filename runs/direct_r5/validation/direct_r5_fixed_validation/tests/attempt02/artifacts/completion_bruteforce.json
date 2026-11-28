@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "isolated_states": 82,
+  "infeasible_states": 22,
+  "max_jobs": 5,
+  "max_assignments_per_state": 8,
+  "no_online_search_change": true
+}

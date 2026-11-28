@@ -1,0 +1,2715 @@
+{
+  "label": "INTENTIONAL_TEST_TAMPERING",
+  "selection": {
+    "contract": {
+      "b0": {
+        "name": "b0",
+        "gpu_type": "dgx-ext",
+        "gpus": 4,
+        "nodes": 1,
+        "atomic_bsz": 1,
+        "accum_steps": 0
+      },
+      "b1": {
+        "name": "b1",
+        "gpu_type": "dgx-ext",
+        "gpus": 4,
+        "nodes": 1,
+        "atomic_bsz": 1,
+        "accum_steps": 0
+      },
+      "c0": {
+        "name": "c0",
+        "gpu_type": "dgx-ext",
+        "gpus": 4,
+        "nodes": 1,
+        "atomic_bsz": 1,
+        "accum_steps": 0
+      },
+      "c1": {
+        "name": "c1",
+        "gpu_type": "dgx-ext",
+        "gpus": 4,
+        "nodes": 1,
+        "atomic_bsz": 1,
+        "accum_steps": 0
+      }
+    },
+    "contract_fingerprint": "4df085ac31195dd24e9f8d89c26b88e89f828a1a86a529d661e013580b8584ca",
+    "contract_checks": [
+      {
+        "where": "BEFORE_F_D",
+        "fingerprint": "4df085ac31195dd24e9f8d89c26b88e89f828a1a86a529d661e013580b8584ca"
+      },
+      {
+        "where": "AFTER_F_D",
+        "fingerprint": "4df085ac31195dd24e9f8d89c26b88e89f828a1a86a529d661e013580b8584ca"
+      }
+    ],
+    "f_reference": {
+      "input_witness": {
+        "c0": {
+          "name": "c0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:0",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "c1": {
+          "name": "c1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:0",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "b0": {
+          "name": "b0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:1",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "b1": {
+          "name": "b1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:1",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        }
+      },
+      "output_plan": {
+        "c0": {
+          "name": "c0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:1",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "c1": {
+          "name": "c1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:1",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "b0": {
+          "name": "b0",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:0",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        },
+        "b1": {
+          "name": "b1",
+          "gpu_type": "dgx-ext",
+          "gpus": 4,
+          "node": "dgx-ext:0",
+          "atomic_bsz": 1,
+          "accum_steps": 0,
+          "nodes": 1
+        }
+      },
+      "details": {
+        "before": {
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "b0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "b1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          }
+        },
+        "after": {
+          "c0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "b0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "b1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          }
+        },
+        "mapping": {
+          "groups": [
+            {
+              "nodes": [
+                "dgx-ext:0",
+                "dgx-ext:1"
+              ],
+              "choice": "swap",
+              "swap_feasible": true,
+              "before_delay": 0.0,
+              "after_delay": 0.0
+            }
+          ],
+          "before_delay": 0.0,
+          "after_delay": 0.0
+        }
+      }
+    },
+    "allocation_traces": [
+      {
+        "id": 0,
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b0",
+          "b1"
+        ],
+        "allocations": {
+          "b0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "b1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          }
+        },
+        "score": {
+          "phi": 2.0,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 2,
+          "jobs": {
+            "b0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 1.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "b1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            }
+          }
+        },
+        "ram_trace_id": 0
+      },
+      {
+        "id": 1,
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c0",
+          "c1"
+        ],
+        "allocations": {
+          "c0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          }
+        },
+        "score": {
+          "phi": 2.0,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 2,
+          "jobs": {
+            "c0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            }
+          }
+        },
+        "ram_trace_id": 1
+      },
+      {
+        "id": 2,
+        "node": "dgx-ext:0",
+        "jobs": [],
+        "allocations": {},
+        "score": {
+          "phi": 0,
+          "total_delay": 0,
+          "total_new_cost": 0,
+          "changes": 0,
+          "jobs": {}
+        },
+        "ram_trace_id": 2
+      },
+      {
+        "id": 3,
+        "node": "dgx-ext:1",
+        "jobs": [],
+        "allocations": {},
+        "score": {
+          "phi": 0,
+          "total_delay": 0,
+          "total_new_cost": 0,
+          "changes": 0,
+          "jobs": {}
+        },
+        "ram_trace_id": 3
+      },
+      {
+        "id": 4,
+        "node": "dgx-ext:0",
+        "jobs": [
+          "c0"
+        ],
+        "allocations": {
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 24.0,
+            "ram": 250.0,
+            "rho": 1.75
+          }
+        },
+        "score": {
+          "phi": 1.75,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 0,
+          "jobs": {
+            "c0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.75,
+              "contribution": 1.75
+            }
+          }
+        },
+        "ram_trace_id": 4
+      },
+      {
+        "id": 5,
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c0"
+        ],
+        "allocations": {
+          "c0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 24.0,
+            "ram": 250.0,
+            "rho": 1.75
+          }
+        },
+        "score": {
+          "phi": 1.75,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 1,
+          "jobs": {
+            "c0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.75,
+              "contribution": 1.75
+            }
+          }
+        },
+        "ram_trace_id": 5
+      },
+      {
+        "id": 6,
+        "node": "dgx-ext:0",
+        "jobs": [
+          "c0",
+          "c1"
+        ],
+        "allocations": {
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          }
+        },
+        "score": {
+          "phi": 2.0,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 0,
+          "jobs": {
+            "c0": {
+              "kind": "unchanged",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c1": {
+              "kind": "unchanged",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            }
+          }
+        },
+        "ram_trace_id": 6
+      },
+      {
+        "id": 7,
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c1"
+        ],
+        "allocations": {
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 24.0,
+            "ram": 250.0,
+            "rho": 1.75
+          }
+        },
+        "score": {
+          "phi": 1.75,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 1,
+          "jobs": {
+            "c1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.75,
+              "contribution": 1.75
+            }
+          }
+        },
+        "ram_trace_id": 7
+      },
+      {
+        "id": 8,
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b0",
+          "c0"
+        ],
+        "allocations": {
+          "b0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 20.0,
+            "ram": 250.0,
+            "rho": 1.53
+          }
+        },
+        "score": {
+          "phi": 2.5300000000000002,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 1,
+          "jobs": {
+            "b0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.53,
+              "contribution": 1.53
+            }
+          }
+        },
+        "ram_trace_id": 8
+      },
+      {
+        "id": 9,
+        "node": "dgx-ext:1",
+        "jobs": [
+          "b0",
+          "c1"
+        ],
+        "allocations": {
+          "b0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 20.0,
+            "ram": 250.0,
+            "rho": 1.53
+          }
+        },
+        "score": {
+          "phi": 2.5300000000000002,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 1,
+          "jobs": {
+            "b0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.53,
+              "contribution": 1.53
+            }
+          }
+        },
+        "ram_trace_id": 9
+      },
+      {
+        "id": 10,
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b1",
+          "c0"
+        ],
+        "allocations": {
+          "b1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 20.0,
+            "ram": 250.0,
+            "rho": 1.53
+          }
+        },
+        "score": {
+          "phi": 2.5300000000000002,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 1,
+          "jobs": {
+            "b1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.53,
+              "contribution": 1.53
+            }
+          }
+        },
+        "ram_trace_id": 10
+      }
+    ],
+    "solve_requests": [
+      {
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b0",
+          "b1"
+        ],
+        "phase": "F",
+        "cache_hit": false,
+        "trace_id": 0
+      },
+      {
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c0",
+          "c1"
+        ],
+        "phase": "F",
+        "cache_hit": false,
+        "trace_id": 1
+      },
+      {
+        "node": "dgx-ext:0",
+        "jobs": [],
+        "phase": "LOCK_INITIAL",
+        "cache_hit": false,
+        "trace_id": 2
+      },
+      {
+        "node": "dgx-ext:1",
+        "jobs": [],
+        "phase": "LOCK_INITIAL",
+        "cache_hit": false,
+        "trace_id": 3
+      },
+      {
+        "node": "dgx-ext:0",
+        "jobs": [
+          "c0"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 4
+      },
+      {
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c0"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 5
+      },
+      {
+        "node": "dgx-ext:0",
+        "jobs": [
+          "c0",
+          "c1"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 6
+      },
+      {
+        "node": "dgx-ext:1",
+        "jobs": [
+          "c1"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 7
+      },
+      {
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b0",
+          "c0"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 8
+      },
+      {
+        "node": "dgx-ext:1",
+        "jobs": [
+          "b0",
+          "c1"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 9
+      },
+      {
+        "node": "dgx-ext:0",
+        "jobs": [
+          "b1",
+          "c0"
+        ],
+        "phase": "D_AFTER",
+        "cache_hit": false,
+        "trace_id": 10
+      }
+    ],
+    "initial_check": {
+      "feasible": true,
+      "reason": "COMPLETE_EXTENSION_EXISTS",
+      "reservations": {
+        "dgx-ext:0": {
+          "used": [
+            0,
+            0.0,
+            0.0
+          ],
+          "remaining": [
+            8,
+            24.0,
+            500.0
+          ],
+          "effective_gpus": 8
+        },
+        "dgx-ext:1": {
+          "used": [
+            0,
+            0.0,
+            0.0
+          ],
+          "remaining": [
+            8,
+            24.0,
+            500.0
+          ],
+          "effective_gpus": 8
+        }
+      },
+      "groups": [
+        {
+          "gpu_type": "dgx-ext",
+          "jobs": [
+            "b0",
+            "b1",
+            "c0",
+            "c1"
+          ],
+          "allowed_nodes": {
+            "b0": [
+              "dgx-ext:0",
+              "dgx-ext:1"
+            ],
+            "b1": [
+              "dgx-ext:0",
+              "dgx-ext:1"
+            ],
+            "c0": [
+              "dgx-ext:0",
+              "dgx-ext:1"
+            ],
+            "c1": [
+              "dgx-ext:0",
+              "dgx-ext:1"
+            ]
+          },
+          "effective_capacities": {
+            "dgx-ext:0": 8,
+            "dgx-ext:1": 8
+          }
+        }
+      ]
+    },
+    "ordering": [
+      {
+        "job": "b0",
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b1",
+                    "c0",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 4,
+            "preferred_ram": 83.32,
+            "pressure": 0.0
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b1",
+                    "c0",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 8,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 4,
+            "preferred_ram": 83.32,
+            "pressure": 0.0
+          }
+        ],
+        "legal_nodes": [
+          "dgx-ext:0",
+          "dgx-ext:1"
+        ],
+        "pressure": 0.0,
+        "complete": true
+      },
+      {
+        "job": "b1",
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "c0",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 4,
+            "preferred_ram": 83.32,
+            "pressure": 0.0
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "c0",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 8,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 4,
+            "preferred_ram": 83.32,
+            "pressure": 0.0
+          }
+        ],
+        "legal_nodes": [
+          "dgx-ext:0",
+          "dgx-ext:1"
+        ],
+        "pressure": 0.0,
+        "complete": true
+      },
+      {
+        "job": "c0",
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 24,
+            "preferred_ram": 250.0,
+            "pressure": 0.5
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 8,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 24,
+            "preferred_ram": 250.0,
+            "pressure": 0.5
+          }
+        ],
+        "legal_nodes": [
+          "dgx-ext:0",
+          "dgx-ext:1"
+        ],
+        "pressure": 0.5,
+        "complete": true
+      },
+      {
+        "job": "c1",
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c0"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 24,
+            "preferred_ram": 250.0,
+            "pressure": 0.5
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c0"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 8,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "preferred_cpu": 24,
+            "preferred_ram": 250.0,
+            "pressure": 0.5
+          }
+        ],
+        "legal_nodes": [
+          "dgx-ext:0",
+          "dgx-ext:1"
+        ],
+        "pressure": 0.5,
+        "complete": true
+      }
+    ],
+    "order": [
+      "c0",
+      "c1",
+      "b0",
+      "b1"
+    ],
+    "steps": [
+      {
+        "job": "c0",
+        "index": 0,
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 2,
+            "after_trace_id": 4,
+            "delta": 1.75,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": true
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1",
+                    "c1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "c1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 8,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 3,
+            "after_trace_id": 5,
+            "delta": 1.75,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": false
+          }
+        ],
+        "complete": true,
+        "chosen_node": "dgx-ext:0",
+        "choice_rule": "DELTA_EPS_NEW_COST_KEEP_CURRENT_NODE_ID"
+      },
+      {
+        "job": "c1",
+        "index": 1,
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "remaining": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "effective_gpus": 0
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "remaining": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "effective_gpus": 8
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 0,
+                    "dgx-ext:1": 8
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 4,
+            "after_trace_id": 6,
+            "delta": 0.25,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": true
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b0",
+                    "b1"
+                  ],
+                  "allowed_nodes": {
+                    "b0": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ],
+                    "b1": [
+                      "dgx-ext:0",
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 3,
+            "after_trace_id": 7,
+            "delta": 1.75,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": false
+          }
+        ],
+        "complete": true,
+        "chosen_node": "dgx-ext:1",
+        "choice_rule": "DELTA_EPS_NEW_COST_KEEP_CURRENT_NODE_ID"
+      },
+      {
+        "job": "b0",
+        "index": 2,
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "remaining": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "effective_gpus": 0
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b1"
+                  ],
+                  "allowed_nodes": {
+                    "b1": [
+                      "dgx-ext:1"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 0,
+                    "dgx-ext:1": 4
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 4,
+            "after_trace_id": 8,
+            "delta": 0.7800000000000002,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": false
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "remaining": [
+                    4,
+                    12.0,
+                    250.0
+                  ],
+                  "effective_gpus": 4
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "remaining": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "effective_gpus": 0
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [
+                    "b1"
+                  ],
+                  "allowed_nodes": {
+                    "b1": [
+                      "dgx-ext:0"
+                    ]
+                  },
+                  "effective_capacities": {
+                    "dgx-ext:0": 4,
+                    "dgx-ext:1": 0
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 7,
+            "after_trace_id": 9,
+            "delta": 0.7800000000000002,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": true
+          }
+        ],
+        "complete": true,
+        "chosen_node": "dgx-ext:1",
+        "choice_rule": "DELTA_EPS_NEW_COST_KEEP_CURRENT_NODE_ID"
+      },
+      {
+        "job": "b1",
+        "index": 3,
+        "candidates": [
+          {
+            "node": "dgx-ext:0",
+            "can_finish": {
+              "feasible": true,
+              "reason": "COMPLETE_EXTENSION_EXISTS",
+              "reservations": {
+                "dgx-ext:0": {
+                  "used": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "remaining": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "effective_gpus": 0
+                },
+                "dgx-ext:1": {
+                  "used": [
+                    8,
+                    24.0,
+                    500.0
+                  ],
+                  "remaining": [
+                    0,
+                    0.0,
+                    0.0
+                  ],
+                  "effective_gpus": 0
+                }
+              },
+              "groups": [
+                {
+                  "gpu_type": "dgx-ext",
+                  "jobs": [],
+                  "allowed_nodes": {},
+                  "effective_capacities": {
+                    "dgx-ext:0": 0,
+                    "dgx-ext:1": 0
+                  }
+                }
+              ]
+            },
+            "before_trace_id": 4,
+            "after_trace_id": 10,
+            "delta": 0.7800000000000002,
+            "inserted_new_cost": 0.0,
+            "keeps_current_node": false
+          },
+          {
+            "node": "dgx-ext:1",
+            "can_finish": {
+              "feasible": false,
+              "reason": "PARTIAL_CAPACITY",
+              "node": "dgx-ext:1",
+              "used": [
+                12,
+                36.0,
+                750.0
+              ]
+            }
+          }
+        ],
+        "complete": true,
+        "chosen_node": "dgx-ext:0",
+        "choice_rule": "DELTA_EPS_NEW_COST_KEEP_CURRENT_NODE_ID"
+      }
+    ],
+    "prefix_layout": {
+      "c0": "dgx-ext:0",
+      "c1": "dgx-ext:1",
+      "b0": "dgx-ext:1",
+      "b1": "dgx-ext:0"
+    },
+    "prefix_trace_ids": {
+      "dgx-ext:0": 10,
+      "dgx-ext:1": 9
+    },
+    "D_status": "COMPLETE",
+    "timing": {
+      "f_reference": 0.00033730000723153353,
+      "f_quota": 0.004460000025574118,
+      "D": 0.013683299999684095,
+      "completion_checks_nested": 0.0011481001856736839,
+      "allocator_nested": 0.014644000097177923,
+      "scoring_nested": 0.00025070004630833864
+    },
+    "counts": {
+      "dp_checks": 17,
+      "preferred_queries": 8,
+      "budget_checks": 53,
+      "solve_requests": 11,
+      "cold_solves": 11,
+      "cache_hits": 0,
+      "response_hits": 1087,
+      "response_misses": 126,
+      "response_queries": 1213,
+      "solve_request_bound": 12,
+      "D_after_request_bound": 8
+    },
+    "identity_scope": "F_ONLY_REFERENCE; D_PHYSICAL_IDS_UNCHANGED",
+    "allocator": {
+      "node_calls": 11,
+      "node_cache_hits": 0,
+      "generated_pairs": 575,
+      "generation_seconds": 0.010808699938934296,
+      "upgrades": 15,
+      "ram_requests": 11,
+      "ram_cache_hits": 0,
+      "ram_calls": 11,
+      "ram_steps": 0,
+      "ram_step_bound": 61,
+      "ram_candidates": 13,
+      "ram_repair_seconds": 0.001209199894219637,
+      "ram_traces": [
+        {
+          "node": "dgx-ext:0",
+          "initial": {
+            "b0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "b1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            }
+          },
+          "final": {
+            "b0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "b1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 9,
+          "ram_candidates": 4,
+          "ram_repair_seconds": 0.00021919998107478023,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "b0": 63,
+              "b1": 63
+            },
+            "generation_seconds": 0.0014170999638736248,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 2,
+            "upgrades": 0,
+            "dominance_steps": 0,
+            "upgrade_bound": 124
+          },
+          "trace_id": 0,
+          "jobs": [
+            "b0",
+            "b1"
+          ]
+        },
+        {
+          "node": "dgx-ext:1",
+          "initial": {
+            "c0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            }
+          },
+          "final": {
+            "c0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 7,
+          "ram_candidates": 0,
+          "ram_repair_seconds": 0.00016170000890269876,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "c0": 26,
+              "c1": 26
+            },
+            "generation_seconds": 0.001669999968726188,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 0,
+            "dominance_steps": 0,
+            "upgrade_bound": 50
+          },
+          "trace_id": 1,
+          "jobs": [
+            "c0",
+            "c1"
+          ]
+        },
+        {
+          "node": "dgx-ext:0",
+          "initial": {},
+          "final": {},
+          "ram_steps": 0,
+          "ram_step_bound": 1,
+          "ram_candidates": 0,
+          "ram_repair_seconds": 7.099995855242014e-06,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {},
+            "generation_seconds": 1.00000761449337e-06,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 0,
+            "dominance_steps": 0,
+            "upgrade_bound": 0
+          },
+          "trace_id": 2,
+          "jobs": []
+        },
+        {
+          "node": "dgx-ext:1",
+          "initial": {},
+          "final": {},
+          "ram_steps": 0,
+          "ram_step_bound": 1,
+          "ram_candidates": 0,
+          "ram_repair_seconds": 4.199973773211241e-06,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {},
+            "generation_seconds": 6.00004568696022e-07,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 0,
+            "dominance_steps": 0,
+            "upgrade_bound": 0
+          },
+          "trace_id": 3,
+          "jobs": []
+        },
+        {
+          "node": "dgx-ext:0",
+          "initial": {
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "final": {
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 4,
+          "ram_candidates": 1,
+          "ram_repair_seconds": 6.140000186860561e-05,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "c0": 26
+            },
+            "generation_seconds": 0.0005541000282391906,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 3,
+            "dominance_steps": 0,
+            "upgrade_bound": 25
+          },
+          "trace_id": 4,
+          "jobs": [
+            "c0"
+          ]
+        },
+        {
+          "node": "dgx-ext:1",
+          "initial": {
+            "c0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "final": {
+            "c0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 4,
+          "ram_candidates": 1,
+          "ram_repair_seconds": 5.5999960750341415e-05,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "c0": 26
+            },
+            "generation_seconds": 0.000534099992364645,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 3,
+            "dominance_steps": 0,
+            "upgrade_bound": 25
+          },
+          "trace_id": 5,
+          "jobs": [
+            "c0"
+          ]
+        },
+        {
+          "node": "dgx-ext:0",
+          "initial": {
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            }
+          },
+          "final": {
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 12.0,
+              "ram": 250.0,
+              "rho": 1.0
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 7,
+          "ram_candidates": 0,
+          "ram_repair_seconds": 0.00016830000095069408,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "c0": 26,
+              "c1": 26
+            },
+            "generation_seconds": 0.002027299953624606,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 0,
+            "dominance_steps": 0,
+            "upgrade_bound": 50
+          },
+          "trace_id": 6,
+          "jobs": [
+            "c0",
+            "c1"
+          ]
+        },
+        {
+          "node": "dgx-ext:1",
+          "initial": {
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "final": {
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 24.0,
+              "ram": 250.0,
+              "rho": 1.75
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 4,
+          "ram_candidates": 1,
+          "ram_repair_seconds": 6.290001329034567e-05,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "c1": 26
+            },
+            "generation_seconds": 0.0006646999972872436,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 0,
+            "upgrades": 3,
+            "dominance_steps": 0,
+            "upgrade_bound": 25
+          },
+          "trace_id": 7,
+          "jobs": [
+            "c1"
+          ]
+        },
+        {
+          "node": "dgx-ext:0",
+          "initial": {
+            "b0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "final": {
+            "b0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 8,
+          "ram_candidates": 2,
+          "ram_repair_seconds": 0.0002514999941922724,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "b0": 63,
+              "c0": 26
+            },
+            "generation_seconds": 0.0011377999908290803,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 1,
+            "upgrades": 2,
+            "dominance_steps": 0,
+            "upgrade_bound": 87
+          },
+          "trace_id": 8,
+          "jobs": [
+            "b0",
+            "c0"
+          ]
+        },
+        {
+          "node": "dgx-ext:1",
+          "initial": {
+            "b0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "final": {
+            "b0": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c1": {
+              "node": "dgx-ext:1",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 8,
+          "ram_candidates": 2,
+          "ram_repair_seconds": 0.00010840001050382853,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "b0": 63,
+              "c1": 26
+            },
+            "generation_seconds": 0.0013102000229991972,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 1,
+            "upgrades": 2,
+            "dominance_steps": 0,
+            "upgrade_bound": 87
+          },
+          "trace_id": 9,
+          "jobs": [
+            "b0",
+            "c1"
+          ]
+        },
+        {
+          "node": "dgx-ext:0",
+          "initial": {
+            "b1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "final": {
+            "b1": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 4.0,
+              "ram": 83.32,
+              "rho": 1.0
+            },
+            "c0": {
+              "node": "dgx-ext:0",
+              "gpu_type": "dgx-ext",
+              "gpus": 4,
+              "cpu": 20.0,
+              "ram": 250.0,
+              "rho": 1.53
+            }
+          },
+          "ram_steps": 0,
+          "ram_step_bound": 8,
+          "ram_candidates": 2,
+          "ram_repair_seconds": 0.00010849995305761695,
+          "updates": [],
+          "terminal_candidates": [],
+          "added_ram": 0.0,
+          "legacy_meta": {
+            "candidate_pairs": {
+              "b1": 63,
+              "c0": 26
+            },
+            "generation_seconds": 0.0014918000088073313,
+            "initial_vectors": 1,
+            "selected_start": "proportional",
+            "reclaims": 1,
+            "upgrades": 2,
+            "dominance_steps": 0,
+            "upgrade_bound": 87
+          },
+          "trace_id": 10,
+          "jobs": [
+            "b1",
+            "c0"
+          ]
+        }
+      ]
+    },
+    "candidates": [
+      {
+        "label": "F",
+        "feasible": true,
+        "trace_ids": {
+          "dgx-ext:0": 0,
+          "dgx-ext:1": 1
+        },
+        "allocations": {
+          "b0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "b1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 12.0,
+            "ram": 250.0,
+            "rho": 1.0
+          }
+        },
+        "score": {
+          "phi": 4.0,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 4,
+          "jobs": {
+            "b0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "b1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c0": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            }
+          }
+        }
+      },
+      {
+        "label": "D",
+        "feasible": true,
+        "trace_ids": {
+          "dgx-ext:0": 10,
+          "dgx-ext:1": 9
+        },
+        "allocations": {
+          "b1": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c0": {
+            "node": "dgx-ext:0",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 20.0,
+            "ram": 250.0,
+            "rho": 1.53
+          },
+          "b0": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 4.0,
+            "ram": 83.32,
+            "rho": 1.0
+          },
+          "c1": {
+            "node": "dgx-ext:1",
+            "gpu_type": "dgx-ext",
+            "gpus": 4,
+            "cpu": 20.0,
+            "ram": 250.0,
+            "rho": 1.53
+          }
+        },
+        "score": {
+          "phi": 5.0600000000000005,
+          "total_delay": 0.0,
+          "total_new_cost": 0.0,
+          "changes": 2,
+          "jobs": {
+            "b0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "b1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.0,
+              "contribution": 1.0
+            },
+            "c0": {
+              "kind": "aux_update",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": false,
+              "effective_window": 180.0,
+              "rho": 1.53,
+              "contribution": 1.53
+            },
+            "c1": {
+              "kind": "migration",
+              "new_cost": 0.0,
+              "existing_remaining": 0.0,
+              "delay": 0.0,
+              "gpu_change": true,
+              "effective_window": 180.0,
+              "rho": 1.53,
+              "contribution": 1.53
+            }
+          }
+        }
+      }
+    ],
+    "selected": "D",
+    "phi": 5.0600000000000005,
+    "relative_to_F": 1.0600000000000005,
+    "reason": "D_HIGHER_PHI_DELAY_CHANGES",
+    "horizon": 180.0,
+    "budget_seconds": 5.0,
+    "candidate_seconds": 0.019430499989539385,
+    "budget_overrun_seconds": 0.0
+  }
+}

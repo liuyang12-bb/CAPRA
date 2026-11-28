@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "base_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "protected_files": 3094,
+  "R4_original_tree_preserved": true,
+  "historical_refs": {
+    "main": "1f1f07fd2238b395e108f91dbbc224d07c0c8139",
+    "capra/v2-20261122": "0b87934ae558960921889b01d14502155fb0c41c",
+    "capra/scenarios-r1": "81b1109ab1124feeac4e846003f4383b39143fc4",
+    "capra/ablation-ram-r2": "0876dd916e1b25d2030233826968683da730a55f",
+    "capra/smart-holdout-r3": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+    "capra/pressure-opportunity-r4": "ffa953fb9cd12773992559512d85065bbd26b7b2"
+  },
+  "tests": {
+    "status": "PASS",
+    "groups": 13,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "wall_seconds": 5.912396799947601,
+    "unique_F_replay_states": 3,
+    "formal_experiments": 0,
+    "simulator_Job_step_calls": 0
+  },
+  "smokes": [
+    {
+      "kind": "smoke1",
+      "status": "PARTIAL_SMOKE",
+      "rounds": 60,
+      "completed": 6,
+      "unfinished": 2,
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke1\\attempt01\\run",
+      "process_wall_seconds": 32.64488530001836
+    },
+    {
+      "kind": "smoke2",
+      "status": "COMPLETE_SMOKE",
+      "rounds": 46,
+      "completed": 8,
+      "unfinished": 0,
+      "output": "runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+      "process_wall_seconds": 32.061488699982874
+    }
+  ],
+  "raw_files_sha256": {
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/audit_hashes.json": "60e17b656ea6bbdb0b5db06bb85d72eb8b9da84f569cf7d935568daead0009e3",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/direct_audit.json": "53bdcaa4ea7d4df12f7fdbbbf6701fb4fcb220b44f273e7f05db20cfa8ec1ef7",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/events.jsonl.gz": "c2fb781e37fe1368989be32423cc25faea12281fbac1d51987499c44a8bd0743",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/node_resources.csv": "bc8847398774a04662a3067608555056071fc6a4f7da1ad2a5198b1192c47761",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/output_hashes.json": "fa3dfcfbb74debb2d3951d6189e5ff70b84e86b5d4487849b847b6a43a62894e",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/per_job.csv": "8b490ddba72aebb08d3fdac5c1b251de689ebfd21b185596b9a5075c64ad30c5",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/start.json": "3f042518345a4545d40b6afa9076758a4bec1eff43fb97ec634044041ffa380d",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/summary.json": "f5e60d53b2f704f42bc193b86e3935646ec943c32f472c0a291aca6ed740e0e2",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke1/attempt01/run/termination.json": "7869ffcc182303689320aca06caca975adb88959a5ff5492c8e078080cba30aa",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/audit_hashes.json": "8e7796cb4d60eff45af40098f5ca0f2aa47bc63bf5d9e2b5c001af147e7933b4",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/direct_audit.json": "2e84de273d20f34642c8a5eb4fe5183b30d844526832924751faddec919c15de",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/events.jsonl.gz": "5ea7e5547b6149179c55c4a35c2b29aa83a9fb1a8b78f64f221e2308fc19abd4",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/node_resources.csv": "d2b4f4a9b5051f02b181c6434c69788061531f6915a5099d423a822bee6e462a",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/output_hashes.json": "0ddf45f727b58364e0e7aeb9e1847832b1bd849e810e72567b2f373b524a2779",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/per_job.csv": "5a7fc561fbd1cede1f4742050acddb85057a5698aa01254d06531261a2c1c5d8",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/start.json": "74f7d648e5cab288d14a87e9de29603e7ff7ed1f86201c78af85353fd234a96b",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/summary.json": "8c5dc5f1217c67c72c6b20d4f258fc36cc8769fe2fc7480e4a1d03e37550ac56",
+    "runs/direct_r5/validation/direct_r5_fixed_validation/smoke2/attempt01/run/termination.json": "0bf5fd16a33ab4669e57e055949644302b18c53e705b67cbe8fc65a5eb859b7a"
+  },
+  "formal_performance_experiments": "NOT_RUN",
+  "simulator_or_solver_calls_in_final_check": 0,
+  "all_prior_owned_cleanup_zero": true
+}

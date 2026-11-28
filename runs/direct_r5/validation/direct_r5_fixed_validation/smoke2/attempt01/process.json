@@ -1,0 +1,41 @@
+{
+  "command": [
+    "D:\\科研启航\\CAPRA-direct-placement-r5\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "-m",
+    "capra.runner_direct_r5",
+    "--method",
+    "CAPRA-Direct",
+    "--allocator-mode",
+    "ram_slack_v1",
+    "--input",
+    "data/pressure_r4/saturn8_dense05.csv",
+    "--cluster",
+    "data/scenarios_r1/cluster_cpu3.json",
+    "--responses",
+    "data/scenarios_r1/responses_cm.json",
+    "--output",
+    "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\run",
+    "--max-jobs",
+    "8",
+    "--max-rounds",
+    "60",
+    "--interval",
+    "60",
+    "--wall-limit",
+    "90.0"
+  ],
+  "exit_code": 0,
+  "process_wall_seconds": 32.061488699982874,
+  "external_wall_limit": 99.0,
+  "external_timeout": false,
+  "user_stop": false,
+  "stdout": "D:\\科研启航\\CAPRA-direct-placement-r5\\runs\\direct_r5\\validation\\direct_r5_fixed_validation\\smoke2\\attempt01\\stdout.log",
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  }
+}
