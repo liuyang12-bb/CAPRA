@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "version": "CAPRA_V2_DIRECT_EVAL_R6",
-  "utc": "2026-11-28T15:28:03.496366+00:00",
+  "utc": "2026-11-28T15:30:31.782524+00:00",
   "algorithm_base_commit": "b40cdefdff27d46d8044510652a557e8d7599920",
   "execution_code_head": "85d1c1b7c51f7d44f6abdfae5fe5663cc1d3c051",
   "protected_old_files": 3184,
@@ -9,8 +9,8 @@
   "expected_new_cells": 8,
   "eligible_R4_cells": 12,
   "independent_replay_receipt": {
-    "output": "runs/direct_eval_r6/verification/check_1795879574226604800",
-    "sha256": "f9327d49bb2d958c7c93363294594aeda31ff83a79e34499e3830febff9783f4",
+    "output": "runs/direct_eval_r6/verification/check_1795879768323416700",
+    "sha256": "5ab34b1a9848c35f7902fd0809e3559b32080403b0e3118353f4c6b1b79d0066",
     "status": "PASS",
     "valid_new_cells": 8
   },
@@ -234,10 +234,21 @@
         "active_after_cleanup": 0,
         "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
       }
+    },
+    {
+      "kind": "final_verify",
+      "cell": null,
+      "state": "PASS",
+      "seconds": 22.68800000002375,
+      "cleanup": {
+        "active_before_cleanup": 0,
+        "active_after_cleanup": 0,
+        "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+      }
     }
   ],
-  "elapsed_window_seconds": 2127.2339999999967,
-  "remaining_seconds": 3272.7660000000033,
+  "elapsed_window_seconds": 2275.515000000014,
+  "remaining_seconds": 3124.4842870235443,
   "no_remote_push": true,
   "uncompleted_cells": []
 }

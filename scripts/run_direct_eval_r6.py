@@ -7,6 +7,7 @@ from budget_direct_eval_r6 import Budget
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--manifest',default='configs/experiment_manifest_direct_eval_r6.json');p.add_argument('--resume',action='store_true');args=p.parse_args()
+    assert not (RUN/'final_verification.json').exists(),'SEALED_DELIVERY: use read-only verify/report; formal runs need a separately authorized new output/budget'
     budget=Budget(resume=args.resume);py=[sys.executable,'-X','utf8','-B'];manifest=ROOT/args.manifest
     def phase(kind,script,cap,group_cap=None):
         prior=[] if budget.data is None else [a for a in budget.data['attempts'] if a['kind']==kind]

@@ -93,6 +93,8 @@ def main():
         if attempt.get('cleanup'):assert attempt['cleanup']['active_after_cleanup']==0
     complete=sum(c['execution_status']=='COMPLETE' and c['audit_status']=='PASS' for c in matrix)
     result=dict(verification_status='PASS',delivery_status='COMPLETE' if complete==8 else 'PARTIAL',valid_new_cells=complete,expected_new_cells=8,new_cells=new,historical_cells=historical,source=meta,wall_seconds=time.monotonic()-began,no_scheduler_or_training_calls=True,no_sealed_source_writes=True)
-    dump(output/'verification.json',result);dump(RUN/'latest_verification_receipt.json',dict(output=output.relative_to(ROOT).as_posix(),sha256=sha(output/'verification.json'),status=result['verification_status'],valid_new_cells=complete))
+    dump(output/'verification.json',result)
+    # A later manual replay writes a fresh directory, never the delivery pointer.
+    if args.budgeted:dump(RUN/'latest_verification_receipt.json',dict(output=output.relative_to(ROOT).as_posix(),sha256=sha(output/'verification.json'),status=result['verification_status'],valid_new_cells=complete))
     print(json.dumps(dict(status='R6_VERIFY_PASS',valid_new_cells=complete,eligible_R4=sum(x['state']=='ELIGIBLE' for x in historical),wall_seconds=result['wall_seconds'])),flush=True)
 if __name__=='__main__':main()

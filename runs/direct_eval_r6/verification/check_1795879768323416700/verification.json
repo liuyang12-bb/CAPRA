@@ -1,0 +1,177 @@
+{
+  "verification_status": "PASS",
+  "delivery_status": "COMPLETE",
+  "valid_new_cells": 8,
+  "expected_new_cells": 8,
+  "new_cells": [
+    {
+      "index": 1,
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA-F-Only",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 2,
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA-Direct",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 3,
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA-Direct",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 4,
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA-F-Only",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 5,
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA-Direct",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 6,
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA-F-Only",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 7,
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA-F-Only",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    },
+    {
+      "index": 8,
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA-Direct",
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "replay": "PASS"
+    }
+  ],
+  "historical_cells": [
+    {
+      "scenario": "saturn7_dense05_original",
+      "method": "SIA-SMART-P",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA-FK",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn7_dense05_cm",
+      "method": "SIA-SMART-P",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA-FK",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_original",
+      "method": "SIA-SMART-P",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA-FK",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_cm",
+      "method": "SIA-SMART-P",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA-FK",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    },
+    {
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA",
+      "state": "ELIGIBLE",
+      "replay": "PASS"
+    }
+  ],
+  "source": {
+    "current_head": "dfecffae122878c62457fe0dcbd179d3af684762",
+    "execution_head": "85d1c1b7c51f7d44f6abdfae5fe5663cc1d3c051",
+    "protected_files": 3184,
+    "frozen_execution_files": 363,
+    "tooling_revisions": [
+      {
+        "path": "scripts/analyze_direct_eval_r6.py",
+        "frozen": "b88f67078f2e9fb7d577b6510488d9892f93298919a1c41befb88886715d3961",
+        "current": "8b72abd8eb095eb5e13e9d57a963517202d34968d430a08a1af98a645de9162c"
+      },
+      {
+        "path": "scripts/report_direct_eval_r6.py",
+        "frozen": "334b91a01b1db6ba5d36a23e2a1772e19aba583631f421d003e1a24a576b0ab5",
+        "current": "284a4b5b9d75b80ca545ed7ad63ccc032169924891d3ef65c112cd246e0cc578"
+      },
+      {
+        "path": "scripts/run_direct_eval_r6.py",
+        "frozen": "9f603fdf35eb03b5e19324a00f89ec71323c1f754b3363654e7171e854af7784",
+        "current": "792d50a5cc0d80a0303227ec52994f1e3e2aa702b584425b031eef8e40e4b05a"
+      },
+      {
+        "path": "scripts/verify_direct_eval_r6.py",
+        "frozen": "18172f87d16f2d3e7d1071786300ef05f53fd9901661fc5331480962289daa0b",
+        "current": "fea71ff0239822a622cb47b5c3bed5f2584a03c3755f353beecd07347b89f288"
+      }
+    ]
+  },
+  "wall_seconds": 21.54599999997299,
+  "no_scheduler_or_training_calls": true,
+  "no_sealed_source_writes": true
+}

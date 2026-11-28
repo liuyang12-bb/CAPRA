@@ -34,5 +34,23 @@
     "epoch": 1795879565.0353582,
     "utc": "2026-11-28T15:26:05.035371+00:00",
     "affects_execution_data": false
+  },
+  {
+    "path": "scripts/run_direct_eval_r6.py",
+    "before_sha256": "9f603fdf35eb03b5e19324a00f89ec71323c1f754b3363654e7171e854af7784",
+    "after_sha256": "792d50a5cc0d80a0303227ec52994f1e3e2aa702b584425b031eef8e40e4b05a",
+    "reason": "Post-delivery packaging guard only: manual pure replay must preserve the sealed latest receipt; formal controller refuses to resume a sealed delivery before touching its budget. No previous formal execution, algorithm or metrics affected.",
+    "epoch": 1795879757.0382895,
+    "utc": "2026-11-28T15:29:17.038294+00:00",
+    "affects_execution_data": false
+  },
+  {
+    "path": "scripts/verify_direct_eval_r6.py",
+    "before_sha256": "ef853b5fe260cc6b741f08748b4711efe8deb4cd5ce74cf759c6ef074870172a",
+    "after_sha256": "fea71ff0239822a622cb47b5c3bed5f2584a03c3755f353beecd07347b89f288",
+    "reason": "Post-delivery packaging guard only: manual pure replay must preserve the sealed latest receipt; formal controller refuses to resume a sealed delivery before touching its budget. No previous formal execution, algorithm or metrics affected.",
+    "epoch": 1795879757.0834,
+    "utc": "2026-11-28T15:29:17.083405+00:00",
+    "affects_execution_data": false
   }
 ]

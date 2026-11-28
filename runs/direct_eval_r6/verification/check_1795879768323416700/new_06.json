@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "checks": {
+    "status": "PASS",
+    "raw_rounds": 198,
+    "segment_checks": 9147,
+    "method": "CAPRA-F-Only",
+    "pure_selection_checks": "F_ONLY_NO_D",
+    "no_production_scheduler_calls": true,
+    "sealed_source_unchanged": true
+  },
+  "mean_jct": 1191.55
+}
