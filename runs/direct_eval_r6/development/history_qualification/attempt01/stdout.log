@@ -1,0 +1,12 @@
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_original", "method": "SIA-SMART-P", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_original", "method": "CAPRA-FK", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_original", "method": "CAPRA", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_cm", "method": "SIA-SMART-P", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_cm", "method": "CAPRA-FK", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn7_dense05_cm", "method": "CAPRA", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_original", "method": "SIA-SMART-P", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_original", "method": "CAPRA-FK", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_original", "method": "CAPRA", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_cm", "method": "SIA-SMART-P", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_cm", "method": "CAPRA-FK", "state": "ELIGIBLE"}
+{"event": "R4_QUALIFIED", "scenario": "saturn8_dense05_cm", "method": "CAPRA", "state": "ELIGIBLE"}

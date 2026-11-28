@@ -1,0 +1,10 @@
+test_budget_cannot_reset_and_owned_grandchild_cleanup (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_direct_alias_and_real_Job_one_step_equivalence (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_f_only_three_fixed_states_no_D_paths (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_formal_metadata_and_portable_verification_contract (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_progress_and_overhead_stops (test_direct_eval_r6.R6IntegrationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.537s
+
+OK

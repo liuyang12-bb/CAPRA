@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "wall_seconds": 16.125,
+  "valid_new_cells": 8,
+  "eligible_R4": 12,
+  "figures": [
+    "jct_and_tails",
+    "decision_overhead",
+    "score_decomposition"
+  ],
+  "source_tables_sha256": {
+    "results_csv": "4a47ad90c0b3b20c10c8901f9f8d155f51248edf80fe0e840cadbe6754d6d2c4",
+    "comparisons_csv": "d932d4b9c1cbab8c8da82e27e55ab905585845110f43a6612df24d6a741ef0bb",
+    "mechanism_csv": "f93751661449c671040411e596a36bc859d07d85ea39add282749076cb7ae74d"
+  },
+  "report": "docs/CAPRA_DIRECT_R6_RESULTS.md",
+  "no_simulator_optimizer_or_layout_search": true,
+  "next_recommendation": "下一步优先对本轮已记录的候选Phi与闭环JCT/尾部不一致案例做有限、预注册的受控验证，检验恢复加权局部代理与后续GPU反馈的错配；保留独立F-only对照和全部负结果，不直接扩大搜索或调整H。"
+}

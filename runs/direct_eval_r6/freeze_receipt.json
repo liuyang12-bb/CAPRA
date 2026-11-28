@@ -1,0 +1,7 @@
+{
+  "manifest_path": "configs/experiment_manifest_direct_eval_r6.json",
+  "manifest_sha256": "237a63790acb896b6510f979d5a2d31e8ff2cc5959c95722134e325ffeaee37d",
+  "source_snapshot_sha256": "41a62cb7465b8a0e35d6f24fb744844bb2d52c970f3e3f0a01f1eb4d36e3400a",
+  "actual_execution_head": "85d1c1b7c51f7d44f6abdfae5fe5663cc1d3c051",
+  "source_fingerprint": "747dc1a96cb485a5d71f296877a777c6302d070d87b24889d3e11a94f3261840"
+}

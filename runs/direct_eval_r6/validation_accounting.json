@@ -1,0 +1,23 @@
+{
+  "attempts": [
+    {
+      "output": "runs/direct_eval_r6/development/tests/attempt01",
+      "process_state": "FAILED",
+      "receipt_status": "FAILED",
+      "receipt_planned_Job_step_calls": 2,
+      "actual_Job_step_calls": 0,
+      "actual_new_closed_loop_smokes": 0,
+      "reason": "Initial fixture error at Job.__init__ before execution; original receipt literal 2 was planned, not achieved"
+    },
+    {
+      "output": "runs/direct_eval_r6/development/tests/attempt02",
+      "process_state": "PASS",
+      "receipt_status": "PASS",
+      "receipt_planned_Job_step_calls": 2,
+      "actual_Job_step_calls": 2,
+      "actual_new_closed_loop_smokes": 0,
+      "reason": "PASS equivalence fixture executes one old and one new Job.step"
+    }
+  ],
+  "all_original_failed_evidence_preserved": true
+}

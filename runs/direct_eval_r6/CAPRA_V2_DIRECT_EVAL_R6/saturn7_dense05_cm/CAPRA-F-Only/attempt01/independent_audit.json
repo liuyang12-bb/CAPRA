@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "raw_rounds": 200,
+  "segment_checks": 8732,
+  "method": "CAPRA-F-Only",
+  "pure_selection_checks": "F_ONLY_NO_D",
+  "no_production_scheduler_calls": true,
+  "sealed_source_unchanged": true
+}

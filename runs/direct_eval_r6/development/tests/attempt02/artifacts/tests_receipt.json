@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "groups": 5,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "wall_seconds": 0.5384992000181228,
+  "F_only_states": 3,
+  "real_Job_step_calls": 2,
+  "new_closed_loop_smokes": 0,
+  "new_formal_cells": 0
+}

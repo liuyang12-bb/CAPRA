@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "raw_rounds": 197,
+  "segment_checks": 9047,
+  "method": "CAPRA",
+  "pure_selection_checks": "FROZEN_R4_DEFINITION",
+  "no_production_scheduler_calls": true,
+  "sealed_source_unchanged": true
+}

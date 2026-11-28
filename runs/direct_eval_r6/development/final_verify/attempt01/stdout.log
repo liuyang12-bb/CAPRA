@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\scripts\verify_direct_eval_r6.py", line 98, in <module>
+    if __name__=='__main__':main()
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\scripts\verify_direct_eval_r6.py", line 97, in main
+    print(json.dumps(dict(status='R6_VERIFY_PASS',valid_new_cells=complete,eligible_R4=sum(x['state']=='ELIGIBLE' for x in historical),wall_seconds=result['wall_seconds'])),flush=True)
+NameError: name 'json' is not defined

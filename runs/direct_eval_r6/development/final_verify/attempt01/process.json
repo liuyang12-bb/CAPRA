@@ -1,0 +1,35 @@
+{
+  "kind": "final_verify",
+  "cell": null,
+  "state": "FAILED",
+  "start_utc": "2026-11-28T15:25:13.782217+00:00",
+  "start_monotonic": 285810.39,
+  "start_epoch": 1795879513.782218,
+  "command": [
+    "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "scripts/verify_direct_eval_r6.py",
+    "--manifest",
+    "configs/experiment_manifest_direct_eval_r6.json",
+    "--budgeted"
+  ],
+  "outer_hard_seconds": 180.0,
+  "worker_limit_seconds": 150.0,
+  "cleanup_reserve_seconds": 30,
+  "output": "runs/direct_eval_r6/development/final_verify/attempt01",
+  "controller_pid": 18524,
+  "pid": 28724,
+  "exit_code": 1,
+  "external_timeout": false,
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  },
+  "charged_seconds": 22.68799999996554,
+  "end_utc": "2026-11-28T15:25:36.473965+00:00",
+  "end_monotonic": 285833.078,
+  "end_epoch": 1795879536.473966
+}

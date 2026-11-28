@@ -1,0 +1,10 @@
+{
+  "status": "COMPLETE_FORMAL_MATRIX",
+  "complete_cells": 8,
+  "expected_cells": 8,
+  "completed_job_executions": 640,
+  "blocked_correctness": false,
+  "elapsed_window_seconds": 1980.2179999999935,
+  "remaining_seconds": 3419.7820000000065,
+  "all_owned_cleanup_zero": true
+}

@@ -1,0 +1,17 @@
+{
+  "files_sha256": {
+    "events.jsonl.gz": "479f468200a8d659445f96a3c5271a668b6d425f8c1684f8f91debe992115c0d",
+    "evidence_hashes.json": "e0be24c395e71bd622d271f2f0dfdd68cab7a88f6ebc00e7907dae041a750a6b",
+    "independent_audit.json": "d7ff5150a11277c0bf5154a9911a6c5a759e2a355b4eb35a1c94955d99e23c40",
+    "node_resources.csv": "276334a68db770b118b5e006f4530603a8b3110c654e68b3162dcd515be06c36",
+    "per_job.csv": "a6a5021589f6324b7722bdb1fd0f55a92913c9844911c7172077b78e3e21f004",
+    "process.json": "50107389e585575016d8e1e7eb407bcd9f2e7d37b3612646fa376db41fc578ce",
+    "start.json": "3db1a3064e5fd1155e2b744ed2ad106c96b2b2e1efeb2d553570a2c7868dbfe1",
+    "stdout.log": "27a91cbdd6f496227d40909adba1cc2dbbc6d9a4619efeef6a5fbd3fdaafbcce",
+    "summary.json": "6e28d936cb8738423fefc405852f6b947497c7466967f10584cce917b63aa537",
+    "termination.json": "6fd896c953d9079c586d191bf9739d749de6b8052f6430b79b1d52d48d942dcb"
+  },
+  "execution_status": "COMPLETE",
+  "audit_status": "PASS",
+  "source_manifest_sha256": "237a63790acb896b6510f979d5a2d31e8ff2cc5959c95722134e325ffeaee37d"
+}

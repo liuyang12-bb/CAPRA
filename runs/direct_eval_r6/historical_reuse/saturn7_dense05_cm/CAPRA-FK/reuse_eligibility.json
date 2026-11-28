@@ -1,0 +1,35 @@
+{
+  "scenario": "saturn7_dense05_cm",
+  "method": "CAPRA-FK",
+  "display_method": "CAPRA-FK",
+  "result_origin": "REUSED_R4",
+  "source_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "source_directory": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/CAPRA-FK",
+  "state": "ELIGIBLE",
+  "reason": "Exact input/order/80 jobs, frozen shared and method-specific source, performance tables, costs/solver/numeric environment, full raw resource/recovery/training/JCT replay pass; runtime guard limits did not truncate",
+  "source_version": "CAPRA_V2_PRESSURE_R4",
+  "runtime_source_snapshot": "runs/pressure_r4/source_snapshot.zip",
+  "runtime_source_snapshot_sha256": "efd43c230a3cb48f48e53a7f1560c4349d4acfebc246c538e18083791c5fc04b",
+  "source_algorithm_base": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "source_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "PYTHONHASHSEED": "0"
+  },
+  "method_difference": "GpuStage + frozen F/K and ram_slack_v1",
+  "wall_time_scope": "HISTORICAL_REFERENCE_ONLY_NO_WALL_SPEEDUP_RATIO",
+  "source_files_sha256": {
+    "audit_hashes.json": "f6ccf6b3d3f45624779f5b2bfee673b52e9c5406938d4af8956341b179321e5f",
+    "events.jsonl.gz": "ecf8d2f0eb80bf9484fca29ad75267d276ad2da19358ce468d7bf6bb7a3398b7",
+    "node_resources.csv": "40ed64ae2946308cdc20758b44129b1dd5bf204a293f959afdcfa5dff0841c4a",
+    "output_hashes.json": "f94db5da9ccc33e0bb982ffbcf60ff65c3175a0c4f98c7e080ad8d463d5c2e67",
+    "per_job.csv": "60b4091b6c9d6a51f1a0e7c16c125292f3a689cf296cc3f7c4b2f709a6166394",
+    "process.json": "d261d392341b99a82a342288dd2b8b00a95adc9fd54879c66fcb0c96e13eae08",
+    "r4_audit.json": "2c205f04cf25867292a480ef2d4c0758d3b3d6f231ccaa0f6755dd584dca6632",
+    "start.json": "d0fe5d248ec257ecf1bf02ace5938057ffde5f43805e4176f82632f4341d4005",
+    "summary.json": "7675886aa8663ed091b875f4c219d617da345df58aa52412cf24468556e29049",
+    "termination.json": "2bcb4d9d933108496c7a696018fdc0899fa62089d6c530a260f55d9b598c011e"
+  }
+}

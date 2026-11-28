@@ -1,0 +1,35 @@
+{
+  "kind": "report",
+  "cell": null,
+  "state": "PASS",
+  "start_utc": "2026-11-28T15:24:56.534396+00:00",
+  "start_monotonic": 285793.14,
+  "start_epoch": 1795879496.5343964,
+  "command": [
+    "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "scripts/report_direct_eval_r6.py",
+    "--manifest",
+    "configs/experiment_manifest_direct_eval_r6.json",
+    "--budgeted"
+  ],
+  "outer_hard_seconds": 180.0,
+  "worker_limit_seconds": 150.0,
+  "cleanup_reserve_seconds": 30,
+  "output": "runs/direct_eval_r6/development/report/attempt01",
+  "controller_pid": 18524,
+  "pid": 27776,
+  "exit_code": 0,
+  "external_timeout": false,
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  },
+  "charged_seconds": 17.21899999998277,
+  "end_utc": "2026-11-28T15:25:13.771111+00:00",
+  "end_monotonic": 285810.375,
+  "end_epoch": 1795879513.7711112
+}

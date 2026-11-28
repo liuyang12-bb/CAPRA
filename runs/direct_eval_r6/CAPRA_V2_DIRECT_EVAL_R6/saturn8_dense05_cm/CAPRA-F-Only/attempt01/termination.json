@@ -1,0 +1,11 @@
+{
+  "status": "ALL_COMPLETE",
+  "rounds": 197,
+  "completed": 80,
+  "expected_job_count": 80,
+  "submitted_count": 80,
+  "arrived_count": 80,
+  "simulated_seconds": 11820.0,
+  "wall_seconds": 216.15686439996352,
+  "execution_status": "COMPLETE"
+}

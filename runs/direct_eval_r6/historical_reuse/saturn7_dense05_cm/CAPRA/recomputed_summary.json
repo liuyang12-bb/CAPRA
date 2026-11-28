@@ -1,0 +1,139 @@
+{
+  "version": "CAPRA_V2_PRESSURE_R4",
+  "phase": "FORMAL",
+  "method": "CAPRA",
+  "scenario": "saturn7_dense05_cm",
+  "execution_status": "COMPLETE",
+  "audit_status": "PASS",
+  "formal_performance_experiment": "COMPLETE",
+  "termination_reason": "ALL_COMPLETE",
+  "expected_job_count": 80,
+  "jobs_loaded_count": 80,
+  "submitted_count": 80,
+  "arrived_count": 80,
+  "completed_count": 80,
+  "censored_count": 0,
+  "mean_jct": 909.85,
+  "median_jct": 766.5,
+  "p95_jct": 2347.85,
+  "p99_jct": 3152.409999999996,
+  "makespan": 11716.0,
+  "total_waiting": 2249.0,
+  "total_training": 53129.0,
+  "total_recovery": 17410.0,
+  "observed_prefix_totals": {
+    "waiting": 2249.0,
+    "training": 53129.0,
+    "recovery": 17410.0
+  },
+  "rounds": 200,
+  "decision_distribution": {
+    "n": 195,
+    "median": 0.08167679997859523,
+    "p95": 1.0270644100033675,
+    "p99": 1.2205597779963866,
+    "max": 1.4302617000066675
+  },
+  "decision_all_rounds": {
+    "n": 200,
+    "median": 0.07967084999836516,
+    "p95": 1.0212592350086194,
+    "p99": 1.2167802129962357,
+    "max": 1.4302617000066675
+  },
+  "component_times": {
+    "gpu_stage_seconds": {
+      "n": 195,
+      "median": 0.040918200014857575,
+      "p95": 0.13466830998950166,
+      "p99": 0.17188682002597488,
+      "max": 0.1786257000057958
+    },
+    "commit_seconds": {
+      "n": 195,
+      "median": 0.0028429999947547913,
+      "p95": 0.008634570008143782,
+      "p99": 0.009700399976572955,
+      "max": 0.01161720001255162
+    }
+  },
+  "selection_all_rounds": {
+    "F": 134,
+    "R": 13,
+    "K": 53
+  },
+  "selection_nonempty_rounds": {
+    "F": 129,
+    "R": 13,
+    "K": 53
+  },
+  "counts": {
+    "D_LEGACY": 200,
+    "nonempty_rounds": 195,
+    "nonempty_D_LEGACY": 195,
+    "new_transition_cost_seconds": 17410.0,
+    "configuration_or_combined_changes": 243,
+    "pure_node_migrations": 23
+  },
+  "transitions": {
+    "start": 80,
+    "migration": 198,
+    "reconfigure": 68,
+    "aux_update": 53
+  },
+  "actual_recovery_by_last_transition": {
+    "none": 0.0,
+    "first_start": 4155.0,
+    "GPU_type_shape_or_batch_with_node_change": 12105.0,
+    "pure_node_migration": 1150.0
+  },
+  "node_allocated_resource_seconds": {
+    "aws:0": [
+      12420.0,
+      21540.0,
+      728744.4000000006
+    ],
+    "aws:1": [
+      5160.0,
+      18000.0,
+      167487.59999999998
+    ],
+    "dgx-ext:0": [
+      66688.0,
+      230190.0,
+      1680131.9200000071
+    ],
+    "dgx-ext:1": [
+      52888.0,
+      197672.0,
+      1161658.2399999981
+    ],
+    "rtx:0": [
+      51520.0,
+      101540.0,
+      2405340.3999999976
+    ],
+    "rtx:1": [
+      46288.0,
+      59908.0,
+      2902991.800000001
+    ]
+  },
+  "segment_checks": 8529,
+  "training_auxiliary_metrics": {
+    "rho_seconds": 1.1828708941130714,
+    "above_proportion_seconds": 0.22157390502362176,
+    "CPU_conditional_rho_seconds": 0.15868420887525345,
+    "RAM_conditional_rho_seconds": 0.024186685237817383,
+    "CPU_positive_training_seconds": 0.1927760733309492,
+    "RAM_positive_training_seconds": 0.02879783169267255
+  },
+  "actual_training_seconds": 53129.0,
+  "decision_wall_charged_to_JCT": false,
+  "quantile_definition": "numpy.quantile(method=linear), q=.5/.95/.99",
+  "runner_body_wall_seconds": 283.81409470000654,
+  "audit_recompute_wall_seconds": 0.7537506999797188,
+  "result_origin": "REUSED_R4",
+  "algorithm_base_commit": null,
+  "actual_execution_head": null
+}

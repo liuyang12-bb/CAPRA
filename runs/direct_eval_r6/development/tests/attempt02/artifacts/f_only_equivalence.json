@@ -1,0 +1,14 @@
+[
+  {
+    "state": "new",
+    "status": "PASS"
+  },
+  {
+    "state": "running",
+    "status": "PASS"
+  },
+  {
+    "state": "locked",
+    "status": "PASS"
+  }
+]

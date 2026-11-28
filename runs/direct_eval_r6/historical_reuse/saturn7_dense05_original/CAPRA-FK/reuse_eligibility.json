@@ -1,0 +1,35 @@
+{
+  "scenario": "saturn7_dense05_original",
+  "method": "CAPRA-FK",
+  "display_method": "CAPRA-FK",
+  "result_origin": "REUSED_R4",
+  "source_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "source_directory": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_original/CAPRA-FK",
+  "state": "ELIGIBLE",
+  "reason": "Exact input/order/80 jobs, frozen shared and method-specific source, performance tables, costs/solver/numeric environment, full raw resource/recovery/training/JCT replay pass; runtime guard limits did not truncate",
+  "source_version": "CAPRA_V2_PRESSURE_R4",
+  "runtime_source_snapshot": "runs/pressure_r4/source_snapshot.zip",
+  "runtime_source_snapshot_sha256": "efd43c230a3cb48f48e53a7f1560c4349d4acfebc246c538e18083791c5fc04b",
+  "source_algorithm_base": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "source_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "PYTHONHASHSEED": "0"
+  },
+  "method_difference": "GpuStage + frozen F/K and ram_slack_v1",
+  "wall_time_scope": "HISTORICAL_REFERENCE_ONLY_NO_WALL_SPEEDUP_RATIO",
+  "source_files_sha256": {
+    "audit_hashes.json": "8d97b54587fc22059c9c06df1a78415bb8d7ca077de1285403af13fb9e1ca0d5",
+    "events.jsonl.gz": "787b7225df291a82735f738a9d9ab5e0b9b6a7229827e31e779ad889e656c19b",
+    "node_resources.csv": "bef534a74b03a0479d1404380c4821d47a1573a5245d7c2fcd5537602fc9568c",
+    "output_hashes.json": "9dc882e4fb3349c8869a66770b9c221466d49b9919fb2842ea747109f9769270",
+    "per_job.csv": "67ecc54242d34eccd1acb30eef2997538191dfc0d7f880974b2fe658978e380e",
+    "process.json": "befa2c2f5068fb09c2f02f0ef94144acb7b22088382066ecd54b0bea0b690b74",
+    "r4_audit.json": "d356daa2926d5e0b8de7c7598e504e3b5ca59d466f591209dae8fc790f687809",
+    "start.json": "0d4f955f7f222b3aa6c17c6f1b18edb0873132d9349d49324df642e5c852c850",
+    "summary.json": "46df4e100f0bd361a3303d649ebdc4486b5029bd0c564350ce260627cb8108fb",
+    "termination.json": "d0d89d8c3730722214d8f6baffa98c6e719a5646fa92ab4b0cce5df4e96b5709"
+  }
+}

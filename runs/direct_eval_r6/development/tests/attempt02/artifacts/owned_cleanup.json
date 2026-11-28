@@ -1,0 +1,5 @@
+{
+  "active_before_cleanup": 3,
+  "active_after_cleanup": 0,
+  "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+}

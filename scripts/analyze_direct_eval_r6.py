@@ -86,6 +86,8 @@ def analyze(manifest,out):
         for r in events(ROOT/cell['output']/'events.jsonl.gz'):
             if not r['plan']:continue
             s=r['selection'];f,d=s['candidates'];summary['nonempty_rounds']+=1;summary['selected_'+s['selected']]+=1;summary['D_'+s['D_status']]+=1
+            summary['candidate_wall_above_5s']+=s['candidate_seconds']>5.
+            summary['budget_check_calls']+=s['counts']['budget_checks']
             base=dict(scenario=scenario,round=r['round'],time=r['time'],selected=s['selected'],D_status=s['D_status'],jobs=len(r['plan']),locks=len(r['locks']),allocated_gpus=sum(x['gpus'] for x in r['plan'].values()),Phi_F=f['score']['phi'],Phi_D=None,DeltaPhi=None,DeltaR=None,DeltaL=None)
             if not d['feasible']:
                 summary['budget_fallback']+=1;base['F_category']='BUDGET_FALLBACK';mechanisms.append(base);continue

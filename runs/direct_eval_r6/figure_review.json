@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "utc": "2026-11-28T15:28:01.547530+00:00",
+  "method": "Opened and visually inspected all three PNGs; SVGs exported from same figure objects",
+  "checks": [
+    "Four scenarios and all five methods present; shared per-row scales; mean and P95/P99 shown with no clipping",
+    "Overhead figure contains only eight new executions, readable median/P95/P99/max and units",
+    "Score decomposition preserves both signs, F/D selection and zero-Phi diagonal; labels disclaim end-to-end causality",
+    "Displayed values originate in sealed CSV/JSON; negative comparisons retained"
+  ],
+  "files_sha256": {
+    "runs/direct_eval_r6/analysis/figures/jct_and_tails.png": "bfc52ae84030c198b1b74cbc8aeb58341b93753b70b6a55e53303bfb5729c935",
+    "runs/direct_eval_r6/analysis/figures/jct_and_tails.svg": "44d48518ca94ce32d0b1bfbf5ae38c3f804b8ef75e03ee10f90d474e5435842c",
+    "runs/direct_eval_r6/analysis/figures/decision_overhead.png": "edb1439c7de81bdea9fa4ac2cdb9b1f41ec95f96ec8353514a85a53ef20592cf",
+    "runs/direct_eval_r6/analysis/figures/decision_overhead.svg": "d7131d1494be6f465c5874cfa8c1f4e2f01b8ad50106ef6f81694b74aef342d6",
+    "runs/direct_eval_r6/analysis/figures/score_decomposition.png": "9a0dbdb77c4aed8ae4c535b8beffd7f0f005ba183d07214d99d31c98e0f2014f",
+    "runs/direct_eval_r6/analysis/figures/score_decomposition.svg": "c99ae4669dddf58678629a63b44bfec03ead2d04654e8fff32d484fcbac859f8"
+  },
+  "source_table_hashes_verified": true
+}

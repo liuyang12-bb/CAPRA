@@ -1,6 +1,6 @@
 """Portable read-only evidence replay. Never import production decisions or Job."""
 from pathlib import Path,PureWindowsPath
-import argparse,sys,time,zipfile,hashlib,csv
+import argparse,sys,time,zipfile,hashlib,csv,json
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT/'src'))
 from capra.protocol_direct_eval_r6 import RUN,BASE,R4,VERSION,INPUTS,load,dump,sha,digest,git
 from capra.audit_direct_eval_r6 import audit_records

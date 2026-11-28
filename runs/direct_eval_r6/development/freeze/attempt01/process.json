@@ -1,0 +1,32 @@
+{
+  "kind": "freeze",
+  "cell": null,
+  "state": "PASS",
+  "start_utc": "2026-11-28T14:55:29.784822+00:00",
+  "start_monotonic": 284026.39,
+  "start_epoch": 1795877729.7848227,
+  "command": [
+    "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "scripts/freeze_direct_eval_r6.py"
+  ],
+  "outer_hard_seconds": 90.0,
+  "worker_limit_seconds": 60.0,
+  "cleanup_reserve_seconds": 30,
+  "output": "runs/direct_eval_r6/development/freeze/attempt01",
+  "controller_pid": 18524,
+  "pid": 36800,
+  "exit_code": 0,
+  "external_timeout": false,
+  "cleanup": {
+    "active_before_cleanup": 0,
+    "active_after_cleanup": 0,
+    "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+  },
+  "charged_seconds": 2.5939999999827705,
+  "end_utc": "2026-11-28T14:55:32.377149+00:00",
+  "end_monotonic": 284028.984,
+  "end_epoch": 1795877732.3771493
+}

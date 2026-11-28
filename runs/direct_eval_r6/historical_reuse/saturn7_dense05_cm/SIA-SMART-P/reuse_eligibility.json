@@ -1,0 +1,35 @@
+{
+  "scenario": "saturn7_dense05_cm",
+  "method": "SIA-SMART-P",
+  "display_method": "SIA-SMART-P",
+  "result_origin": "REUSED_R4",
+  "source_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "source_directory": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn7_dense05_cm/SIA-SMART-P",
+  "state": "ELIGIBLE",
+  "reason": "Exact input/order/80 jobs, frozen shared and method-specific source, performance tables, costs/solver/numeric environment, full raw resource/recovery/training/JCT replay pass; runtime guard limits did not truncate",
+  "source_version": "CAPRA_V2_PRESSURE_R4",
+  "runtime_source_snapshot": "runs/pressure_r4/source_snapshot.zip",
+  "runtime_source_snapshot_sha256": "efd43c230a3cb48f48e53a7f1560c4349d4acfebc246c538e18083791c5fc04b",
+  "source_algorithm_base": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "source_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "PYTHONHASHSEED": "0"
+  },
+  "method_difference": "SmartGpuStage adapted smart + proportional/none",
+  "wall_time_scope": "HISTORICAL_REFERENCE_ONLY_NO_WALL_SPEEDUP_RATIO",
+  "source_files_sha256": {
+    "audit_hashes.json": "170322d3eb6d5ecc00228fb8d30b290768b21f5d77caa22bd76a10cbbbc57dd3",
+    "events.jsonl.gz": "b0aa4ae2242ea78a92a481ef885ad22f06209ab65e3498f55b2d79d99ff044ba",
+    "node_resources.csv": "171cfc2ed78136a2cab76f3ec47ce9eaf40bc78fd2c900d103059f0b17ac0133",
+    "output_hashes.json": "7ac164af6e7ed6d46faaabe4aafa4e041a95f5667b7a55d417723a52268c242a",
+    "per_job.csv": "4f7e7122acc45acc0f4be6b7f38ee9344c050fa99957a26180da21596885870f",
+    "process.json": "a6ce8f9faec5d306963590dadc7c71fc809903f27b07093c84d7baa5ef34a7c1",
+    "r4_audit.json": "092550fc33d06a2a26ca82a5605a3ea1d58bfb40246e533e40d72f803df7e81e",
+    "start.json": "8bc0aa01fdefba25206f3e4ceafe3f02cf771a72adae50f60c80c2068fc46ac7",
+    "summary.json": "d3791c0413a02c89375aca040b60cec1c7acbdb102f78fb7faf3f6285fc1a45a",
+    "termination.json": "dbc4fd3f766c34336330afe1566f0d22d0e8de792ba370241690eb3109ae9bc5"
+  }
+}

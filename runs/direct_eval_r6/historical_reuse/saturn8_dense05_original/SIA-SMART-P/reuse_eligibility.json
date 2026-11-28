@@ -1,0 +1,35 @@
+{
+  "scenario": "saturn8_dense05_original",
+  "method": "SIA-SMART-P",
+  "display_method": "SIA-SMART-P",
+  "result_origin": "REUSED_R4",
+  "source_commit": "ffa953fb9cd12773992559512d85065bbd26b7b2",
+  "source_directory": "runs/pressure_r4/CAPRA_V2_PRESSURE_R4/saturn8_dense05_original/SIA-SMART-P",
+  "state": "ELIGIBLE",
+  "reason": "Exact input/order/80 jobs, frozen shared and method-specific source, performance tables, costs/solver/numeric environment, full raw resource/recovery/training/JCT replay pass; runtime guard limits did not truncate",
+  "source_version": "CAPRA_V2_PRESSURE_R4",
+  "runtime_source_snapshot": "runs/pressure_r4/source_snapshot.zip",
+  "runtime_source_snapshot_sha256": "efd43c230a3cb48f48e53a7f1560c4349d4acfebc246c538e18083791c5fc04b",
+  "source_algorithm_base": "5af0bdb6b86b797225908f717b5b9324cd48a539",
+  "source_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "PYTHONHASHSEED": "0"
+  },
+  "method_difference": "SmartGpuStage adapted smart + proportional/none",
+  "wall_time_scope": "HISTORICAL_REFERENCE_ONLY_NO_WALL_SPEEDUP_RATIO",
+  "source_files_sha256": {
+    "audit_hashes.json": "eee988dce9e1cc351e8455ffb480f796f60fe461a44b8bcca355be2caa89739c",
+    "events.jsonl.gz": "a81f52def12214365fab8032ba3e8e53149bc5123b9d20d109906c9949a737bb",
+    "node_resources.csv": "99b12f6f516633c8c9cc947739da362ee667a3457a9b1030566a6c5fe0eed169",
+    "output_hashes.json": "55a1bd677a236fb6fb4fe2a684cef1b1be8c4433aa1b3563895e78fb618aebe0",
+    "per_job.csv": "ec6f05844afd915f8cc7c9b9c3f98bdbcd1be49074812e4597eeb7fdd5242dab",
+    "process.json": "4ea853222c3c872c8f01eb34d11af08e7eb3b5afdf6f7faf612805957c3c4f52",
+    "r4_audit.json": "4ccf64a4e85dc3050ceab8827d680904374d5f147ddc7659b4ed66f2af24a756",
+    "start.json": "2289a32e9044355a592cff6d8b7cbfafdf3a9dca2e2317420dd14631da34c181",
+    "summary.json": "f351fb19b444acd6ddda1d0a2965e940bd40cdb8c2597d88a1eb1cfd17af799b",
+    "termination.json": "4faa7137ba13e8f9ba64af8b01e49d2524c8bce94e3940c661edbece9bec1ce5"
+  }
+}

@@ -1,0 +1,101 @@
+[
+  {
+    "scenario": "saturn7_dense05_original",
+    "counts": {
+      "nonempty_rounds": 195,
+      "selected_F": 133,
+      "D_COMPLETE": 195,
+      "candidate_wall_above_5s": 0,
+      "budget_check_calls": 16365,
+      "F_FINAL_TIE_IDENTICAL_ALLOCATION": 100,
+      "raw_sum_rho_up": 13,
+      "total_delay_down": 53,
+      "same_R_same_total_delay_Phi_diff": 2,
+      "raw_rho_up_but_F_Phi_higher": 1,
+      "D_Phi_higher_cohort_JCT_not_improved": 0,
+      "selected_D": 62,
+      "quota_CPU_ONLY_GAIN": 62,
+      "quota_QUOTA_OR_NODE_CHANGE_NO_RHO_GAIN": 195,
+      "quota_CPU_ONLY_LOSS": 61,
+      "D_SELECTED": 62,
+      "F_FINAL_TIE_DIFFERENT_ALLOCATION": 19,
+      "F_STRICT_PHI": 14
+    },
+    "flag_scope": "Nonexclusive flags overlap; do not add or subtract them as a partition"
+  },
+  {
+    "scenario": "saturn7_dense05_cm",
+    "counts": {
+      "nonempty_rounds": 195,
+      "selected_F": 137,
+      "D_COMPLETE": 195,
+      "candidate_wall_above_5s": 0,
+      "budget_check_calls": 17072,
+      "F_FINAL_TIE_IDENTICAL_ALLOCATION": 100,
+      "raw_sum_rho_up": 13,
+      "total_delay_down": 50,
+      "same_R_same_total_delay_Phi_diff": 2,
+      "raw_rho_up_but_F_Phi_higher": 3,
+      "D_Phi_higher_cohort_JCT_not_improved": 0,
+      "selected_D": 58,
+      "quota_CPU_ONLY_GAIN": 63,
+      "quota_QUOTA_OR_NODE_CHANGE_NO_RHO_GAIN": 272,
+      "quota_CPU_ONLY_LOSS": 51,
+      "D_SELECTED": 58,
+      "F_FINAL_TIE_DIFFERENT_ALLOCATION": 15,
+      "quota_RAM_ONLY_GAIN": 1,
+      "F_STRICT_PHI": 22
+    },
+    "flag_scope": "Nonexclusive flags overlap; do not add or subtract them as a partition"
+  },
+  {
+    "scenario": "saturn8_dense05_original",
+    "counts": {
+      "nonempty_rounds": 195,
+      "selected_F": 147,
+      "D_COMPLETE": 195,
+      "candidate_wall_above_5s": 0,
+      "budget_check_calls": 19448,
+      "F_FINAL_TIE_IDENTICAL_ALLOCATION": 109,
+      "raw_sum_rho_up": 3,
+      "total_delay_down": 45,
+      "same_R_same_total_delay_Phi_diff": 5,
+      "raw_rho_up_but_F_Phi_higher": 0,
+      "D_Phi_higher_cohort_JCT_not_improved": 0,
+      "selected_D": 48,
+      "quota_CPU_ONLY_GAIN": 14,
+      "quota_QUOTA_OR_NODE_CHANGE_NO_RHO_GAIN": 305,
+      "quota_CPU_ONLY_LOSS": 14,
+      "D_SELECTED": 48,
+      "F_FINAL_TIE_DIFFERENT_ALLOCATION": 18,
+      "F_STRICT_PHI": 20
+    },
+    "flag_scope": "Nonexclusive flags overlap; do not add or subtract them as a partition"
+  },
+  {
+    "scenario": "saturn8_dense05_cm",
+    "counts": {
+      "nonempty_rounds": 195,
+      "selected_F": 141,
+      "D_COMPLETE": 195,
+      "candidate_wall_above_5s": 0,
+      "budget_check_calls": 19102,
+      "F_FINAL_TIE_IDENTICAL_ALLOCATION": 108,
+      "raw_sum_rho_up": 10,
+      "total_delay_down": 50,
+      "same_R_same_total_delay_Phi_diff": 7,
+      "raw_rho_up_but_F_Phi_higher": 1,
+      "D_Phi_higher_cohort_JCT_not_improved": 0,
+      "selected_D": 54,
+      "quota_CPU_ONLY_GAIN": 48,
+      "quota_QUOTA_OR_NODE_CHANGE_NO_RHO_GAIN": 306,
+      "quota_CPU_ONLY_LOSS": 34,
+      "D_SELECTED": 54,
+      "F_FINAL_TIE_DIFFERENT_ALLOCATION": 13,
+      "F_STRICT_PHI": 20,
+      "quota_RAM_ONLY_LOSS": 3,
+      "quota_RAM_ONLY_GAIN": 15
+    },
+    "flag_scope": "Nonexclusive flags overlap; do not add or subtract them as a partition"
+  }
+]

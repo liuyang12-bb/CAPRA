@@ -1,0 +1,8 @@
+{
+  "status": "FINISHED",
+  "eligible": 12,
+  "expected": 12,
+  "wall_seconds": 8.15600000001723,
+  "no_historical_closed_loop_execution": true,
+  "no_writes_to_R4": true
+}

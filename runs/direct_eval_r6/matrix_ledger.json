@@ -1,0 +1,746 @@
+{
+  "version": "CAPRA_V2_DIRECT_EVAL_R6",
+  "algorithm_base_commit": "b40cdefdff27d46d8044510652a557e8d7599920",
+  "cells": [
+    {
+      "index": 1,
+      "logical_id": "01",
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA-F-Only",
+      "workload": "data/pressure_r4/saturn7_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "candidate_labels": [
+        "F"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_original/CAPRA-F-Only/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_01/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_original/CAPRA-F-Only/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 1,
+            "state": "PASS",
+            "start_utc": "2026-11-28T14:55:41.711275+00:00",
+            "start_monotonic": 284038.328,
+            "start_epoch": 1795877741.711275,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "1",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn7_dense05_original\\CAPRA-F-Only\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_01/attempt01",
+            "controller_pid": 18524,
+            "pid": 30400,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 206.53100000001723,
+            "end_utc": "2026-11-28T14:59:08.251711+00:00",
+            "end_monotonic": 284244.859,
+            "end_epoch": 1795877948.251711
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "41755497bf5a89a853b32930c0135c214231566704c81c7850f62d8de71c4c26",
+        "events.jsonl.gz": "cca5341e1d2e33af6232b36a4d006c4be1dd94eeeb9e67ebbf03b6f7ce607095",
+        "evidence_hashes.json": "2534f9920013e6cc6d11909f128a18142399c7ba09f5a37b6972934c63226b76",
+        "independent_audit.json": "3d4f777aaac4683c856e6766eebce8ebf87700bb5a712740779d5fe3a969bb12",
+        "node_resources.csv": "f02bb4bc09b96f68c6b742e389127f16554ad7f7cdb2f7ddee08cb44da04f728",
+        "per_job.csv": "c47e6d4337518aa6b49d1bbbff3f03397c49a7e4e4f71e1e3df51e0b144c7b18",
+        "process.json": "1b10c6e81ea8618c35a8afb0de177b3d1e8abf7687bd5582503c2e36698478aa",
+        "start.json": "5fa35eeae695544e9d017fe7c899f8ee6c6b2d9d42bf7bf845a1c37f06a91e75",
+        "stdout.log": "a2d7e97f434b8ab40ad55d860f922fc83c261a3058f1a372d622990660b11deb",
+        "summary.json": "0233657597e6976363ff79a49479b186211883bcc6d6a67fd22ab729282289a3",
+        "termination.json": "f8b32251a37d10e7ca69ab27f36f07a9707a9bc876206041247e0079f4867a80"
+      },
+      "performance_metrics": {
+        "mean_jct": 1103.8375,
+        "median_jct": 969.5,
+        "p95_jct": 2670.8499999999995,
+        "p99_jct": 4177.299999999999,
+        "makespan": 11716.0
+      }
+    },
+    {
+      "index": 2,
+      "logical_id": "02",
+      "scenario": "saturn7_dense05_original",
+      "method": "CAPRA-Direct",
+      "workload": "data/pressure_r4/saturn7_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "candidate_labels": [
+        "F",
+        "D"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_original/CAPRA-Direct/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_02/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_original/CAPRA-Direct/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 2,
+            "state": "PASS",
+            "start_utc": "2026-11-28T14:59:08.361230+00:00",
+            "start_monotonic": 284244.968,
+            "start_epoch": 1795877948.3612301,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "2",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn7_dense05_original\\CAPRA-Direct\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_02/attempt01",
+            "controller_pid": 18524,
+            "pid": 3896,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 213.7029999999795,
+            "end_utc": "2026-11-28T15:02:42.063277+00:00",
+            "end_monotonic": 284458.671,
+            "end_epoch": 1795878162.0632775
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "41168650c174e91e322ab04fe8514277473bc8eb7232f95af62d3b37c2e9887e",
+        "events.jsonl.gz": "6cf08a86440980bb96d6251a22ba2ea63ef597e6e176d64dfe4f35b9e5c010e8",
+        "evidence_hashes.json": "3e4f612bbd2bb5d743bca33b2276f74a921eb71570ebf1dc7aaa3b75b9629628",
+        "independent_audit.json": "9bb510ae20c51c98ecd0bb74e88db11c35f764a616014d7bbc61924048b058e1",
+        "node_resources.csv": "2b3715cd3117fd76ffc3f0a4d6a2dba03a73a6e63a97e11d0bc0704e731431ce",
+        "per_job.csv": "98ed298db1c6537111b61cbff322908022adee7dce745af44eab800b33fc02dd",
+        "process.json": "2c3a67ebfaa6e3efb3c0bcb4355c4cb6ce17f59b51506d4313fd436515148e51",
+        "start.json": "7723a45b360a7c84f16a17a37b75f85b9cc78846dfefe9af3e1fa5042f38385a",
+        "stdout.log": "26e937950daaa2b8c1ceb2aa98be941630400deb3367339d3161a208388cc293",
+        "summary.json": "edbd09c85b8581dc5a2047ffbd2c4e2ba47259d445e3d1cae94e8ce25928e7a7",
+        "termination.json": "68978a606a53444b209c6d3fdd8f54cb5cef952e2ae820b5d67e848892d83d01"
+      },
+      "performance_metrics": {
+        "mean_jct": 932.5,
+        "median_jct": 793.25,
+        "p95_jct": 2665.85,
+        "p99_jct": 3857.8099999999986,
+        "makespan": 11716.0
+      }
+    },
+    {
+      "index": 3,
+      "logical_id": "03",
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA-Direct",
+      "workload": "data/pressure_r4/saturn7_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cm.json",
+      "candidate_labels": [
+        "F",
+        "D"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_cm/CAPRA-Direct/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_03/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_cm/CAPRA-Direct/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 3,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:02:42.177379+00:00",
+            "start_monotonic": 284458.781,
+            "start_epoch": 1795878162.1773798,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "3",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn7_dense05_cm\\CAPRA-Direct\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_03/attempt01",
+            "controller_pid": 18524,
+            "pid": 20680,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 217.81300000002375,
+            "end_utc": "2026-11-28T15:06:20.000909+00:00",
+            "end_monotonic": 284676.609,
+            "end_epoch": 1795878380.0009098
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "dc3e776ee08f45d3b688f77aadd431316d475ddbf31ab88dbb4039faa85de747",
+        "events.jsonl.gz": "bfed73ea704a99804b5a7108f043537671161729f21c647c58d3f88d6493c0da",
+        "evidence_hashes.json": "95daf70b732ce42dfc1dbfa26e695dcbb47907ab444931b07bee51a4b50486e7",
+        "independent_audit.json": "200765ddd331396e1fc06900d8acb1b981dbddc448df0b655f44da7ff2f3938a",
+        "node_resources.csv": "4996a6974278e4ec372efc179fd5c9202b55a255b80741f74f7418a29c2253bd",
+        "per_job.csv": "a0f21518c394d01432c0dc5385dc398da046d399393c649624121a2fe3b34c26",
+        "process.json": "35fcd8e630b43ac12186db54bbcf90aaf453942f8541cb040309bb6f3bff45b1",
+        "start.json": "6127a28319fde38b3356304783ae6abcd9c3b21517f2092215fdfb9564beb49f",
+        "stdout.log": "cd0f7ba5a66b2cdf8fbeee2dd8b85fb18676c8d77b1a994621cdfaa4bc26d589",
+        "summary.json": "91fc6fdf37d530f7e6dba57306f730f22a98ac99b1c0e4015dfed03060f838ea",
+        "termination.json": "b6ed55bc02af3d6aa5fa53bd81eb92c1b26b76a592e842917255363974e48be6"
+      },
+      "performance_metrics": {
+        "mean_jct": 981.675,
+        "median_jct": 868.5,
+        "p95_jct": 2348.7999999999997,
+        "p99_jct": 3497.3899999999976,
+        "makespan": 11716.0
+      }
+    },
+    {
+      "index": 4,
+      "logical_id": "04",
+      "scenario": "saturn7_dense05_cm",
+      "method": "CAPRA-F-Only",
+      "workload": "data/pressure_r4/saturn7_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cm.json",
+      "candidate_labels": [
+        "F"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_cm/CAPRA-F-Only/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_04/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn7_dense05_cm/CAPRA-F-Only/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 4,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:06:20.125919+00:00",
+            "start_monotonic": 284676.734,
+            "start_epoch": 1795878380.1259193,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "4",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn7_dense05_cm\\CAPRA-F-Only\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_04/attempt01",
+            "controller_pid": 18524,
+            "pid": 7708,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 213.34399999998277,
+            "end_utc": "2026-11-28T15:09:53.466084+00:00",
+            "end_monotonic": 284890.078,
+            "end_epoch": 1795878593.466085
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "7a46ffe6e9c41c629843cdb2f7b747c3b20a51204617f3e65269ed1b49ad5ebf",
+        "events.jsonl.gz": "479f468200a8d659445f96a3c5271a668b6d425f8c1684f8f91debe992115c0d",
+        "evidence_hashes.json": "e0be24c395e71bd622d271f2f0dfdd68cab7a88f6ebc00e7907dae041a750a6b",
+        "independent_audit.json": "d7ff5150a11277c0bf5154a9911a6c5a759e2a355b4eb35a1c94955d99e23c40",
+        "node_resources.csv": "276334a68db770b118b5e006f4530603a8b3110c654e68b3162dcd515be06c36",
+        "per_job.csv": "a6a5021589f6324b7722bdb1fd0f55a92913c9844911c7172077b78e3e21f004",
+        "process.json": "50107389e585575016d8e1e7eb407bcd9f2e7d37b3612646fa376db41fc578ce",
+        "start.json": "3db1a3064e5fd1155e2b744ed2ad106c96b2b2e1efeb2d553570a2c7868dbfe1",
+        "stdout.log": "27a91cbdd6f496227d40909adba1cc2dbbc6d9a4619efeef6a5fbd3fdaafbcce",
+        "summary.json": "6e28d936cb8738423fefc405852f6b947497c7466967f10584cce917b63aa537",
+        "termination.json": "6fd896c953d9079c586d191bf9739d749de6b8052f6430b79b1d52d48d942dcb"
+      },
+      "performance_metrics": {
+        "mean_jct": 1092.85,
+        "median_jct": 996.75,
+        "p95_jct": 2348.2999999999997,
+        "p99_jct": 3973.1999999999985,
+        "makespan": 11716.0
+      }
+    },
+    {
+      "index": 5,
+      "logical_id": "05",
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA-Direct",
+      "workload": "data/pressure_r4/saturn8_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "candidate_labels": [
+        "F",
+        "D"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_original/CAPRA-Direct/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_05/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_original/CAPRA-Direct/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 5,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:09:53.578562+00:00",
+            "start_monotonic": 284890.187,
+            "start_epoch": 1795878593.5785623,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "5",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn8_dense05_original\\CAPRA-Direct\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_05/attempt01",
+            "controller_pid": 18524,
+            "pid": 34496,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 229.82800000003772,
+            "end_utc": "2026-11-28T15:13:43.399463+00:00",
+            "end_monotonic": 285120.015,
+            "end_epoch": 1795878823.3994632
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "598e7b306db71c597dc9be8f83df125e8eb32fb37c125e15e5d3631e8456bd84",
+        "events.jsonl.gz": "ec3bc6ab69352ed02a7eaebf2d62ed0f8d78bb7ae7bb2ba80eb7d529890d2519",
+        "evidence_hashes.json": "66a60a48633cd6a8287ac040be5376a611fcdd19d017d8ebcee7aab87dfea95c",
+        "independent_audit.json": "14d7131c008bc3fcb274619b365eae310c7de76bf9fda302928d20ed055e7470",
+        "node_resources.csv": "6b852555429f9ecd4ad6ce9ca321f0a3ae400c4acab1b3b41d4911093c11c99b",
+        "per_job.csv": "04a79561e3fae90bf0f0ab26ba5097649b05c4b68f6812020ad5327e06e7e1a0",
+        "process.json": "d0b9c03bbbacad464ac25abe8f18830bd012ff649968833e3bc7667e0061fd16",
+        "start.json": "e002f88a432f260976359625c9780e1271b9d5ffb28451627c7912ef3739a675",
+        "stdout.log": "6a5a5799b736205785809b6b67099f5c4223229c4aa7297700601f81e4a1a338",
+        "summary.json": "5f27b38c7df04c39a5f3c0d4cb0b5e31d1f628cf137e912c331df98d6963c435",
+        "termination.json": "ce30544a1a173e3f1503423a51144fa4fa15597b45d2791d04848d097469d0e8"
+      },
+      "performance_metrics": {
+        "mean_jct": 1126.3125,
+        "median_jct": 879.75,
+        "p95_jct": 3380.9,
+        "p99_jct": 4157.319999999997,
+        "makespan": 11671.0
+      }
+    },
+    {
+      "index": 6,
+      "logical_id": "06",
+      "scenario": "saturn8_dense05_original",
+      "method": "CAPRA-F-Only",
+      "workload": "data/pressure_r4/saturn8_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_original.json",
+      "candidate_labels": [
+        "F"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_original/CAPRA-F-Only/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_06/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_original/CAPRA-F-Only/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 6,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:13:43.535238+00:00",
+            "start_monotonic": 285120.14,
+            "start_epoch": 1795878823.535238,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "6",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn8_dense05_original\\CAPRA-F-Only\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_06/attempt01",
+            "controller_pid": 18524,
+            "pid": 3516,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 214.23399999999674,
+            "end_utc": "2026-11-28T15:17:17.786649+00:00",
+            "end_monotonic": 285334.39,
+            "end_epoch": 1795879037.78665
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "b4c8868ad07988bd7a2e645e83e3c6caa870b07fabb8dbf5d2e1251f9f4799c8",
+        "events.jsonl.gz": "a9f92a12132e08c10d6c69efabe3866375a91f2fb309cbfb04b887162b635a1c",
+        "evidence_hashes.json": "5b690565c38b7504159d688d4f82efd5cc636a7ec5710847d16cdd3e4b033053",
+        "independent_audit.json": "4c9b2b39c5e7f932a3f5e911fb1a08400305a6e4732049a3fd4415ca4c72e8ac",
+        "node_resources.csv": "c63e42da053a1315fafbd859ff13179e9a89f15b3c97e2430771cbaf96c69aff",
+        "per_job.csv": "4994f4c11f384a0fcd89d5d10e7f1605cc952916a4741c0553363666fcb68e2f",
+        "process.json": "5301f1aecba1bac6a43f32ce7567d137ba4ab558d62324061790088c0ccf257b",
+        "start.json": "e2c0c8eef4ccc1cca29afb33a4f4a5ae691ca9f34041110cd28b3a540f8ffb88",
+        "stdout.log": "45478545de7f48e7ce62ad8e4e9f344d8e1b80bff55f47f56a49e97df000fc4a",
+        "summary.json": "ff073df250a52714709d79320597c89ac5378d5271410744dd8ea97ae2be93d3",
+        "termination.json": "e38b44f330bc9451128741cb39ecd3ff9bd5ce1b4b2d22f8a00aeb44219ba754"
+      },
+      "performance_metrics": {
+        "mean_jct": 1191.55,
+        "median_jct": 965.25,
+        "p95_jct": 3243.3499999999985,
+        "p99_jct": 4424.0099999999975,
+        "makespan": 11766.0
+      }
+    },
+    {
+      "index": 7,
+      "logical_id": "07",
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA-F-Only",
+      "workload": "data/pressure_r4/saturn8_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cm.json",
+      "candidate_labels": [
+        "F"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_cm/CAPRA-F-Only/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_07/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_cm/CAPRA-F-Only/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 7,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:17:17.901572+00:00",
+            "start_monotonic": 285334.515,
+            "start_epoch": 1795879037.901572,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "7",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn8_dense05_cm\\CAPRA-F-Only\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_07/attempt01",
+            "controller_pid": 18524,
+            "pid": 30252,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 223.51600000000326,
+            "end_utc": "2026-11-28T15:21:01.416283+00:00",
+            "end_monotonic": 285558.031,
+            "end_epoch": 1795879261.4162834
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "ee29f55df58c756e8954c72f6ae8d1a75102a38ff80650bb6ad3506ea2c32cf1",
+        "events.jsonl.gz": "ce0b66bdabeb3d02dd68cfd37dfac0a77b0489647592186a293688751bd7a59e",
+        "evidence_hashes.json": "60b4e05ec0163360975b5a9fab82e89058ab117cd6b5e0c09d848092cae9921b",
+        "independent_audit.json": "c286ad0ddc59b1a66647b50d481a275cf2d6038c394eda3682c1416f718cfd07",
+        "node_resources.csv": "5af0561939acbd13c8e4fdac962e533b168e25dc68fa6cd0af7f714d60c1f4e9",
+        "per_job.csv": "2215adfaa86e904abf4cac87f183f266a3df928814f0dd03c9f9ccf55c89c79c",
+        "process.json": "3d4cce3847be95f4d8b0fc4575bc8ed076390d5dfdcc233215d90a03fc6e6109",
+        "start.json": "551c98ee6407fcdd4041252773863d52ce93e63eb7336a8e5c7ab89ffa7a6afb",
+        "stdout.log": "c1c8cf63fdcc8e1522df611e8ec52329cc90755721589eaee84870e7c663596d",
+        "summary.json": "0637acd6801867d0b7867d8ee6f07578b0ad03ddb91116bcc81fdbd40786012e",
+        "termination.json": "04a278d5333233894d4b26685f65b705fbd26e28df5f2ad0cbef50faf398b031"
+      },
+      "performance_metrics": {
+        "mean_jct": 1137.825,
+        "median_jct": 974.0,
+        "p95_jct": 2901.6,
+        "p99_jct": 3455.604999999995,
+        "makespan": 11671.0
+      }
+    },
+    {
+      "index": 8,
+      "logical_id": "08",
+      "scenario": "saturn8_dense05_cm",
+      "method": "CAPRA-Direct",
+      "workload": "data/pressure_r4/saturn8_dense05.csv",
+      "cluster": "data/scenarios_r1/cluster_cpu3.json",
+      "responses": "data/scenarios_r1/responses_cm.json",
+      "candidate_labels": [
+        "F",
+        "D"
+      ],
+      "output": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_cm/CAPRA-Direct/attempt01",
+      "attempts": [
+        {
+          "attempt": 1,
+          "control": "runs/direct_eval_r6/control/formal_08/attempt01",
+          "raw": "runs/direct_eval_r6/CAPRA_V2_DIRECT_EVAL_R6/saturn8_dense05_cm/CAPRA-Direct/attempt01",
+          "process": {
+            "kind": "formal",
+            "cell": 8,
+            "state": "PASS",
+            "start_utc": "2026-11-28T15:21:01.540586+00:00",
+            "start_monotonic": 285558.156,
+            "start_epoch": 1795879261.540586,
+            "command": [
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\.venv\\Scripts\\python.exe",
+              "-X",
+              "utf8",
+              "-B",
+              "-m",
+              "capra.runner_direct_eval_r6",
+              "--manifest",
+              "configs/experiment_manifest_direct_eval_r6.json",
+              "--cell",
+              "8",
+              "--output",
+              "D:\\科研启航\\CAPRA-direct-evaluation-r6\\runs\\direct_eval_r6\\CAPRA_V2_DIRECT_EVAL_R6\\saturn8_dense05_cm\\CAPRA-Direct\\attempt01",
+              "--wall-limit",
+              "540",
+              "--global-deadline-epoch",
+              "1795882746.2668118",
+              "--global-deadline-monotonic",
+              "289042.875"
+            ],
+            "outer_hard_seconds": 600.0,
+            "worker_limit_seconds": 570.0,
+            "cleanup_reserve_seconds": 30,
+            "output": "runs/direct_eval_r6/control/formal_08/attempt01",
+            "controller_pid": 18524,
+            "pid": 33140,
+            "exit_code": 0,
+            "external_timeout": false,
+            "cleanup": {
+              "active_before_cleanup": 0,
+              "active_after_cleanup": 0,
+              "mechanism": "Windows Job Object; assigned suspended before resume; KILL_ON_JOB_CLOSE"
+            },
+            "charged_seconds": 234.875,
+            "end_utc": "2026-11-28T15:24:56.428185+00:00",
+            "end_monotonic": 285793.031,
+            "end_epoch": 1795879496.428185
+          }
+        }
+      ],
+      "execution_status": "COMPLETE",
+      "audit_status": "PASS",
+      "formal_performance_experiment": "COMPLETE",
+      "reason": "ALL_COMPLETE",
+      "submitted_count": 80,
+      "completed_count": 80,
+      "arrived_count": 80,
+      "sealed_files_sha256": {
+        "attempt_closure.json": "810c2b8f8b231f7aef739c15264dcf299143d821c9876d20b08a46b02c8a8e37",
+        "events.jsonl.gz": "b3c591998cdccb913c08fa5b6bc57c63cff6f0fc0c45ca216c9f2271ced3fafe",
+        "evidence_hashes.json": "8a37e7bd075f1bebb7b679fca69c60cc2038afb536deca4006c31c596bd66885",
+        "independent_audit.json": "78f4a1ac7571e8b9ff21b1a64850457b6f08e13cd559df3d0f5439bfaed25b3e",
+        "node_resources.csv": "1692b0fdd8adad024453ede487611a0646a64dc1ecfb3cc6d073f78d053ccc01",
+        "per_job.csv": "08bc54d8a6223324224a6ab9e8c3b719ccc6f8c451ad8c705815d683506cec99",
+        "process.json": "4d4757caf90834cf04f8e9b61e42c455a631e25f151d294b3c7079a270c0f320",
+        "start.json": "814ea2d91151bfb22f7606090de33ee7915b1942dcc17035ef778b0ddb5951dc",
+        "stdout.log": "a44cd04d085601f6c3aa02827eeb0772e0de23154333d33c6f6c93f617b2b2b5",
+        "summary.json": "20246e7a6a5dc1d76ee1e993a63e079a56effe0de58bb9c8d4cfb7d998bd2884",
+        "termination.json": "99250f85a3aa0fc6f6b42446c07a98ba3e84a2726d3e323a8e2e51637268a178"
+      },
+      "performance_metrics": {
+        "mean_jct": 1103.85,
+        "median_jct": 978.25,
+        "p95_jct": 2743.2499999999995,
+        "p99_jct": 3647.86499999999,
+        "makespan": 11671.0
+      }
+    }
+  ]
+}

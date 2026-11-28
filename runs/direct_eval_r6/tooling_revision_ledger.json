@@ -1,0 +1,38 @@
+[
+  {
+    "path": "scripts/analyze_direct_eval_r6.py",
+    "before_sha256": "b88f67078f2e9fb7d577b6510488d9892f93298919a1c41befb88886715d3961",
+    "after_sha256": "8b72abd8eb095eb5e13e9d57a963517202d34968d430a08a1af98a645de9162c",
+    "reason": "Reporting-only completion: show cooperative budget exit categories and inclusive stage quantiles explicitly; next recommendation considers losses against all eligible baselines. No frozen runtime, inputs, metric tolerances or experiment changes.",
+    "epoch": 1795878465.031327,
+    "utc": "2026-11-28T15:07:45.031332+00:00",
+    "affects_execution_data": false
+  },
+  {
+    "path": "scripts/report_direct_eval_r6.py",
+    "before_sha256": "334b91a01b1db6ba5d36a23e2a1772e19aba583631f421d003e1a24a576b0ab5",
+    "after_sha256": "b1a610f46238500480d4fa9b826df75bf53ca63bc821f4568da46e14294c2bcc",
+    "reason": "Reporting-only completion: show cooperative budget exit categories and inclusive stage quantiles explicitly; next recommendation considers losses against all eligible baselines. No frozen runtime, inputs, metric tolerances or experiment changes.",
+    "epoch": 1795878465.0797203,
+    "utc": "2026-11-28T15:07:45.079725+00:00",
+    "affects_execution_data": false
+  },
+  {
+    "path": "scripts/report_direct_eval_r6.py",
+    "before_sha256": "b1a610f46238500480d4fa9b826df75bf53ca63bc821f4568da46e14294c2bcc",
+    "after_sha256": "284a4b5b9d75b80ca545ed7ad63ccc032169924891d3ef65c112cd246e0cc578",
+    "reason": "Clarify reporting provenance for nonexecution tool revisions and describe F-only as an independent control, without implying a closed-loop JCT guarantee. No runtime or statistical changes.",
+    "epoch": 1795879080.2358038,
+    "utc": "2026-11-28T15:18:00.235811+00:00",
+    "affects_execution_data": false
+  },
+  {
+    "path": "scripts/verify_direct_eval_r6.py",
+    "before_sha256": "18172f87d16f2d3e7d1071786300ef05f53fd9901661fc5331480962289daa0b",
+    "after_sha256": "ef853b5fe260cc6b741f08748b4711efe8deb4cd5ce74cf759c6ef074870172a",
+    "reason": "Verifier packaging fix only: import json for final stdout after all mathematical checks and receipts had passed. Keep failed attempt; repeat pure replay under the original budget, no new formal runs.",
+    "epoch": 1795879565.0353582,
+    "utc": "2026-11-28T15:26:05.035371+00:00",
+    "affects_execution_data": false
+  }
+]

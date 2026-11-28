@@ -1,0 +1,49 @@
+test_budget_cannot_reset_and_owned_grandchild_cleanup (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_direct_alias_and_real_Job_one_step_equivalence (test_direct_eval_r6.R6IntegrationTests) ... ERROR
+test_f_only_three_fixed_states_no_D_paths (test_direct_eval_r6.R6IntegrationTests) ... test_formal_metadata_and_portable_verification_contract (test_direct_eval_r6.R6IntegrationTests) ... ok
+test_progress_and_overhead_stops (test_direct_eval_r6.R6IntegrationTests) ... ok
+
+======================================================================
+ERROR: test_direct_alias_and_real_Job_one_step_equivalence (test_direct_eval_r6.R6IntegrationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\tests\test_direct_eval_r6.py", line 44, in test_direct_alias_and_real_Job_one_step_equivalence
+    job=Job(row['name'],{'dgx-ext':APPLICATIONS['dgx-ext'][row['application']]},float(row['time']),target_num_replicas=int(row['num_replicas']),target_batch_size=int(row['batch_size']))
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\third_party\sia\sia-simulator\job.py", line 60, in __init__
+    self.reference_app = self.applications[sim_config.calibrate_cluster]
+KeyError: 'rtx'
+
+======================================================================
+ERROR: test_f_only_three_fixed_states_no_D_paths (test_direct_eval_r6.R6IntegrationTests) (state='new')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\tests\test_direct_eval_r6.py", line 35, in test_f_only_three_fixed_states_no_D_paths
+    audited=check_f_only(dict(r,current=serialized(current),locks=serialized(locks),lock_remaining=rem,started=sorted(seen)),{n.id:asdict(n) for n in nodes},{'c':'cifar10'},response,{'cifar10':50.})
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\src\capra\audit_direct_eval_r6.py", line 70, in check_f_only
+    assert combined==f['allocations']==r['allocations']
+KeyError: 'allocations'
+
+======================================================================
+ERROR: test_f_only_three_fixed_states_no_D_paths (test_direct_eval_r6.R6IntegrationTests) (state='running')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\tests\test_direct_eval_r6.py", line 35, in test_f_only_three_fixed_states_no_D_paths
+    audited=check_f_only(dict(r,current=serialized(current),locks=serialized(locks),lock_remaining=rem,started=sorted(seen)),{n.id:asdict(n) for n in nodes},{'c':'cifar10'},response,{'cifar10':50.})
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\src\capra\audit_direct_eval_r6.py", line 70, in check_f_only
+    assert combined==f['allocations']==r['allocations']
+KeyError: 'allocations'
+
+======================================================================
+ERROR: test_f_only_three_fixed_states_no_D_paths (test_direct_eval_r6.R6IntegrationTests) (state='locked')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\tests\test_direct_eval_r6.py", line 35, in test_f_only_three_fixed_states_no_D_paths
+    audited=check_f_only(dict(r,current=serialized(current),locks=serialized(locks),lock_remaining=rem,started=sorted(seen)),{n.id:asdict(n) for n in nodes},{'c':'cifar10'},response,{'cifar10':50.})
+  File "D:\科研启航\CAPRA-direct-evaluation-r6\src\capra\audit_direct_eval_r6.py", line 70, in check_f_only
+    assert combined==f['allocations']==r['allocations']
+KeyError: 'allocations'
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.299s
+
+FAILED (errors=4)
